@@ -1,4 +1,6 @@
 
+#macro FIGGY_FILENAME $"{filename_dir(GM_project_filename)}/datafiles/Config.figgy"
+
 #macro FIGGY_WINDOW_NAME "Figgy"
 #macro FIGGY_WINDOW_START_VISIBLE true
 #macro FIGGY_WINDOW_X 8

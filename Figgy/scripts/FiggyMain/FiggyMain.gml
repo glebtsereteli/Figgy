@@ -2,14 +2,35 @@
 function Figgy() {
 	#region __private
 	
-	static __current = undefined;
 	static __default = undefined;
+	static __current = undefined;
 	static __view = false;
 	static __sections = [];
 	
 	static __setupCurrentScope = undefined;
 	static __setupCurrentSection = undefined;
 	static __setupCallback = undefined;
+	
+	static __save = function() {
+		var _string = json_stringify(__current, true);
+		var _buffer = buffer_create(string_byte_length(_string), buffer_fixed, 1);
+		buffer_write(_buffer, buffer_text, _string);
+		buffer_save(_buffer, FIGGY_FILENAME);
+		buffer_delete(_buffer);
+		
+		return self;
+	};
+	static __load = function() {
+		try {
+			var _buffer = buffer_load(FIGGY_FILENAME);
+			var _string = buffer_read(_buffer, buffer_text);
+			__current = json_parse(_string);
+			buffer_delete(_buffer);
+		} catch (_) {
+			
+		}
+		__save();
+	};
 	
 	#endregion
 	#region setup
@@ -24,10 +45,17 @@ function Figgy() {
 		
 		__view = dbg_view(FIGGY_WINDOW_NAME, FIGGY_WINDOW_START_VISIBLE, FIGGY_WINDOW_X, FIGGY_WINDOW_Y, FIGGY_WINDOW_WIDTH, FIGGY_WINDOW_HEIGHT);
 		
+		dbg_section("[CONTROLS]", false);
+		dbg_button("Save", function() {
+			__save();
+		}, 80, 20);
+		
 		__on_setup();
-		resetToDefault();
+		__current = variable_clone(__default);
 		
 		show_message(__current);
+		
+		__load();
 	};
 	
 	/// @param {String} name Section name.
@@ -49,9 +77,8 @@ function Figgy() {
 		__FIGGY_NAME
 		dbg_text_separator(_name, _align);
 		if (_selfScope) {
-			var _scope = {};
-			__setupCurrentSection[$ _name] = _scope;
-			__setupCurrentScope = _scope;
+			__setupCurrentScope = {};
+			__setupCurrentSection[$ _name] = __setupCurrentScope;
 		}
 		else {
 			__setupCurrentScope = __setupCurrentSection;
@@ -107,9 +134,16 @@ function Figgy() {
 	};
 	
 	#endregion
+	#region getters
+	
+	static getCurrent = function() {
+		return __current;
+	};
+	
+	#endregion
 	
 	static resetToDefault = function() {
-		__current = variable_clone(__default);
+		
 	};
 }
 Figgy();
