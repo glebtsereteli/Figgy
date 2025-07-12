@@ -2,6 +2,7 @@
 FIGGY_SETUP_START
 
 Figgy.section("Player");
+	Figgy.text("Name", "Geraldine ");
 	Figgy.group("Stats");
 		Figgy.int("Health", 100, 0, 300, 10);
 		Figgy.int("Energy", 100, 0, 300, 10);

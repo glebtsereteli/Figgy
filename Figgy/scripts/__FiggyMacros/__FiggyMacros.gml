@@ -11,6 +11,9 @@
 
 #macro __FIGGY_PATH $"{filename_dir(GM_project_filename)}/datafiles/{FIGGY_FILE_NAME}{FIGGY_FILE_EXT}"
 #macro __FIGGY_RAWNAME var _rawName = string_replace_all(_name, " ", "")
+#macro __FIGGY_WIDGET \
+__FIGGY_RAWNAME; \
+__setup.__scope[$ _rawName] = _default;
 
 #endregion
 #region shortcuts

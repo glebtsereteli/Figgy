@@ -108,6 +108,7 @@ function Figgy() {
 	};
 	
 	#endregion
+	
 	#region setup
 	
 	/// @param {Func} callback The callback to execute on setup. Set up your interface here.
@@ -146,7 +147,7 @@ function Figgy() {
 	/// @param {Bool} selfScope=[FIGGY_GROUP_DEFAULT_SELFSCOPE] Whether the group should have its own scope (true) or not (false).
 	/// @param {Enum.FIGGY_GROUP_ALIGN} align=[FIGGY_GROUP_DEFAULT_ALIGN] The group name alignment.
 	static group = function(_name, _selfScope = FIGGY_GROUP_DEFAULT_SELFSCOPE, _align = FIGGY_GROUP_DEFAULT_ALIGN) {
-		__FIGGY_RAWNAME
+		__FIGGY_RAWNAME;
 		dbg_text_separator(_name, _align);
 		if (_selfScope) {
 			__setup.__scope = {};
@@ -175,9 +176,7 @@ function Figgy() {
 	/// @param {Real.Int} min Maximum value.
 	/// @param {Real.Int} step=[FIGGY_INT_DEFAULT_STEP] Step value.
 	static int = function(_name, _default, _min, _max, _step = FIGGY_INT_DEFAULT_STEP) {
-		__FIGGY_RAWNAME
-		__setup.__scope[$ _rawName] = _default;
-		
+		__FIGGY_WIDGET;
 		dbg_slider_int(ref_create(__setup.__scope, _rawName), _min, _max, _name, _step);
 		
 		return self;
@@ -189,8 +188,7 @@ function Figgy() {
 	/// @param {Real} min Maximum value.
 	/// @param {Real} step=[FIGGY_FLOAT_DEFAULT_STEP] Step value.
 	static float = function(_name, _default, _from, _to, _step = FIGGY_FLOAT_DEFAULT_STEP) {
-		__FIGGY_RAWNAME
-		__setup.__scope[$ _rawName] = _default;
+		__FIGGY_WIDGET;
 		dbg_slider(ref_create(__setup.__scope, _rawName), _from, _to, _name, _step);
 		
 		return self;
@@ -199,9 +197,15 @@ function Figgy() {
 	/// @param {String} name Variable name.
 	/// @param {Bool} default Default value.
 	static boolean = function(_name, _default) {
-		__FIGGY_RAWNAME;
-		__setup.__scope[$ _rawName] = _default;
+		__FIGGY_WIDGET;
 		dbg_checkbox(ref_create(__setup.__scope, _rawName), _name);
+		
+		return self;
+	};
+	
+	static text = function(_name, _default) {
+		__FIGGY_WIDGET;
+		dbg_text_input(ref_create(__setup.__scope, _rawName), _name);
 		
 		return self;
 	};

@@ -1,14 +1,15 @@
 {
   "Player":{
-    "Test":50.0,
+    "Movement":{
+      "MoveSpeed":3.0,
+      "JumpSpeed":8.0
+    },
     "Stats":{
       "Health":100.0,
       "Energy":100.0,
       "ExtraStrong":true
     },
-    "Movement":{
-      "JumpSpeed":8.0,
-      "MoveSpeed":3.0
-    }
+    "Test":50.0,
+    "Name":"John Watson"
   }
 }
