@@ -24,6 +24,9 @@
   "resources":[
     {"id":{"name":"obj_demo","path":"objects/obj_demo/obj_demo.yy",},},
     {"id":{"name":"rm_demo","path":"rooms/rm_demo/rm_demo.yy",},},
+    {"id":{"name":"FiggyConfig","path":"scripts/FiggyConfig/FiggyConfig.yy",},},
+    {"id":{"name":"FiggyMacros","path":"scripts/FiggyMacros/FiggyMacros.yy",},},
+    {"id":{"name":"FiggyMain","path":"scripts/FiggyMain/FiggyMain.yy",},},
   ],
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
