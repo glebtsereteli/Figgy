@@ -131,7 +131,7 @@ function Figgy() {
 		__load();
 	};
 	
-	/// @param {String} name Section name.
+	/// @param {String} name The section name.
 	/// @param {Bool} open=[FIGGY_SECTION_DEFAULT_OPEN] Whether the section starts open (true) or not (false).
 	static section = function(_name, _open = FIGGY_SECTION_DEFAULT_OPEN) {
 		__FIGGY_RAWNAME
@@ -170,10 +170,10 @@ function Figgy() {
 		return self;
 	};
 	
-	/// @param {String} name Variable name.
-	/// @param {Real.Int} default Default value.
-	/// @param {Real.Int} min Minimum value.
-	/// @param {Real.Int} min Maximum value.
+	/// @param {String} name The variable name.
+	/// @param {Real.Int} default The default value.
+	/// @param {Real.Int} min The minimum value.
+	/// @param {Real.Int} min The maximum value.
 	/// @param {Real.Int} step=[FIGGY_INT_DEFAULT_STEP] Step value.
 	static int = function(_name, _default, _min, _max, _step = FIGGY_INT_DEFAULT_STEP) {
 		__FIGGY_WIDGET;
@@ -212,6 +212,17 @@ function Figgy() {
 		return self;
 	};
 	
+	/// @param {String} name The button name.
+	/// @param {Func} callback The callback to trigger on press.
+	/// @param {Real} width=[auto dbg default] The button width.
+	/// @param {Real} height=[auto dbg default] The button height.
+	static button = function(_name, _callback, _w = undefined, _h = undefined) {
+		dbg_button(_name, _callback, _w, _h);
+		
+		return self;
+	};
+	
+	/// @param {String} string The comment string.
 	static comment = function(_string) {
 		dbg_text(" " + _string);
 		
