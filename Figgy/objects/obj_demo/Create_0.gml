@@ -12,17 +12,4 @@ Figgy.section("Player");
 	Figgy.ungroup();
 	Figgy.int("Test", 50, 1, 100);
 
-//CFG = {
-//	Player: {
-//		Vitals: {
-//			Health: 100,
-//			Energy: 100,
-//		},
-//		Movement: {
-//			MoveSpeed: 3,
-//			JumpSpeed: 10,
-//		},
-//	},
-//};
-
 FIGGY_SETUP_END

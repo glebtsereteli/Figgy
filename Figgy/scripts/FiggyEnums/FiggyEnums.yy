@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"FiggyEnums",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"FiggyEnums",
+  "parent":{
+    "name":"Figgy",
+    "path":"Figgy.yyp",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

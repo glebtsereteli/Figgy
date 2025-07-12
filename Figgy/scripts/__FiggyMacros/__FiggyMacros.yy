@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"FiggyMacros",
+  "%Name":"__FiggyMacros",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"FiggyMacros",
+  "name":"__FiggyMacros",
   "parent":{
     "name":"Figgy",
     "path":"Figgy.yyp",
