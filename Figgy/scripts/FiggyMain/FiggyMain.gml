@@ -177,7 +177,7 @@ function Figgy() {
 	/// @param {Real.Int} step=[FIGGY_INT_DEFAULT_STEP] Step value.
 	static int = function(_name, _default, _min, _max, _step = FIGGY_INT_DEFAULT_STEP) {
 		__FIGGY_WIDGET;
-		dbg_slider_int(ref_create(__setup.__scope, _rawName), _min, _max, _name, _step);
+		dbg_slider_int(_ref, _min, _max, _name, _step);
 		
 		return self;
 	};
@@ -189,7 +189,7 @@ function Figgy() {
 	/// @param {Real} step=[FIGGY_FLOAT_DEFAULT_STEP] Step value.
 	static float = function(_name, _default, _from, _to, _step = FIGGY_FLOAT_DEFAULT_STEP) {
 		__FIGGY_WIDGET;
-		dbg_slider(ref_create(__setup.__scope, _rawName), _from, _to, _name, _step);
+		dbg_slider(_ref, _from, _to, _name, _step);
 		
 		return self;
 	};
@@ -198,7 +198,7 @@ function Figgy() {
 	/// @param {Bool} default The default value.
 	static boolean = function(_name, _default) {
 		__FIGGY_WIDGET;
-		dbg_checkbox(ref_create(__setup.__scope, _rawName), _name);
+		dbg_checkbox(_ref, _name);
 		
 		return self;
 	};
@@ -207,7 +207,18 @@ function Figgy() {
 	/// @param {String} default The default value.
 	static text = function(_name, _default) {
 		__FIGGY_WIDGET;
-		dbg_text_input(ref_create(__setup.__scope, _rawName), _name);
+		dbg_text_input(_ref, _name);
+		
+		return self;
+	};
+	
+	/// @param {String} name The dropdown name.
+	/// @param {Any} default The default value.
+	/// @param {Array<Any>} values The array of option values.
+	/// @param {Array<String>} names=[values] The array of option names.
+	static multi = function(_name, _default, _values, _names = _values) {
+		__FIGGY_WIDGET;
+		dbg_drop_down(_ref, _values, _names, _name);
 		
 		return self;
 	};

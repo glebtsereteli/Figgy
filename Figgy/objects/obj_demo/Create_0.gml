@@ -1,4 +1,7 @@
 
+window_set_caption($"{__FIGGY_NAME} {__FIGGY_VERSION} ({__FIGGY_DATE}) Demo");
+randomize();
+
 FIGGY_SETUP_START
 
 Figgy.section("Player");
@@ -13,6 +16,7 @@ Figgy.section("Player");
 		Figgy.float("Jump Speed", 8, 0.1, 20);
 	Figgy.ungroup();
 	Figgy.int("Test", 50, 1, 100);
+	Figgy.multi("Color", "Red", ["Red", "Green", "Blue", "Yellow", "Pink", "Brown", "Purple"]);
 	Figgy.button("Click Me Baby", function() {
 		show_message("Hello There!");
 	});

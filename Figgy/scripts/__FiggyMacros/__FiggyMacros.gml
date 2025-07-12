@@ -13,7 +13,8 @@
 #macro __FIGGY_RAWNAME var _rawName = string_replace_all(_name, " ", "")
 #macro __FIGGY_WIDGET \
 __FIGGY_RAWNAME; \
-__setup.__scope[$ _rawName] = _default;
+__setup.__scope[$ _rawName] = _default; \
+var _ref = ref_create(__setup.__scope, _rawName);
 
 #macro __FIGGY_BENCH_START Figgy.__t = get_timer();
 #macro __FIGGY_BENCH_END ((get_timer() - Figgy.__t) / 1000)
