@@ -1,5 +1,6 @@
 {
   "Player":{
+    "Name":"Geraldine",
     "Movement":{
       "MoveSpeed":3.0,
       "JumpSpeed":8.0
@@ -7,9 +8,8 @@
     "Stats":{
       "Energy":100.0,
       "ExtraStrong":true,
-      "Health":300.0
+      "Health":100.0
     },
-    "Test":50.0,
-    "Name":"John"
+    "Test":50.0
   }
 }

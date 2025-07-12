@@ -89,7 +89,7 @@ function Figgy() {
 			var _data = json_parse(_string);
 			
 			if (__validation.__run(__default, _data)) {
-				__save(false);
+				save(false);
 				__figgyLog($"VALIDATION: used. File re-saved");
 			}
 			
@@ -98,8 +98,8 @@ function Figgy() {
 			__figgyLogTimed($"LOAD: success at \"{__FIGGY_PATH}\"");
 		} 
 		catch (_) {
-			__save();
-			__figgyLog($"Load: fail at \"{__FIGGY_PATH}\". Initialized to Default");
+			save(false);
+			__figgyLog($"LOAD: fail at \"{__FIGGY_PATH}\". Initialized to Default");
 		}
 	};
 	
@@ -117,7 +117,7 @@ function Figgy() {
 		
 		dbg_section("[CONTROLS]");
 		dbg_button("Save", function() {
-			__save();
+			save();
 		}, 80, 20);
 		dbg_same_line();
 		dbg_button("Reset To Default", function() {
@@ -212,9 +212,16 @@ function Figgy() {
 		return self;
 	};
 	
+	static comment = function(_string) {
+		dbg_text(" " + _string);
+		
+		return self;
+	};
+	
 	#endregion
 	#region actions
 	
+	/// @param {Bool} log=[true] Whether to print a debug message in Output (true) or not (false). Used internally.
 	static save = function(_log = true) {
 		__FIGGY_BENCH_START;
 		
