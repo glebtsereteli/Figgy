@@ -3,8 +3,8 @@ FIGGY_SETUP_START
 
 Figgy.section("Player");
 	Figgy.group("Stats");
-		Figgy.int("Health", 100, 1, 300);
-		Figgy.int("Energy", 100, 1, 300);
+		Figgy.int("Health", 100, 0, 300, 10);
+		Figgy.int("Energy", 100, 0, 300, 10);
 		Figgy.boolean("Extra Strong", true);
 	Figgy.group("Movement");
 		Figgy.float("Move Speed", 3, 0.1, 10);

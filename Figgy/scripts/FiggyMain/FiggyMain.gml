@@ -5,15 +5,65 @@ function Figgy() {
 	static __default = undefined;
 	static __current = undefined;
 	static __view = false;
-	static __sections = [];
-	
-	static __setupCurrentScope = undefined;
-	static __setupCurrentSection = undefined;
-	static __setupCallback = undefined;
+	static __setup = {
+		__scope: undefined,
+		__section: undefined,
+	};
+	static __validation = {
+		__used: false,
+		
+		__run: function(_default, _new) {
+			__remove(_default, _new);
+			__add(_default, _new);
+			return __used;
+		},
+		__remove: function(_default, _new) {
+			var _keys = struct_get_names(_new);
+			var _i = 0; repeat (array_length(_keys)) {
+				var _key = _keys[_i];
+				var _defaultValue = _default[$ _key]
+				var _newValue = _new[$ _key];
+				
+				if ((_defaultValue == undefined) or (typeof(_defaultValue) != typeof(_newValue))) {
+					struct_remove(_new, _key);
+					__figgyLog($"Validation: removed unused variable \"{_key}\"");
+					__used = true;
+				}
+				else if (is_struct(_newValue)) {
+					__remove(_defaultValue, _newValue);
+				}
+				
+				_i++;
+			}
+		},
+		__add: function(_default, _new) {
+			var _keys = struct_get_names(_default);
+			var _i = 0; repeat (array_length(_keys)) {
+				var _key = _keys[_i];
+				var _defaultValue = _default[$ _key];
+				var _newValue = _new[$ _key];
+				
+				if (_newValue == undefined) {
+					__figgyLog($"Validation: added missing variable \"{_key}\"");
+					__used = true;
+					if (is_struct(_defaultValue)) {
+						_new[$ _key] = {};
+						__add(_defaultValue, _new[$ _key]);
+					}
+					else {
+						_new[$ _key] = _defaultValue;
+					}
+				}
+				else if (is_struct(_defaultValue)) {
+					__add(_defaultValue, _newValue);
+				}
+				
+				_i++;
+			}
+		},
+	};
 	
 	static __clone = function(_a, _b) {
-		static __ = {};
-		
 		var _keys = struct_get_names(_a);
 		var _i = 0; repeat (array_length(_keys)) {
 			var _key = _keys[_i];
@@ -41,13 +91,20 @@ function Figgy() {
 		try {
 			var _buffer = buffer_load(__FIGGY_PATH);
 			var _string = buffer_read(_buffer, buffer_text);
-			var _data = json_parse(_string);
-			__clone(_data, __current);
 			buffer_delete(_buffer);
-		} catch (_) {
+			var _data = json_parse(_string);
 			
+			__figgyLog($"Load: success at \"{__FIGGY_PATH}\"");
+			
+			if (__validation.__run(__default, _data)) {
+				__save();
+				__figgyLog($"Validation: used. File re-saved: \"{__FIGGY_PATH}\"");
+			}
+		} 
+		catch (_) {
+			__save();
+			__figgyLog($"Load: fail at \"{__FIGGY_PATH}\". Initialized to Default");
 		}
-		__save();
 	};
 	
 	#endregion
@@ -55,20 +112,18 @@ function Figgy() {
 	
 	/// @param {Func} callback The callback to execute on setup. Set up your interface here.
 	static setup = function(_callback) {
-		__on_setup = _callback;
-		
 		__current = {};
-		__setupCurrentScope = __current;
-		__setupCurrentSection = __current;
+		__setup.__scope = __current;
+		__setup.__section = __current;
 		
 		__view = dbg_view(FIGGY_WINDOW_NAME, FIGGY_WINDOW_START_VISIBLE, FIGGY_WINDOW_X, FIGGY_WINDOW_Y, FIGGY_WINDOW_WIDTH, FIGGY_WINDOW_HEIGHT);
 		
-		dbg_section("[CONTROLS]", false);
+		dbg_section("[CONTROLS]");
 		dbg_button("Save", function() {
 			__save();
 		}, 80, 20);
 		
-		__on_setup();
+		_callback();
 		
 		__default = variable_clone(__current);
 		
@@ -79,10 +134,10 @@ function Figgy() {
 	/// @param {Bool} open=[FIGGY_SECTION_DEFAULT_OPEN] Whether the section starts open (true) or not (false).
 	static section = function(_name, _open = FIGGY_SECTION_DEFAULT_OPEN) {
 		__FIGGY_RAWNAME
-		array_push(__sections, dbg_section(_name, _open));
-		__setupCurrentSection = {};
-		__setupCurrentScope[$ _name] = __setupCurrentSection;
-		__setupCurrentScope = __setupCurrentSection;
+		dbg_section(_name, _open);
+		__setup.__section = {};
+		__setup.__scope[$ _name] = __setup.__section;
+		__setup.__scope = __setup.__section;
 		
 		return self;
 	};
@@ -94,11 +149,11 @@ function Figgy() {
 		__FIGGY_RAWNAME
 		dbg_text_separator(_name, _align);
 		if (_selfScope) {
-			__setupCurrentScope = {};
-			__setupCurrentSection[$ _name] = __setupCurrentScope;
+			__setup.__scope = {};
+			__setup.__section[$ _name] = __setup.__scope;
 		}
 		else {
-			__setupCurrentScope = __setupCurrentSection;
+			__setup.__scope = __setup.__section;
 		}
 		
 		return self;
@@ -109,7 +164,7 @@ function Figgy() {
 		if (_separate) {
 			dbg_text_separator("");
 		}
-		__setupCurrentScope = __setupCurrentSection;
+		__setup.__scope = __setup.__section;
 		
 		return self;
 	};
@@ -121,9 +176,9 @@ function Figgy() {
 	/// @param {Real.Int} step=[FIGGY_INT_DEFAULT_STEP] Step value.
 	static int = function(_name, _default, _min, _max, _step = FIGGY_INT_DEFAULT_STEP) {
 		__FIGGY_RAWNAME
-		__setupCurrentScope[$ _rawName] = _default;
+		__setup.__scope[$ _rawName] = _default;
 		
-		dbg_slider_int(ref_create(__setupCurrentScope, _rawName), _min, _max, _name, _step);
+		dbg_slider_int(ref_create(__setup.__scope, _rawName), _min, _max, _name, _step);
 		
 		return self;
 	};
@@ -135,8 +190,8 @@ function Figgy() {
 	/// @param {Real} step=[FIGGY_FLOAT_DEFAULT_STEP] Step value.
 	static float = function(_name, _default, _from, _to, _step = FIGGY_FLOAT_DEFAULT_STEP) {
 		__FIGGY_RAWNAME
-		__setupCurrentScope[$ _rawName] = _default;
-		dbg_slider(ref_create(__setupCurrentScope, _rawName), _from, _to, _name, _step);
+		__setup.__scope[$ _rawName] = _default;
+		dbg_slider(ref_create(__setup.__scope, _rawName), _from, _to, _name, _step);
 		
 		return self;
 	};
@@ -145,8 +200,8 @@ function Figgy() {
 	/// @param {Bool} default Default value.
 	static boolean = function(_name, _default) {
 		__FIGGY_RAWNAME;
-		__setupCurrentScope[$ _rawName] = _default;
-		dbg_checkbox(ref_create(__setupCurrentScope, _rawName), _name);
+		__setup.__scope[$ _rawName] = _default;
+		dbg_checkbox(ref_create(__setup.__scope, _rawName), _name);
 		
 		return self;
 	};
