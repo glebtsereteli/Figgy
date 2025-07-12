@@ -26,7 +26,9 @@
   "resources":[
     {"id":{"name":"obj_demo","path":"objects/obj_demo/obj_demo.yy",},},
     {"id":{"name":"rm_demo","path":"rooms/rm_demo/rm_demo.yy",},},
+    {"id":{"name":"__FiggyInit","path":"scripts/__FiggyInit/__FiggyInit.yy",},},
     {"id":{"name":"__FiggyMacros","path":"scripts/__FiggyMacros/__FiggyMacros.yy",},},
+    {"id":{"name":"__FiggyUtil","path":"scripts/__FiggyUtil/__FiggyUtil.yy",},},
     {"id":{"name":"FiggyConfig","path":"scripts/FiggyConfig/FiggyConfig.yy",},},
     {"id":{"name":"FiggyEnums","path":"scripts/FiggyEnums/FiggyEnums.yy",},},
     {"id":{"name":"FiggyMain","path":"scripts/FiggyMain/FiggyMain.yy",},},

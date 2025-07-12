@@ -15,14 +15,14 @@ function Figgy() {
 		var _string = json_stringify(__current, true);
 		var _buffer = buffer_create(string_byte_length(_string), buffer_fixed, 1);
 		buffer_write(_buffer, buffer_text, _string);
-		buffer_save(_buffer, FIGGY_FILENAME);
+		buffer_save(_buffer, __FIGGY_PATH);
 		buffer_delete(_buffer);
 		
 		return self;
 	};
 	static __load = function() {
 		try {
-			var _buffer = buffer_load(FIGGY_FILENAME);
+			var _buffer = buffer_load(__FIGGY_PATH);
 			var _string = buffer_read(_buffer, buffer_text);
 			__current = json_parse(_string);
 			buffer_delete(_buffer);
@@ -61,7 +61,7 @@ function Figgy() {
 	/// @param {String} name Section name.
 	/// @param {Bool} open=[FIGGY_SECTION_DEFAULT_OPEN] Whether the section starts open (true) or not (false).
 	static section = function(_name, _open = FIGGY_SECTION_DEFAULT_OPEN) {
-		__FIGGY_NAME
+		__FIGGY_RAWNAME
 		array_push(__sections, dbg_section(_name, _open));
 		__setupCurrentSection = {};
 		__setupCurrentScope[$ _name] = __setupCurrentSection;
@@ -74,7 +74,7 @@ function Figgy() {
 	/// @param {Bool} selfScope=[FIGGY_GROUP_DEFAULT_SELFSCOPE] Whether the group should have its own scope (true) or not (false).
 	/// @param {Enum.FIGGY_GROUP_ALIGN} align=[FIGGY_GROUP_DEFAULT_ALIGN] The group name alignment.
 	static group = function(_name, _selfScope = FIGGY_GROUP_DEFAULT_SELFSCOPE, _align = FIGGY_GROUP_DEFAULT_ALIGN) {
-		__FIGGY_NAME
+		__FIGGY_RAWNAME
 		dbg_text_separator(_name, _align);
 		if (_selfScope) {
 			__setupCurrentScope = {};
@@ -103,7 +103,7 @@ function Figgy() {
 	/// @param {Real.Int} min Maximum value.
 	/// @param {Real.Int} step=[FIGGY_INT_DEFAULT_STEP] Step value.
 	static int = function(_name, _default, _min, _max, _step = FIGGY_INT_DEFAULT_STEP) {
-		__FIGGY_NAME
+		__FIGGY_RAWNAME
 		__setupCurrentScope[$ _rawName] = _default;
 		dbg_slider_int(ref_create(__setupCurrentScope, _rawName), _min, _max, _name, _step);
 		
@@ -116,7 +116,7 @@ function Figgy() {
 	/// @param {Real} min Maximum value.
 	/// @param {Real} step=[FIGGY_FLOAT_DEFAULT_STEP] Step value.
 	static float = function(_name, _default, _from, _to, _step = FIGGY_FLOAT_DEFAULT_STEP) {
-		__FIGGY_NAME
+		__FIGGY_RAWNAME
 		__setupCurrentScope[$ _rawName] = _default;
 		dbg_slider(ref_create(__setupCurrentScope, _rawName), _from, _to, _name, _step);
 		
@@ -126,11 +126,18 @@ function Figgy() {
 	/// @param {String} name Variable name.
 	/// @param {Bool} default Default value.
 	static boolean = function(_name, _default) {
-		__FIGGY_NAME;
+		__FIGGY_RAWNAME;
 		__setupCurrentScope[$ _rawName] = _default;
 		dbg_checkbox(ref_create(__setupCurrentScope, _rawName), _name);
 		
 		return self;
+	};
+	
+	#endregion
+	#region actions
+	
+	static resetToDefault = function() {
+		
 	};
 	
 	#endregion
@@ -141,9 +148,5 @@ function Figgy() {
 	};
 	
 	#endregion
-	
-	static resetToDefault = function() {
-		
-	};
 }
 Figgy();

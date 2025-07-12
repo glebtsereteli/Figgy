@@ -1,5 +1,6 @@
 {
   "Player":{
+    "Test":50.0,
     "Stats":{
       "Health":100.0,
       "Energy":100.0,
@@ -8,7 +9,6 @@
     "Movement":{
       "MoveSpeed":3.0,
       "JumpSpeed":8.0
-    },
-    "Test":50.0
+    }
   }
 }

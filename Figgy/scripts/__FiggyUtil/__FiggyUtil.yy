@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"__FiggyUtil",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__FiggyUtil",
+  "parent":{
+    "name":"Figgy",
+    "path":"Figgy.yyp",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
