@@ -5,7 +5,7 @@ function __figgyLog(_message) {
 }
 function __figgyLogTimed(_message) {
 	if (not FIGGY_DEBUG) return;
-	__figgyLog($"{_message} in {__FIGGY_BENCH_END} milliseconds");
+	__figgyLog($"{_message}. Took {__FIGGY_BENCH_END} milliseconds");
 }
 function _figgyError(_message) {
 	static _divider = string_repeat("=", 100);

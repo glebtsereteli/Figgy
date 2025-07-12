@@ -70,7 +70,7 @@ function Figgy() {
 			var _key = _keys[_i];
 			var _value = _a[$ _key];
 			if (is_struct(_value)) {
-				__clone(_value, {});
+				__clone(_value, _b[$ _key]);
 			}
 			else {
 				_b[$ _key] = _value;
@@ -79,21 +79,6 @@ function Figgy() {
 		}
 	};
 	
-	static __save = function(_log = true) {
-		__FIGGY_BENCH_START;
-		
-		var _string = json_stringify(__current, true);
-		var _buffer = buffer_create(string_byte_length(_string), buffer_fixed, 1);
-		buffer_write(_buffer, buffer_text, _string);
-		buffer_save(_buffer, __FIGGY_PATH);
-		buffer_delete(_buffer);
-		
-		if (_log) {
-			__figgyLogTimed($"SAVED: success at \"{__FIGGY_PATH}\"");
-		}
-		
-		return self;
-	};
 	static __load = function() {
 		try {
 			__FIGGY_BENCH_START;
@@ -103,13 +88,14 @@ function Figgy() {
 			buffer_delete(_buffer);
 			var _data = json_parse(_string);
 			
-			__figgyLogTimed($"LOAD: success at \"{__FIGGY_PATH}\"");
-			
-			__FIGGY_BENCH_START
 			if (__validation.__run(__default, _data)) {
 				__save(false);
-				__figgyLogTimed($"VALIDATION: used. File re-saved: \"{__FIGGY_PATH}\"");
+				__figgyLog($"VALIDATION: used. File re-saved");
 			}
+			
+			__clone(_data, __current);
+			
+			__figgyLogTimed($"LOAD: success at \"{__FIGGY_PATH}\"");
 		} 
 		catch (_) {
 			__save();
@@ -133,6 +119,10 @@ function Figgy() {
 		dbg_button("Save", function() {
 			__save();
 		}, 80, 20);
+		dbg_same_line();
+		dbg_button("Reset To Default", function() {
+			resetToDefault();
+		}, 140, 20);
 		
 		_callback();
 		
@@ -192,10 +182,10 @@ function Figgy() {
 		return self;
 	};
 	
-	/// @param {String} name Variable name.
-	/// @param {Real} default Default value.
-	/// @param {Real} min Minimum value.
-	/// @param {Real} min Maximum value.
+	/// @param {String} name The variable name.
+	/// @param {Real} default The default value.
+	/// @param {Real} min The minimum value.
+	/// @param {Real} min The maximum value.
 	/// @param {Real} step=[FIGGY_FLOAT_DEFAULT_STEP] Step value.
 	static float = function(_name, _default, _from, _to, _step = FIGGY_FLOAT_DEFAULT_STEP) {
 		__FIGGY_WIDGET;
@@ -204,8 +194,8 @@ function Figgy() {
 		return self;
 	};
 	
-	/// @param {String} name Variable name.
-	/// @param {Bool} default Default value.
+	/// @param {String} name The variable name.
+	/// @param {Bool} default The default value.
 	static boolean = function(_name, _default) {
 		__FIGGY_WIDGET;
 		dbg_checkbox(ref_create(__setup.__scope, _rawName), _name);
@@ -213,6 +203,8 @@ function Figgy() {
 		return self;
 	};
 	
+	/// @param {String} name The variable name.
+	/// @param {String} default The default value.
 	static text = function(_name, _default) {
 		__FIGGY_WIDGET;
 		dbg_text_input(ref_create(__setup.__scope, _rawName), _name);
@@ -222,6 +214,22 @@ function Figgy() {
 	
 	#endregion
 	#region actions
+	
+	static save = function(_log = true) {
+		__FIGGY_BENCH_START;
+		
+		var _string = json_stringify(__current, true);
+		var _buffer = buffer_create(string_byte_length(_string), buffer_fixed, 1);
+		buffer_write(_buffer, buffer_text, _string);
+		buffer_save(_buffer, __FIGGY_PATH);
+		buffer_delete(_buffer);
+		
+		if (_log) {
+			__figgyLogTimed($"SAVE: success at \"{__FIGGY_PATH}\"");
+		}
+		
+		return self;
+	};
 	
 	static resetToDefault = function() {
 		
