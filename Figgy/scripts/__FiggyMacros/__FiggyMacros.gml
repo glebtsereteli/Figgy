@@ -15,6 +15,9 @@
 __FIGGY_RAWNAME; \
 __setup.__scope[$ _rawName] = _default;
 
+#macro __FIGGY_BENCH_START Figgy.__t = get_timer();
+#macro __FIGGY_BENCH_END ((get_timer() - Figgy.__t) / 1000)
+
 #endregion
 #region shortcuts
 

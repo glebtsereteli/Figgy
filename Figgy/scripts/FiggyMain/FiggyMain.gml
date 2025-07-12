@@ -2,8 +2,8 @@
 function Figgy() {
 	#region __private
 	
-	static __default = undefined;
 	static __current = undefined;
+	static __default = undefined;
 	static __view = false;
 	static __setup = {
 		__scope: undefined,
@@ -26,7 +26,7 @@ function Figgy() {
 				
 				if ((_defaultValue == undefined) or (typeof(_defaultValue) != typeof(_newValue))) {
 					struct_remove(_new, _key);
-					__figgyLog($"Validation: removed unused variable \"{_key}\"");
+					__figgyLog($"VALIDATION: removed unused variable \"{_key}\"");
 					__used = true;
 				}
 				else if (is_struct(_newValue)) {
@@ -44,7 +44,7 @@ function Figgy() {
 				var _newValue = _new[$ _key];
 				
 				if (_newValue == undefined) {
-					__figgyLog($"Validation: added missing variable \"{_key}\"");
+					__figgyLog($"VALIDATION: added missing variable \"{_key}\"");
 					__used = true;
 					if (is_struct(_defaultValue)) {
 						_new[$ _key] = {};
@@ -62,6 +62,7 @@ function Figgy() {
 			}
 		},
 	};
+	static __t = undefined;
 	
 	static __clone = function(_a, _b) {
 		var _keys = struct_get_names(_a);
@@ -78,27 +79,36 @@ function Figgy() {
 		}
 	};
 	
-	static __save = function() {
+	static __save = function(_log = true) {
+		__FIGGY_BENCH_START;
+		
 		var _string = json_stringify(__current, true);
 		var _buffer = buffer_create(string_byte_length(_string), buffer_fixed, 1);
 		buffer_write(_buffer, buffer_text, _string);
 		buffer_save(_buffer, __FIGGY_PATH);
 		buffer_delete(_buffer);
 		
+		if (_log) {
+			__figgyLogTimed($"SAVED: success at \"{__FIGGY_PATH}\"");
+		}
+		
 		return self;
 	};
 	static __load = function() {
 		try {
+			__FIGGY_BENCH_START;
+			
 			var _buffer = buffer_load(__FIGGY_PATH);
 			var _string = buffer_read(_buffer, buffer_text);
 			buffer_delete(_buffer);
 			var _data = json_parse(_string);
 			
-			__figgyLog($"Load: success at \"{__FIGGY_PATH}\"");
+			__figgyLogTimed($"LOAD: success at \"{__FIGGY_PATH}\"");
 			
+			__FIGGY_BENCH_START
 			if (__validation.__run(__default, _data)) {
-				__save();
-				__figgyLog($"Validation: used. File re-saved: \"{__FIGGY_PATH}\"");
+				__save(false);
+				__figgyLogTimed($"VALIDATION: used. File re-saved: \"{__FIGGY_PATH}\"");
 			}
 		} 
 		catch (_) {
