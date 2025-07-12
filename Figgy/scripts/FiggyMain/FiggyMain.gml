@@ -11,6 +11,23 @@ function Figgy() {
 	static __setupCurrentSection = undefined;
 	static __setupCallback = undefined;
 	
+	static __clone = function(_a, _b) {
+		static __ = {};
+		
+		var _keys = struct_get_names(_a);
+		var _i = 0; repeat (array_length(_keys)) {
+			var _key = _keys[_i];
+			var _value = _a[$ _key];
+			if (is_struct(_value)) {
+				__clone(_value, {});
+			}
+			else {
+				_b[$ _key] = _value;
+			}
+			_i++;
+		}
+	};
+	
 	static __save = function() {
 		var _string = json_stringify(__current, true);
 		var _buffer = buffer_create(string_byte_length(_string), buffer_fixed, 1);
@@ -24,7 +41,8 @@ function Figgy() {
 		try {
 			var _buffer = buffer_load(__FIGGY_PATH);
 			var _string = buffer_read(_buffer, buffer_text);
-			__current = json_parse(_string);
+			var _data = json_parse(_string);
+			__clone(_data, __current);
 			buffer_delete(_buffer);
 		} catch (_) {
 			
@@ -39,9 +57,9 @@ function Figgy() {
 	static setup = function(_callback) {
 		__on_setup = _callback;
 		
-		__default = {};
-		__setupCurrentScope = __default;
-		__setupCurrentSection = __default;
+		__current = {};
+		__setupCurrentScope = __current;
+		__setupCurrentSection = __current;
 		
 		__view = dbg_view(FIGGY_WINDOW_NAME, FIGGY_WINDOW_START_VISIBLE, FIGGY_WINDOW_X, FIGGY_WINDOW_Y, FIGGY_WINDOW_WIDTH, FIGGY_WINDOW_HEIGHT);
 		
@@ -51,9 +69,8 @@ function Figgy() {
 		}, 80, 20);
 		
 		__on_setup();
-		__current = variable_clone(__default);
 		
-		show_message(__current);
+		__default = variable_clone(__current);
 		
 		__load();
 	};
@@ -105,6 +122,7 @@ function Figgy() {
 	static int = function(_name, _default, _min, _max, _step = FIGGY_INT_DEFAULT_STEP) {
 		__FIGGY_RAWNAME
 		__setupCurrentScope[$ _rawName] = _default;
+		
 		dbg_slider_int(ref_create(__setupCurrentScope, _rawName), _min, _max, _name, _step);
 		
 		return self;

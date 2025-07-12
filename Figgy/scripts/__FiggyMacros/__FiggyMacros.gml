@@ -7,9 +7,15 @@
 #macro __FIGGY_LOG_PREFIX $"[{__FIGGY_NAME}]"
 
 #endregion
+#region utility
 
 #macro __FIGGY_PATH $"{filename_dir(GM_project_filename)}/datafiles/{FIGGY_FILE_NAME}{FIGGY_FILE_EXT}"
 #macro __FIGGY_RAWNAME var _rawName = string_replace_all(_name, " ", "")
 
+#endregion
+#region shortcuts
+
 #macro FIGGY_SETUP_START Figgy.setup(function() {
 #macro FIGGY_SETUP_END });
+
+#endregion
