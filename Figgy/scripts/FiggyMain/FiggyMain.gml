@@ -4,6 +4,7 @@ function Figgy() {
 	
 	static __current = undefined;
 	static __default = undefined;
+	static __lastSave = undefined;
 	static __view = false;
 	static __setup = {
 		__scope: undefined,
@@ -69,11 +70,15 @@ function Figgy() {
 			dbg_section("[CONTROLS]");
 			dbg_button("Save", function() {
 				save();
-			}, 80, 20);
+			}, 60, 20);
 			dbg_same_line();
 			dbg_button("Reset To Default", function() {
 				resetToDefault();
-			}, 140, 20);
+			}, 150, 20);
+			dbg_same_line();
+			dbg_button("Reset To Last Save", function() {
+				resetToLastSave();
+			}, 150, 20);
 		};
 		
 		__current = {};
@@ -125,6 +130,9 @@ function Figgy() {
 			save(false);
 			__figgyLog($"LOAD: fail at \"{__FIGGY_PATH}\". Initialized to Default");
 		}
+	};
+	static __refreshLastSave = function() {
+		__lastSave = variable_clone(__current);
 	};
 	
 	#endregion
@@ -245,13 +253,17 @@ function Figgy() {
 	
 	/// @param {Bool} log=[true] When FIGGY_DEBUG is true, whether to print a debug message in Output (true) or not (false).
 	static save = function(_log = true) {
-		__FIGGY_BENCH_START;
+		if (_log) {
+			__FIGGY_BENCH_START;
+		}
 		
 		var _string = json_stringify(__current, true);
 		var _buffer = buffer_create(string_byte_length(_string), buffer_fixed, 1);
 		buffer_write(_buffer, buffer_text, _string);
 		buffer_save(_buffer, __FIGGY_PATH);
 		buffer_delete(_buffer);
+		
+		__refreshLastSave();
 		
 		if (_log) {
 			__figgyLogTimed($"SAVE: success at \"{__FIGGY_PATH}\"");
@@ -264,6 +276,14 @@ function Figgy() {
 		__FIGGY_BENCH_START;
 		__move(__default, __current);
 		__figgyLogTimed("RESET TO DEFAULT: completed");
+	};
+	static resetToLastSave = function() {
+		__FIGGY_BENCH_START;
+		if (__lastSave == undefined) {
+			__refreshLastSave();
+		}
+		__move(__lastSave, __current);
+		__figgyLogTimed("RESET TO LAST SAVE: completed");
 	};
 	
 	#endregion
