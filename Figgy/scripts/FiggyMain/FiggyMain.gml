@@ -197,7 +197,7 @@ function Figgy() {
 				__figgyLog($"VALIDATION: used");
 			}
 			
-			if (_mainLoad and _flippedObfuscate or __validation.__used) {
+			if (__FIGGY_IN_IDE and _mainLoad and (_flippedObfuscate or __validation.__used)) {
 				__save(false);
 				__figgyLog("LOAD: file re-saved");
 			}
@@ -209,8 +209,10 @@ function Figgy() {
 			}
 		} 
 		catch (_) {
-			__save(false);
-			__figgyLog($"LOAD: fail at \"{_path}\". Initialized to Default");
+			if (__FIGGY_IN_IDE) {
+				__save(false);
+				__figgyLog($"LOAD: fail at \"{_path}\". Initialized to Default");
+			}
 		}
 	};
 	static __refreshLastSave = function() {
