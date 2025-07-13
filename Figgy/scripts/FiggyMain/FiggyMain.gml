@@ -161,9 +161,9 @@ function Figgy() {
 		
 		return self;
 	};
-	static __load = function(_path = __FIGGY_FILE_PATH, _log = true) {
+	static __load = function(_path = __FIGGY_FILE_PATH, _mainLoad = true) {
 		try {
-			if (_log) {
+			if (_mainLoad) {
 				__FIGGY_BENCH_START;
 			}
 			
@@ -197,14 +197,14 @@ function Figgy() {
 				__figgyLog($"VALIDATION: used");
 			}
 			
-			if (_flippedObfuscate or __validation.__used) {
+			if (_mainLoad and _flippedObfuscate or __validation.__used) {
 				__save(false);
 				__figgyLog("LOAD: file re-saved");
 			}
 			
 			__move(_data, __current);
 			
-			if (_log) {
+			if (_mainLoad) {
 				__figgyLogTimed($"LOAD: success at \"{_path}\"");
 			}
 		} 
