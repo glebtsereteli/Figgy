@@ -91,18 +91,23 @@ function Figgy() {
 		dbg_section(FIGGY_CONTROLS_NAME, FIGGY_CONTROLS_OPEN);
 		dbg_button("Save", function() {
 			__save();
-		}, 60, 20);
+		}, 55, 20);
+		dbg_same_line();
+		dbg_button("Import", function() {
+			import();
+		}, 65, 20);
 		dbg_same_line();
 		dbg_button("Export", function() {
 			export();
-		}, 70, 20);
-		dbg_button("Reset To Default", function() {
-			resetToDefault();
-		}, 150, 20);
+		}, 65, 20);
 		dbg_same_line();
-		dbg_button("Reset To Last Save", function() {
+		dbg_button("Default", function() {
+			resetToDefault();
+		}, 75, 20);
+		dbg_same_line();
+		dbg_button("Last Save", function() {
 			resetToLastSave();
-		}, 150, 20);
+		}, 85, 20);
 	};
 	
 	static __move = function(_a, _b) {
@@ -141,11 +146,13 @@ function Figgy() {
 		
 		return self;
 	};
-	static __load = function() {
+	static __load = function(_path = __FIGGY_FILE_PATH, _log = true) {
 		try {
-			__FIGGY_BENCH_START;
+			if (_log) {
+				__FIGGY_BENCH_START;
+			}
 			
-			var _buffer = buffer_load(__FIGGY_FILE_PATH);
+			var _buffer = buffer_load(_path);
 			var _string = buffer_read(_buffer, buffer_text);
 			buffer_delete(_buffer);
 			var _data = json_parse(_string);
@@ -157,11 +164,13 @@ function Figgy() {
 			
 			__move(_data, __current);
 			
-			__figgyLogTimed($"LOAD: success at \"{__FIGGY_FILE_PATH}\"");
+			if (_log) {
+				__figgyLogTimed($"LOAD: success at \"{_path}\"");
+			}
 		} 
 		catch (_) {
 			__save(false);
-			__figgyLog($"LOAD: fail at \"{__FIGGY_PATH}\". Initialized to Default");
+			__figgyLog($"LOAD: fail at \"{_path}\". Initialized to Default");
 		}
 	};
 	static __refreshLastSave = function() {
@@ -301,18 +310,32 @@ function Figgy() {
 	#endregion
 	#region input/output
 	
+	static import = function(_path = undefined) {
+		_path ??= get_open_filename_ext(__FIGGY_FILE_FILTER, __FIGGY_FILE_NAME, "", "Figgy: Import Config");
+		if (_path == "") {
+			__figgyLog("IMPORT: canceled");
+			return undefined;
+		}
+		
+		__FIGGY_BENCH_START;
+		__load(_path, false);
+		__figgyLogTimed($"IMPORT: success at \"{_path}\"");
+		
+		return self;
+	};
+	
 	static export = function(_path = undefined) {
-		_path ??= get_save_filename_ext($"Figgy Config File|*{FIGGY_FILE_EXT}", $"{__FIGGY_FILE_NAME}", "", "Figgy: Export");
+		_path ??= get_save_filename_ext(__FIGGY_FILE_FILTER, __FIGGY_FILE_NAME, "", "Figgy: Export Config");
 		if (_path == "") {
 			__figgyLog("EXPORT: canceled");
-			return undefined;
+			return;
 		}
 		
 		__FIGGY_BENCH_START;
 		__saveRaw(_path);
 		__figgyLogTimed($"EXPORT: success at \"{_path}\"");
 		
-		return true;
+		return self;
 	};
 	
 	#endregion
