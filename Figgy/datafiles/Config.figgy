@@ -1,6 +1,5 @@
 {
   "Player":{
-    "Color":"Red",
     "Name":"Geraldine",
     "Movement":{
       "MoveSpeed":3.0,
@@ -9,8 +8,7 @@
     "Stats":{
       "Energy":100.0,
       "ExtraStrong":true,
-      "Health":0.0
-    },
-    "Test":50.0
+      "Health":100.0
+    }
   }
 }

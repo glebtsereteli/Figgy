@@ -67,7 +67,7 @@ function Figgy() {
 	
 	static __init = function(_callback) {
 		static _controls = function() {
-			dbg_section("[CONTROLS]");
+			dbg_section(FIGGY_CONTROLS_NAME, FIGGY_CONTROLS_OPEN);
 			dbg_button("Save", function() {
 				save();
 			}, 60, 20);
@@ -137,7 +137,7 @@ function Figgy() {
 	
 	#endregion
 	
-	#region core-values-widgets
+	#region value widgets
 	
 	/// @param {String} name The section name.
 	/// @param {Bool} open=[FIGGY_SECTION_DEFAULT_OPEN] Whether the section starts open (true) or not (false).
@@ -152,18 +152,12 @@ function Figgy() {
 	};
 	
 	/// @param {String} name The group name.
-	/// @param {Bool} selfScope=[FIGGY_GROUP_DEFAULT_SELFSCOPE] Whether the group should have its own scope (true) or not (false).
 	/// @param {Enum.FIGGY_GROUP_ALIGN} align=[FIGGY_GROUP_DEFAULT_ALIGN] The group name alignment.
-	static group = function(_name, _selfScope = FIGGY_GROUP_DEFAULT_SELFSCOPE, _align = FIGGY_GROUP_DEFAULT_ALIGN) {
+	static group = function(_name, _align = FIGGY_GROUP_DEFAULT_ALIGN) {
 		__FIGGY_RAWNAME;
 		dbg_text_separator(_name, _align);
-		if (_selfScope) {
-			__setup.__scope = {};
-			__setup.__section[$ _name] = __setup.__scope;
-		}
-		else {
-			__setup.__scope = __setup.__section;
-		}
+		__setup.__scope = {};
+		__setup.__section[$ _name] = __setup.__scope;
 		
 		return self;
 	};
@@ -231,6 +225,9 @@ function Figgy() {
 		return self;
 	};
 	
+	#endregion
+	#region non-value widgets
+	
 	/// @param {String} name The button name.
 	/// @param {Func} callback The callback to trigger on press.
 	/// @param {Real} width=[auto dbg default] The button width.
@@ -244,6 +241,12 @@ function Figgy() {
 	/// @param {String} string The comment string.
 	static comment = function(_string) {
 		dbg_text(" " + _string);
+		
+		return self;
+	};
+	
+	static separator = function() {
+		dbg_text_separator("");
 		
 		return self;
 	};
