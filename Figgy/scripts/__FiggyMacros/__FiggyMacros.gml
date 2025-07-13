@@ -1,7 +1,8 @@
+/// @feather ignore all
 
 #region info
 
-#macro __FIGGY_VERSION "v0.0.0" // major.minor.patch
+#macro __FIGGY_VERSION "v1.0.0" // major.minor.patch
 #macro __FIGGY_DATE "2025.xx.xx" // year.month.day
 #macro __FIGGY_NAME "Figgy"
 #macro __FIGGY_LOG_PREFIX $"[{__FIGGY_NAME}]"
@@ -12,7 +13,7 @@
 #macro __FIGGY_IN_IDE (GM_build_type == "run")
 
 #macro __FIGGY_FILE_NAME $"{FIGGY_FILE_NAME}{FIGGY_FILE_EXT}"
-#macro __FIGGY_FILE_PATH $"{__FIGGY_IN_IDE ? $"{filename_dir(GM_project_filename)}/datafiles/" : ""}{__FIGGY_FILE_NAME}"
+#macro __FIGGY_FILE_PATH $"{__FIGGY_IN_IDE ? ($"{filename_dir(GM_project_filename)}/datafiles/") : ""}{__FIGGY_FILE_NAME}"
 #macro __FIGGY_FILE_FILTER $"Figgy Config File|*{FIGGY_FILE_EXT}"
 
 #macro __FIGGY_RAWNAME var _rawName = string_replace_all(_name, " ", "")

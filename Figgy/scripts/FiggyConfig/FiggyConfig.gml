@@ -1,3 +1,4 @@
+/// @feather ignore all
 
 #macro FIGGY_DEBUG true
 

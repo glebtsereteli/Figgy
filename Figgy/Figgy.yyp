@@ -16,7 +16,9 @@
     {"$GMFolder":"","%Name":"02. Private","folderPath":"folders/02. Figgy/02. Private.yy","name":"02. Private","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
   "ForcedPrefabProjectReferences":[],
-  "IncludedFiles":[],
+  "IncludedFiles":[
+    {"$GMIncludedFile":"","%Name":"Config.figgy","CopyToMask":-1,"filePath":"datafiles","name":"Config.figgy","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
+  ],
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{

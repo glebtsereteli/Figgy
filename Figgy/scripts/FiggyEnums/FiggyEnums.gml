@@ -1,3 +1,4 @@
+/// @feather ignore all
 
 enum FIGGY_GROUP_ALIGN {
 	LEFT = 0,

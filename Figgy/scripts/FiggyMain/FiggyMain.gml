@@ -1,3 +1,4 @@
+/// @feather ignore all
 
 function Figgy() {
 	#region __private
@@ -89,10 +90,12 @@ function Figgy() {
 	};
 	static __initControls = function() {
 		dbg_section(FIGGY_CONTROLS_NAME, FIGGY_CONTROLS_OPEN);
-		dbg_button("Save", function() {
-			__save();
-		}, 55, 20);
-		dbg_same_line();
+		if (__FIGGY_IN_IDE) {
+			dbg_button("Save", function() {
+				__save();
+			}, 55, 20);
+			dbg_same_line();
+		}
 		dbg_button("Import", function() {
 			import();
 		}, 65, 20);
@@ -104,10 +107,12 @@ function Figgy() {
 		dbg_button("Default", function() {
 			resetToDefault();
 		}, 75, 20);
-		dbg_same_line();
-		dbg_button("Last Save", function() {
-			resetToLastSave();
-		}, 85, 20);
+		if (__FIGGY_IN_IDE) {
+			dbg_same_line();
+			dbg_button("Last Save", function() {
+				resetToLastSave();
+			}, 85, 20);
+		}
 	};
 	
 	static __move = function(_a, _b) {
