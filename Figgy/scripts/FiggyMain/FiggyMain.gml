@@ -258,7 +258,7 @@ function Figgy() {
 	/// @param {Bool} separate=[false] Whether to add a separator after the current (if any) group (true) or not (false).
 	static ungroup = function(_separate = FIGGY_UNGROUP_DEFAULT_SEPARATE) {
 		if (_separate) {
-			dbg_text_separator("");
+			separator();
 		}
 		__setup.__scope = __setup.__section;
 		

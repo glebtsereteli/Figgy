@@ -9,11 +9,18 @@
 #endregion
 #region utility
 
+#macro __FIGGY_IN_IDE (GM_build_type == "run")
+
 #macro __FIGGY_FILE_NAME $"{FIGGY_FILE_NAME}{FIGGY_FILE_EXT}"
-#macro __FIGGY_FILE_PATH $"{filename_dir(GM_project_filename)}/datafiles/{__FIGGY_FILE_NAME}"
+#macro __FIGGY_FILE_PATH $"{__FIGGY_IN_IDE ? $"{filename_dir(GM_project_filename)}/datafiles/" : ""}{__FIGGY_FILE_NAME}"
 #macro __FIGGY_FILE_FILTER $"Figgy Config File|*{FIGGY_FILE_EXT}"
 
 #macro __FIGGY_RAWNAME var _rawName = string_replace_all(_name, " ", "")
+
+#macro __FIGGY_SECTION \
+__setup.__section = {}; \
+__setup.__scope[$ _name] = __setup.__section; \
+__setup.__scope = __setup.__section;
 
 #macro __FIGGY_CATCH_WINDOW \
 if (not __setup.__windowed) { \
@@ -27,11 +34,6 @@ __FIGGY_CATCH_WINDOW; \
 __FIGGY_RAWNAME; \
 __setup.__scope[$ _rawName] = _default; \
 var _ref = ref_create(__setup.__scope, _rawName);
-
-#macro __FIGGY_SECTION \
-__setup.__section = {}; \
-__setup.__scope[$ _name] = __setup.__section; \
-__setup.__scope = __setup.__section;
 
 #macro __FIGGY_BENCH_START Figgy.__t = get_timer();
 #macro __FIGGY_BENCH_END ((get_timer() - Figgy.__t) / 1000)
