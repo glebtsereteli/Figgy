@@ -5,7 +5,7 @@ function Figgy() {
 	static __current = undefined;
 	static __default = undefined;
 	static __lastSave = undefined;
-	static __view = false;
+	
 	static __setup = {
 		__scope: undefined,
 		__section: undefined,
@@ -63,6 +63,11 @@ function Figgy() {
 			}
 		},
 	};
+	static __debugString = {
+		__value: (FIGGY_DEBUG_STRING ? "" : undefined),
+		__sectioned: false,
+		__grouped: false,
+	};
 	static __t = undefined;
 	
 	static __init = function(_callback) {
@@ -86,7 +91,7 @@ function Figgy() {
 		__setup.__section = __current;
 		
 		__FIGGY_BENCH_START;
-		__view = dbg_view(FIGGY_WINDOW_NAME, FIGGY_WINDOW_START_VISIBLE, FIGGY_WINDOW_X, FIGGY_WINDOW_Y, FIGGY_WINDOW_WIDTH, FIGGY_WINDOW_HEIGHT);
+		dbg_view(FIGGY_WINDOW_NAME, FIGGY_WINDOW_START_VISIBLE, FIGGY_WINDOW_X, FIGGY_WINDOW_Y, FIGGY_WINDOW_WIDTH, FIGGY_WINDOW_HEIGHT);
 		_controls();
 		_callback();
 		__default = variable_clone(__current);
@@ -137,7 +142,7 @@ function Figgy() {
 	
 	#endregion
 	
-	#region value widgets
+	#region widgets: scope
 	
 	/// @param {String} name The section name.
 	/// @param {Bool} open=[FIGGY_SECTION_DEFAULT_OPEN] Whether the section starts open (true) or not (false).
@@ -147,6 +152,11 @@ function Figgy() {
 		__setup.__section = {};
 		__setup.__scope[$ _name] = __setup.__section;
 		__setup.__scope = __setup.__section;
+		
+		if (FIGGY_DEBUG_STRING) {
+			__debugString.__value += $"- {_name}:\n";
+			__debugString.__sectioned = true;
+		}
 		
 		return self;
 	};
@@ -159,6 +169,11 @@ function Figgy() {
 		__setup.__scope = {};
 		__setup.__section[$ _name] = __setup.__scope;
 		
+		if (FIGGY_DEBUG_STRING) {
+			__debugString.__value += $"{string_repeat(" ", __debugString.__sectioned * 4)}- {_name}:\n";
+			__debugString.__grouped = true;
+		}
+		
 		return self;
 	};
 	
@@ -169,8 +184,15 @@ function Figgy() {
 		}
 		__setup.__scope = __setup.__section;
 		
+		if (FIGGY_DEBUG_STRING) {
+			__debugString.__grouped = false;
+		}
+		
 		return self;
 	};
+	
+	#endregion
+	#region widgets: non-scope
 	
 	/// @param {String} name The variable name.
 	/// @param {Real.Int} default The default value.
@@ -226,7 +248,7 @@ function Figgy() {
 	};
 	
 	#endregion
-	#region non-value widgets
+	#region widgets: decor
 	
 	/// @param {String} name The button name.
 	/// @param {Func} callback The callback to trigger on press.
@@ -294,6 +316,9 @@ function Figgy() {
 	
 	static getCurrent = function() {
 		return __current;
+	};
+	static getDebugString = function() {
+		return __debugString.__value;
 	};
 	
 	#endregion

@@ -14,7 +14,11 @@
 #macro __FIGGY_WIDGET \
 __FIGGY_RAWNAME; \
 __setup.__scope[$ _rawName] = _default; \
-var _ref = ref_create(__setup.__scope, _rawName);
+var _ref = ref_create(__setup.__scope, _rawName); \
+if (FIGGY_DEBUG_STRING) { \
+	var _spaces = string_repeat(" ", (__debugString.__sectioned + __debugString.__grouped) * 4); \
+	__debugString.__value += $"{_spaces}- {_name}: {_default}\n"; \
+}
 
 #macro __FIGGY_BENCH_START Figgy.__t = get_timer();
 #macro __FIGGY_BENCH_END ((get_timer() - Figgy.__t) / 1000)
