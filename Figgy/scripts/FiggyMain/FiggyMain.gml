@@ -126,16 +126,25 @@ function Figgy() {
 	};
 	static __saveRaw = function(_path) {
 		var _string = json_stringify(__current, true);
-		var _stringEncoded = base64_encode(_string);
-		var _size = string_byte_length(_stringEncoded);
-		var _buffer = buffer_create(_size, buffer_fixed, 1);
-		buffer_write(_buffer, buffer_text, _stringEncoded);
 		
-		var _bufferCompressed = buffer_compress(_buffer, 0, _size);
-		buffer_save(_bufferCompressed, _path);
-		
-		buffer_delete(_buffer);
-		buffer_delete(_bufferCompressed);
+		if (FIGGY_FILE_OBFUSCATE) {
+			var _stringEncoded = base64_encode(_string);
+			var _size = string_byte_length(_stringEncoded);
+			var _buffer = buffer_create(_size, buffer_fixed, 1);
+			buffer_write(_buffer, buffer_text, _stringEncoded);
+			var _bufferCompressed = buffer_compress(_buffer, 0, _size);
+			buffer_save(_bufferCompressed, _path);
+			
+			buffer_delete(_buffer);
+			buffer_delete(_bufferCompressed);
+		}
+		else {
+			var _size = string_byte_length(_string);
+			var _buffer = buffer_create(_size, buffer_fixed, 1);
+			buffer_write(_buffer, buffer_text, _string);
+			buffer_save(_buffer, _path);
+			buffer_delete(_buffer);
+		}
 	};
 	static __save = function(_log = true) {
 		if (_log) {
@@ -159,16 +168,38 @@ function Figgy() {
 			}
 			
 			var _buffer = buffer_load(_path);
-			var _bufferDecompressed = buffer_decompress(_buffer);
-			var _string = buffer_read(_bufferDecompressed, buffer_text);
-			var _stringDecoded = base64_decode(_string);
+			var _flippedObfuscate = false;
+			try {
+				var _bufferDecompressed = buffer_decompress(_buffer);
+				var _string = buffer_read(_bufferDecompressed, buffer_text);
+				var _stringDecoded = base64_decode(_string);
+				
+				buffer_delete(_bufferDecompressed);
+				var _data = json_parse(_stringDecoded);
+				
+				if (not FIGGY_FILE_OBFUSCATE) {
+					_flippedObfuscate = true;
+					__figgyLog($"LOAD: file deobfuscated");
+				}
+			}
+			catch (_) {
+				var _string = buffer_read(_buffer, buffer_text);
+				var _data = json_parse(_string);
+				
+				if (FIGGY_FILE_OBFUSCATE) {
+					_flippedObfuscate = true;
+					__figgyLog($"LOAD: file obfuscated");
+				}
+			}
 			buffer_delete(_buffer);
-			buffer_delete(_bufferDecompressed);
-			var _data = json_parse(_stringDecoded);
 			
 			if (__validation.__run(__default, _data)) {
+				__figgyLog($"VALIDATION: used");
+			}
+			
+			if (_flippedObfuscate or __validation.__used) {
 				__save(false);
-				__figgyLog($"VALIDATION: used. File re-saved");
+				__figgyLog("LOAD: file re-saved");
 			}
 			
 			__move(_data, __current);
