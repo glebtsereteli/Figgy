@@ -125,7 +125,7 @@ function Figgy() {
 		}
 	};
 	static __saveRaw = function(_path) {
-		var _string = json_stringify(__current, true);
+		var _string = json_stringify(__current, FIGGY_FILE_PRETTIFY);
 		
 		if (FIGGY_FILE_OBFUSCATE) {
 			var _stringEncoded = base64_encode(_string);

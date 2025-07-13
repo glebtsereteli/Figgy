@@ -3,6 +3,7 @@
 
 #macro FIGGY_FILE_NAME "Config"
 #macro FIGGY_FILE_EXT ".figgy"
+#macro FIGGY_FILE_PRETTIFY true
 #macro FIGGY_FILE_OBFUSCATE false
 
 #macro FIGGY_WINDOW_NAME "Figgy"
