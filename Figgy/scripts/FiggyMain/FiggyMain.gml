@@ -23,16 +23,25 @@ function Figgy() {
 			var _keys = struct_get_names(_new);
 			var _i = 0; repeat (array_length(_keys)) {
 				var _key = _keys[_i];
-				var _defaultValue = _default[$ _key]
+				var _defaultValue = _default[$ _key];
 				var _newValue = _new[$ _key];
 				
-				if ((_defaultValue == undefined) or (typeof(_defaultValue) != typeof(_newValue))) {
+				if (_defaultValue == undefined) {
 					struct_remove(_new, _key);
 					__figgyLog($"VALIDATION: removed unused variable \"{_key}\"");
 					__used = true;
 				}
-				else if (is_struct(_newValue)) {
-					__remove(_defaultValue, _newValue);
+				else {
+					var _defaultType = typeof(_defaultValue);
+					var _newType = typeof(_newValue);
+					if (_defaultType != _newType) {
+						struct_remove(_new, _key);
+						__figgyLog($"VALIDATION: removed wrong type variable \"{_key}\". Expected \"{_defaultType}\", got \"{_newType}\"");
+						__used = true;
+					}
+					else if (is_struct(_newValue)) {
+						__remove(_defaultValue, _newValue);
+					}
 				}
 				
 				_i++;
