@@ -10,8 +10,10 @@
 #endregion
 #region utility
 
+#macro __FIGGY_IN_IDE (GM_build_type == "run")
+
 #macro __FIGGY_FILE_NAME $"{FIGGY_FILE_NAME}{FIGGY_FILE_EXT}"
-#macro __FIGGY_FILE_PATH $"{Figgy.__inIDE ? ($"{filename_dir(GM_project_filename)}/datafiles/") : ""}{__FIGGY_FILE_NAME}"
+#macro __FIGGY_FILE_PATH $"{__FIGGY_IN_IDE ? ($"{filename_dir(GM_project_filename)}/datafiles/") : ""}{__FIGGY_FILE_NAME}"
 #macro __FIGGY_FILE_FILTER $"Figgy Config File|*{FIGGY_FILE_EXT}"
 
 #macro __FIGGY_RAWNAME var _rawName = string_replace_all(_name, " ", "")
