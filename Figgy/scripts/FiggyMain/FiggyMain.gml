@@ -3,6 +3,8 @@
 function Figgy() {
 	#region __private
 	
+	static __inIDE = (GM_build_type == "run");
+	
 	static __current = undefined;
 	static __default = undefined;
 	static __lastSave = undefined;
@@ -90,7 +92,7 @@ function Figgy() {
 	};
 	static __initControls = function() {
 		dbg_section(FIGGY_CONTROLS_NAME, FIGGY_CONTROLS_OPEN);
-		if (__FIGGY_IN_IDE) {
+		if (__inIDE) {
 			dbg_button("Save", function() {
 				__save();
 			}, 55, 20);
@@ -107,7 +109,7 @@ function Figgy() {
 		dbg_button("Default", function() {
 			resetToDefault();
 		}, 75, 20);
-		if (__FIGGY_IN_IDE) {
+		if (__inIDE) {
 			dbg_same_line();
 			dbg_button("Last Save", function() {
 				resetToLastSave();
@@ -202,7 +204,7 @@ function Figgy() {
 				__figgyLog($"VALIDATION: used");
 			}
 			
-			if (__FIGGY_IN_IDE and _mainLoad and (_flippedObfuscate or __validation.__used)) {
+			if (__inIDE and _mainLoad and (_flippedObfuscate or __validation.__used)) {
 				__save(false);
 				__figgyLog("LOAD: file re-saved");
 			}
@@ -214,7 +216,7 @@ function Figgy() {
 			}
 		} 
 		catch (_) {
-			if (__FIGGY_IN_IDE) {
+			if (__inIDE) {
 				__save(false);
 				__figgyLog($"LOAD: fail at \"{_path}\". Initialized to Default");
 			}
