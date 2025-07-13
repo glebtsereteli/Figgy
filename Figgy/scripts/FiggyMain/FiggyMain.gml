@@ -9,6 +9,7 @@ function Figgy() {
 	static __setup = {
 		__scope: undefined,
 		__section: undefined,
+		__windowed: false,
 	};
 	static __validation = {
 		__used: false,
@@ -63,42 +64,35 @@ function Figgy() {
 			}
 		},
 	};
-	static __debugString = {
-		__value: (FIGGY_DEBUG_STRING ? "" : undefined),
-		__sectioned: false,
-		__grouped: false,
-	};
 	static __t = undefined;
 	
 	static __init = function(_callback) {
-		static _controls = function() {
-			dbg_section(FIGGY_CONTROLS_NAME, FIGGY_CONTROLS_OPEN);
-			dbg_button("Save", function() {
-				save();
-			}, 60, 20);
-			dbg_same_line();
-			dbg_button("Reset To Default", function() {
-				resetToDefault();
-			}, 150, 20);
-			dbg_same_line();
-			dbg_button("Reset To Last Save", function() {
-				resetToLastSave();
-			}, 150, 20);
-		};
-		
 		__current = {};
 		__setup.__scope = __current;
 		__setup.__section = __current;
 		
 		__FIGGY_BENCH_START;
-		dbg_view(FIGGY_WINDOW_NAME, FIGGY_WINDOW_START_VISIBLE, FIGGY_WINDOW_X, FIGGY_WINDOW_Y, FIGGY_WINDOW_WIDTH, FIGGY_WINDOW_HEIGHT);
-		_controls();
 		_callback();
 		__default = variable_clone(__current);
 		__figgyLogTimed("SETUP: completed");
 		
 		__load();
 	};
+	static __initControls = function() {
+		dbg_section(FIGGY_CONTROLS_NAME, FIGGY_CONTROLS_OPEN);
+		dbg_button("Save", function() {
+			save();
+		}, 60, 20);
+		dbg_same_line();
+		dbg_button("Reset To Default", function() {
+			resetToDefault();
+		}, 150, 20);
+		dbg_same_line();
+		dbg_button("Reset To Last Save", function() {
+			resetToLastSave();
+		}, 150, 20);
+	};
+	
 	static __move = function(_a, _b) {
 		var _keys = struct_get_names(_a);
 		var _i = 0; repeat (array_length(_keys)) {
@@ -144,19 +138,24 @@ function Figgy() {
 	
 	#region widgets: scope
 	
+	static window = function(_name, _visible = FIGGY_WINDOW_START_VISIBLE, _x = FIGGY_WINDOW_X, _y = FIGGY_WINDOW_Y, _w = FIGGY_WINDOW_WIDTH, _h = FIGGY_WINDOW_HEIGHT) {
+		__FIGGY_RAWNAME;
+		dbg_view($"{FIGGY_WINDOW_NAME}: {_name}", _visible, _x, _y, _w, _h);
+		__FIGGY_SECTION;
+		
+		__initControls();
+		__setup.__windowed = true;
+		
+		return self;
+	};
+	
 	/// @param {String} name The section name.
 	/// @param {Bool} open=[FIGGY_SECTION_DEFAULT_OPEN] Whether the section starts open (true) or not (false).
 	static section = function(_name, _open = FIGGY_SECTION_DEFAULT_OPEN) {
-		__FIGGY_RAWNAME
+		__FIGGY_CATCH_WINDOW;
+		__FIGGY_RAWNAME;
 		dbg_section(_name, _open);
-		__setup.__section = {};
-		__setup.__scope[$ _name] = __setup.__section;
-		__setup.__scope = __setup.__section;
-		
-		if (FIGGY_DEBUG_STRING) {
-			__debugString.__value += $"- {_name}:\n";
-			__debugString.__sectioned = true;
-		}
+		__FIGGY_SECTION;
 		
 		return self;
 	};
@@ -164,15 +163,11 @@ function Figgy() {
 	/// @param {String} name The group name.
 	/// @param {Enum.FIGGY_GROUP_ALIGN} align=[FIGGY_GROUP_DEFAULT_ALIGN] The group name alignment.
 	static group = function(_name, _align = FIGGY_GROUP_DEFAULT_ALIGN) {
+		__FIGGY_CATCH_WINDOW;
 		__FIGGY_RAWNAME;
 		dbg_text_separator(_name, _align);
 		__setup.__scope = {};
 		__setup.__section[$ _name] = __setup.__scope;
-		
-		if (FIGGY_DEBUG_STRING) {
-			__debugString.__value += $"{string_repeat(" ", __debugString.__sectioned * 4)}- {_name}:\n";
-			__debugString.__grouped = true;
-		}
 		
 		return self;
 	};
@@ -183,10 +178,6 @@ function Figgy() {
 			dbg_text_separator("");
 		}
 		__setup.__scope = __setup.__section;
-		
-		if (FIGGY_DEBUG_STRING) {
-			__debugString.__grouped = false;
-		}
 		
 		return self;
 	};
@@ -316,9 +307,6 @@ function Figgy() {
 	
 	static getCurrent = function() {
 		return __current;
-	};
-	static getDebugString = function() {
-		return __debugString.__value;
 	};
 	
 	#endregion

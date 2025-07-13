@@ -2,8 +2,7 @@
 #macro FIGGY_FILE_NAME "Config"
 #macro FIGGY_FILE_EXT ".figgy"
 
-#macro FIGGY_DEBUG_LOG true
-#macro FIGGY_DEBUG_STRING false
+#macro FIGGY_DEBUG true
 
 #macro FIGGY_WINDOW_NAME "Figgy"
 #macro FIGGY_WINDOW_START_VISIBLE true

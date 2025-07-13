@@ -1,6 +1,4 @@
 
-#macro CFG Figgy.getCurrent()
-
 FIGGY_SETUP_START
 
 Figgy.section("Player"); {
@@ -16,3 +14,5 @@ Figgy.section("Player"); {
 }
 
 FIGGY_SETUP_END
+
+#macro CFG Figgy.getCurrent()
