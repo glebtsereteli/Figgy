@@ -81,10 +81,16 @@ function Figgy() {
 		__setup.__scope = __current;
 		__setup.__section = __current;
 		
+		var _overlayOpen = is_debug_overlay_open();
+		
 		__FIGGY_BENCH_START;
 		_callback();
 		__default = variable_clone(__current);
 		__figgyLogTimed("SETUP: completed");
+		
+		if (not _overlayOpen and not FIGGY_WINDOW_DEFAULT_START_VISIBLE) {
+			show_debug_overlay(false);
+		}
 		
 		__load();
 	};
@@ -228,9 +234,9 @@ function Figgy() {
 	
 	#region widgets: scope
 	
-	static window = function(_name, _visible = FIGGY_WINDOW_START_VISIBLE, _x = FIGGY_WINDOW_X, _y = FIGGY_WINDOW_Y, _w = FIGGY_WINDOW_WIDTH, _h = FIGGY_WINDOW_HEIGHT) {
+	static window = function(_name, _visible = FIGGY_WINDOW_DEFAULT_START_VISIBLE, _x = FIGGY_WINDOW_DEFAULT_X, _y = FIGGY_WINDOW_DEFAULT_Y, _w = FIGGY_WINDOW_DEFAULT_WIDTH, _h = FIGGY_WINDOW_DEFAULT_HEIGHT) {
 		__FIGGY_RAWNAME;
-		dbg_view($"{FIGGY_WINDOW_NAME}: {_name}", _visible, _x, _y, _w, _h);
+		dbg_view($"{FIGGY_WINDOW_DEFAULT_NAME}: {_name}", _visible, _x, _y, _w, _h);
 		__FIGGY_SECTION;
 		
 		__initControls();
