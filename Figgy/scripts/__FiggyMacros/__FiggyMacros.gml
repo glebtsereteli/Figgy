@@ -22,7 +22,7 @@ var _ref = ref_create(__setup.__scope, _rawName);
 #endregion
 #region shortcuts
 
-#macro FIGGY_SETUP_START Figgy.setup(function() {
-#macro FIGGY_SETUP_END });
+#macro FIGGY_SETUP_START Figgy(); Figgy.__init(function() {
+#macro FIGGY_SETUP_END })
 
 #endregion

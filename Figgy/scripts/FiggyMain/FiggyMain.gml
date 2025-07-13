@@ -64,13 +64,38 @@ function Figgy() {
 	};
 	static __t = undefined;
 	
-	static __clone = function(_a, _b) {
+	static __init = function(_callback) {
+		static _controls = function() {
+			dbg_section("[CONTROLS]");
+			dbg_button("Save", function() {
+				save();
+			}, 80, 20);
+			dbg_same_line();
+			dbg_button("Reset To Default", function() {
+				resetToDefault();
+			}, 140, 20);
+		};
+		
+		__current = {};
+		__setup.__scope = __current;
+		__setup.__section = __current;
+		
+		__FIGGY_BENCH_START;
+		__view = dbg_view(FIGGY_WINDOW_NAME, FIGGY_WINDOW_START_VISIBLE, FIGGY_WINDOW_X, FIGGY_WINDOW_Y, FIGGY_WINDOW_WIDTH, FIGGY_WINDOW_HEIGHT);
+		_controls();
+		_callback();
+		__default = variable_clone(__current);
+		__figgyLogTimed("SETUP: completed");
+		
+		__load();
+	};
+	static __move = function(_a, _b) {
 		var _keys = struct_get_names(_a);
 		var _i = 0; repeat (array_length(_keys)) {
 			var _key = _keys[_i];
 			var _value = _a[$ _key];
 			if (is_struct(_value)) {
-				__clone(_value, _b[$ _key]);
+				__move(_value, _b[$ _key]);
 			}
 			else {
 				_b[$ _key] = _value;
@@ -78,7 +103,6 @@ function Figgy() {
 			_i++;
 		}
 	};
-	
 	static __load = function() {
 		try {
 			__FIGGY_BENCH_START;
@@ -93,7 +117,7 @@ function Figgy() {
 				__figgyLog($"VALIDATION: used. File re-saved");
 			}
 			
-			__clone(_data, __current);
+			__move(_data, __current);
 			
 			__figgyLogTimed($"LOAD: success at \"{__FIGGY_PATH}\"");
 		} 
@@ -105,31 +129,7 @@ function Figgy() {
 	
 	#endregion
 	
-	#region setup
-	
-	/// @param {Func} callback The callback to execute on setup. Set up your interface here.
-	static setup = function(_callback) {
-		__current = {};
-		__setup.__scope = __current;
-		__setup.__section = __current;
-		
-		__view = dbg_view(FIGGY_WINDOW_NAME, FIGGY_WINDOW_START_VISIBLE, FIGGY_WINDOW_X, FIGGY_WINDOW_Y, FIGGY_WINDOW_WIDTH, FIGGY_WINDOW_HEIGHT);
-		
-		dbg_section("[CONTROLS]");
-		dbg_button("Save", function() {
-			save();
-		}, 80, 20);
-		dbg_same_line();
-		dbg_button("Reset To Default", function() {
-			resetToDefault();
-		}, 140, 20);
-		
-		_callback();
-		
-		__default = variable_clone(__current);
-		
-		__load();
-	};
+	#region core-values-widgets
 	
 	/// @param {String} name The section name.
 	/// @param {Bool} open=[FIGGY_SECTION_DEFAULT_OPEN] Whether the section starts open (true) or not (false).
@@ -243,7 +243,7 @@ function Figgy() {
 	#endregion
 	#region actions
 	
-	/// @param {Bool} log=[true] Whether to print a debug message in Output (true) or not (false). Used internally.
+	/// @param {Bool} log=[true] When FIGGY_DEBUG is true, whether to print a debug message in Output (true) or not (false).
 	static save = function(_log = true) {
 		__FIGGY_BENCH_START;
 		
@@ -261,7 +261,9 @@ function Figgy() {
 	};
 	
 	static resetToDefault = function() {
-		
+		__FIGGY_BENCH_START;
+		__move(__default, __current);
+		__figgyLogTimed("RESET TO DEFAULT: completed");
 	};
 	
 	#endregion
@@ -273,4 +275,3 @@ function Figgy() {
 	
 	#endregion
 }
-Figgy();
