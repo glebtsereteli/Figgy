@@ -4,6 +4,9 @@
 ## 1.2 Phisolophy
 ## 1.3 Features
 ## 1.4 FAQ
+- updating
+- platforms
+- merge conflicts
 ## 1.5 Help
 
 # 2. Getting Started
@@ -19,6 +22,6 @@
 # 3.4 Value Widgets
 # 3.5 Decor Widgets
 # 3.6 Access
-# 3.7 Misc Methods
+# 3.7 Input/Ouput
 
 # 4. Configs

@@ -90,9 +90,12 @@ function Figgy() {
 	static __initControls = function() {
 		dbg_section(FIGGY_CONTROLS_NAME, FIGGY_CONTROLS_OPEN);
 		dbg_button("Save", function() {
-			save();
+			__save();
 		}, 60, 20);
 		dbg_same_line();
+		dbg_button("Export", function() {
+			export();
+		}, 70, 20);
 		dbg_button("Reset To Default", function() {
 			resetToDefault();
 		}, 150, 20);
@@ -116,26 +119,48 @@ function Figgy() {
 			_i++;
 		}
 	};
+	static __saveRaw = function(_path) {
+		var _string = json_stringify(__current, true);
+		var _buffer = buffer_create(string_byte_length(_string), buffer_fixed, 1);
+		buffer_write(_buffer, buffer_text, _string);
+		buffer_save(_buffer, _path);
+		buffer_delete(_buffer);
+	};
+	static __save = function(_log = true) {
+		if (_log) {
+			__FIGGY_BENCH_START;
+		}
+		
+		var _path = __FIGGY_FILE_PATH;
+		__saveRaw(_path);
+		__refreshLastSave();
+		
+		if (_log) {
+			__figgyLogTimed($"SAVE: success at \"{_path}\"");
+		}
+		
+		return self;
+	};
 	static __load = function() {
 		try {
 			__FIGGY_BENCH_START;
 			
-			var _buffer = buffer_load(__FIGGY_PATH);
+			var _buffer = buffer_load(__FIGGY_FILE_PATH);
 			var _string = buffer_read(_buffer, buffer_text);
 			buffer_delete(_buffer);
 			var _data = json_parse(_string);
 			
 			if (__validation.__run(__default, _data)) {
-				save(false);
+				__save(false);
 				__figgyLog($"VALIDATION: used. File re-saved");
 			}
 			
 			__move(_data, __current);
 			
-			__figgyLogTimed($"LOAD: success at \"{__FIGGY_PATH}\"");
+			__figgyLogTimed($"LOAD: success at \"{__FIGGY_FILE_PATH}\"");
 		} 
 		catch (_) {
-			save(false);
+			__save(false);
 			__figgyLog($"LOAD: fail at \"{__FIGGY_PATH}\". Initialized to Default");
 		}
 	};
@@ -274,28 +299,24 @@ function Figgy() {
 	};
 	
 	#endregion
-	#region actions
+	#region input/output
 	
-	/// @param {Bool} log=[true] When FIGGY_DEBUG is true, whether to print a debug message in Output (true) or not (false).
-	static save = function(_log = true) {
-		if (_log) {
-			__FIGGY_BENCH_START;
+	static export = function(_path = undefined) {
+		_path ??= get_save_filename_ext($"Figgy Config File|*{FIGGY_FILE_EXT}", $"{__FIGGY_FILE_NAME}", "", "Figgy: Export");
+		if (_path == "") {
+			__figgyLog("EXPORT: canceled");
+			return undefined;
 		}
 		
-		var _string = json_stringify(__current, true);
-		var _buffer = buffer_create(string_byte_length(_string), buffer_fixed, 1);
-		buffer_write(_buffer, buffer_text, _string);
-		buffer_save(_buffer, __FIGGY_PATH);
-		buffer_delete(_buffer);
+		__FIGGY_BENCH_START;
+		__saveRaw(_path);
+		__figgyLogTimed($"EXPORT: success at \"{_path}\"");
 		
-		__refreshLastSave();
-		
-		if (_log) {
-			__figgyLogTimed($"SAVE: success at \"{__FIGGY_PATH}\"");
-		}
-		
-		return self;
+		return true;
 	};
+	
+	#endregion
+	#region reset
 	
 	static resetToDefault = function() {
 		__FIGGY_BENCH_START;

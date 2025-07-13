@@ -9,7 +9,8 @@
 #endregion
 #region utility
 
-#macro __FIGGY_PATH $"{filename_dir(GM_project_filename)}/datafiles/{FIGGY_FILE_NAME}{FIGGY_FILE_EXT}"
+#macro __FIGGY_FILE_NAME $"{FIGGY_FILE_NAME}{FIGGY_FILE_EXT}"
+#macro __FIGGY_FILE_PATH $"{filename_dir(GM_project_filename)}/datafiles/{__FIGGY_FILE_NAME}"
 
 #macro __FIGGY_RAWNAME var _rawName = string_replace_all(_name, " ", "")
 
