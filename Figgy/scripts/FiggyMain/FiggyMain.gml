@@ -12,68 +12,6 @@ function Figgy() {
 		__section: undefined,
 		__windowed: false,
 	};
-	static __validation = {
-		__used: false,
-		
-		__run: function(_default, _new) {
-			__remove(_default, _new);
-			__add(_default, _new);
-			return __used;
-		},
-		__remove: function(_default, _new) {
-			var _keys = struct_get_names(_new);
-			var _i = 0; repeat (array_length(_keys)) {
-				var _key = _keys[_i];
-				var _defaultValue = _default[$ _key];
-				var _newValue = _new[$ _key];
-				
-				if (_defaultValue == undefined) {
-					struct_remove(_new, _key);
-					__figgyLog($"VALIDATION: removed unused variable \"{_key}\"");
-					__used = true;
-				}
-				else {
-					var _defaultType = typeof(_defaultValue);
-					var _newType = typeof(_newValue);
-					if (_defaultType != _newType) {
-						struct_remove(_new, _key);
-						__figgyLog($"VALIDATION: removed wrong type variable \"{_key}\". Expected \"{_defaultType}\", got \"{_newType}\"");
-						__used = true;
-					}
-					else if (is_struct(_newValue)) {
-						__remove(_defaultValue, _newValue);
-					}
-				}
-				
-				_i++;
-			}
-		},
-		__add: function(_default, _new) {
-			var _keys = struct_get_names(_default);
-			var _i = 0; repeat (array_length(_keys)) {
-				var _key = _keys[_i];
-				var _defaultValue = _default[$ _key];
-				var _newValue = _new[$ _key];
-				
-				if (_newValue == undefined) {
-					__figgyLog($"VALIDATION: added missing variable \"{_key}\"");
-					__used = true;
-					if (is_struct(_defaultValue)) {
-						_new[$ _key] = {};
-						__add(_defaultValue, _new[$ _key]);
-					}
-					else {
-						_new[$ _key] = _defaultValue;
-					}
-				}
-				else if (is_struct(_defaultValue)) {
-					__add(_defaultValue, _newValue);
-				}
-				
-				_i++;
-			}
-		},
-	};
 	static __t = undefined;
 	
 	static __init = function(_callback) {
@@ -135,97 +73,136 @@ function Figgy() {
 			_i++;
 		}
 	};
-	static __saveRaw = function(_path) {
-		var _string = json_stringify(__current, FIGGY_FILE_PRETTIFY);
-		
-		if (FIGGY_FILE_OBFUSCATE) {
-			var _stringEncoded = base64_encode(_string);
-			var _size = string_byte_length(_stringEncoded);
-			var _buffer = buffer_create(_size, buffer_fixed, 1);
-			buffer_write(_buffer, buffer_text, _stringEncoded);
-			var _bufferCompressed = buffer_compress(_buffer, 0, _size);
-			buffer_save(_bufferCompressed, _path);
-			
-			buffer_delete(_buffer);
-			buffer_delete(_bufferCompressed);
+	
+	static __saveDelta = function(_current, _default) {
+        var _names = struct_get_names(_current);
+        var _i = 0; repeat (array_length(_names)) {
+            var _name = _names[_i];
+            var _currentValue = _current[$ _name];
+            var _defaultValue = _default[$ _name];
+            if (is_struct(_currentValue)) {
+                __saveDelta(_currentValue, _defaultValue);
+                if (struct_names_count(_currentValue) == 0) {
+                    struct_remove(_current, _name);
+                }
+            }
+            else if (_currentValue == _defaultValue) {
+                struct_remove(_current, _name);
+            }
+            _i++;
+        }
+    };
+    static __saveRaw = function(_path) {
+		var _data = __current;
+		if (FIGGY_FILE_DELTA) {
+			_data = variable_clone(_data);
+			__saveDelta(_data, __default);
 		}
-		else {
-			var _size = string_byte_length(_string);
-			var _buffer = buffer_create(_size, buffer_fixed, 1);
-			buffer_write(_buffer, buffer_text, _string);
-			buffer_save(_buffer, _path);
-			buffer_delete(_buffer);
-		}
-	};
-	static __save = function(_log = true) {
-		if (_log) {
-			__FIGGY_BENCH_START;
-		}
-		
-		var _path = __FIGGY_FILE_PATH;
-		__saveRaw(_path);
-		__refreshLastSave();
-		
-		if (_log) {
-			__figgyLogTimed($"SAVE: success at \"{_path}\"");
-		}
-		
-		return self;
-	};
-	static __load = function(_path = __FIGGY_FILE_PATH, _mainLoad = true) {
-		try {
-			if (_mainLoad) {
-				__FIGGY_BENCH_START;
-			}
-			
-			var _buffer = buffer_load(_path);
-			var _flippedObfuscate = false;
-			try {
-				var _bufferDecompressed = buffer_decompress(_buffer);
-				var _string = buffer_read(_bufferDecompressed, buffer_text);
-				var _stringDecoded = base64_decode(_string);
-				
-				buffer_delete(_bufferDecompressed);
-				var _data = json_parse(_stringDecoded);
-				
-				if (not FIGGY_FILE_OBFUSCATE) {
-					_flippedObfuscate = true;
-					__figgyLog($"LOAD: file deobfuscated");
-				}
-			}
-			catch (_) {
-				var _string = buffer_read(_buffer, buffer_text);
-				var _data = json_parse(_string);
-				
-				if (FIGGY_FILE_OBFUSCATE) {
-					_flippedObfuscate = true;
-					__figgyLog($"LOAD: file obfuscated");
-				}
-			}
-			buffer_delete(_buffer);
-			
-			if (__validation.__run(__default, _data)) {
-				__figgyLog($"VALIDATION: used");
-			}
-			
-			if (__FIGGY_IN_IDE and _mainLoad and (_flippedObfuscate or __validation.__used)) {
-				__save(false);
-				__figgyLog("LOAD: file re-saved");
-			}
-			
-			__move(_data, __current);
-			
-			if (_mainLoad) {
-				__figgyLogTimed($"LOAD: success at \"{_path}\"");
-			}
-		} 
-		catch (_) {
-			if (__FIGGY_IN_IDE) {
-				__save(false);
-				__figgyLog($"LOAD: fail at \"{_path}\". Initialized to Default");
-			}
-		}
-	};
+        
+        var _string = json_stringify(_data, FIGGY_FILE_PRETTIFY);
+        var _saveBuffer = undefined;
+        
+        if (FIGGY_FILE_OBFUSCATE) {
+            var _stringEncoded = base64_encode(_string);
+            var _size = string_byte_length(_stringEncoded);
+            var _rawBuffer = buffer_create(_size, buffer_fixed, 1);
+            buffer_write(_rawBuffer, buffer_text, _stringEncoded);
+            _saveBuffer = buffer_compress(_rawBuffer, 0, _size);
+            buffer_delete(_rawBuffer);
+        }
+        else {
+            var _size = string_byte_length(_string);
+            var _saveBuffer = buffer_create(_size, buffer_fixed, 1);
+            buffer_write(_saveBuffer, buffer_text, _string);
+        }
+        
+        buffer_save(_saveBuffer, _path);
+        buffer_delete(_saveBuffer);
+    };
+    static __save = function(_log = true) {
+        if (_log) {
+            __FIGGY_BENCH_START;
+        }
+        
+        var _path = __FIGGY_FILE_PATH;
+        __saveRaw(_path);
+        __refreshLastSave();
+        
+        if (_log) {
+            __figgyLogTimed($"SAVE: success at \"{_path}\"");
+        }
+        
+        return self;
+    };
+	
+	static __loadProcess = function(_new, _current) {
+        var _names = struct_get_names(_new);
+        var _i = 0; repeat (array_length(_names)) {
+            var _name = _names[_i];
+            var _newValue = _new[$ _name];
+            var _currentValue = _current[$ _name];
+            if (typeof(_newValue) == typeof(_currentValue)) {
+                if (is_struct(_newValue)) {
+                    __loadProcess(_newValue, _currentValue);
+                }
+                else {
+                    _current[$ _name] = _newValue;
+                }
+            }
+            _i++;
+        }
+    };
+    static __load = function(_path = __FIGGY_FILE_PATH, _mainLoad = true) {
+        try {
+            if (_mainLoad) {
+                __FIGGY_BENCH_START;
+            }
+            
+            var _buffer = buffer_load(_path);
+            var _flippedObfuscate = false;
+            try {
+                var _bufferDecompressed = buffer_decompress(_buffer);
+                var _string = buffer_read(_bufferDecompressed, buffer_text);
+                var _stringDecoded = base64_decode(_string);
+                
+                buffer_delete(_bufferDecompressed);
+                var _data = json_parse(_stringDecoded);
+                
+                if (not FIGGY_FILE_OBFUSCATE) {
+                    _flippedObfuscate = true;
+                    __figgyLog($"LOAD: obfuscation flipped, file deobfuscated");
+                }
+            }
+            catch (_) {
+                var _string = buffer_read(_buffer, buffer_text);
+                var _data = json_parse(_string);
+                
+                if (FIGGY_FILE_OBFUSCATE) {
+                    _flippedObfuscate = true;
+                    __figgyLog($"LOAD: obfuscation flipped, file obfuscated");
+                }
+            }
+            buffer_delete(_buffer);
+            
+            __loadProcess(_data, __current);
+            
+            if (__FIGGY_IN_IDE and _mainLoad and _flippedObfuscate) {
+                __save(false);
+                __figgyLog("LOAD: file re-saved");
+            }
+            
+            if (_mainLoad) {
+                __figgyLogTimed($"LOAD: success at \"{_path}\"");
+            }
+        } 
+        catch (_) {
+            if (__FIGGY_IN_IDE) {
+                __save(false);
+                __figgyLog($"LOAD: fail at \"{_path}\". Initialized to Default");
+            }
+        }
+    };
+	
 	static __refreshLastSave = function() {
 		__lastSave = variable_clone(__current);
 	};

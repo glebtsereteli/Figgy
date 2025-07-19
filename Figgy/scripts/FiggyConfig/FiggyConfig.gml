@@ -4,6 +4,7 @@
 
 #macro FIGGY_FILE_NAME "Config"
 #macro FIGGY_FILE_EXT ".figgy"
+#macro FIGGY_FILE_DELTA true
 #macro FIGGY_FILE_PRETTIFY true
 #macro FIGGY_FILE_OBFUSCATE false
 
