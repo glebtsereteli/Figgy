@@ -262,10 +262,8 @@ function Figgy() {
 	
 	/// @param {Bool} separate=[false] Whether to add a separator after the current (if any) group (true) or not (false).
 	/// @desc Moves the scope one step back, landing on the previous scope (Root, Window or Section).
-	static ungroup = function(_separate = FIGGY_UNGROUP_DEFAULT_SEPARATE) {
-		if (_separate) {
-			separator();
-		}
+	static ungroup = function() {
+		separator();
 		__setup.__scope = __setup.__section;
 		
 		return self;

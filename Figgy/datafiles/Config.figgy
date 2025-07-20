@@ -1,2 +1,7 @@
 {
+  "Player":{
+    "Stats":{
+      "Health":300.0
+    }
+  }
 }
