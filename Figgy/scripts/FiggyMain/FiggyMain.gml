@@ -9,6 +9,7 @@ function Figgy() {
 	
 	static __setup = {
 		__scope: undefined,
+		__rootScope: undefined,
 		__section: undefined,
 		__windowed: false,
 	};
@@ -17,6 +18,7 @@ function Figgy() {
 	static __init = function(_callback) {
 		__current = {};
 		__setup.__scope = __current;
+		__setup.__rootScope = __current;
 		__setup.__section = __current;
 		
 		var _overlayOpen = is_debug_overlay_open();
@@ -223,8 +225,8 @@ function Figgy() {
 	static window = function(_name, _visible = FIGGY_WINDOW_DEFAULT_START_VISIBLE, _x = FIGGY_WINDOW_DEFAULT_X, _y = FIGGY_WINDOW_DEFAULT_Y, _w = FIGGY_WINDOW_DEFAULT_WIDTH, _h = FIGGY_WINDOW_DEFAULT_HEIGHT) {
 		__FIGGY_RAWNAME;
 		dbg_view($"{FIGGY_WINDOW_DEFAULT_NAME}: {_name}", _visible, _x, _y, _w, _h);
+		__setup.__scope = __setup.__rootScope;
 		__FIGGY_SECTION;
-		
 		__initControls();
 		__setup.__windowed = true;
 		
@@ -239,6 +241,10 @@ function Figgy() {
 	static section = function(_name, _open = FIGGY_SECTION_DEFAULT_OPEN) {
 		__FIGGY_CATCH_WINDOW;
 		__FIGGY_RAWNAME;
+		
+		__setup.__scope = __setup.__rootScope;
+		
+		
 		dbg_section(_name, _open);
 		__FIGGY_SECTION;
 		
@@ -362,6 +368,8 @@ function Figgy() {
 	#endregion
 	#region input/output
 	
+	/// @param {String} path=[prompt] The path to import the config file from.
+	/// @returns {Struct.Figgy}
 	static import = function(_path = undefined) {
 		_path ??= get_open_filename_ext(__FIGGY_FILE_FILTER, __FIGGY_FILE_NAME, "", "Figgy: Import Config");
 		if (_path == "") {
@@ -376,6 +384,8 @@ function Figgy() {
 		return self;
 	};
 	
+	/// @param {String} path=[prompt] The path to import the config file to.
+	/// @returns {Struct.Figgy}
 	static export = function(_path = undefined) {
 		_path ??= get_save_filename_ext(__FIGGY_FILE_FILTER, __FIGGY_FILE_NAME, "", "Figgy: Export Config");
 		if (_path == "") {
@@ -393,11 +403,14 @@ function Figgy() {
 	#endregion
 	#region reset
 	
+	/// @desc Resets the current config to the default.
 	static resetToDefault = function() {
 		__FIGGY_BENCH_START;
 		__move(__default, __current);
 		__figgyLogTimed("RESET TO DEFAULT: completed");
 	};
+	
+	/// @desc Resets the current config to the last save.
 	static resetToLastSave = function() {
 		__FIGGY_BENCH_START;
 		if (__lastSave == undefined) {
@@ -410,6 +423,8 @@ function Figgy() {
 	#endregion
 	#region getters
 	
+	/// @returns {Struct}
+	/// @desc Returns the current config.
 	static getCurrent = function() {
 		return __current;
 	};

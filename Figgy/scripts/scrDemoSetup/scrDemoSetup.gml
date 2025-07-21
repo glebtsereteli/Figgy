@@ -12,5 +12,8 @@ Figgy.section("Player"); {
 		Figgy.float("Move Speed", 3, 0.1, 10);
 		Figgy.float("Jump Speed", 8, 0.1, 20);
 }
+Figgy.section("Enemy"); {
+	Figgy.int("Health", 100, 0, 300, 10);
+}
 
 FIGGY_SETUP_END

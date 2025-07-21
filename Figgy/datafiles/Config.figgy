@@ -1,7 +1,17 @@
 {
   "Player":{
     "Stats":{
-      "Health":300.0
-    }
+      "Energy":100.0,
+      "ExtraStrong":true,
+      "Health":130.0
+    },
+    "Movement":{
+      "MoveSpeed":3.0,
+      "JumpSpeed":8.0
+    },
+    "Name":"Geraldine"
+  },
+  "Enemy":{
+    "Health":110.0
   }
 }

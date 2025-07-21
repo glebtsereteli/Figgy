@@ -16,7 +16,7 @@
 // When disabled (false), all variables are saved regardless of whether they match defaults.
 // Useful for inspecting or exporting the full config state.
 // NOTE: setting this to false may reduce input/output performance at scale.
-#macro FIGGY_FILE_DELTA true
+#macro FIGGY_FILE_DELTA false
 
 // Whether to format the config file for readability by prettifying the output JSON (true) or keep it compact (false).
 #macro FIGGY_FILE_PRETTIFY true
