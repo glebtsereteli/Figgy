@@ -19,6 +19,7 @@
 #macro __FIGGY_RAWNAME var _rawName = string_replace_all(_name, " ", "")
 
 #macro __FIGGY_SECTION \
+__setup.__scope = __setup.__rootScope; \
 __setup.__section = {}; \
 __setup.__scope[$ _name] = __setup.__section; \
 __setup.__scope = __setup.__section;
@@ -32,6 +33,10 @@ if (not __setup.__windowed) { \
 
 #macro __FIGGY_WIDGET \
 __FIGGY_CATCH_WINDOW; \
+if (not __setup.__windowSectioned) { \
+	__setup.__windowSectioned = true; \
+	dbg_section("General", true); \
+} \
 __FIGGY_RAWNAME; \
 __setup.__scope[$ _rawName] = _default; \
 var _ref = ref_create(__setup.__scope, _rawName);

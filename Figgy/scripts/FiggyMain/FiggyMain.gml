@@ -12,6 +12,7 @@ function Figgy() {
 		__rootScope: undefined,
 		__section: undefined,
 		__windowed: false,
+		__windowSectioned: false,
 	};
 	static __t = undefined;
 	
@@ -19,7 +20,7 @@ function Figgy() {
 		__current = {};
 		__setup.__scope = __current;
 		__setup.__rootScope = __current;
-		__setup.__section = __current;
+		__setup.__section = undefined;
 		
 		var _overlayOpen = is_debug_overlay_open();
 		
@@ -225,7 +226,8 @@ function Figgy() {
 	static window = function(_name, _visible = FIGGY_WINDOW_DEFAULT_START_VISIBLE, _x = FIGGY_WINDOW_DEFAULT_X, _y = FIGGY_WINDOW_DEFAULT_Y, _w = FIGGY_WINDOW_DEFAULT_WIDTH, _h = FIGGY_WINDOW_DEFAULT_HEIGHT) {
 		__FIGGY_RAWNAME;
 		dbg_view($"{FIGGY_WINDOW_DEFAULT_NAME}: {_name}", _visible, _x, _y, _w, _h);
-		__setup.__scope = __setup.__rootScope;
+		__setup.__rootScope = __current;
+		__setup.__windowSectioned = false;
 		__FIGGY_SECTION;
 		__initControls();
 		__setup.__windowed = true;
@@ -241,12 +243,9 @@ function Figgy() {
 	static section = function(_name, _open = FIGGY_SECTION_DEFAULT_OPEN) {
 		__FIGGY_CATCH_WINDOW;
 		__FIGGY_RAWNAME;
-		
-		__setup.__scope = __setup.__rootScope;
-		
-		
 		dbg_section(_name, _open);
 		__FIGGY_SECTION;
+		__setup.__windowSectioned = true;
 		
 		return self;
 	};
@@ -260,8 +259,9 @@ function Figgy() {
 		__FIGGY_CATCH_WINDOW;
 		__FIGGY_RAWNAME;
 		dbg_text_separator(_name, _align);
-		__setup.__scope = {};
-		__setup.__section[$ _name] = __setup.__scope;
+		var _group = {};
+		__setup.__section[$ _name] = _group;
+		__setup.__scope = _group;
 		
 		return self;
 	};
@@ -335,7 +335,6 @@ function Figgy() {
 		
 		return self;
 	};
-	
 	
 	/// @param {String} name The variable name.
 	/// @param {Real,Constant.Color} default The default value.
