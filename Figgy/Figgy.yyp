@@ -16,6 +16,7 @@
     {"$GMFolder":"","%Name":"02. Figgy","folderPath":"folders/02. Figgy.yy","name":"02. Figgy","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"01. Public","folderPath":"folders/02. Figgy/01. Public.yy","name":"01. Public","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"02. Private","folderPath":"folders/02. Figgy/02. Private.yy","name":"02. Private","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Extensions","folderPath":"folders/Extensions.yy","name":"Extensions","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
   "ForcedPrefabProjectReferences":[],
   "IncludedFiles":[
@@ -28,6 +29,7 @@
   },
   "name":"Figgy",
   "resources":[
+    {"id":{"name":"extExecuteShellSimpleExt","path":"extensions/extExecuteShellSimpleExt/extExecuteShellSimpleExt.yy",},},
     {"id":{"name":"objDemoControl","path":"objects/objDemoControl/objDemoControl.yy",},},
     {"id":{"name":"rmDemo","path":"rooms/rmDemo/rmDemo.yy",},},
     {"id":{"name":"__FiggyInit","path":"scripts/__FiggyInit/__FiggyInit.yy",},},
