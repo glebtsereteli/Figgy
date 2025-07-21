@@ -336,6 +336,17 @@ function Figgy() {
 		return self;
 	};
 	
+	
+	/// @param {String} name The variable name.
+	/// @param {Real,Constant.Color} default The default value.
+	/// @desc Value Widget: creates a color value in the current scope (Root, Window, Section or Group), represented as a DBG Color Picker.
+	static color = function(_name, _default) {
+		__FIGGY_WIDGET;
+		dbg_colour(_ref, _name);
+		
+		return self;
+	};
+	
 	#endregion
 	#region widgets: decor
 	
