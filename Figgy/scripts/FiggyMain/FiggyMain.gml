@@ -3,24 +3,22 @@
 function Figgy() {
 	#region __private
 	
+	static __scope = undefined;
+	static __rootScope = undefined;
+	static __section = undefined;
+	static __windowed = false;
+	static __windowSectioned = false;
+	static __t = undefined;
+	
 	static __current = undefined;
 	static __default = undefined;
 	static __lastSave = undefined;
 	
-	static __setup = {
-		__scope: undefined,
-		__rootScope: undefined,
-		__section: undefined,
-		__windowed: false,
-		__windowSectioned: false,
-	};
-	static __t = undefined;
-	
 	static __init = function(_callback) {
 		__current = {};
-		__setup.__scope = __current;
-		__setup.__rootScope = __current;
-		__setup.__section = undefined;
+		__scope = __current;
+		__rootScope = __current;
+		__section = undefined;
 		
 		var _overlayOpen = is_debug_overlay_open();
 		
@@ -226,11 +224,11 @@ function Figgy() {
 	static window = function(_name, _visible = FIGGY_WINDOW_DEFAULT_START_VISIBLE, _x = FIGGY_WINDOW_DEFAULT_X, _y = FIGGY_WINDOW_DEFAULT_Y, _w = FIGGY_WINDOW_DEFAULT_WIDTH, _h = FIGGY_WINDOW_DEFAULT_HEIGHT) {
 		__FIGGY_RAWNAME;
 		dbg_view($"{FIGGY_WINDOW_DEFAULT_NAME}: {_name}", _visible, _x, _y, _w, _h);
-		__setup.__rootScope = __current;
-		__setup.__windowSectioned = false;
+		__rootScope = __current;
+		__windowSectioned = false;
 		__FIGGY_SECTION;
 		__initControls();
-		__setup.__windowed = true;
+		__windowed = true;
 		
 		return self;
 	};
@@ -245,7 +243,7 @@ function Figgy() {
 		__FIGGY_RAWNAME;
 		dbg_section(_name, _open);
 		__FIGGY_SECTION;
-		__setup.__windowSectioned = true;
+		__windowSectioned = true;
 		
 		return self;
 	};
@@ -260,8 +258,8 @@ function Figgy() {
 		__FIGGY_RAWNAME;
 		dbg_text_separator(_name, _align);
 		var _group = {};
-		__setup.__section[$ _name] = _group;
-		__setup.__scope = _group;
+		__section[$ _name] = _group;
+		__scope = _group;
 		
 		return self;
 	};
@@ -270,7 +268,7 @@ function Figgy() {
 	/// @desc Moves the scope one step back, landing on the previous scope (Root, Window or Section).
 	static ungroup = function() {
 		separator();
-		__setup.__scope = __setup.__section;
+		__scope = __section;
 		
 		return self;
 	};

@@ -19,27 +19,27 @@
 #macro __FIGGY_RAWNAME var _rawName = string_replace_all(_name, " ", "")
 
 #macro __FIGGY_SECTION \
-__setup.__scope = __setup.__rootScope; \
-__setup.__section = {}; \
-__setup.__scope[$ _name] = __setup.__section; \
-__setup.__scope = __setup.__section;
+__scope = __rootScope; \
+__section = {}; \
+__scope[$ _name] = __section; \
+__scope = __section;
 
 #macro __FIGGY_CATCH_WINDOW \
-if (not __setup.__windowed) { \
-	__setup.__windowed = true; \
+if (not __windowed) { \
+	__windowed = true; \
 	dbg_view(FIGGY_WINDOW_DEFAULT_NAME, FIGGY_WINDOW_DEFAULT_START_VISIBLE, FIGGY_WINDOW_DEFAULT_X, FIGGY_WINDOW_DEFAULT_Y, FIGGY_WINDOW_DEFAULT_WIDTH, FIGGY_WINDOW_DEFAULT_HEIGHT); \
 	Figgy.__initControls(); \
 }
 
 #macro __FIGGY_WIDGET \
 __FIGGY_CATCH_WINDOW; \
-if (not __setup.__windowSectioned) { \
-	__setup.__windowSectioned = true; \
+if (not __windowSectioned) { \
+	__windowSectioned = true; \
 	dbg_section("General", true); \
 } \
 __FIGGY_RAWNAME; \
-__setup.__scope[$ _rawName] = _default; \
-var _ref = ref_create(__setup.__scope, _rawName);
+__scope[$ _rawName] = _default; \
+var _ref = ref_create(__scope, _rawName);
 
 #macro __FIGGY_BENCH_START Figgy.__t = get_timer();
 #macro __FIGGY_BENCH_END ((get_timer() - Figgy.__t) / 1000)
