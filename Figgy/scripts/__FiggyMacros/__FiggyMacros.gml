@@ -35,7 +35,7 @@ if (not __windowed) { \
 __FIGGY_CATCH_WINDOW; \
 if (not __windowSectioned) { \
 	__windowSectioned = true; \
-	dbg_section("General", true); \
+	dbg_section("Configs", true); \
 } \
 __FIGGY_RAWNAME; \
 __scope[$ _rawName] = _default; \

@@ -256,7 +256,7 @@ function Figgy() {
 	static group = function(_name, _align = FIGGY_GROUP_DEFAULT_ALIGN) {
 		__FIGGY_CATCH_WINDOW;
 		__FIGGY_RAWNAME;
-		dbg_text_separator(_name, _align);
+		dbg_text_separator($"{FIGGY_GROUP_DEFAULT_NAME_PREFIX}{_name}", _align);
 		var _group = {};
 		__section[$ _name] = _group;
 		__scope = _group;
@@ -366,9 +366,11 @@ function Figgy() {
 		return self;
 	};
 	
-	/// @desc Decor Widget: creates a separator, represented by DBG Separator with no text.
-	static separator = function() {
-		dbg_text_separator("");
+	/// @param {String} name=[] The separator name.
+	/// @param {Enum.FIGGY_GROUP_ALIGN} align=[FIGGY_GROUP_DEFAULT_ALIGN] The separator name alignment.
+	/// @desc Decor Widget: creates a separator, represented by DBG Separator with an optional name.
+	static separator = function(_name = "", _align = FIGGY_SEPARATOR_DEFAULT_ALIGN) {
+		dbg_text_separator(_name, _align);
 		
 		return self;
 	};

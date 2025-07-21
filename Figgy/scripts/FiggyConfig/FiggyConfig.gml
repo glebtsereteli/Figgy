@@ -56,13 +56,19 @@
 // Whether .section()s are open by default (true) or not (false).
 #macro FIGGY_SECTION_DEFAULT_OPEN true
 
-// Default .group() alignment.
-#macro FIGGY_GROUP_DEFAULT_ALIGN FIGGY_GROUP_ALIGN.CENTER
+// Defaul .group() name prefix.
+#macro FIGGY_GROUP_DEFAULT_NAME_PREFIX ""
+
+// Default .group() text alignment.
+#macro FIGGY_GROUP_DEFAULT_ALIGN FIGGY_ALIGN.CENTER
 
 // Default step increment for .int() values.
 #macro FIGGY_INT_DEFAULT_STEP 1
 
 // Default step increment for .float() values.
 #macro FIGGY_FLOAT_DEFAULT_STEP 0.1
+
+// Default .separator() text alignment.
+#macro FIGGY_SEPARATOR_DEFAULT_ALIGN FIGGY_ALIGN.CENTER
 
 #endregion
