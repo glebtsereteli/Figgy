@@ -260,7 +260,7 @@ function Figgy() {
 		__FIGGY_RAWNAME;
 		dbg_text_separator($"{FIGGY_GROUP_DEFAULT_NAME_PREFIX}{_name}", _align);
 		var _group = {};
-		__section[$ _name] = _group;
+		__scope[$ _name] = _group;
 		__scope = _group;
 		
 		return self;
