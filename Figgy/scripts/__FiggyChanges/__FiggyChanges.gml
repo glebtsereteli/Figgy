@@ -26,7 +26,7 @@ function __FiggyChange(_scope, _name, _callback) constructor {
 		var _new = __get();
 		if (_new == __value) return;
 		
-		__callback(_new, __value);
+		__callback(_new, __value, __name);
 		__value = _new;
 	};
 	

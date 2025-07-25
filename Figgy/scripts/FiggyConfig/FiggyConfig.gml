@@ -71,4 +71,7 @@
 // Default .separator() text alignment.
 #macro FIGGY_SEPARATOR_DEFAULT_ALIGN FIGGY_ALIGN.CENTER
 
+// The default function to call when a Value Widget value is changed. undefined stands for "no function".
+#macro FIGGY_DEFAULT_ON_CHANGE undefined
+
 #endregion
