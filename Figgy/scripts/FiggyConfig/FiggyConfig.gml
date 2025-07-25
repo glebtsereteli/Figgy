@@ -72,6 +72,11 @@
 #macro FIGGY_SEPARATOR_DEFAULT_ALIGN FIGGY_ALIGN.CENTER
 
 // The default function to call when a Value Widget value is changed. undefined stands for "no function".
-#macro FIGGY_DEFAULT_ON_CHANGE undefined
+#macro FIGGY_DEFAULT_ON_CHANGE figgyOnChange
 
 #endregion
+
+function figgyOnChange(_new, _old, _name) {
+	show_debug_message($"Changed variable \"{_name}\" from {_old} to {_new}");
+}
+ 

@@ -15,6 +15,11 @@ function __FiggyChanges() constructor {
 		var _change = new __FiggyChange(_scope, _name, _callback);
 		array_push(__pool, _change);
 	};
+	static __refresh = function() {
+		array_foreach(__pool, function(_change) {
+			_change.__refresh();
+		});
+	};
 }
 function __FiggyChange(_scope, _name, _callback) constructor {
 	__scope = _scope;
@@ -28,6 +33,9 @@ function __FiggyChange(_scope, _name, _callback) constructor {
 		
 		__callback(_new, __value, __name);
 		__value = _new;
+	};
+	static __refresh = function() {
+		__value = __get();
 	};
 	
 	static __get = function() {

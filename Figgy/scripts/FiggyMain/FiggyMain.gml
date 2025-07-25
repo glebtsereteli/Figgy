@@ -425,6 +425,7 @@ function Figgy() {
 	static resetToDefault = function() {
 		__FIGGY_BENCH_START;
 		__move(__default, __current);
+		__changes.__refresh();
 		__figgyLogTimed("RESET TO DEFAULT: completed");
 	};
 	
@@ -435,6 +436,7 @@ function Figgy() {
 			__refreshLastSave();
 		}
 		__move(__lastSave, __current);
+		__changes.__refresh();
 		__figgyLogTimed("RESET TO LAST SAVE: completed");
 	};
 	
