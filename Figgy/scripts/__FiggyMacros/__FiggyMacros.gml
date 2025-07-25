@@ -46,10 +46,8 @@ if ((FIGGY_CHANGES_ENABLED) and (_onChange != undefined)) { \
 #macro __FIGGY_BENCH_END ((get_timer() - Figgy.__t) / 1000)
 
 #endregion
-#region shortcuts
+#region public
 
-#macro FIGGY_SETUP_START Figgy(); Figgy.__init(function() {
-#macro FIGGY_SETUP_END })
 #macro FIGGY_IN_IDE (GM_build_type == "run")
 
 #endregion

@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"scrDemoSetup",
+  "%Name":"FiggySetup",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scrDemoSetup",
+  "name":"FiggySetup",
   "parent":{
-    "name":"01. Demo",
-    "path":"folders/01. Demo.yy",
+    "name":"01. Public",
+    "path":"folders/02. Figgy/01. Public.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

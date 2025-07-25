@@ -15,7 +15,7 @@ function Figgy() {
 	static __default = undefined;
 	static __lastSave = undefined;
 	
-	static __init = function(_callback) {
+	static __init = function() {
 		__current = {};
 		__scope = __current;
 		__rootScope = __current;
@@ -24,7 +24,7 @@ function Figgy() {
 		var _overlayOpen = is_debug_overlay_open();
 		
 		__FIGGY_BENCH_START;
-		_callback();
+		FiggySetup();
 		__default = variable_clone(__current);
 		__figgyLogTimed("SETUP: completed");
 		
