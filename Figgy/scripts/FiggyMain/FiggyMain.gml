@@ -15,7 +15,7 @@ function Figgy() {
 	static __default = undefined;
 	static __lastSave = undefined;
 	
-	static __init = function() {
+	static __Init = function() {
 		__current = {};
 		__scope = __current;
 		__rootScope = __current;
@@ -26,49 +26,49 @@ function Figgy() {
 		__FIGGY_BENCH_START;
 		FiggySetup();
 		__default = variable_clone(__current);
-		__figgyLogTimed("SETUP: completed");
+		__FiggyLogTimed("SETUP: completed");
 		
 		if (not _overlayOpen and not FIGGY_WINDOW_DEFAULT_START_VISIBLE) {
 			show_debug_overlay(false);
 		}
 		
-		__load();
-		__changes.__init();
+		__Load();
+		__changes.__Init();
 	};
-	static __initControls = function() {
+	static __InitControls = function() {
 		dbg_section(FIGGY_CONTROLS_NAME, FIGGY_CONTROLS_OPEN);
 		if (FIGGY_IN_IDE) {
 			dbg_button("Save", function() {
-				__save();
+				__Save();
 			}, 55, 20);
 			dbg_same_line();
 		}
 		dbg_button("Import", function() {
-			import();
+			Import();
 		}, 65, 20);
 		dbg_same_line();
 		dbg_button("Export", function() {
-			export();
+			Export();
 		}, 65, 20);
 		dbg_same_line();
 		dbg_button("Default", function() {
-			resetToDefault();
+			ResetToDefault();
 		}, 75, 20);
 		if (FIGGY_IN_IDE) {
 			dbg_same_line();
 			dbg_button("Last Save", function() {
-				resetToLastSave();
+				ResetToLastSave();
 			}, 85, 20);
 		}
 	};
 	
-	static __move = function(_a, _b) {
+	static __Move = function(_a, _b) {
 		var _keys = struct_get_names(_a);
 		var _i = 0; repeat (array_length(_keys)) {
 			var _key = _keys[_i];
 			var _value = _a[$ _key];
 			if (is_struct(_value)) {
-				__move(_value, _b[$ _key]);
+				__Move(_value, _b[$ _key]);
 			}
 			else {
 				_b[$ _key] = _value;
@@ -77,14 +77,14 @@ function Figgy() {
 		}
 	};
 	
-	static __saveDelta = function(_current, _default) {
+	static __SaveDelta = function(_current, _default) {
         var _names = struct_get_names(_current);
         var _i = 0; repeat (array_length(_names)) {
             var _name = _names[_i];
             var _currentValue = _current[$ _name];
             var _defaultValue = _default[$ _name];
             if (is_struct(_currentValue)) {
-                __saveDelta(_currentValue, _defaultValue);
+                __SaveDelta(_currentValue, _defaultValue);
                 if (struct_names_count(_currentValue) == 0) {
                     struct_remove(_current, _name);
                 }
@@ -95,11 +95,11 @@ function Figgy() {
             _i++;
         }
     };
-    static __saveRaw = function(_path) {
+    static __SaveRaw = function(_path) {
 		var _data = __current;
 		if (FIGGY_FILE_DELTA) {
 			_data = variable_clone(_data);
-			__saveDelta(_data, __default);
+			__SaveDelta(_data, __default);
 		}
         
         var _string = json_stringify(_data, FIGGY_FILE_PRETTIFY);
@@ -122,23 +122,23 @@ function Figgy() {
         buffer_save(_saveBuffer, _path);
         buffer_delete(_saveBuffer);
     };
-    static __save = function(_log = true) {
+    static __Save = function(_log = true) {
         if (_log) {
             __FIGGY_BENCH_START;
         }
         
         var _path = __FIGGY_FILE_PATH;
-        __saveRaw(_path);
-        __refreshLastSave();
+        __SaveRaw(_path);
+        __RefreshLastSave();
         
         if (_log) {
-            __figgyLogTimed($"SAVE: success at \"{_path}\"");
+            __FiggyLogTimed($"SAVE: success at \"{_path}\"");
         }
         
         return self;
     };
 	
-	static __loadProcess = function(_new, _current) {
+	static __LoadProcess = function(_new, _current) {
         var _names = struct_get_names(_new);
         var _i = 0; repeat (array_length(_names)) {
             var _name = _names[_i];
@@ -146,7 +146,7 @@ function Figgy() {
             var _currentValue = _current[$ _name];
             if (typeof(_newValue) == typeof(_currentValue)) {
                 if (is_struct(_newValue)) {
-                    __loadProcess(_newValue, _currentValue);
+                    __LoadProcess(_newValue, _currentValue);
                 }
                 else {
                     _current[$ _name] = _newValue;
@@ -155,7 +155,7 @@ function Figgy() {
             _i++;
         }
     };
-    static __load = function(_path = __FIGGY_FILE_PATH, _mainLoad = true) {
+    static __Load = function(_path = __FIGGY_FILE_PATH, _mainLoad = true) {
         try {
             if (_mainLoad) {
                 __FIGGY_BENCH_START;
@@ -173,7 +173,7 @@ function Figgy() {
                 
                 if (not FIGGY_FILE_OBFUSCATE) {
                     _flippedObfuscate = true;
-                    __figgyLog($"LOAD: obfuscation flipped, file deobfuscated");
+                    __FiggyLog($"LOAD: obfuscation flipped, file deobfuscated");
                 }
             }
             catch (_) {
@@ -182,31 +182,31 @@ function Figgy() {
                 
                 if (FIGGY_FILE_OBFUSCATE) {
                     _flippedObfuscate = true;
-                    __figgyLog($"LOAD: obfuscation flipped, file obfuscated");
+                    __FiggyLog($"LOAD: obfuscation flipped, file obfuscated");
                 }
             }
             buffer_delete(_buffer);
             
-            __loadProcess(_data, __current);
+            __LoadProcess(_data, __current);
             
             if (FIGGY_IN_IDE and _mainLoad and _flippedObfuscate) {
-                __save(false);
-                __figgyLog("LOAD: file re-saved");
+                __Save(false);
+                __FiggyLog("LOAD: file re-saved");
             }
             
             if (_mainLoad) {
-                __figgyLogTimed($"LOAD: success at \"{_path}\"");
+                __FiggyLogTimed($"LOAD: success at \"{_path}\"");
             }
         } 
         catch (_) {
             if (FIGGY_IN_IDE) {
-                __save(false);
-                __figgyLog($"LOAD: fail at \"{_path}\". Initialized to Default");
+                __Save(false);
+                __FiggyLog($"LOAD: fail at \"{_path}\". Initialized to Default");
             }
         }
     };
 	
-	static __refreshLastSave = function() {
+	static __RefreshLastSave = function() {
 		__lastSave = variable_clone(__current);
 	};
 	
@@ -223,13 +223,13 @@ function Figgy() {
 	/// @desc Scope Widget: creates a struct at the Root level, represented as a DBG View.
 	/// Once called, the Root scope becomes inaccessible. All following Widgets will be created in the context of the current Window.
 	/// Call this method again to switch the scope to another Window.
-	static window = function(_name, _visible = FIGGY_WINDOW_DEFAULT_START_VISIBLE, _x = FIGGY_WINDOW_DEFAULT_X, _y = FIGGY_WINDOW_DEFAULT_Y, _w = FIGGY_WINDOW_DEFAULT_WIDTH, _h = FIGGY_WINDOW_DEFAULT_HEIGHT) {
+	static Window = function(_name, _visible = FIGGY_WINDOW_DEFAULT_START_VISIBLE, _x = FIGGY_WINDOW_DEFAULT_X, _y = FIGGY_WINDOW_DEFAULT_Y, _w = FIGGY_WINDOW_DEFAULT_WIDTH, _h = FIGGY_WINDOW_DEFAULT_HEIGHT) {
 		__FIGGY_RAWNAME;
 		dbg_view($"{FIGGY_WINDOW_DEFAULT_NAME}: {_name}", _visible, _x, _y, _w, _h);
 		__rootScope = __current;
 		__windowSectioned = false;
 		__FIGGY_SECTION;
-		__initControls();
+		__InitControls();
 		__windowed = true;
 		
 		return self;
@@ -240,7 +240,7 @@ function Figgy() {
 	/// @desc Scope Widget: creates a struct at the current scope (Root/Window), represented as a DBG Section.
 	/// Once called, the previous non-Section scope (Root or Window) becomes inaccessible. All following Widgets will be created in the context of the current Section.
 	/// Call this method again to switch the scope to another Section.
-	static section = function(_name, _open = FIGGY_SECTION_DEFAULT_OPEN) {
+	static Section = function(_name, _open = FIGGY_SECTION_DEFAULT_OPEN) {
 		__FIGGY_CATCH_WINDOW;
 		__FIGGY_RAWNAME;
 		dbg_section(_name, _open);
@@ -255,7 +255,7 @@ function Figgy() {
 	/// @desc Scope Widget: creates a struct at the current scope (Root, Window or Section), represented as a DBG Text Separator.
 	/// Once called, all following Widgets will be created in the context of the current Group.
 	/// Call Figgy.ungroup() to return to the previous scope (Root, Window or Section).
-	static group = function(_name, _align = FIGGY_GROUP_DEFAULT_ALIGN) {
+	static Group = function(_name, _align = FIGGY_GROUP_DEFAULT_ALIGN) {
 		__FIGGY_CATCH_WINDOW;
 		__FIGGY_RAWNAME;
 		dbg_text_separator($"{FIGGY_GROUP_DEFAULT_NAME_PREFIX}{_name}", _align);
@@ -268,7 +268,7 @@ function Figgy() {
 	
 	/// @param {Bool} separate=[false] Whether to add a separator after the current (if any) group (true) or not (false).
 	/// @desc Moves the scope one step back, landing on the previous scope (Root, Window or Section).
-	static ungroup = function() {
+	static Ungroup = function() {
 		separator();
 		__scope = __section;
 		
@@ -285,7 +285,7 @@ function Figgy() {
 	/// @param {Real.Int} step=[FIGGY_INT_DEFAULT_STEP] Step value.
 	/// @param {Func} onChange=[FIGGY_CHANGES_DEFAULT_CALLBACK] The function to call when the value is changed.
 	/// @desc Value Widget: creates a Real value in the current scope (Root, Window, Section or Group), represented as a DBG Slider.
-	static int = function(_name, _default, _min, _max, _step = FIGGY_INT_DEFAULT_STEP, _onChange = FIGGY_CHANGES_DEFAULT_CALLBACK) {
+	static Int = function(_name, _default, _min, _max, _step = FIGGY_INT_DEFAULT_STEP, _onChange = FIGGY_CHANGES_DEFAULT_CALLBACK) {
 		__FIGGY_WIDGET;
 		dbg_slider_int(_ref, _min, _max, _name, _step);
 		
@@ -299,7 +299,7 @@ function Figgy() {
 	/// @param {Real} step=[FIGGY_FLOAT_DEFAULT_STEP] Step value.
 	/// @param {Func} onChange=[FIGGY_CHANGES_DEFAULT_CALLBACK] The function to call when the value is changed.
 	/// @desc Value Widget: creates a real value in the current scope (Root, Window, Section or Group), represented as a DBG Float Slider.
-	static float = function(_name, _default, _from, _to, _step = FIGGY_FLOAT_DEFAULT_STEP, _onChange = FIGGY_CHANGES_DEFAULT_CALLBACK) {
+	static Float = function(_name, _default, _from, _to, _step = FIGGY_FLOAT_DEFAULT_STEP, _onChange = FIGGY_CHANGES_DEFAULT_CALLBACK) {
 		__FIGGY_WIDGET;
 		dbg_slider(_ref, _from, _to, _name, _step);
 		
@@ -310,7 +310,7 @@ function Figgy() {
 	/// @param {Bool} default The default value.
 	/// @param {Func} onChange=[FIGGY_CHANGES_DEFAULT_CALLBACK] The function to call when the value is changed.
 	/// @desc Value Widget: creates a boolean value in the current scope (Root, Window, Section or Group), represented as a DBG Checkbox.
-	static boolean = function(_name, _default, _onChange = FIGGY_CHANGES_DEFAULT_CALLBACK) {
+	static Boolean = function(_name, _default, _onChange = FIGGY_CHANGES_DEFAULT_CALLBACK) {
 		__FIGGY_WIDGET;
 		dbg_checkbox(_ref, _name);
 		
@@ -321,7 +321,7 @@ function Figgy() {
 	/// @param {String} default The default value.
 	/// @param {Func} onChange=[FIGGY_CHANGES_DEFAULT_CALLBACK] The function to call when the value is changed.
 	/// @desc Value Widget: creates a string value in the current scope (Root, Window, Section or Group), represented as a DBG Text Input.
-	static text = function(_name, _default, _onChange = FIGGY_CHANGES_DEFAULT_CALLBACK) {
+	static Text = function(_name, _default, _onChange = FIGGY_CHANGES_DEFAULT_CALLBACK) {
 		__FIGGY_WIDGET;
 		dbg_text_input(_ref, _name);
 		
@@ -334,7 +334,7 @@ function Figgy() {
 	/// @param {Array<String>} names=[values] The array of option names.
 	/// @param {Func} onChange=[FIGGY_CHANGES_DEFAULT_CALLBACK] The function to call when the value is changed.
 	/// @desc Value Widget: creates a <Any> value in the current scope (Root, Window, Section or Group), represented as a DBG Dropdown.
-	static multi = function(_name, _default, _values, _names = _values, _onChange = FIGGY_CHANGES_DEFAULT_CALLBACK) {
+	static Multi = function(_name, _default, _values, _names = _values, _onChange = FIGGY_CHANGES_DEFAULT_CALLBACK) {
 		__FIGGY_WIDGET;
 		dbg_drop_down(_ref, _values, _names, _name);
 		
@@ -345,7 +345,7 @@ function Figgy() {
 	/// @param {Real,Constant.Color} default The default value.
 	/// @param {Func} onChange=[FIGGY_CHANGES_DEFAULT_CALLBACK] The function to call when the value is changed.
 	/// @desc Value Widget: creates a color value in the current scope (Root, Window, Section or Group), represented as a DBG Color Picker.
-	static color = function(_name, _default, _onChange = FIGGY_CHANGES_DEFAULT_CALLBACK) {
+	static Color = function(_name, _default, _onChange = FIGGY_CHANGES_DEFAULT_CALLBACK) {
 		__FIGGY_WIDGET;
 		dbg_colour(_ref, _name);
 		
@@ -360,7 +360,7 @@ function Figgy() {
 	/// @param {Real} width=[auto dbg default] The button width.
 	/// @param {Real} height=[auto dbg default] The button height.
 	/// @desc Decor Widget: creates a button, represented by DBG Button.
-	static button = function(_name, _callback, _w = undefined, _h = undefined) {
+	static Button = function(_name, _callback, _w = undefined, _h = undefined) {
 		dbg_button(_name, _callback, _w, _h);
 		
 		return self;
@@ -368,7 +368,7 @@ function Figgy() {
 	
 	/// @param {String} string The comment string.
 	/// @desc Decor Widget: creates a text comment, represented by DBG Text.
-	static comment = function(_string) {
+	static Comment = function(_string) {
 		dbg_text(" " + _string);
 		
 		return self;
@@ -377,7 +377,7 @@ function Figgy() {
 	/// @param {String} name=[] The separator name.
 	/// @param {Enum.FIGGY_GROUP_ALIGN} align=[FIGGY_GROUP_DEFAULT_ALIGN] The separator name alignment.
 	/// @desc Decor Widget: creates a separator, represented by DBG Separator with an optional name.
-	static separator = function(_name = "", _align = FIGGY_SEPARATOR_DEFAULT_ALIGN) {
+	static Separator = function(_name = "", _align = FIGGY_SEPARATOR_DEFAULT_ALIGN) {
 		dbg_text_separator(_name, _align);
 		
 		return self;
@@ -388,32 +388,32 @@ function Figgy() {
 	
 	/// @param {String} path=[prompt] The path to import the config file from.
 	/// @returns {Struct.Figgy}
-	static import = function(_path = undefined) {
+	static Import = function(_path = undefined) {
 		_path ??= get_open_filename_ext(__FIGGY_FILE_FILTER, __FIGGY_FILE_NAME, "", "Figgy: Import Config");
 		if (_path == "") {
-			__figgyLog("IMPORT: canceled");
+			__FiggyLog("IMPORT: canceled");
 			return undefined;
 		}
 		
 		__FIGGY_BENCH_START;
-		__load(_path, false);
-		__figgyLogTimed($"IMPORT: success at \"{_path}\"");
+		__Load(_path, false);
+		__FiggyLogTimed($"IMPORT: success at \"{_path}\"");
 		
 		return self;
 	};
 	
 	/// @param {String} path=[prompt] The path to import the config file to.
 	/// @returns {Struct.Figgy}
-	static export = function(_path = undefined) {
+	static Export = function(_path = undefined) {
 		_path ??= get_save_filename_ext(__FIGGY_FILE_FILTER, __FIGGY_FILE_NAME, "", "Figgy: Export Config");
 		if (_path == "") {
-			__figgyLog("EXPORT: canceled");
+			__FiggyLog("EXPORT: canceled");
 			return;
 		}
 		
 		__FIGGY_BENCH_START;
-		__saveRaw(_path);
-		__figgyLogTimed($"EXPORT: success at \"{_path}\"");
+		__SaveRaw(_path);
+		__FiggyLogTimed($"EXPORT: success at \"{_path}\"");
 		
 		return self;
 	};
@@ -422,22 +422,22 @@ function Figgy() {
 	#region reset
 	
 	/// @desc Resets the current config to the default.
-	static resetToDefault = function() {
+	static ResetToDefault = function() {
 		__FIGGY_BENCH_START;
-		__move(__default, __current);
-		__changes.__refresh();
-		__figgyLogTimed("RESET TO DEFAULT: completed");
+		__Move(__default, __current);
+		__changes.__Refresh();
+		__FiggyLogTimed("RESET TO DEFAULT: completed");
 	};
 	
 	/// @desc Resets the current config to the last save.
-	static resetToLastSave = function() {
+	static ResetToLastSave = function() {
 		__FIGGY_BENCH_START;
 		if (__lastSave == undefined) {
-			__refreshLastSave();
+			__RefreshLastSave();
 		}
-		__move(__lastSave, __current);
-		__changes.__refresh();
-		__figgyLogTimed("RESET TO LAST SAVE: completed");
+		__Move(__lastSave, __current);
+		__changes.__Refresh();
+		__FiggyLogTimed("RESET TO LAST SAVE: completed");
 	};
 	
 	#endregion
@@ -445,7 +445,7 @@ function Figgy() {
 	
 	/// @returns {Struct}
 	/// @desc Returns the current config.
-	static getCurrent = function() {
+	static GetCurrent = function() {
 		return __current;
 	};
 	

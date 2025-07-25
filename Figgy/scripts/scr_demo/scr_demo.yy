@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"scr_demo",
   "parent":{
-    "name":"Figgy",
-    "path":"Figgy.yyp",
+    "name":"01. Demo",
+    "path":"folders/01. Demo.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

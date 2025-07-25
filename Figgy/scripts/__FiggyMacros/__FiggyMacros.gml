@@ -26,7 +26,7 @@ __scope = __section;
 if (not __windowed) { \
 	__windowed = true; \
 	dbg_view(FIGGY_WINDOW_DEFAULT_NAME, FIGGY_WINDOW_DEFAULT_START_VISIBLE, FIGGY_WINDOW_DEFAULT_X, FIGGY_WINDOW_DEFAULT_Y, FIGGY_WINDOW_DEFAULT_WIDTH, FIGGY_WINDOW_DEFAULT_HEIGHT); \
-	Figgy.__initControls(); \
+	Figgy.__InitControls(); \
 }
 
 #macro __FIGGY_WIDGET \
@@ -39,7 +39,7 @@ __FIGGY_RAWNAME; \
 __scope[$ _rawName] = _default; \
 var _ref = ref_create(__scope, _rawName); \
 if ((FIGGY_CHANGES_ENABLED) and (_onChange != undefined)) { \
-	__changes.__add(__scope, _rawName, _onChange); \
+	__changes.__Add(__scope, _rawName, _onChange); \
 }
 
 #macro __FIGGY_BENCH_START Figgy.__t = get_timer();

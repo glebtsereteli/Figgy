@@ -1,15 +1,15 @@
 /// @feather ignore all
 
-function __figgyLogFree(_message) {
+function __FiggyLogFree(_message) {
 	show_debug_message($"{__FIGGY_LOG_PREFIX} {_message}.");
 }
-function __figgyLog(_message) {
+function __FiggyLog(_message) {
 	if (not FIGGY_DEBUG) return;
-	__figgyLogFree(_message);
+	__FiggyLogFree(_message);
 }
-function __figgyLogTimed(_message) {
+function __FiggyLogTimed(_message) {
 	if (not FIGGY_DEBUG) return;
-	__figgyLog($"{_message}. Took {__FIGGY_BENCH_END} milliseconds");
+	__FiggyLog($"{_message}. Took {__FIGGY_BENCH_END} milliseconds");
 }
 function _figgyError(_message) {
 	static _divider = string_repeat("=", 100);

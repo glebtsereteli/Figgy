@@ -1,2 +1,8 @@
 {
+  "Player":{
+    "Stats":{
+      "Energy":190.0,
+      "Health":210.0
+    }
+  }
 }

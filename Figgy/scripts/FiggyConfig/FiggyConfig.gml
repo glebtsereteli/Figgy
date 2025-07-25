@@ -78,6 +78,6 @@
 
 // The default function to call when a Value Widget value is changed. undefined stands for "no function".
 // The arguments passed to the callback: (newValue, oldValue, variableName).
-#macro FIGGY_CHANGES_DEFAULT_CALLBACK undefined
+#macro FIGGY_CHANGES_DEFAULT_CALLBACK DemoOnChange
 
 #endregion
