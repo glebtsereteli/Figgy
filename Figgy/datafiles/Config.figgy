@@ -3,16 +3,16 @@
     "Health":100.0
   },
   "Player":{
+    "Name":"Geraldine",
     "Color":16776960.0,
     "Stats":{
-      "Health":230.0,
+      "Health":100.0,
       "Energy":100.0,
       "ExtraStrong":true
     },
     "Movement":{
-      "MoveSpeed":3.0,
-      "JumpSpeed":8.0
-    },
-    "Name":"Geraldine"
+      "JumpSpeed":8.0,
+      "MoveSpeed":3.0
+    }
   }
 }

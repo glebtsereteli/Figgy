@@ -3,6 +3,7 @@ function __FiggyChanges() constructor {
 	__pool = [];
 	
 	static __init = function() {
+		if (not FIGGY_CHANGES_ENABLED) return;
 		if (array_length(__pool) == 0) return;
 		
 		call_later(1, time_source_units_frames, function() {
@@ -16,6 +17,8 @@ function __FiggyChanges() constructor {
 		array_push(__pool, _change);
 	};
 	static __refresh = function() {
+		if (not FIGGY_CHANGES_ENABLED) return;
+		
 		array_foreach(__pool, function(_change) {
 			_change.__refresh();
 		});

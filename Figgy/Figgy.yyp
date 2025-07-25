@@ -38,6 +38,7 @@
     {"id":{"name":"FiggyConfig","path":"scripts/FiggyConfig/FiggyConfig.yy",},},
     {"id":{"name":"FiggyEnums","path":"scripts/FiggyEnums/FiggyEnums.yy",},},
     {"id":{"name":"FiggyMain","path":"scripts/FiggyMain/FiggyMain.yy",},},
+    {"id":{"name":"scr_demo","path":"scripts/scr_demo/scr_demo.yy",},},
     {"id":{"name":"scrDemoSetup","path":"scripts/scrDemoSetup/scrDemoSetup.yy",},},
   ],
   "resourceType":"GMProject",

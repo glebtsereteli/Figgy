@@ -33,7 +33,7 @@
 
 // Whether the Figgy window starts visible by default (true) or not (false).
 // Enabled by default when running from the IDE.
-#macro FIGGY_WINDOW_DEFAULT_START_VISIBLE __FIGGY_IN_IDE
+#macro FIGGY_WINDOW_DEFAULT_START_VISIBLE FIGGY_IN_IDE
 
 // Default X position of the Figgy window.
 #macro FIGGY_WINDOW_DEFAULT_X 8
@@ -71,12 +71,13 @@
 // Default .separator() text alignment.
 #macro FIGGY_SEPARATOR_DEFAULT_ALIGN FIGGY_ALIGN.CENTER
 
+// Whether to enable the Changes tracking system (true) or not (false).
+// NOTE: Disable to improve performance at scale.
+// NOTE: It's a good idea to disable this when running the game outside of the IDE.
+#macro FIGGY_CHANGES_ENABLED FIGGY_IN_IDE
+
 // The default function to call when a Value Widget value is changed. undefined stands for "no function".
-#macro FIGGY_DEFAULT_ON_CHANGE figgyOnChange
+// The arguments passed to the callback: (newValue, oldValue, variableName).
+#macro FIGGY_CHANGES_DEFAULT_CALLBACK undefined
 
 #endregion
-
-function figgyOnChange(_new, _old, _name) {
-	show_debug_message($"Changed variable \"{_name}\" from {_old} to {_new}");
-}
- 

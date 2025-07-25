@@ -10,10 +10,8 @@
 #endregion
 #region utility
 
-#macro __FIGGY_IN_IDE (GM_build_type == "run")
-
 #macro __FIGGY_FILE_NAME $"{FIGGY_FILE_NAME}{FIGGY_FILE_EXT}"
-#macro __FIGGY_FILE_PATH $"{__FIGGY_IN_IDE ? ($"{filename_dir(GM_project_filename)}/datafiles/") : ""}{__FIGGY_FILE_NAME}"
+#macro __FIGGY_FILE_PATH $"{FIGGY_IN_IDE ? ($"{filename_dir(GM_project_filename)}/datafiles/") : ""}{__FIGGY_FILE_NAME}"
 #macro __FIGGY_FILE_FILTER $"Figgy Config File|*{FIGGY_FILE_EXT}"
 
 #macro __FIGGY_RAWNAME var _rawName = string_replace_all(_name, " ", "")
@@ -40,7 +38,7 @@ if (not __windowSectioned) { \
 __FIGGY_RAWNAME; \
 __scope[$ _rawName] = _default; \
 var _ref = ref_create(__scope, _rawName); \
-if (_onChange != undefined) { \
+if ((FIGGY_CHANGES_ENABLED) and (_onChange != undefined)) { \
 	__changes.__add(__scope, _rawName, _onChange); \
 }
 
@@ -52,5 +50,6 @@ if (_onChange != undefined) { \
 
 #macro FIGGY_SETUP_START Figgy(); Figgy.__init(function() {
 #macro FIGGY_SETUP_END })
+#macro FIGGY_IN_IDE (GM_build_type == "run")
 
 #endregion
