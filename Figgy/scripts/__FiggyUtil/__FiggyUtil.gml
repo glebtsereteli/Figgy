@@ -1,7 +1,5 @@
 /// @feather ignore all
 
-function __figgyNoop() {}
-
 function __figgyLogFree(_message) {
 	show_debug_message($"{__FIGGY_LOG_PREFIX} {_message}.");
 }

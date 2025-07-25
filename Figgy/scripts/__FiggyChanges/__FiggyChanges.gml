@@ -10,8 +10,6 @@ function __FiggyChanges() constructor {
 				_change.__update();
 			});
 		}, true);
-		
-		show_message(123)
 	};
 	static __add = function(_scope, _name, _callback) {
 		var _change = new __FiggyChange(_scope, _name, _callback);

@@ -39,7 +39,10 @@ if (not __windowSectioned) { \
 } \
 __FIGGY_RAWNAME; \
 __scope[$ _rawName] = _default; \
-var _ref = ref_create(__scope, _rawName);
+var _ref = ref_create(__scope, _rawName); \
+if (_onChange != undefined) { \
+	__changes.__add(__scope, _rawName, _onChange); \
+}
 
 #macro __FIGGY_BENCH_START Figgy.__t = get_timer();
 #macro __FIGGY_BENCH_END ((get_timer() - Figgy.__t) / 1000)

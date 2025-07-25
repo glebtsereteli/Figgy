@@ -283,34 +283,36 @@ function Figgy() {
 	/// @param {Real.Int} min The minimum value.
 	/// @param {Real.Int} min The maximum value.
 	/// @param {Real.Int} step=[FIGGY_INT_DEFAULT_STEP] Step value.
+	/// @param {Func} onChange=[undefined - no function] The function to call when the value is changed.
 	/// @desc Value Widget: creates a Real value in the current scope (Root, Window, Section or Group), represented as a DBG Slider.
-	static int = function(_name, _default, _min, _max, _step = FIGGY_INT_DEFAULT_STEP, _on_change = undefined) {
+	static int = function(_name, _default, _min, _max, _step = FIGGY_INT_DEFAULT_STEP, _onChange = undefined) {
 		__FIGGY_WIDGET;
 		dbg_slider_int(_ref, _min, _max, _name, _step);
-		if (_on_change != undefined) {
-			__changes.__add(__scope, _name, _on_change);
-		}
-		
+				
 		return self;
 	};
 	
 	/// @param {String} name The variable name.
 	/// @param {Real} default The default value.
 	/// @param {Real} min The minimum value.
-	/// @param {Real} min The maximum value.
+	/// @param {Real} max The maximum value.
 	/// @param {Real} step=[FIGGY_FLOAT_DEFAULT_STEP] Step value.
+	/// @param {Func} onChange=[undefined - no function] The function to call when the value is changed.
 	/// @desc Value Widget: creates a real value in the current scope (Root, Window, Section or Group), represented as a DBG Float Slider.
-	static float = function(_name, _default, _from, _to, _step = FIGGY_FLOAT_DEFAULT_STEP) {
+	static float = function(_name, _default, _from, _to, _step = FIGGY_FLOAT_DEFAULT_STEP, _onChange = undefined) {
 		__FIGGY_WIDGET;
 		dbg_slider(_ref, _from, _to, _name, _step);
+		
+		show_message(__changes.__pool)
 		
 		return self;
 	};
 	
 	/// @param {String} name The variable name.
 	/// @param {Bool} default The default value.
+	/// @param {Func} onChange=[undefined - no function] The function to call when the value is changed.
 	/// @desc Value Widget: creates a boolean value in the current scope (Root, Window, Section or Group), represented as a DBG Checkbox.
-	static boolean = function(_name, _default) {
+	static boolean = function(_name, _default, _onChange = undefined) {
 		__FIGGY_WIDGET;
 		dbg_checkbox(_ref, _name);
 		
@@ -319,8 +321,9 @@ function Figgy() {
 	
 	/// @param {String} name The variable name.
 	/// @param {String} default The default value.
+	/// @param {Func} onChange=[undefined - no function] The function to call when the value is changed.
 	/// @desc Value Widget: creates a string value in the current scope (Root, Window, Section or Group), represented as a DBG Text Input.
-	static text = function(_name, _default) {
+	static text = function(_name, _default, _onChange = undefined) {
 		__FIGGY_WIDGET;
 		dbg_text_input(_ref, _name);
 		
@@ -331,8 +334,9 @@ function Figgy() {
 	/// @param {Any} default The default value.
 	/// @param {Array<Any>} values The array of option values.
 	/// @param {Array<String>} names=[values] The array of option names.
+	/// @param {Func} onChange=[undefined - no function] The function to call when the value is changed.
 	/// @desc Value Widget: creates a <Any> value in the current scope (Root, Window, Section or Group), represented as a DBG Dropdown.
-	static multi = function(_name, _default, _values, _names = _values) {
+	static multi = function(_name, _default, _values, _names = _values, _onChange = undefined) {
 		__FIGGY_WIDGET;
 		dbg_drop_down(_ref, _values, _names, _name);
 		
@@ -341,8 +345,9 @@ function Figgy() {
 	
 	/// @param {String} name The variable name.
 	/// @param {Real,Constant.Color} default The default value.
+	/// @param {Func} onChange=[undefined - no function] The function to call when the value is changed.
 	/// @desc Value Widget: creates a color value in the current scope (Root, Window, Section or Group), represented as a DBG Color Picker.
-	static color = function(_name, _default) {
+	static color = function(_name, _default, _onChange = undefined) {
 		__FIGGY_WIDGET;
 		dbg_colour(_ref, _name);
 		
