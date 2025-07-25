@@ -33,6 +33,7 @@ function Figgy() {
 		}
 		
 		__load();
+		__changes.__init();
 	};
 	static __initControls = function() {
 		dbg_section(FIGGY_CONTROLS_NAME, FIGGY_CONTROLS_OPEN);

@@ -6,7 +6,7 @@ Figgy.section("Player"); {
 	Figgy.color("Color", c_aqua);
 	Figgy.group("Stats");
 		Figgy.int("Health", 100, 0, 300, 10, function(_new, _old) {
-			show_debug_message($"Player Health changed from {_old} to {_new}");
+			show_debug_message($"Player Health changed from {_old} to {_new}.");
 		});
 		Figgy.int("Energy", 100, 0, 300, 10);
 		Figgy.boolean("Extra Strong", true);

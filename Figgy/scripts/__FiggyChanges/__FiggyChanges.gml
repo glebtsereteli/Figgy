@@ -2,16 +2,21 @@
 function __FiggyChanges() constructor {
 	__pool = [];
 	
+	static __init = function() {
+		if (array_length(__pool) == 0) return;
+		
+		call_later(1, time_source_units_frames, function() {
+			array_foreach(__pool, function(_change) {
+				_change.__update();
+			});
+		}, true);
+		
+		show_message(123)
+	};
 	static __add = function(_scope, _name, _callback) {
 		var _change = new __FiggyChange(_scope, _name, _callback);
 		array_push(__pool, _change);
 	};
-	
-	call_later(1, time_source_units_frames, function() {
-		array_foreach(__pool, function(_change) {
-			_change.__update();
-		});
-	}, true);
 }
 function __FiggyChange(_scope, _name, _callback) constructor {
 	__scope = _scope;
