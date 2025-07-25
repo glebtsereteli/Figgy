@@ -1,0 +1,33 @@
+
+function __FiggyChanges() constructor {
+	__pool = [];
+	
+	static __add = function(_scope, _name, _callback) {
+		var _change = new __FiggyChange(_scope, _name, _callback);
+		array_push(__pool, _change);
+	};
+	
+	call_later(1, time_source_units_frames, function() {
+		array_foreach(__pool, function(_change) {
+			_change.__update();
+		});
+	}, true);
+}
+function __FiggyChange(_scope, _name, _callback) constructor {
+	__scope = _scope;
+	__name = _name;
+	__callback = _callback;
+	__value = __get();
+	
+	static __update = function() {
+		var _new = __get();
+		if (_new == __value) return;
+		
+		__callback(_new, __value);
+		__value = _new;
+	};
+	
+	static __get = function() {
+		return __scope[$ __name];
+	};
+}

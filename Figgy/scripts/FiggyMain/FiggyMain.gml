@@ -8,7 +8,8 @@ function Figgy() {
 	static __section = undefined;
 	static __windowed = false;
 	static __windowSectioned = false;
-	static __t = undefined;
+	
+	static __changes = new __FiggyChanges();
 	
 	static __current = undefined;
 	static __default = undefined;
@@ -282,9 +283,12 @@ function Figgy() {
 	/// @param {Real.Int} min The maximum value.
 	/// @param {Real.Int} step=[FIGGY_INT_DEFAULT_STEP] Step value.
 	/// @desc Value Widget: creates a Real value in the current scope (Root, Window, Section or Group), represented as a DBG Slider.
-	static int = function(_name, _default, _min, _max, _step = FIGGY_INT_DEFAULT_STEP) {
+	static int = function(_name, _default, _min, _max, _step = FIGGY_INT_DEFAULT_STEP, _on_change = undefined) {
 		__FIGGY_WIDGET;
 		dbg_slider_int(_ref, _min, _max, _name, _step);
+		if (_on_change != undefined) {
+			__changes.__add(__scope, _name, _on_change);
+		}
 		
 		return self;
 	};
