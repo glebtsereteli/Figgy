@@ -16,12 +16,6 @@
 
 #macro __FIGGY_RAWNAME var _rawName = string_replace_all(_name, " ", "")
 
-#macro __FIGGY_SECTION \
-__scope = __rootScope; \
-__section = {}; \
-__scope[$ _name] = __section; \
-__scope = __section;
-
 #macro __FIGGY_CATCH_WINDOW \
 if (not __windowed) { \
 	__windowed = true; \
