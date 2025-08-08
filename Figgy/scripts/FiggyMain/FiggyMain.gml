@@ -10,6 +10,7 @@ function Figgy() {
 	static __section = undefined;
 	
 	static __changes = new __FiggyChanges();
+	static __onChange = FIGGY_CHANGES_DEFAULT_CALLBACK;
 	
 	static __current = undefined;
 	static __default = undefined;
@@ -238,6 +239,7 @@ function Figgy() {
 	};
 	
 	/// @param {String} name The section name.
+	/// @param {Bool} scoped=[true] Whether the section creates a new scope (true) or not (false).
 	/// @param {Bool} open=[FIGGY_SECTION_DEFAULT_OPEN] Whether the section starts open (true) or not (false).
 	/// @desc Scope Widget.
 	/// IF SCOPED, creates a struct at the current scope (Root/Window), represented as a DBG Section.
@@ -259,6 +261,7 @@ function Figgy() {
 	};
 	
 	/// @param {String} name The group name.
+	/// @param {Bool} scoped=[true] Whether the section creates a new scope (true) or not (false).
 	/// @param {Enum.FIGGY_GROUP_ALIGN} align=[FIGGY_GROUP_DEFAULT_ALIGN] The group name alignment.
 	/// @desc Scope Widget.
 	/// IF SCOPED: creates a struct at the current scope (Root, Window or Section), represented as a DBG Text Separator.
@@ -296,9 +299,9 @@ function Figgy() {
 	/// @param {Real.Int} min The minimum value.
 	/// @param {Real.Int} min The maximum value.
 	/// @param {Real.Int} step=[FIGGY_INT_DEFAULT_STEP] Step value.
-	/// @param {Func} onChange=[FIGGY_CHANGES_DEFAULT_CALLBACK] The function to call when the value is changed.
+	/// @param {Func} [current onChange callback, defaults to FIGGY_CHANGES_DEFAULT_CALLBACK] The function to call when the value is changed.
 	/// @desc Value Widget: creates a Real value in the current scope (Root, Window, Section or Group), represented as a DBG Slider.
-	static Int = function(_name, _default, _min, _max, _step = FIGGY_INT_DEFAULT_STEP, _onChange = FIGGY_CHANGES_DEFAULT_CALLBACK) {
+	static Int = function(_name, _default, _min, _max, _step = FIGGY_INT_DEFAULT_STEP, _onChange = __onChange) {
 		__FIGGY_WIDGET;
 		dbg_slider_int(_ref, _min, _max, _name, _step);
 		
@@ -310,9 +313,9 @@ function Figgy() {
 	/// @param {Real} min The minimum value.
 	/// @param {Real} max The maximum value.
 	/// @param {Real} step=[FIGGY_FLOAT_DEFAULT_STEP] Step value.
-	/// @param {Func} onChange=[FIGGY_CHANGES_DEFAULT_CALLBACK] The function to call when the value is changed.
+	/// @param {Func} [current onChange callback, defaults to FIGGY_CHANGES_DEFAULT_CALLBACK] The function to call when the value is changed.
 	/// @desc Value Widget: creates a real value in the current scope (Root, Window, Section or Group), represented as a DBG Float Slider.
-	static Float = function(_name, _default, _from, _to, _step = FIGGY_FLOAT_DEFAULT_STEP, _onChange = FIGGY_CHANGES_DEFAULT_CALLBACK) {
+	static Float = function(_name, _default, _from, _to, _step = FIGGY_FLOAT_DEFAULT_STEP, _onChange = __onChange) {
 		__FIGGY_WIDGET;
 		dbg_slider(_ref, _from, _to, _name, _step);
 		
@@ -321,9 +324,9 @@ function Figgy() {
 	
 	/// @param {String} name The variable name.
 	/// @param {Bool} default The default value.
-	/// @param {Func} onChange=[FIGGY_CHANGES_DEFAULT_CALLBACK] The function to call when the value is changed.
+	/// @param {Func} onChange=[current onChange callback, defaults to FIGGY_CHANGES_DEFAULT_CALLBACK] The function to call when the value is changed.
 	/// @desc Value Widget: creates a boolean value in the current scope (Root, Window, Section or Group), represented as a DBG Checkbox.
-	static Boolean = function(_name, _default, _onChange = FIGGY_CHANGES_DEFAULT_CALLBACK) {
+	static Boolean = function(_name, _default, _onChange = __onChange) {
 		__FIGGY_WIDGET;
 		dbg_checkbox(_ref, _name);
 		
@@ -332,9 +335,9 @@ function Figgy() {
 	
 	/// @param {String} name The variable name.
 	/// @param {String} default The default value.
-	/// @param {Func} onChange=[FIGGY_CHANGES_DEFAULT_CALLBACK] The function to call when the value is changed.
+	/// @param {Func} [current onChange callback, defaults to FIGGY_CHANGES_DEFAULT_CALLBACK] The function to call when the value is changed.
 	/// @desc Value Widget: creates a string value in the current scope (Root, Window, Section or Group), represented as a DBG Text Input.
-	static Text = function(_name, _default, _onChange = FIGGY_CHANGES_DEFAULT_CALLBACK) {
+	static Text = function(_name, _default, _onChange = __onChange) {
 		__FIGGY_WIDGET;
 		dbg_text_input(_ref, _name);
 		
@@ -345,9 +348,9 @@ function Figgy() {
 	/// @param {Any} default The default value.
 	/// @param {Array<Any>} values The array of option values.
 	/// @param {Array<String>} names=[values] The array of option names.
-	/// @param {Func} onChange=[FIGGY_CHANGES_DEFAULT_CALLBACK] The function to call when the value is changed.
+	/// @param {Func} [current onChange callback, defaults to FIGGY_CHANGES_DEFAULT_CALLBACK] The function to call when the value is changed.
 	/// @desc Value Widget: creates a <Any> value in the current scope (Root, Window, Section or Group), represented as a DBG Dropdown.
-	static Multi = function(_name, _default, _values, _names = _values, _onChange = FIGGY_CHANGES_DEFAULT_CALLBACK) {
+	static Multi = function(_name, _default, _values, _names = _values, _onChange = __onChange) {
 		__FIGGY_WIDGET;
 		dbg_drop_down(_ref, _values, _names, _name);
 		
@@ -356,9 +359,9 @@ function Figgy() {
 	
 	/// @param {String} name The variable name.
 	/// @param {Real,Constant.Color} default The default value.
-	/// @param {Func} onChange=[FIGGY_CHANGES_DEFAULT_CALLBACK] The function to call when the value is changed.
+	/// @param {Func} [current onChange callback, defaults to FIGGY_CHANGES_DEFAULT_CALLBACK] The function to call when the value is changed.
 	/// @desc Value Widget: creates a color value in the current scope (Root, Window, Section or Group), represented as a DBG Color Picker.
-	static Color = function(_name, _default, _onChange = FIGGY_CHANGES_DEFAULT_CALLBACK) {
+	static Color = function(_name, _default, _onChange = __onChange) {
 		__FIGGY_WIDGET;
 		dbg_colour(_ref, _name);
 		
@@ -369,7 +372,7 @@ function Figgy() {
 	#region widgets: decor
 	
 	/// @param {String} name The button name.
-	/// @param {Func} callback The callback to trigger on press.
+	/// @param {Func} callback The function to trigger on press.
 	/// @param {Real} width=[auto dbg default] The button width.
 	/// @param {Real} height=[auto dbg default] The button height.
 	/// @desc Decor Widget: creates a button, represented by DBG Button.
@@ -392,6 +395,28 @@ function Figgy() {
 	/// @desc Decor Widget: creates a separator, represented by DBG Separator with an optional name.
 	static Separator = function(_name = "", _align = FIGGY_SEPARATOR_DEFAULT_ALIGN) {
 		dbg_text_separator(_name, _align);
+		
+		return self;
+	};
+	
+	#endregion
+	#region onChange
+	
+	/// @func onChangeSet()
+	/// @param {Func} callback The function to trigger on value change.
+	/// @desc Set the default onChange callback for all following Value Widgets.
+	/// Call Figgy.onChangeReset() to reset it.
+	static onChangeSet = function(_callback) {
+		__onChange = _callback;
+		
+		return self;
+	};
+	
+	/// @func onChangeReset()
+	/// @desc Resets the default onChange callback back to FIGGY_CHANGES_DEFAULT_CALLBACK.
+	/// @returns {Struct.Figgy} self
+	static onChangeReset = function() {
+		__onChange = FIGGY_CHANGES_DEFAULT_CALLBACK;
 		
 		return self;
 	};

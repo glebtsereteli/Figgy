@@ -1,6 +1,7 @@
 
 function __FiggyChanges() constructor {
 	__pool = [];
+	__callback = FIGGY_CHANGES_DEFAULT_CALLBACK;
 	
 	static __Init = function() {
 		if (not FIGGY_CHANGES_ENABLED) return;
