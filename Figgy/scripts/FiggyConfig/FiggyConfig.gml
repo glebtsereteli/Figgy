@@ -56,9 +56,6 @@
 // Whether .section()s are open by default (true) or not (false).
 #macro FIGGY_SECTION_DEFAULT_OPEN true
 
-// Defaul .group() name prefix.
-#macro FIGGY_GROUP_DEFAULT_NAME_PREFIX ""
-
 // Default .group() text alignment.
 #macro FIGGY_GROUP_DEFAULT_ALIGN FIGGY_ALIGN.CENTER
 

@@ -239,16 +239,20 @@ function Figgy() {
 	
 	/// @param {String} name The section name.
 	/// @param {Bool} open=[FIGGY_SECTION_DEFAULT_OPEN] Whether the section starts open (true) or not (false).
-	/// @desc Scope Widget: creates a struct at the current scope (Root/Window), represented as a DBG Section.
+	/// @desc Scope Widget.
+	/// IF SCOPED, creates a struct at the current scope (Root/Window), represented as a DBG Section.
 	/// Once called, the previous non-Section scope (Root or Window) becomes inaccessible. All following Widgets will be created in the context of the current Section.
 	/// Call this method again to switch the scope to another Section.
-	static Section = function(_name, _open = FIGGY_SECTION_DEFAULT_OPEN) {
+	/// IF NOT SCOPED, acts as a purely visual DBG Section.
+	static Section = function(_name, _scoped = true, _open = FIGGY_SECTION_DEFAULT_OPEN) {
 		__FIGGY_CATCH_WINDOW;
 		__FIGGY_RAWNAME;
-		dbg_section(_name, _open);
-		__section = {};
-		__window[$ _name] = __section;
-		__scope = __section;
+		dbg_section(_name + (_scoped ? "" : " [NO SCOPE]"), _open);
+		if (_scoped) {
+			__section = {};
+			__window[$ _rawName] = __section;
+			__scope = __section;
+		}
 		__windowSectioned = true;
 		
 		return self;
@@ -256,17 +260,21 @@ function Figgy() {
 	
 	/// @param {String} name The group name.
 	/// @param {Enum.FIGGY_GROUP_ALIGN} align=[FIGGY_GROUP_DEFAULT_ALIGN] The group name alignment.
-	/// @desc Scope Widget: creates a struct at the current scope (Root, Window or Section), represented as a DBG Text Separator.
+	/// @desc Scope Widget.
+	/// IF SCOPED: creates a struct at the current scope (Root, Window or Section), represented as a DBG Text Separator.
 	/// Once called, all following Widgets will be created in the context of the current Group.
 	/// Call Figgy.ungroup() to return to the previous scope (Root, Window or Section).
-	static Group = function(_name, _align = FIGGY_GROUP_DEFAULT_ALIGN) {
+	/// IF NOT SCOPED, acts as a purely visual DBG Text Separator.
+	static Group = function(_name, _scoped = true, _align = FIGGY_GROUP_DEFAULT_ALIGN) {
 		__FIGGY_CATCH_WINDOW;
 		__FIGGY_RAWNAME;
-		dbg_text_separator($"{FIGGY_GROUP_DEFAULT_NAME_PREFIX}{_name}", _align);
-		var _group = {};
-		var _scope = __section ?? __window;
-		_scope[$ _name] = _group;
-		__scope = _group;
+		dbg_text_separator(_name + (_scoped ? "" : " [NO SCOPE]"), _align);
+		if (_scoped) {
+			var _group = {};
+			var _scope = __section ?? __window;
+			_scope[$ _rawName] = _group;
+			__scope = _group;
+		}
 		
 		return self;
 	};
