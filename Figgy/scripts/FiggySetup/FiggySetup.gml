@@ -1,6 +1,6 @@
 
 function FiggySetup() {
-	Figgy.Window("Player");
+	Figgy.Window("Player", true, true);
 		Figgy.Text("Name", "Geraldine");
 		Figgy.Color("Color", c_aqua);
 		Figgy.Section("Stats");

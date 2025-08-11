@@ -1,7 +1,9 @@
 /// @feather ignore all
 
 function Figgy() {
-	#region __private
+	#region __Private
+	
+	static __inIDE = (GM_build_type == "run");
 	
 	static __scope = undefined;
 	static __window = undefined;
@@ -37,7 +39,7 @@ function Figgy() {
 	};
 	static __InitControls = function() {
 		dbg_section(FIGGY_CONTROLS_NAME, FIGGY_CONTROLS_OPEN);
-		if (FIGGY_IN_IDE) {
+		if (Figgy.__inIDE) {
 			dbg_button("Save", function() {
 				__Save();
 			}, 55, 20);
@@ -54,7 +56,7 @@ function Figgy() {
 		dbg_button("Default", function() {
 			ResetToDefault();
 		}, 75, 20);
-		if (FIGGY_IN_IDE) {
+		if (Figgy.__inIDE) {
 			dbg_same_line();
 			dbg_button("Last Save", function() {
 				ResetToLastSave();
@@ -189,7 +191,7 @@ function Figgy() {
             
             __LoadProcess(_data, __current);
             
-            if (FIGGY_IN_IDE and _mainLoad and _flippedObfuscate) {
+            if (Figgy.__inIDE and _mainLoad and _flippedObfuscate) {
                 __Save(false);
                 __FiggyLog("LOAD: file re-saved");
             }
@@ -199,7 +201,7 @@ function Figgy() {
             }
         } 
         catch (_) {
-            if (FIGGY_IN_IDE) {
+            if (Figgy.__inIDE) {
                 __Save(false);
                 __FiggyLog($"LOAD: fail at \"{_path}\". Initialized to Default");
             }
@@ -212,21 +214,21 @@ function Figgy() {
 	
 	#endregion
 	
-	#region widgets: scope
+	#region Widgets: Scope
 	
 	/// @param {String} name The window name.
-	/// @param {Bool} visible=[FIGGY_WINDOW_DEFAULT_START_VISIBLE] Whether the window should start visible (true) or not (false).
-	/// @param {Real} x=[FIGGY_WINDOW_DEFAULT_X] The x position of the window.
-	/// @param {Real} y=[FIGGY_WINDOW_DEFAULT_Y] The y position of the window.
-	/// @param {Real} width=[FIGGY_WINDOW_DEFAULT_WIDTH] The width of the window.
-	/// @param {Real} height=[FIGGY_WINDOW_DEFAULT_HEIGHT] The height of the window.
+	/// @param {Bool} visible Whether the window should start visible (true) or not (false). (default = FIGGY_WINDOW_DEFAULT_START_VISIBLE)
+	/// @param {Real} x The x position of the window. (default = FIGGY_WINDOW_DEFAULT_X)
+	/// @param {Real} y The y position of the window. (default = FIGGY_WINDOW_DEFAULT_Y)
+	/// @param {Real} width The width of the window. (default = FIGGY_WINDOW_DEFAULT_WIDTH)
+	/// @param {Real} height The height of the window. (default = FIGGY_WINDOW_DEFAULT_HEIGHT)
 	/// @returns {Struct.Figgy}
-	/// @desc Scope Widget: creates a struct at the Root level, represented as a DBG View.
+	/// @desc Scope Widget. Creates a struct at the Root level, represented as a DBG View.
 	/// Once called, the Root scope becomes inaccessible. All following Widgets will be created in the context of the current Window.
 	/// Call this method again to switch the scope to another Window.
 	static Window = function(_name, _visible = FIGGY_WINDOW_DEFAULT_START_VISIBLE, _x = FIGGY_WINDOW_DEFAULT_X, _y = FIGGY_WINDOW_DEFAULT_Y, _w = FIGGY_WINDOW_DEFAULT_WIDTH, _h = FIGGY_WINDOW_DEFAULT_HEIGHT) {
 		__FIGGY_RAWNAME;
-		dbg_view($"{FIGGY_WINDOW_DEFAULT_NAME}: {_name}", _visible, _x, _y, _w, _h);
+		dbg_view($"{FIGGY_WINDOW_NAME}: {_name}", _visible, _x, _y, _w, _h);
 		
 		__section = undefined;
 		__window = {};
@@ -240,18 +242,17 @@ function Figgy() {
 	};
 	
 	/// @param {String} name The section name.
-	/// @param {Bool} scoped=[true] Whether the section creates a new scope (true) or not (false).
-	/// @param {Bool} open=[FIGGY_SECTION_DEFAULT_OPEN] Whether the section starts open (true) or not (false).
+	/// @param {Bool} scoped Whether the section creates a new scope (true) or not (false). (default = true)
+	/// @param {Bool} open Whether the section starts open (true) or not (false). (default = FIGGY_SECTION_DEFAULT_OPEN)
 	/// @returns {Struct.Figgy}
-	/// @desc Scope Widget.
-	/// IF SCOPED, creates a struct at the current scope (Root/Window), represented as a DBG Section.
+	/// @desc Scope Widget. IF SCOPED, creates a struct at the current scope (Root/Window), represented as a DBG Section.
 	/// Once called, the previous non-Section scope (Root or Window) becomes inaccessible. All following Widgets will be created in the context of the current Section.
 	/// Call this method again to switch the scope to another Section.
 	/// IF NOT SCOPED, acts as a purely visual DBG Section.
 	static Section = function(_name, _scoped = true, _open = FIGGY_SECTION_DEFAULT_OPEN) {
 		__FIGGY_CATCH_WINDOW;
 		__FIGGY_RAWNAME;
-		dbg_section(_name + (_scoped ? "" : " [NO SCOPE]"), _open);
+		dbg_section(__FIGGY_SCOPEDNAME, _open);
 		if (_scoped) {
 			__section = {};
 			__window[$ _rawName] = __section;
@@ -263,18 +264,17 @@ function Figgy() {
 	};
 	
 	/// @param {String} name The group name.
-	/// @param {Bool} scoped=[true] Whether the section creates a new scope (true) or not (false).
-	/// @param {Enum.FIGGY_GROUP_ALIGN} align=[FIGGY_GROUP_DEFAULT_ALIGN] The group name alignment.
+	/// @param {Bool} scoped Whether the section creates a new scope (true) or not (false). (default = true)
+	/// @param {Enum.FIGGY_GROUP_ALIGN} align The group name alignment. (default = FIGGY_GROUP_DEFAULT_ALIGN)
 	/// @returns {Struct.Figgy}
-	/// @desc Scope Widget.
-	/// IF SCOPED: creates a struct at the current scope (Root, Window or Section), represented as a DBG Text Separator.
-	/// Once called, all following Widgets will be created in the context of the current Group.
-	/// Call Figgy.ungroup() to return to the previous scope (Root, Window or Section).
+	/// @desc Scope Widget. IF SCOPED: creates a struct at the current scope (Root, Window or Section), represented as a DBG Text Separator.
+	/// Once called, all following Value Widgets will be created in the context of the current Group.
 	/// IF NOT SCOPED, acts as a purely visual DBG Text Separator.
 	static Group = function(_name, _scoped = true, _align = FIGGY_GROUP_DEFAULT_ALIGN) {
 		__FIGGY_CATCH_WINDOW;
+		__FIGGY_CATCH_FIRST_WINDOW_SECTION;
 		__FIGGY_RAWNAME;
-		dbg_text_separator(_name + (_scoped ? "" : " [NO SCOPE]"), _align);
+		dbg_text_separator(__FIGGY_SCOPEDNAME, _align);
 		if (_scoped) {
 			var _group = {};
 			var _scope = __section ?? __window;
@@ -285,27 +285,18 @@ function Figgy() {
 		return self;
 	};
 	
-	/// @param {Bool} separate=[false] Whether to add a separator after the current (if any) group (true) or not (false).
-	/// @returns {Struct.Figgy}
-	/// @desc Moves the scope one step back, landing on the previous scope (Root, Window or Section).
-	static Ungroup = function() {
-		Separator();
-		__scope = __section ?? __window;
-		
-		return self;
-	};
-	
 	#endregion
-	#region widgets: value
+	#region Widgets: Value
 	
 	/// @param {String} name The variable name.
 	/// @param {Real.Int} default The default value.
 	/// @param {Real.Int} min The minimum value.
-	/// @param {Real.Int} min The maximum value.
-	/// @param {Real.Int} step=[FIGGY_INT_DEFAULT_STEP] Step value.
-	/// @param {Func} [current onChange callback, defaults to FIGGY_CHANGES_DEFAULT_CALLBACK] The function to call when the value is changed.
+	/// @param {Real.Int} max The maximum value.
+	/// @param {Real.Int} step Step value. (default = FIGGY_INT_DEFAULT_STEP)
+	/// @param {Func} onChange The function to call when the value is changed. (default = current onChange callback, defaults to FIGGY_CHANGES_DEFAULT_CALLBACK)
 	/// @returns {Struct.Figgy}
 	/// @desc Value Widget: creates a Real value in the current scope (Root, Window, Section or Group), represented as a DBG Slider.
+	/// The onChange callback function receives 3 arguments: (new value, old value, variable name).
 	static Int = function(_name, _default, _min, _max, _step = FIGGY_INT_DEFAULT_STEP, _onChange = __onChange) {
 		__FIGGY_WIDGET;
 		dbg_slider_int(_ref, _min, _max, _name, _step);
@@ -317,10 +308,10 @@ function Figgy() {
 	/// @param {Real} default The default value.
 	/// @param {Real} min The minimum value.
 	/// @param {Real} max The maximum value.
-	/// @param {Real} step=[FIGGY_FLOAT_DEFAULT_STEP] Step value.
-	/// @param {Func} [current onChange callback, defaults to FIGGY_CHANGES_DEFAULT_CALLBACK] The function to call when the value is changed.
+	/// @param {Real} step Step value. (default = FIGGY_FLOAT_DEFAULT_STEP)
 	/// @returns {Struct.Figgy}
-	/// @desc Value Widget: creates a real value in the current scope (Root, Window, Section or Group), represented as a DBG Float Slider.
+	/// @desc Value Widget: creates a Real value in the current scope (Root, Window, Section or Group), represented as a DBG Float Slider.
+	/// The onChange callback function receives 3 arguments: (new value, old value, variable name).
 	static Float = function(_name, _default, _from, _to, _step = FIGGY_FLOAT_DEFAULT_STEP, _onChange = __onChange) {
 		__FIGGY_WIDGET;
 		dbg_slider(_ref, _from, _to, _name, _step);
@@ -330,9 +321,9 @@ function Figgy() {
 	
 	/// @param {String} name The variable name.
 	/// @param {Bool} default The default value.
-	/// @param {Func} onChange=[current onChange callback, defaults to FIGGY_CHANGES_DEFAULT_CALLBACK] The function to call when the value is changed.
 	/// @returns {Struct.Figgy}
-	/// @desc Value Widget: creates a boolean value in the current scope (Root, Window, Section or Group), represented as a DBG Checkbox.
+	/// @desc Value Widget: creates a Boolean value in the current scope (Root, Window, Section or Group), represented as a DBG Checkbox.
+	/// The onChange callback function receives 3 arguments: (new value, old value, variable name).
 	static Boolean = function(_name, _default, _onChange = __onChange) {
 		__FIGGY_WIDGET;
 		dbg_checkbox(_ref, _name);
@@ -342,9 +333,10 @@ function Figgy() {
 	
 	/// @param {String} name The variable name.
 	/// @param {String} default The default value.
-	/// @param {Func} [current onChange callback, defaults to FIGGY_CHANGES_DEFAULT_CALLBACK] The function to call when the value is changed.
+	/// @param {Func} onChange The function to call when the value is changed. (default = current onChange callback, defaults to FIGGY_CHANGES_DEFAULT_CALLBACK)
 	/// @returns {Struct.Figgy}
-	/// @desc Value Widget: creates a string value in the current scope (Root, Window, Section or Group), represented as a DBG Text Input.
+	/// @desc Value Widget: creates a String value in the current scope (Root, Window, Section or Group), represented as a DBG Text Input.
+	/// The onChange callback function receives 3 arguments: (new value, old value, variable name).
 	static Text = function(_name, _default, _onChange = __onChange) {
 		__FIGGY_WIDGET;
 		dbg_text_input(_ref, _name);
@@ -355,10 +347,11 @@ function Figgy() {
 	/// @param {String} name The dropdown name.
 	/// @param {Any} default The default value.
 	/// @param {Array<Any>} values The array of option values.
-	/// @param {Array<String>} names=[values] The array of option names.
-	/// @param {Func} [current onChange callback, defaults to FIGGY_CHANGES_DEFAULT_CALLBACK] The function to call when the value is changed.
+	/// @param {Array<String>} names The array of option names. (default = values)
+	/// @param {Func} onChange The function to call when the value is changed. (default = current onChange callback, defaults to FIGGY_CHANGES_DEFAULT_CALLBACK)
 	/// @returns {Struct.Figgy}
-	/// @desc Value Widget: creates a <Any> value in the current scope (Root, Window, Section or Group), represented as a DBG Dropdown.
+	/// @desc Value Widget: creates an <Any> value in the current scope (Root, Window, Section or Group), represented as a DBG Dropdown.
+	/// The onChange callback function receives 3 arguments: (new value, old value, variable name).
 	static Multi = function(_name, _default, _values, _names = _values, _onChange = __onChange) {
 		__FIGGY_WIDGET;
 		dbg_drop_down(_ref, _values, _names, _name);
@@ -368,9 +361,10 @@ function Figgy() {
 	
 	/// @param {String} name The variable name.
 	/// @param {Real,Constant.Color} default The default value.
-	/// @param {Func} [current onChange callback, defaults to FIGGY_CHANGES_DEFAULT_CALLBACK] The function to call when the value is changed.
+	/// @param {Func} onChange The function to call when the value is changed. (default = current onChange callback, defaults to FIGGY_CHANGES_DEFAULT_CALLBACK)
 	/// @returns {Struct.Figgy}
 	/// @desc Value Widget: creates a color value in the current scope (Root, Window, Section or Group), represented as a DBG Color Picker.
+	/// The onChange callback function receives 3 arguments: (new value, old value, variable name).
 	static Color = function(_name, _default, _onChange = __onChange) {
 		__FIGGY_WIDGET;
 		dbg_colour(_ref, _name);
@@ -379,12 +373,12 @@ function Figgy() {
 	};
 	
 	#endregion
-	#region widgets: decor
+	#region Widgets: Decor
 	
 	/// @param {String} name The button name.
 	/// @param {Func} callback The function to trigger on press.
-	/// @param {Real} width=[auto dbg default] The button width.
-	/// @param {Real} height=[auto dbg default] The button height.
+	/// @param {Real} width The button width. (default = auto dbg default)
+	/// @param {Real} height The button height. (default = auto dbg default)
 	/// @returns {Struct.Figgy}
 	/// @desc Decor Widget: creates a button, represented by DBG Button.
 	static Button = function(_name, _callback, _w = undefined, _h = undefined) {
@@ -402,8 +396,8 @@ function Figgy() {
 		return self;
 	};
 	
-	/// @param {String} name=[] The separator name.
-	/// @param {Enum.FIGGY_GROUP_ALIGN} align=[FIGGY_GROUP_DEFAULT_ALIGN] The separator name alignment.
+	/// @param {String} name The separator name. (default = empty)
+	/// @param {Enum.FIGGY_GROUP_ALIGN} align The separator name alignment. (default = FIGGY_GROUP_DEFAULT_ALIGN)
 	/// @returns {Struct.Figgy}
 	/// @desc Decor Widget: creates a separator, represented by DBG Separator with an optional name.
 	static Separator = function(_name = "", _align = FIGGY_SEPARATOR_DEFAULT_ALIGN) {
@@ -413,12 +407,13 @@ function Figgy() {
 	};
 	
 	#endregion
-	#region onChange
+	#region onChange Callback
 	
 	/// @func onChangeSet()
 	/// @param {Func} callback The function to trigger on value change.
 	/// @returns {Struct.Figgy}
-	/// @desc Set the default onChange callback for all following Value Widgets.
+	/// @desc Sets the default onChange callback for all following Value Widgets.
+	/// The callback function receives 3 arguments: (new value, old value, variable name).
 	/// Call Figgy.onChangeReset() to reset it.
 	static onChangeSet = function(_callback) {
 		__onChange = _callback;
@@ -436,9 +431,9 @@ function Figgy() {
 	};
 	
 	#endregion
-	#region input/output
+	#region Input/Output
 	
-	/// @param {String} path=[prompt] The path to import the config file from.
+	/// @param {String} path The path to import the config file from. (default = undefined, prompt popup)
 	/// @returns {Struct.Figgy}
 	/// @desc Imports an external config file from a custom path.
 	static Import = function(_path = undefined) {
@@ -455,7 +450,7 @@ function Figgy() {
 		return self;
 	};
 	
-	/// @param {String} path=[prompt] The path to import the config file to.
+	/// @param {String} path The path to import the config file to. (default = undefined, prompt popup)
 	/// @returns {Struct.Figgy}
 	/// @desc Exports the current configs into a file at a custom path.
 	static Export = function(_path = undefined) {
@@ -473,7 +468,7 @@ function Figgy() {
 	};
 	
 	#endregion
-	#region reset
+	#region Reset
 	
 	/// @returns {Struct.Figgy}
 	/// @desc Resets the current config to the default.
@@ -501,7 +496,7 @@ function Figgy() {
 	};
 	
 	#endregion
-	#region getters
+	#region Getters
 	
 	/// @returns {Struct}
 	/// @desc Returns the current config.

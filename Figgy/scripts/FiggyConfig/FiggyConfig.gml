@@ -1,12 +1,12 @@
 /// @feather ignore all
 
-// Whether to show debug messages in the Output (true) or not (false).
+// Whether to show debug messages in the Output window (true) or not (false).
 #macro FIGGY_DEBUG true
 
-#region FILE
+#region File
 
 // The config file name.
-#macro FIGGY_FILE_NAME "Config"
+#macro FIGGY_FILE_NAME "config"
 
 // The config file extension.
 #macro FIGGY_FILE_EXT ".figgy"
@@ -26,52 +26,61 @@
 #macro FIGGY_FILE_OBFUSCATE false
 
 #endregion
-#region WIDGETS
+#region Scope Widgets
 
-// Default name for the Figgy window.
-#macro FIGGY_WINDOW_DEFAULT_NAME "Figgy"
+// A. The name of the default window that's created if no .Window()s are used.
+// B. The prefix used for custom .Window()s (e.g. "Figgy: Player").
+#macro FIGGY_WINDOW_NAME "Figgy"
 
-// Whether the Figgy window starts visible by default (true) or not (false).
-// Enabled by default when running from the IDE.
-#macro FIGGY_WINDOW_DEFAULT_START_VISIBLE FIGGY_IN_IDE
+// Whether Figgy windows starts visible by default (true) or not (false).
+#macro FIGGY_WINDOW_DEFAULT_START_VISIBLE false
 
-// Default X position of the Figgy window.
+// Default X position of Figgy windows.
 #macro FIGGY_WINDOW_DEFAULT_X 8
 
-// Default Y position of the Figgy window.
+// Default Y position of Figgy windows.
 #macro FIGGY_WINDOW_DEFAULT_Y 27
 
-// Default width of the Figgy window.
+// Default width of Figgy windows.
 #macro FIGGY_WINDOW_DEFAULT_WIDTH 400
 
-// Default height of the Figgy window.
+// Default height of Figgy windows.
 #macro FIGGY_WINDOW_DEFAULT_HEIGHT 600
 
-// Name of the controls section.
+// Name of the Controls section.
 #macro FIGGY_CONTROLS_NAME "[CONTROLS]"
 
-// Whether the controls section is open by default (true) or not (false).
+// Whether the Controls section starts open (true) or not (false).
 #macro FIGGY_CONTROLS_OPEN true
 
-// Whether .section()s are open by default (true) or not (false).
+// Whether .Section()s are open by default (true) or not (false).
 #macro FIGGY_SECTION_DEFAULT_OPEN true
 
-// Default .group() text alignment.
+// Default .Group() text alignment.
 #macro FIGGY_GROUP_DEFAULT_ALIGN FIGGY_ALIGN.CENTER
 
-// Default step increment for .int() values.
+// The suffix added to NOT SCOPED Sections and Groups (when the "scoped" argument set to false).
+#macro FIGGY_NOSCOPE_SUFFIX " [NO SCOPE]"
+
+#endregion
+#region Value & Decor Widgets
+
+// Default step increment for .Int() Value Widgets.
 #macro FIGGY_INT_DEFAULT_STEP 1
 
-// Default step increment for .float() values.
+// Default step increment for .Float() Value Widgets.
 #macro FIGGY_FLOAT_DEFAULT_STEP 0.1
 
-// Default .separator() text alignment.
+// Default .Separator() text alignment.
 #macro FIGGY_SEPARATOR_DEFAULT_ALIGN FIGGY_ALIGN.CENTER
+
+#endregion
+#region Changes
 
 // Whether to enable the Changes tracking system (true) or not (false).
 // NOTE: Disable to improve performance at scale.
-// NOTE: It's a good idea to disable this when running the game outside of the IDE.
-#macro FIGGY_CHANGES_ENABLED FIGGY_IN_IDE
+// NOTE: It's a good idea to disable this when running the game outside of the IDE. (check GM_build_type for that)
+#macro FIGGY_CHANGES_ENABLED true
 
 // The default function to call when a Value Widget value is changed. undefined stands for "no function".
 // The arguments passed to the callback: (newValue, oldValue, variableName).
