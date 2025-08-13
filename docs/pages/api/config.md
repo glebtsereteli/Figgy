@@ -1,0 +1,3 @@
+# Configuration
+
+Figgy provides many config macros for you to blah blah...
