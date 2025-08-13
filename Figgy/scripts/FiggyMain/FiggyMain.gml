@@ -309,6 +309,7 @@ function Figgy() {
 	/// @param {Real} min The minimum value.
 	/// @param {Real} max The maximum value.
 	/// @param {Real} step Step value. (default = FIGGY_FLOAT_DEFAULT_STEP)
+	/// @param {Func} onChange The function to call when the value is changed. (default = current onChange callback, defaults to FIGGY_CHANGES_DEFAULT_CALLBACK)
 	/// @returns {Struct.Figgy}
 	/// @desc Value Widget: creates a Real value in the current scope (Root, Window, Section or Group), represented as a DBG Float Slider.
 	/// The onChange callback function receives 3 arguments: (new value, old value, variable name).
@@ -321,10 +322,11 @@ function Figgy() {
 	
 	/// @param {String} name The variable name.
 	/// @param {Bool} default The default value.
+	/// @param {Func} onChange The function to call when the value is changed. (default = current onChange callback, defaults to FIGGY_CHANGES_DEFAULT_CALLBACK)
 	/// @returns {Struct.Figgy}
 	/// @desc Value Widget: creates a Boolean value in the current scope (Root, Window, Section or Group), represented as a DBG Checkbox.
 	/// The onChange callback function receives 3 arguments: (new value, old value, variable name).
-	static Boolean = function(_name, _default, _onChange = __onChange) {
+	static Bool = function(_name, _default, _onChange = __onChange) {
 		__FIGGY_WIDGET;
 		dbg_checkbox(_ref, _name);
 		
@@ -407,24 +409,24 @@ function Figgy() {
 	};
 	
 	#endregion
-	#region onChange Callback
+	#region OnChange Callback
 	
-	/// @func onChangeSet()
+	/// @func OnChangeSet()
 	/// @param {Func} callback The function to trigger on value change.
 	/// @returns {Struct.Figgy}
 	/// @desc Sets the default onChange callback for all following Value Widgets.
 	/// The callback function receives 3 arguments: (new value, old value, variable name).
-	/// Call Figgy.onChangeReset() to reset it.
-	static onChangeSet = function(_callback) {
+	/// Call Figgy.OnChangeReset() to reset it.
+	static OnChangeSet = function(_callback) {
 		__onChange = _callback;
 		
 		return self;
 	};
 	
-	/// @func onChangeReset()
+	/// @func OnChangeReset()
 	/// @returns {Struct.Figgy}
 	/// @desc Resets the default onChange callback back to FIGGY_CHANGES_DEFAULT_CALLBACK.
-	static onChangeReset = function() {
+	static OnChangeReset = function() {
 		__onChange = FIGGY_CHANGES_DEFAULT_CALLBACK;
 		
 		return self;
@@ -502,6 +504,18 @@ function Figgy() {
 	/// @desc Returns the current config.
 	static GetCurrent = function() {
 		return __current;
+	};
+	
+	/// @returns {Struct}
+	/// @desc Returns the default config.
+	static GetDefault = function() {
+		return __current;
+	};
+	
+	/// @returns {Struct}
+	/// @desc Returns the last saved config.
+	static GetLastSave = function() {
+		return __lastSave;
 	};
 	
 	#endregion

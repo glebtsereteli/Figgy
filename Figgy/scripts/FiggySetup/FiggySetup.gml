@@ -6,7 +6,7 @@ function FiggySetup() {
 		Figgy.Section("Stats");
 			Figgy.Int("Health", 100, 0, 300, 10);
 			Figgy.Int("Energy", 100, 0, 300, 10);
-			Figgy.Boolean("Extra Strong", true);
+			Figgy.Bool("Extra Strong", true);
 			Figgy.Comment("Some imaginary value!");
 		Figgy.Section("Movement");
 			Figgy.Float("Move Speed", 3, 0.1, 10);
