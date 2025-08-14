@@ -1,3 +1,10 @@
 # Configuration
 
-Figgy provides many config macros for you to blah blah...
+## File
+
+## Scope Widgets
+
+## Value & Decor Widgets
+
+## Changes
+

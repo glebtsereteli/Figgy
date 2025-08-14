@@ -9,7 +9,7 @@ hero:
   actions:
     - theme: brand
       text: Get Started
-      link: /pages/intro/whatIsFiggy
+      link: /pages/home/whatIsFiggy
     - theme: alt
       text: View on GitHub
       link: https://github.com/glebtsereteli/Figgy

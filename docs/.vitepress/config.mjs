@@ -6,23 +6,24 @@ export default defineConfig({
     search: {
       provider: 'local'
     },
-
-    outline: [2, 3],
-
+    
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Guide', link: '/pages/intro/whatIsFiggy' },
+      { text: 'Guide', link: '/pages/home/whatIsFiggy' },
       { text: 'API', link: '/pages/api/overview' },
       { text: 'Releases', link: 'https://github.com/glebtsereteli/Figgy/releases' },
     ],
     
+    outline: [2, 3],
     sidebar: [
       {
-        text: 'Introduction',
+        text: 'Home',
         collapsed: false,
         items: [
-          { text: 'What is Figgy?', link: '/pages/intro/whatIsFiggy' },
-          { text: 'Getting Started', link: '/pages/intro/gettingStarted' },
+          { text: 'What is Figgy?', link: '/pages/home/whatIsFiggy' },
+          { text: 'Getting Started', link: '/pages/home/gettingStarted' },
+          { text: 'Workflow', link: '/pages/home/workflow' },
+          { text: 'FAQ', link: '/pages/home/faq' },
         ]
       },
       {
@@ -77,15 +78,13 @@ export default defineConfig({
               { text: 'Getters', link: '/pages/api/getters' },
             ]
           },
-          { text: 'Configuration', link: '/pages/intro/config' },
+          { text: 'Configuration', link: '/pages/api/config' },
         ]
       },
       {
         text: "Others",
         collapsed: false,
         items:[
-          { text: 'Organization', link: '/pages/others/organization' },
-          { text: 'FAQ', link: '/pages/others/faq' },
           { text: 'Alternatives', link: '/pages/others/alternatives' },
           { text: 'Credits', link: '/pages/others/credits' },
         ],
