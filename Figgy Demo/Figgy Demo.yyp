@@ -1,6 +1,6 @@
 {
   "$GMProject":"v1",
-  "%Name":"Figgy",
+  "%Name":"Figgy Demo",
   "AudioGroups":[
     {"$GMAudioGroup":"","%Name":"audiogroup_default","name":"audiogroup_default","resourceType":"GMAudioGroup","resourceVersion":"2.0","targets":-1,},
   ],
@@ -19,16 +19,17 @@
   ],
   "ForcedPrefabProjectReferences":[],
   "IncludedFiles":[
-    {"$GMIncludedFile":"","%Name":"Config.figgy","CopyToMask":-1,"filePath":"datafiles","name":"Config.figgy","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
+    {"$GMIncludedFile":"","%Name":"config.figgy","CopyToMask":-1,"filePath":"datafiles","name":"config.figgy","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
   ],
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
     "IDEVersion":"2024.13.1.193",
   },
-  "name":"Figgy",
+  "name":"Figgy Demo",
   "resources":[
     {"id":{"name":"extExecuteShellSimpleExt","path":"extensions/extExecuteShellSimpleExt/extExecuteShellSimpleExt.yy",},},
+    {"id":{"name":"Figgy Info","path":"notes/Figgy Info/Figgy Info.yy",},},
     {"id":{"name":"objDemoControl","path":"objects/objDemoControl/objDemoControl.yy",},},
     {"id":{"name":"rmDemo","path":"rooms/rmDemo/rmDemo.yy",},},
     {"id":{"name":"__FiggyChanges","path":"scripts/__FiggyChanges/__FiggyChanges.yy",},},
@@ -39,7 +40,7 @@
     {"id":{"name":"FiggyEnums","path":"scripts/FiggyEnums/FiggyEnums.yy",},},
     {"id":{"name":"FiggyMain","path":"scripts/FiggyMain/FiggyMain.yy",},},
     {"id":{"name":"FiggySetup","path":"scripts/FiggySetup/FiggySetup.yy",},},
-    {"id":{"name":"scr_demo","path":"scripts/scr_demo/scr_demo.yy",},},
+    {"id":{"name":"scrDemo","path":"scripts/scrDemo/scrDemo.yy",},},
   ],
   "resourceType":"GMProject",
   "resourceVersion":"2.0",

@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_demo",
+  "%Name":"scrDemo",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_demo",
+  "name":"scrDemo",
   "parent":{
     "name":"01. Demo",
     "path":"folders/01. Demo.yy",

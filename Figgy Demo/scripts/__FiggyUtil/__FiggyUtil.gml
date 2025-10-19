@@ -1,14 +1,16 @@
-/// @feather ignore all
+/// feather ignore all
 
 function __FiggyLogFree(_message) {
 	show_debug_message($"{__FIGGY_LOG_PREFIX} {_message}.");
 }
 function __FiggyLog(_message) {
 	if (not FIGGY_DEBUG) return;
+	
 	__FiggyLogFree(_message);
 }
 function __FiggyLogTimed(_message) {
 	if (not FIGGY_DEBUG) return;
+	
 	__FiggyLog($"{_message}. Took {__FIGGY_BENCH_END} milliseconds");
 }
 function __FiggyError(_message) {

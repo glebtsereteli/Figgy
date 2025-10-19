@@ -1,4 +1,4 @@
-/// @feather ignore all
+/// feather ignore all
 
 // Whether to show debug messages in the Output window (true) or not (false).
 #macro FIGGY_DEBUG true
