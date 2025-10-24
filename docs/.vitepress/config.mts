@@ -194,6 +194,8 @@ export default defineConfig({
         // links
         'New Issue': 'https://github.com/glebtsereteli/Figgy/issues/new',
         'Debug Overlay': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Debugging/The_Debug_Overlay.htm',
+      
+        'Figgy': '/pages/api/figgy/overview',
       }
 
       md.inline.ruler.before('link', 'shortcuts', (state, silent) => {
