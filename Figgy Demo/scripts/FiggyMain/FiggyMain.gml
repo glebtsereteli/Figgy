@@ -313,9 +313,9 @@ function Figgy() {
 	/// @returns {Struct.Figgy}
 	/// @desc Value Widget: creates a Real value in the current scope (Root, Window, Section or Group), represented as a DBG Float Slider.
 	/// The onChange callback function receives 3 arguments: (new value, old value, variable name).
-	static Float = function(_name, _default, _from, _to, _step = FIGGY_FLOAT_DEFAULT_STEP, _onChange = __onChange) {
+	static Float = function(_name, _default, _min, _max, _step = FIGGY_FLOAT_DEFAULT_STEP, _onChange = __onChange) {
 		__FIGGY_WIDGET;
-		dbg_slider(_ref, _from, _to, _name, _step);
+		dbg_slider(_ref, _min, _max, _name, _step);
 		
 		return self;
 	};
@@ -346,6 +346,19 @@ function Figgy() {
 		return self;
 	};
 	
+	/// @param {String} name The variable name.
+	/// @param {Real,Constant.Color} default The default value.
+	/// @param {Func} onChange The function to call when the value is changed. [Default: current onChange callback if set, or FIGGY_CHANGES_DEFAULT_CALLBACK]
+	/// @returns {Struct.Figgy}
+	/// @desc Value Widget: creates a color value in the current scope (Root, Window, Section or Group), represented as a DBG Color Picker.
+	/// The onChange callback function receives 3 arguments: (new value, old value, variable name).
+	static Color = function(_name, _default, _onChange = __onChange) {
+		__FIGGY_WIDGET;
+		dbg_colour(_ref, _name);
+		
+		return self;
+	};
+	
 	/// @param {String} name The dropdown name.
 	/// @param {Any} default The default value.
 	/// @param {Array<Any>} values The array of option values.
@@ -357,19 +370,6 @@ function Figgy() {
 	static Multi = function(_name, _default, _values, _names = _values, _onChange = __onChange) {
 		__FIGGY_WIDGET;
 		dbg_drop_down(_ref, _values, _names, _name);
-		
-		return self;
-	};
-	
-	/// @param {String} name The variable name.
-	/// @param {Real,Constant.Color} default The default value.
-	/// @param {Func} onChange The function to call when the value is changed. [Default: current onChange callback if set, or FIGGY_CHANGES_DEFAULT_CALLBACK]
-	/// @returns {Struct.Figgy}
-	/// @desc Value Widget: creates a color value in the current scope (Root, Window, Section or Group), represented as a DBG Color Picker.
-	/// The onChange callback function receives 3 arguments: (new value, old value, variable name).
-	static Color = function(_name, _default, _onChange = __onChange) {
-		__FIGGY_WIDGET;
-		dbg_colour(_ref, _name);
 		
 		return self;
 	};
