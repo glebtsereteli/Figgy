@@ -3,32 +3,65 @@
 layout: home
 
 hero:
-  name: "Figgy"
-  text: "Persistent live config solution for GameMaker"
-  tagline: Balance your game faster with a persistent, live-editable centralized config manager.
+  name: "GMRoomLoader"
+  text: Runtime room loading for GameMaker
+  tagline: Room prefabs and runtime content loading made effortless with GMRoomLoader's robust interface.
   actions:
     - theme: brand
-      text: Get Started
-      link: /pages/home/whatIsFiggy
+      text: What is GMRoomLoader?
+      link: '/pages/home/whatIsIt'
     - theme: alt
-      text: View on GitHub
-      link: https://github.com/glebtsereteli/Figgy
+      text: Get Started
+      link: '/pages/home/gettingStarted/gettingStarted'
+  image:
+    src: /logo.svg
+    alt: Icon
 
 features:
-  - title: ⚙️ Automatic Interface
-    details: Figgy creates a debug view for your config values automatically - no need for any UI coding.
-  - title: 🗂️ Flexible Scoping
-    details: Robust struct-based config layout with Window, Section and Group Scope Widgets.
-  - title: 🎛️ Wide Data Type Coverage
-    details: Built on GM's DBG system, Figgy provides many Value Widgets for a wide range of data types.
-  - title: 💾 Persistent Project Storage
-    details: Keep your configs inside your GitHub repo with Figgy's datafiles saving/loading support.
-  - title: 👨‍🎨 Focused On Design
-    details: Allow your game designers to balance the game live without ever having to dig through code.
+  - title: 🗺️ Procedural Generation
+    details: Create reusable level templates for rooms, NPCs or props, and place them procedurally throughout your levels.
+  - title: 🧩 Chunking
+    details: Divide large worlds into smaller chunks that dynamically load when players approach and unload when they move away.
+  - title: 🏗️ Flexible Loading
+    details: Load Full Rooms, Instances or Tilemaps at any position in the current room — all with optional origin, filtering, scaling and rotation.
+  - title: 📐 Fluent State Management
+    details: Configure optional arguments before loading or screenshotting in a simple English-like flow via the Fluent State Builder.
+  - title: ⚙️ Full Lifecycle Control
+    details: From merging or creating new layers to Payload tracking and removing loaded elements, you have full control of the loading process.
+  - title: 🖼️ Screenshots
+    details: Capture room Screenshots from anywhere, without ever visiting target rooms — with optional part definition, scaling and filtering.
 
 ---
-<!-- 
-<hr style="margin-top: 3rem; margin-bottom: 1rem; border-color: #262626ff;" />
-<p style="text-align: center; color: #888;">
-  © 2025 Gleb Tsereteli. Released under the <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener" style="color: #888; text-decoration: underline;">MIT License</a>. Built with <a href="https://vitepress.dev/" target="_blank" rel="noopener" style="color: #888; text-decoration: underline;">VitePress</a>.
-</p> -->
+
+<hr style="border: none; border-top: 2px solid #888; margin:4em 0 1em;" />
+
+<div style="text-align:center; font-size:1.1em; color:#555; margin-bottom:2em;">
+  <strong>GMRoomLoader</strong> Team
+</div>
+
+<script setup>
+import { VPTeamMembers } from 'vitepress/theme'
+
+const team = [
+  {
+    avatar: 'https://avatars.githubusercontent.com/u/50461722?v=4',
+    name: 'Gleb Tsereteli',
+    title: 'Developer',
+    links: [
+      { icon: 'github', link: 'https://github.com/GlebTsereteli' },
+      { icon: 'twitter', link: 'https://x.com/GlebTsereteli' },
+    ]
+  },
+  {
+    avatar: 'https://avatars.githubusercontent.com/u/159041753?v=4',
+    name: 'Kate',
+    title: 'Visuals, Testing, Demo Levels',
+    links: [
+      { icon: 'linkedin', link: 'https://www.linkedin.com/in/kate-ivanova22/' },
+      { icon: 'instagram', link: 'https://www.instagram.com/k8te_iv' },
+    ]
+  }
+]
+</script>
+
+<VPTeamMembers :members="team" />

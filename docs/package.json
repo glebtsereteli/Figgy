@@ -1,7 +1,11 @@
 {
   "scripts": {
-    "dev": "vitepress dev docs",
-    "build": "vitepress build docs",
-    "preview": "vitepress preview docs"
+    "docs:dev": "vitepress dev .",
+    "docs:build": "vitepress build .",
+    "docs:serve": "vitepress serve ."
+  },
+  "devDependencies": {
+    "@types/markdown-it": "^14.1.2",
+    "vitepress": "^1.6.4"
   }
 }
