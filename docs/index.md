@@ -3,12 +3,12 @@
 layout: home
 
 hero:
-  name: "GMRoomLoader"
-  text: Runtime room loading for GameMaker
-  tagline: Room prefabs and runtime content loading made effortless with GMRoomLoader's robust interface.
+  name: Figgy
+  text: Persistent live configs for GameMaker
+  tagline: TODO tagline
   actions:
     - theme: brand
-      text: What is GMRoomLoader?
+      text: What is Figgy?
       link: '/pages/home/whatIsIt'
     - theme: alt
       text: Get Started
@@ -18,25 +18,19 @@ hero:
     alt: Icon
 
 features:
-  - title: 🗺️ Procedural Generation
-    details: Create reusable level templates for rooms, NPCs or props, and place them procedurally throughout your levels.
-  - title: 🧩 Chunking
-    details: Divide large worlds into smaller chunks that dynamically load when players approach and unload when they move away.
-  - title: 🏗️ Flexible Loading
-    details: Load Full Rooms, Instances or Tilemaps at any position in the current room — all with optional origin, filtering, scaling and rotation.
-  - title: 📐 Fluent State Management
-    details: Configure optional arguments before loading or screenshotting in a simple English-like flow via the Fluent State Builder.
-  - title: ⚙️ Full Lifecycle Control
-    details: From merging or creating new layers to Payload tracking and removing loaded elements, you have full control of the loading process.
-  - title: 🖼️ Screenshots
-    details: Capture room Screenshots from anywhere, without ever visiting target rooms — with optional part definition, scaling and filtering.
+  - title: TODO AAA
+    details: blah blah blah
+  - title: TODO BBB
+    details: blah blah blah
+  - title: TODO CCC
+    details: blah blah blah
 
 ---
 
-<hr style="border: none; border-top: 2px solid #888; margin:4em 0 1em;" />
+<!-- <hr style="border: none; border-top: 2px solid #888; margin:4em 0 1em;" />
 
 <div style="text-align:center; font-size:1.1em; color:#555; margin-bottom:2em;">
-  <strong>GMRoomLoader</strong> Team
+  <strong>Figgy</strong> Team
 </div>
 
 <script setup>
@@ -64,4 +58,4 @@ const team = [
 ]
 </script>
 
-<VPTeamMembers :members="team" />
+<VPTeamMembers :members="team" /> -->
