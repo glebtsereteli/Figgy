@@ -6,7 +6,7 @@
   "name":"__InputStringMatches",
   "parent":{
     "name":"(System)",
-    "path":"folders/01. Demo/Libraries/Input/(System).yy",
+    "path":"folders/01. Demo/99. Libraries/Input/(System).yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

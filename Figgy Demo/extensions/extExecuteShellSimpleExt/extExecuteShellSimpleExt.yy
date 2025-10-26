@@ -53,8 +53,8 @@
   "optionsFile":"options.json",
   "packageId":"",
   "parent":{
-    "name":"Libraries",
-    "path":"folders/01. Demo/Libraries.yy",
+    "name":"99. Libraries",
+    "path":"folders/01. Demo/99. Libraries.yy",
   },
   "productId":"",
   "resourceType":"GMExtension",

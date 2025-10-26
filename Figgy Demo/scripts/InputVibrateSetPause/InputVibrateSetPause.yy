@@ -6,7 +6,7 @@
   "name":"InputVibrateSetPause",
   "parent":{
     "name":"Vibration",
-    "path":"folders/01. Demo/Libraries/Input/Input Plug-Ins/Vibration.yy",
+    "path":"folders/01. Demo/99. Libraries/Input/Input Plug-Ins/Vibration.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

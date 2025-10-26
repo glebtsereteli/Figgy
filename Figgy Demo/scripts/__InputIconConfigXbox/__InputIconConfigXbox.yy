@@ -6,7 +6,7 @@
   "name":"__InputIconConfigXbox",
   "parent":{
     "name":"Config",
-    "path":"folders/01. Demo/Libraries/Input/Input Plug-Ins/Binding Icons/Config.yy",
+    "path":"folders/01. Demo/99. Libraries/Input/Input Plug-Ins/Binding Icons/Config.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

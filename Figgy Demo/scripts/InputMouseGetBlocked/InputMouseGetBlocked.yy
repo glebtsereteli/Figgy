@@ -6,7 +6,7 @@
   "name":"InputMouseGetBlocked",
   "parent":{
     "name":"Mouse (& Touch)",
-    "path":"folders/01. Demo/Libraries/Input/Mouse (& Touch).yy",
+    "path":"folders/01. Demo/99. Libraries/Input/Mouse (& Touch).yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
