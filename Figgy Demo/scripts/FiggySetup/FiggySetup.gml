@@ -1,6 +1,15 @@
 
 function FiggySetup() {
 	Figgy.Window("Player", true);
+		Figgy.Int("Move Speed", 5, 1, 10);
+		Figgy.Float("Gravity", 1, 0.1, 1.5);
+		Figgy.Int("Jump Speed", 15, 10, 20);
+		Figgy.Int("Jump Buffer", 7, 5, 15);
+		Figgy.Float("Max Fall Speed", 15, 10, 20);
+}
+
+/*
+Figgy.Window("Player", true);
 		Figgy.Text("Name", "Geraldine");
 		Figgy.Color("Color", c_aqua);
 		Figgy.Section("Stats");
@@ -14,4 +23,3 @@ function FiggySetup() {
 	
 	Figgy.Window("Enemy");
 		Figgy.Int("Health", 100, 0, 300, 10);
-}

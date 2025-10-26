@@ -1,10 +1,8 @@
 EVENT_METHOD;
 EVENT_FSM;
 
-moveSpd = 5;
+cfg = CFG.Player;
+
 xSpd = 0;
 ySpd = 0;
-grav = 1;
-jumpSpd = 15;
-maxFallSpd = 15;
 colliders = [objCollider];

@@ -1,10 +1,10 @@
 
-xSpd = moveSpd * InputX(INPUT_CLUSTER.NAV);
+xSpd = cfg.MoveSpeed * InputX(INPUT_CLUSTER.NAV);
 
-if (InputBufferPressed(INPUT_VERB.JUMP, 7) and IsGrounded()) {
-	ySpd = -jumpSpd;
+if (InputBufferPressed(INPUT_VERB.JUMP, cfg.JumpBuffer) and IsGrounded()) {
+	ySpd = -cfg.JumpSpeed;
 }
 
-ySpd = min(ySpd + grav, maxFallSpd);
+ySpd = min(ySpd + cfg.Gravity, cfg.MaxFallSpeed);
 
 MoveCollide();
