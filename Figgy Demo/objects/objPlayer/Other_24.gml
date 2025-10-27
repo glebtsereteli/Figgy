@@ -12,6 +12,10 @@ MoveXAir = function() {
 ApplyGravity = function() {
 	ySpd = min(ySpd + cfg.Gravity, cfg.MaxFallSpeed);
 };
+Land = function() {
+	(fsm.event_get_current_function())();
+	nJumps = cfg.MaxJumps;
+};
 
 MoveCollide = function() {
 	xSpdFrac += xSpd;
@@ -60,8 +64,4 @@ IsFalling = function() {
 };
 IsCoyoteLeft = function() {
 	return (coyote > 0);
-};
-
-CanJump = function() {
-	return (IsGrounded() and not place_meeting(x, y - 1, colliders));
 };

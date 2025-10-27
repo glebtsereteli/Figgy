@@ -7,3 +7,4 @@ xSpd = 0; xSpdFrac = 0;
 ySpd = 0; ySpdFrac = 0;
 colliders = [objCollider];
 coyote = 0;
+nJumps = cfg.MaxJumps;

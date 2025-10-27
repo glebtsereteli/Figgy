@@ -9,6 +9,7 @@ function FiggySetup() {
 		Figgy.Float("Gravity", 1, 0.1, 1.5);
 		Figgy.Int("Jump Speed", 15, 10, 20);
 		Figgy.Int("Jump Buffer", 7, 5, 15);
+		Figgy.Int("Max Jumps", 1, 1, 3);
 		Figgy.Int("Coyote Time", 10, 0, 20);
 		Figgy.Float("Max Fall Speed", 15, 10, 20);
 }

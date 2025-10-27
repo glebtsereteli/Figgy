@@ -17,7 +17,8 @@ fsm
 .add("jump", {
 	enter: function() {
 		ySpd = -cfg.JumpSpeed;
-		coyote = 0;
+		nJumps = max(nJumps - 1, 0);
+		InputVerbConsume(INPUT_VERB.JUMP);
 	},
 	update: function() {
 		MoveXAir();
@@ -42,12 +43,19 @@ fsm
 
 .add_transition("t_run", "idle", "run", IsTryingToMove)
 .add_transition("t_idle", "run", "idle", IsStill)
-.add_transition("t_jump", ["idle", "run"], "jump", CanJump)
-.add_transition("t_jump", "fall", "jump", IsCoyoteLeft)
+.add_transition("t_jump", ["idle", "run"], "jump", function() {
+	return (IsGrounded() and not place_meeting(x, y - 1, colliders));
+})
+.add_transition("t_jump", "fall", "jump", function() {
+	return (IsCoyoteLeft() or (nJumps > 0));
+})
+.add_transition("t_jump", "jump", "jump", function() {
+	return (nJumps > 0);
+})
 .add_transition("t_fall", ["idle", "run"], "fall")
 .add_transition("t_fall", "jump", "fall", IsFalling)
-.add_transition("t_land", ["jump", "fall"], "idle", IsStill)
-.add_transition("t_land", ["jump", "fall"], "run", IsTryingToMoveOrMoving)
+.add_transition("t_land", ["jump", "fall"], "idle", IsStill,, Land)
+.add_transition("t_land", ["jump", "fall"], "run", IsTryingToMoveOrMoving,, Land)
 
 .on("state changed", function(_to, _from) {
 	show_debug_message($"PLAYER: State chanced from \"{_from}\" to \"{_to}\".");
