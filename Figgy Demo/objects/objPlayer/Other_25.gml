@@ -6,6 +6,7 @@ fsm
 .add("idle", {
 	enter: function() {
 		ResetJumps();
+		sprite_index = sprPlayerIdle;
 	},
 	update: function() {
 		fsm.trigger("t_run");
@@ -14,9 +15,11 @@ fsm
 .add("run", {
 	enter: function() {
 		ResetJumps();
+		sprite_index = sprPlayerRun;
 	},
 	update: function() {
 		MoveX(cfg.GroundAcceleration, cfg.GroundDeceleration);
+		UpdateFacing();
 		fsm.trigger("t_idle");
 	},
 })
@@ -25,10 +28,12 @@ fsm
 		ySpd = -cfg.JumpSpeed;
 		nJumps = max(nJumps - 1, 0);
 		InputVerbConsume(INPUT_VERB.JUMP);
+		sprite_index = sprPlayerJump;
 	},
 	update: function() {
 		MoveXAir();
 		ApplyGravity();
+		UpdateFacing();
 	},
 })
 .add("fall", {
@@ -40,6 +45,7 @@ fsm
 	update: function() {
 		MoveXAir();
 		ApplyGravity();
+		UpdateFacing();
 		coyote = max(coyote - 1, 0);
 	},
 	leave: function() {

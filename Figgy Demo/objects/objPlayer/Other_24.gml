@@ -1,5 +1,9 @@
 /// @desc Methods
 
+Init = function() {
+	
+};
+
 MoveX = function(_accel, _decel) {
 	var _input = InputX(INPUT_CLUSTER.NAV);
 	var _xSpd = cfg.MoveSpeed * _input;
@@ -11,6 +15,14 @@ MoveXAir = function() {
 };
 ApplyGravity = function() {
 	ySpd = min(ySpd + cfg.Gravity, cfg.MaxFallSpeed);
+};
+UpdateFacing = function() {
+	if (xSpd != 0) {
+		facing = sign(xSpd);
+	}
+};
+ResetJumps = function() {
+	nJumps = cfg.MaxJumps;
 };
 
 MoveCollide = function() {
@@ -35,10 +47,6 @@ MoveCollide = function() {
 		}
 		y += sign(_ySpd);
 	}
-};
-
-ResetJumps = function() {
-	nJumps = cfg.MaxJumps;
 };
 
 IsTryingToMove = function() {
