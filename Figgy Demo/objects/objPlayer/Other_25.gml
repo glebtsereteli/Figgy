@@ -1,14 +1,20 @@
 /// @desc FSM
 
-fsm = new SnowState("idle");
+fsm = new SnowState("idle", false);
 fsm
 
 .add("idle", {
+	enter: function() {
+		ResetJumps();
+	},
 	update: function() {
 		fsm.trigger("t_run");
 	},
 })
 .add("run", {
+	enter: function() {
+		ResetJumps();
+	},
 	update: function() {
 		MoveX(cfg.GroundAcceleration, cfg.GroundDeceleration);
 		fsm.trigger("t_idle");
@@ -54,8 +60,8 @@ fsm
 })
 .add_transition("t_fall", ["idle", "run"], "fall")
 .add_transition("t_fall", "jump", "fall", IsFalling)
-.add_transition("t_land", ["jump", "fall"], "idle", IsStill,, Land)
-.add_transition("t_land", ["jump", "fall"], "run", IsTryingToMoveOrMoving,, Land)
+.add_transition("t_land", ["jump", "fall"], "idle", IsStill)
+.add_transition("t_land", ["jump", "fall"], "run", IsTryingToMoveOrMoving)
 
 .on("state changed", function(_to, _from) {
 	show_debug_message($"PLAYER: State chanced from \"{_from}\" to \"{_to}\".");

@@ -12,10 +12,6 @@ MoveXAir = function() {
 ApplyGravity = function() {
 	ySpd = min(ySpd + cfg.Gravity, cfg.MaxFallSpeed);
 };
-Land = function() {
-	(fsm.event_get_current_function())();
-	nJumps = cfg.MaxJumps;
-};
 
 MoveCollide = function() {
 	xSpdFrac += xSpd;
@@ -39,6 +35,10 @@ MoveCollide = function() {
 		}
 		y += sign(_ySpd);
 	}
+};
+
+ResetJumps = function() {
+	nJumps = cfg.MaxJumps;
 };
 
 IsTryingToMove = function() {

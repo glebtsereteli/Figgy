@@ -81,6 +81,7 @@
     {"id":{"name":"extExecuteShellSimpleExt","path":"extensions/extExecuteShellSimpleExt/extExecuteShellSimpleExt.yy",},},
     {"id":{"name":"Figgy Info","path":"notes/Figgy Info/Figgy Info.yy",},},
     {"id":{"name":"__InputUpdateController","path":"objects/__InputUpdateController/__InputUpdateController.yy",},},
+    {"id":{"name":"objCamera","path":"objects/objCamera/objCamera.yy",},},
     {"id":{"name":"objCollider","path":"objects/objCollider/objCollider.yy",},},
     {"id":{"name":"objDemoControl","path":"objects/objDemoControl/objDemoControl.yy",},},
     {"id":{"name":"objPlayer","path":"objects/objPlayer/objPlayer.yy",},},
