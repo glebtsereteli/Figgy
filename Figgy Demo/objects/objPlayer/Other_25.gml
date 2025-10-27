@@ -1,34 +1,36 @@
 /// @desc FSM
 
-fsm = new SnowState("idle", false);
+fsm = new SnowState("Idle", false);
 fsm
 
-.add("idle", {
+.event_set_default_function("enter", UpdateSprite)
+
+.add("Idle", {
 	enter: function() {
+		FsmEnter();
 		ResetJumps();
-		sprite_index = sprPlayerIdle;
 	},
 	update: function() {
-		fsm.trigger("t_run");
+		fsm.trigger("tRun");
 	},
 })
-.add("run", {
+.add("Run", {
 	enter: function() {
+		FsmEnter();
 		ResetJumps();
-		sprite_index = sprPlayerRun;
 	},
 	update: function() {
 		MoveX(cfg.GroundAcceleration, cfg.GroundDeceleration);
 		UpdateFacing();
-		fsm.trigger("t_idle");
+		fsm.trigger("tIdle");
 	},
 })
-.add("jump", {
+.add("Jump", {
 	enter: function() {
+		FsmEnter();
 		ySpd = -cfg.JumpSpeed;
 		nJumps = max(nJumps - 1, 0);
 		InputVerbConsume(INPUT_VERB.JUMP);
-		sprite_index = sprPlayerJump;
 	},
 	update: function() {
 		MoveXAir();
@@ -36,9 +38,10 @@ fsm
 		UpdateFacing();
 	},
 })
-.add("fall", {
+.add("Fall", {
 	enter: function() {
-		if (fsm.get_previous_state() != "jump") {
+		FsmEnter();
+		if (fsm.get_previous_state() != "Jump") {
 			coyote = cfg.CoyoteTime;
 		}
 	},
@@ -53,21 +56,21 @@ fsm
 	},
 })
 
-.add_transition("t_run", "idle", "run", IsTryingToMove)
-.add_transition("t_idle", "run", "idle", IsStill)
-.add_transition("t_jump", ["idle", "run"], "jump", function() {
+.add_transition("tRun", "Idle", "Run", IsTryingToMove)
+.add_transition("tIdle", "Run", "Idle", IsStill)
+.add_transition("tJump", ["Idle", "Run"], "Jump", function() {
 	return (IsGrounded() and not place_meeting(x, y - 1, colliders));
 })
-.add_transition("t_jump", "fall", "jump", function() {
+.add_transition("tJump", "Fall", "Jump", function() {
 	return (IsCoyoteLeft() or (nJumps > 0));
 })
-.add_transition("t_jump", "jump", "jump", function() {
+.add_transition("tJump", "Jump", "Jump", function() {
 	return (nJumps > 0);
 })
-.add_transition("t_fall", ["idle", "run"], "fall")
-.add_transition("t_fall", "jump", "fall", IsFalling)
-.add_transition("t_land", ["jump", "fall"], "idle", IsStill)
-.add_transition("t_land", ["jump", "fall"], "run", IsTryingToMoveOrMoving)
+.add_transition("tFall", ["Idle", "Run"], "Fall")
+.add_transition("tFall", "Jump", "Fall", IsFalling)
+.add_transition("tLand", ["Jump", "Fall"], "Idle", IsStill)
+.add_transition("tLand", ["Jump", "Fall"], "Run", IsTryingToMoveOrMoving)
 
 .on("state changed", function(_to, _from) {
 	show_debug_message($"PLAYER: State chanced from \"{_from}\" to \"{_to}\".");

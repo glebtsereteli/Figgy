@@ -1,9 +1,5 @@
 /// @desc Methods
 
-Init = function() {
-	
-};
-
 MoveX = function(_accel, _decel) {
 	var _input = InputX(INPUT_CLUSTER.NAV);
 	var _xSpd = cfg.MoveSpeed * _input;
@@ -24,7 +20,6 @@ UpdateFacing = function() {
 ResetJumps = function() {
 	nJumps = cfg.MaxJumps;
 };
-
 MoveCollide = function() {
 	xSpdFrac += xSpd;
 	ySpdFrac += ySpd;
@@ -47,6 +42,15 @@ MoveCollide = function() {
 		}
 		y += sign(_ySpd);
 	}
+};
+
+UpdateSprite = function() {
+	sprite_index = sprites[$ cfg.Skin][$ fsm.get_current_state()];
+	image_index = 0;
+};
+
+FsmEnter = function() {
+	UpdateSprite();
 };
 
 IsTryingToMove = function() {

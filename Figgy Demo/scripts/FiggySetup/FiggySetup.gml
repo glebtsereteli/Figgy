@@ -1,6 +1,12 @@
 
 function FiggySetup() {
 	Figgy.Window("Player", true);
+		global.playerSkins = ["Green", "Pink", "Purple", "Yellow"];
+		Figgy.Multi("Skin", global.playerSkins[0], global.playerSkins, global.playerSkins, function() {
+			with (objPlayer) {
+				UpdateSprite();
+			}
+		});
 		Figgy.Float("Move Speed", 5, 0.1, 10);
 		Figgy.Float("Ground Acceleration", 1, 0, 1, 0.05);
 		Figgy.Float("Ground Deceleration", 1, 0, 1, 0.05);
