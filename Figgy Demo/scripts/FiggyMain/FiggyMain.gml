@@ -371,6 +371,24 @@ function Figgy() {
 		__FIGGY_WIDGET;
 		dbg_drop_down(_ref, _values, _names, _name);
 		
+		with ({}) {
+			__scope = other.__scope;
+			__name = _rawName;
+			__values = _values;
+			
+			dbg_same_line();
+			dbg_button("-", function() {
+				var _n = array_length(__values);
+				var _index = (array_get_index(__values, __scope[$ __name]) - 1 + _n) mod _n;
+				__scope[$ __name] = __values[_index];
+			}, 20, 20);
+			dbg_same_line();
+			dbg_button("+", function() {
+				var _index = (array_get_index(__values, __scope[$ __name]) + 1) mod array_length(__values);
+				__scope[$ __name] = __values[_index];
+			}, 20, 20);
+		}
+		
 		return self;
 	};
 	
