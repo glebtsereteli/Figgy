@@ -1,9 +1,14 @@
 # Setup
 
+## Formatting Tips
+
 ## Scope Widgets
 
 Overview...
 
+All code examples on this page assume you're calling them inside the FiggySetup() function.
+
+---
 ### .Window()
 
 > `Figgy.Window(name, [visible?], [x], [y], [width], [height])` ➜ :Struct:.:Figgy:
@@ -23,13 +28,12 @@ Once called, the Root scope becomes inaccessible. All following Widgets will be 
 
 ::: code-group
 ```js [Example]
-function FiggySetup() {
-    Figgy.Window("player");
-        // Widgets here...
-}
+Figgy.Window("player");
+    // Widgets here...
 ```
 :::
 
+---
 ### .Section()
 
 > `Figgy.Section(name, [scoped?], [open?])` ➜ :Struct:.:Figgy:
@@ -42,6 +46,7 @@ asdasd
 ```
 :::
 
+---
 ### .Group()
 
 > `Figgy.Group(name, [scoped?], [align])` ➜ :Struct:.:Figgy:
@@ -58,6 +63,7 @@ asdasd
 
 Overview...
 
+---
 ### .Int()
 
 > `Figgy.Int(name, default, min, max, [step], [onChange])` ➜ :Struct:.:Figgy:
@@ -70,6 +76,7 @@ asdasd
 ```
 :::
 
+---
 ### .Float()
 
 > `Figgy.Float(name, default, min, max, [step], [onChange])` ➜ :Struct:.:Figgy:
@@ -82,6 +89,7 @@ asdasd
 ```
 :::
 
+---
 ### .Bool()
 
 > `Figgy.Bool(name, default, [onChange])` ➜ :Struct:.:Figgy:
@@ -94,6 +102,7 @@ asdasd
 ```
 :::
 
+---
 ### .Text()
 
 > `Figgy.Text(name, default, [onChange])` ➜ :Struct:.:Figgy:
@@ -106,6 +115,7 @@ asdasd
 ```
 :::
 
+---
 ### .Color()
 
 > `Figgy.Color(name, default, [onChange])` ➜ :Struct:.:Figgy:
@@ -118,6 +128,7 @@ asdasd
 ```
 :::
 
+---
 ### .Multi()
 
 > `Figgy.Multi(name, default, values, names, [onChange])` ➜ :Struct:.:Figgy:
@@ -132,14 +143,19 @@ asdasd
 
 ## Decor Widgets
 
+---
 ### .Button()
 
+---
 ### .Comment()
 
+---
 ### .Separator()
 
 ## OnChange
 
+---
 ### .OnChangeSet()
 
+---
 ### .OnChangeReset()

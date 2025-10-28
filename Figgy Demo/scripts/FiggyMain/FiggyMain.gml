@@ -419,7 +419,7 @@ function Figgy() {
 		if (_sameLine) {
 			dbg_same_line();
 		}
-		dbg_text(" " + _string);
+		dbg_text(_string);
 		
 		return self;
 	};
@@ -435,7 +435,7 @@ function Figgy() {
 	};
 	
 	#endregion
-	#region Setup. OnChange
+	#region Setup: OnChange
 	
 	/// @param {Func} callback The function to trigger on value change.
 	/// @returns {Struct.Figgy}

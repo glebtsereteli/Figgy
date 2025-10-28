@@ -158,10 +158,37 @@ export default defineConfig({
       }
     },
   },
-
+  
   markdown: {
     config: (md: MarkdownIt) => {
-      const shortcuts: Record<string, string> = {
+      // Base shortcuts — only define once per concept.
+      const baseShortcuts: Record<string, string> = {
+        'Window': '/pages/api/figgy/setup#window',
+        'Section': '/pages/api/figgy/setup#section',
+        'Group': '/pages/api/figgy/setup#group',
+
+        'Int': '/pages/api/figgy/setup#int',
+        'Float': '/pages/api/figgy/setup#float',
+        'Bool': '/pages/api/figgy/setup#bool',
+        'Text': '/pages/api/figgy/setup#text',
+        'Color': '/pages/api/figgy/setup#color',
+        'Multi': '/pages/api/figgy/setup#multi',
+        
+        'Button': '/pages/api/figgy/setup#button',
+        'Comment': '/pages/api/figgy/setup#comment',
+        'Separator': '/pages/api/figgy/setup#separator',
+      }
+
+      // Auto-generate plural and method-like variations
+      const shortcuts: Record<string, string> = {}
+      for (const [key, url] of Object.entries(baseShortcuts)) {
+        shortcuts[key] = url
+        shortcuts[key + 's'] = url
+        shortcuts['.' + key + '()'] = url
+      }
+
+      // Add all your existing static ones here
+      Object.assign(shortcuts, {
         // types
         'Real': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm',
         'Bool': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm',
@@ -185,14 +212,15 @@ export default defineConfig({
         'Id.Instance': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Asset_Management/Instances/Instances.htm',
         'Id.Function': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm',
         'Id.Background': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Asset_Management/Rooms/Background_Layers/Background_Layers.htm',
-        
+
         // links
         'New Issue': 'https://github.com/glebtsereteli/Figgy/issues/new',
         'Debug Overlay': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Debugging/The_Debug_Overlay.htm',
-      
-        'Figgy': '/pages/api/figgy/overview',
-      }
 
+        'Figgy': '/pages/api/figgy/overview',
+      })
+
+      // Markdown-it rule
       md.inline.ruler.before('link', 'shortcuts', (state, silent) => {
         for (const key in shortcuts) {
           const tokenText = `:${key}:`
