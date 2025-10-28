@@ -1,9 +1,13 @@
 /// @desc Methods
 
 Follow = function(_snap = false) {
+	static _GetTarget = function(_delta, _threshold) {
+		return (abs(_delta) > _threshold) * ((abs(_delta) - _threshold) * sign(_delta));
+	};
+	
 	if (instance_exists(target)) {
-		xTo = target.x;
-		yTo = mean(target.bbox_top, target.bbox_bottom);
+		xTo = x + _GetTarget(target.x - x, cfg.DeadzoneX);
+		yTo = y + _GetTarget(mean(target.bbox_top, target.bbox_bottom) - y, cfg.DeadzoneY);
 	}
 	
 	x = lerp(x, xTo, max(cfg.LerpStepX, _snap));

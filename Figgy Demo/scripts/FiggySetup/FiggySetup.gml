@@ -22,6 +22,8 @@ function FiggySetup() {
 	Figgy.Window("Camera");
 		Figgy.Float("Lerp Step X", 0.2, 0.05, 1, 0.05);
 		Figgy.Float("Lerp Step Y", 0.2, 0.05, 1, 0.05);
+		Figgy.Int("Deadzone X", 0, 0, 200, 10);
+		Figgy.Int("Deadzone Y", 0, 0, 200, 10);
 		Figgy.Bool("Clamp", true);
 		Figgy.Float("Zoom", 0.5, 0.1, 2);
 }

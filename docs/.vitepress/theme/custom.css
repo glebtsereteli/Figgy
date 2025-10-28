@@ -1,6 +1,8 @@
 
-.VPHomeHero .name {
-    margin-bottom: 1rem;
+
+.VPHomeHero .title {
+    font-size: 2rem;
+    line-height: 1.2;
 }
 .VPHomeHero .text {
     font-size: 2rem;
