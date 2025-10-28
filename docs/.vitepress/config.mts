@@ -76,16 +76,12 @@ export default defineConfig({
         items: [
           { text: '📖 Overview', link: '/pages/api/overview' },
           { 
-            text: '🗺️ Figgy',
+            text: '📜 Figgy',
             items: [
               { text: 'Setup', link: '/pages/api/figgy/setup' },
-              { text: 'Scope Widgets', link: '/pages/api/figgy/scopeWidgets' },
-              { text: 'Value Widgets', link: '/pages/api/figgy/valueWidgets' },
-              { text: 'Decor Widgets', link: '/pages/api/figgy/decorWidgets' },
-              { text: 'OnChange Callbacks', link: '/pages/api/figgy/onChange' },
-              { text: 'Input/Output', link: '/pages/api/figgy/io' },
-              { text: 'Resetting', link: '/pages/api/figgy/reset' },
-              { text: 'Getters', link: '/pages/api/figgy/get' },
+              { text: 'Getters', link: '/pages/api/figgy/getters' },
+              { text: 'Resetting', link: '/pages/api/figgy/resetting' },
+              { text: 'Input/Output', link: '/pages/api/figgy/inputOutput' },
             ]
           },
           { text: '⚙️ Configuration', link: '/pages/api/config', },
@@ -117,10 +113,9 @@ export default defineConfig({
             link: '/pages/api/figgy/overview',
             items: [
               { text: 'Setup', link: '/pages/api/figgy/setup' },
-              { text: 'Scope Widgets', link: '/pages/api/figgy/scopeWidgets' },
-              { text: 'Value Widgets', link: '/pages/api/figgy/valueWidgets' },
-              { text: 'Decor Widgets', link: '/pages/api/figgy/decorWidgets' },
-              { text: 'OnChange Callbacks', link: '/pages/api/figgy/onChange' },
+              { text: 'Getters', link: '/pages/api/figgy/getters' },
+              { text: 'Resetting', link: '/pages/api/figgy/resetting' },
+              { text: 'Input/Output', link: '/pages/api/figgy/inputOutput' },
             ]
           },
           { text: 'Configuration', link: '/pages/api/config' },

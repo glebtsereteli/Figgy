@@ -214,7 +214,7 @@ function Figgy() {
 	
 	#endregion
 	
-	#region Widgets: Scope
+	#region Setup: Scope Widgets
 	
 	/// @param {String} name The window name.
 	/// @param {Bool} visible Whether the window should start visible (true) or not (false). [Default: FIGGY_WINDOW_DEFAULT_START_VISIBLE]
@@ -286,7 +286,7 @@ function Figgy() {
 	};
 	
 	#endregion
-	#region Widgets: Value
+	#region Setup: Value Widgets
 	
 	/// @param {String} name The variable name.
 	/// @param {Real.Int} default The default value.
@@ -393,24 +393,32 @@ function Figgy() {
 	};
 	
 	#endregion
-	#region Widgets: Decor
+	#region Setup: Decor Widgets
 	
 	/// @param {String} name The button name.
 	/// @param {Func} callback The function to trigger on press.
 	/// @param {Real} width The button width. [Default: auto dbg default]
 	/// @param {Real} height The button height. [Default: auto dbg default]
+	/// @param {Bool} sameLine? Whether the button should be on the same line with the last element (true) or not (false). [Default: false]
 	/// @returns {Struct.Figgy}
 	/// @desc Decor Widget: creates a button, represented by DBG Button.
-	static Button = function(_name, _callback, _w = undefined, _h = undefined) {
+	static Button = function(_name, _callback, _w = undefined, _h = undefined, _sameLine = false) {
+		if (_sameLine) {
+			dbg_same_line();
+		}
 		dbg_button(_name, _callback, _w, _h);
 		
 		return self;
 	};
 	
 	/// @param {String} string The comment string.
+	/// @param {Bool} sameLine? Whether the comment should be on the same line with the last element (true) or not (false). [Default: false]
 	/// @returns {Struct.Figgy}
 	/// @desc Decor Widget: creates a text comment, represented by DBG Text.
-	static Comment = function(_string) {
+	static Comment = function(_string, _sameLine = false) {
+		if (_sameLine) {
+			dbg_same_line();
+		}
 		dbg_text(" " + _string);
 		
 		return self;
@@ -427,7 +435,7 @@ function Figgy() {
 	};
 	
 	#endregion
-	#region OnChange Callback
+	#region Setup. OnChange
 	
 	/// @param {Func} callback The function to trigger on value change.
 	/// @returns {Struct.Figgy}
@@ -449,40 +457,25 @@ function Figgy() {
 	};
 	
 	#endregion
-	#region Input/Output
 	
-	/// @param {String} path The path to import the config file from. [Default: undefined, prompt popup]
-	/// @returns {Struct.Figgy}
-	/// @desc Imports an external config file from a custom path.
-	static Import = function(_path = undefined) {
-		_path ??= get_open_filename_ext(__FIGGY_FILE_FILTER, __FIGGY_FILE_NAME, "", "Figgy: Import Config");
-		if (_path == "") {
-			__FiggyLog("IMPORT: canceled");
-			return self;
-		}
-		
-		__FIGGY_BENCH_START;
-		__Load(_path, false);
-		__FiggyLogTimed($"IMPORT: success at \"{_path}\"");
-		
-		return self;
+	#region Getters
+	
+	/// @returns {Struct}
+	/// @desc Returns the current config.
+	static GetCurrent = function() {
+		return __current;
 	};
 	
-	/// @param {String} path The path to import the config file to. [Default: undefined, prompt popup]
-	/// @returns {Struct.Figgy}
-	/// @desc Exports the current configs into a file at a custom path.
-	static Export = function(_path = undefined) {
-		_path ??= get_save_filename_ext(__FIGGY_FILE_FILTER, __FIGGY_FILE_NAME, "", "Figgy: Export Config");
-		if (_path == "") {
-			__FiggyLog("EXPORT: canceled");
-			return self;
-		}
-		
-		__FIGGY_BENCH_START;
-		__SaveRaw(_path);
-		__FiggyLogTimed($"EXPORT: success at \"{_path}\"");
-		
-		return self;
+	/// @returns {Struct}
+	/// @desc Returns the default config.
+	static GetDefault = function() {
+		return __current;
+	};
+	
+	/// @returns {Struct}
+	/// @desc Returns the last saved config.
+	static GetLastSave = function() {
+		return __lastSave;
 	};
 	
 	#endregion
@@ -514,24 +507,40 @@ function Figgy() {
 	};
 	
 	#endregion
-	#region Getters
+	#region Input/Output
 	
-	/// @returns {Struct}
-	/// @desc Returns the current config.
-	static GetCurrent = function() {
-		return __current;
+	/// @param {String} path The path to import the config file from. [Default: undefined, prompt popup]
+	/// @returns {Struct.Figgy}
+	/// @desc Imports an external config file from the given path.
+	static Import = function(_path = undefined) {
+		_path ??= get_open_filename_ext(__FIGGY_FILE_FILTER, __FIGGY_FILE_NAME, "", "Figgy: Import Config");
+		if (_path == "") {
+			__FiggyLog("IMPORT: canceled");
+			return self;
+		}
+		
+		__FIGGY_BENCH_START;
+		__Load(_path, false);
+		__FiggyLogTimed($"IMPORT: success at \"{_path}\"");
+		
+		return self;
 	};
 	
-	/// @returns {Struct}
-	/// @desc Returns the default config.
-	static GetDefault = function() {
-		return __current;
-	};
-	
-	/// @returns {Struct}
-	/// @desc Returns the last saved config.
-	static GetLastSave = function() {
-		return __lastSave;
+	/// @param {String} path The path to import the config file to. [Default: undefined, prompt popup]
+	/// @returns {Struct.Figgy}
+	/// @desc Exports the current configs into a file at the given path.
+	static Export = function(_path = undefined) {
+		_path ??= get_save_filename_ext(__FIGGY_FILE_FILTER, __FIGGY_FILE_NAME, "", "Figgy: Export Config");
+		if (_path == "") {
+			__FiggyLog("EXPORT: canceled");
+			return self;
+		}
+		
+		__FIGGY_BENCH_START;
+		__SaveRaw(_path);
+		__FiggyLogTimed($"EXPORT: success at \"{_path}\"");
+		
+		return self;
 	};
 	
 	#endregion

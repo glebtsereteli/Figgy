@@ -22,7 +22,7 @@
 #macro FIGGY_FILE_PRETTIFY true
 
 // Whether to obfuscate (base64 encode and compress) the config file (true) or not (false).
-// Set to true to make the config file unreadable to players (if they were to look into game files).
+// Set to true to make the config file unreadable to users.
 #macro FIGGY_FILE_OBFUSCATE false
 
 #endregion
