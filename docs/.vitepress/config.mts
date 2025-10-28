@@ -218,8 +218,37 @@ export default defineConfig({
         'Debug Overlay': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Debugging/The_Debug_Overlay.htm',
 
         'Figgy': '/pages/api/figgy/overview',
-      })
+        'Scope Widgets': '/pages/api/figgy/setup#scope-widgets',
 
+        // config
+        'FIGGY_DEBUG': '/pages/api/config#figgy-debug',
+        
+        'FIGGY_FILE_NAME': '/pages/api/config#figgy-file-name',
+        'FIGGY_FILE_EXT': '/pages/api/config#figgy-file-ext',
+        'FIGGY_FILE_DELTA': '/pages/api/config#figgy-file-delta',
+        'FIGGY_FILE_PRETTIFY': '/pages/api/config#figgy-file-prettify',
+        'FIGGY_FILE_OBFUSCATE': '/pages/api/config#figgy-file-obfuscate',
+        
+        'FIGGY_WINDOW_NAME': '/pages/api/config#figgy-window-name',
+        'FIGGY_WINDOW_DEFAULT_START_VISIBLE': '/pages/api/config#figgy-window-default-start-visible',
+        'FIGGY_WINDOW_DEFAULT_X': '/pages/api/config#figgy-window-default-x',
+        'FIGGY_WINDOW_DEFAULT_Y': '/pages/api/config#figgy-window-default-y',
+        'FIGGY_WINDOW_DEFAULT_WIDTH': '/pages/api/config#figgy-window-default-width',
+        'FIGGY_WINDOW_DEFAULT_HEIGHT': '/pages/api/config#figgy-window-default-height',
+        'FIGGY_CONTROLS_NAME': '/pages/api/config#figgy-controls-name',
+        'FIGGY_CONTROLS_OPEN': '/pages/api/config#figgy-controls-open',
+        'FIGGY_SECTION_DEFAULT_OPEN': '/pages/api/config#figgy-section-default-open',
+        'FIGGY_GROUP_DEFAULT_ALIGN': '/pages/api/config#figgy-group-default-align',
+        'FIGGY_NOSCOPE_SUFFIX': '/pages/api/config#figgy-noscope-suffix',
+
+        'FIGGY_INT_DEFAULT_STEP': '/pages/api/config#figgy-int-default-step',
+        'FIGGY_FLOAT_DEFAULT_STEP': '/pages/api/config#figgy-float-default-step',
+        'FIGGY_SEPARATOR_DEFAULT_ALIGN': '/pages/api/config#figgy-separator-default-align',
+
+        'FIGGY_CHANGES_ENABLED': '/pages/api/config#figgy-changes-enabled',
+        'FIGGY_CHANGES_DEFAULT_CALLBACK': '/pages/api/config#figgy-changes-default-callback',
+      })
+      
       // Markdown-it rule
       md.inline.ruler.before('link', 'shortcuts', (state, silent) => {
         for (const key in shortcuts) {
