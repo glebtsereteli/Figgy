@@ -19,7 +19,7 @@ TODO description
 
 > `Figgy.Window(name, [visible?], [x], [y], [width], [height])` ➜ :Struct:.:Figgy:
 
-Creates a struct at the Root scope, represented as a DBG View (window).
+Creates a struct at the Root scope, represented as a [DBG View](https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Debugging/dbg_view.htm).
 
 Once called, the Root scope becomes inaccessible. All following Widgets will be created in the context of the current Window. Call this method again to switch scope to another Window.
 

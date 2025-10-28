@@ -11,7 +11,7 @@ export default defineConfig({
   title: "Figgy",
   description: "Figgy Documentation",
   head: [
-    ['link', { rel: 'icon', href: 'logo.svg' }],
+    ['link', { rel: 'icon', href: 'logo.png' }],
 
     // embeds
     ["meta", { property: "og:title", content: "Figgy Documentation" }],
@@ -41,7 +41,7 @@ export default defineConfig({
   ],
 
   themeConfig: {
-    logo: '/logo.svg',
+    logo: '/logo.png',
 
     search: {
       provider: 'local'

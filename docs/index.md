@@ -14,7 +14,7 @@ hero:
       text: Get Started
       link: '/pages/home/gettingStarted/gettingStarted'
   image:
-    src: /logo.svg
+    src: /logo.png
     alt: Icon
 
 features:
@@ -26,7 +26,7 @@ features:
     details: Built on GM's cross-platform DBG system, Figgy provides many Value Widgets for a wide range of data types.
   - title: 💾 Persistent Project Storage
     details: Keep your configs inside your GitHub repo with Figgy's datafiles saving/loading support.
-  - title: 👨‍🎨 Design-First Focus
+  - title: 👨‍🎨 Code-Free Design
     details: Allow your game designers to tweak and balance the game live without ever having to dig through code.
   - title: 👨‍🎨 Another One
     details: TODO
