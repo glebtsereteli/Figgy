@@ -1,4 +1,8 @@
+/// feather ignore all
 
+/// @func FiggySetup()
+/// @desc @TODO
+/// Documentation: https://glebtsereteli.github.io/Figgy/pages/api/figgy/overview
 function FiggySetup() {
 	Figgy.Window("Player", true);
 		global.playerSkins = ["Green", "Pink", "Purple", "Yellow"];

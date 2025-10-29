@@ -1,5 +1,10 @@
 /// feather ignore all
 
+/// @func Figgy()
+/// @desc Main Figgy interface. Handles Setup, Getters, Resetting and Input/Output.
+/// Initialized internally, no additional setup required.
+/// Call public methods using the Figgy.MethodName(<arguments>); syntax.
+/// Documentation: https://glebtsereteli.github.io/Figgy/pages/api/figgy/overview
 function Figgy() {
 	#region __private
 	
@@ -141,6 +146,9 @@ function Figgy() {
         
         return self;
     };
+	static __RefreshLastSave = function() {
+		__lastSave = variable_clone(__current);
+	};
 	
 	static __LoadProcess = function(_new, _current) {
         var _names = struct_get_names(_new);
@@ -210,10 +218,6 @@ function Figgy() {
         }
     };
 	
-	static __RefreshLastSave = function() {
-		__lastSave = variable_clone(__current);
-	};
-	
 	#endregion
 	
 	#region Setup: Scope Widgets
@@ -267,12 +271,12 @@ function Figgy() {
 	
 	/// @param {String} name The group name.
 	/// @param {Bool} scoped Whether the section creates a new scope (true) or not (false). [Default: true]
-	/// @param {Enum.FIGGY_GROUP_ALIGN} align The group name alignment. [Default: FIGGY_GROUP_DEFAULT_ALIGN]
+	/// @param {Real} align The group name alignment. 0 is left, 1 is center, 2 is right. [Default: FIGGY_GROUP_DEFAULT_ALIGN]
 	/// @returns {Struct.Figgy}
 	/// @desc Scope Widget. IF SCOPED: creates a struct at the current scope (Root, Window or Section), represented as a DBG Text Separator.
 	/// Once called, all following Value Widgets will be created in the context of the current Group.
 	/// IF NOT SCOPED, acts as a purely visual DBG Text Separator.
-	static Group = function(_name, _scoped = true, _align = FIGGY_GROUP_DEFAULT_ALIGN) {
+	static Group = function(_name, _scoped = true, _align = 0) {
 		__FIGGY_CATCH_WINDOW;
 		__FIGGY_CATCH_FIRST_WINDOW_SECTION;
 		__FIGGY_RAWNAME;
@@ -373,22 +377,24 @@ function Figgy() {
 		__FIGGY_WIDGET;
 		dbg_drop_down(_ref, _values, _names, _name);
 		
-		with ({}) {
-			__scope = other.__scope;
-			__name = _rawName;
-			__values = _values;
-			
-			dbg_same_line();
-			dbg_button("-", function() {
-				var _n = array_length(__values);
-				var _index = (array_get_index(__values, __scope[$ __name]) - 1 + _n) mod _n;
-				__scope[$ __name] = __values[_index];
-			}, 20, 20);
-			dbg_same_line();
-			dbg_button("+", function() {
-				var _index = (array_get_index(__values, __scope[$ __name]) + 1) mod array_length(__values);
-				__scope[$ __name] = __values[_index];
-			}, 20, 20);
+		if (FIGGY_MULTI_BUTTONS) {
+			with ({}) {
+				__scope = other.__scope;
+				__name = _rawName;
+				__values = _values;
+				
+				dbg_same_line();
+				dbg_button("-", function() {
+					var _n = array_length(__values);
+					var _index = (array_get_index(__values, __scope[$ __name]) - 1 + _n) mod _n;
+					__scope[$ __name] = __values[_index];
+				}, 20, 20);
+				dbg_same_line();
+				dbg_button("+", function() {
+					var _index = (array_get_index(__values, __scope[$ __name]) + 1) mod array_length(__values);
+					__scope[$ __name] = __values[_index];
+				}, 20, 20);
+			}
 		}
 		
 		return self;
@@ -427,10 +433,10 @@ function Figgy() {
 	};
 	
 	/// @param {String} name The separator name. [Default: empty]
-	/// @param {Enum.FIGGY_GROUP_ALIGN} align The separator name alignment. [Default: FIGGY_GROUP_DEFAULT_ALIGN]
+	/// @param {Real} align The separator name alignment. 0 is left, 1 is center, 2 is right. [Default: FIGGY_GROUP_DEFAULT_ALIGN]
 	/// @returns {Struct.Figgy}
 	/// @desc Decor Widget: creates a separator, represented by DBG Separator with an optional name.
-	static Separator = function(_name = "", _align = FIGGY_SEPARATOR_DEFAULT_ALIGN) {
+	static Separator = function(_name = "", _align = 0) {
 		dbg_text_separator(_name, _align);
 		
 		return self;

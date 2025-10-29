@@ -188,8 +188,27 @@ asdasd
 
 ## OnChange
 
+
+
 ---
 ### `.OnChangeSet()`
+
+> `Figgy.OnChangeSet(callback)` ➜ :Struct:.:Figgy:
+
+Description
+Description
+Description
+
+|Parameter|Type|Description|
+|---|---|---|
+| `name` | Type | description |
+
+::: code-group
+```js [Example]
+Figgy.Window("player");
+    // Widgets here...
+```
+:::
 
 ---
 ### `.OnChangeReset()`

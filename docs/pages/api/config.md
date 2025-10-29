@@ -105,9 +105,9 @@ Whether :Sections: are open by default (`true`) or not (`false`).
 
 ---
 ### `FIGGY_GROUP_DEFAULT_ALIGN`
-> Default: `FIGGY_ALIGN.CENTER`
+> Default: `0`
 
-Default :Group: text alignment.
+Default :Group: text alignment. `0` is left, `1` is center, `2` is right.
 
 ---
 ### `FIGGY_NOSCOPE_SUFFIX`
@@ -115,7 +115,7 @@ Default :Group: text alignment.
 
 The suffix added to **non-scoped** :Sections: and :Groups: (when the `scoped` argument is set to `false`).
 
-## Value & Decor Widgets
+## Value Widgets
 
 ### `FIGGY_INT_DEFAULT_STEP`
 > Default: `1`
@@ -129,10 +129,18 @@ Default step increment for :Int: Value Widgets.
 Default step increment for :Float: Value Widgets.
 
 ---
-### `FIGGY_SEPARATOR_DEFAULT_ALIGN`
-> Default: `FIGGY_ALIGN.CENTER`
+### `FIGGY_MULTI_BUTTONS`
+> Default: `true`
 
-Default :Separator: text alignment.
+Whether to include -/+ cycling buttons for :Multi: Value Widgets (true) or not (false).
+
+## Decor Widgets
+
+---
+### `FIGGY_SEPARATOR_DEFAULT_ALIGN`
+> Default: `0`
+
+Default :Separator: text alignment. 0 is left, 1 is center, 2 is right.
 
 ---
 ## Changes

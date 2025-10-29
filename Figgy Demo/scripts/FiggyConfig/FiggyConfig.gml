@@ -56,14 +56,14 @@
 // Whether .Section()s are open by default (true) or not (false).
 #macro FIGGY_SECTION_DEFAULT_OPEN true
 
-// Default .Group() text alignment.
-#macro FIGGY_GROUP_DEFAULT_ALIGN FIGGY_ALIGN.CENTER
+// Default .Group() and .Separator() text alignment. 0 is left, 1 is center, 2 is right.
+#macro FIGGY_GROUP_DEFAULT_ALIGN 0
 
 // The suffix added to NOT SCOPED Sections and Groups (when the "scoped" argument set to false).
 #macro FIGGY_NOSCOPE_SUFFIX " [NO SCOPE]"
 
 #endregion
-#region Value & Decor Widgets
+#region Value Widgets
 
 // Default step increment for .Int() Value Widgets.
 #macro FIGGY_INT_DEFAULT_STEP 1
@@ -71,8 +71,14 @@
 // Default step increment for .Float() Value Widgets.
 #macro FIGGY_FLOAT_DEFAULT_STEP 0.1
 
+// Whether to include -/+ cycling buttons for .Multi() Value Widgets (true) or not (false).
+#macro FIGGY_MULTI_BUTTONS true
+
+#endregion
+#region Decor Widgets
+
 // Default .Separator() text alignment.
-#macro FIGGY_SEPARATOR_DEFAULT_ALIGN FIGGY_ALIGN.CENTER
+#macro FIGGY_SEPARATOR_DEFAULT_ALIGN 0
 
 #endregion
 #region Changes
