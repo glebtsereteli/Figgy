@@ -18,18 +18,18 @@ hero:
     alt: Icon
 
 features:
-  - title: ⚙️ Automatic Interface
-    details: Figgy creates debug view(s) for your configs automatically, freeing you from dreaded UI coding of any kind.
-  - title: 🗂️ Flexible Scoping
-    details: Robust struct-based config layout with Window, Section and Group Scope Widgets.
+  - title: ⚙️ Automatic Live Interface
+    details: Figgy creates debug view(s) for your configs automatically, freeing you from dreaded UI coding of any kind and allowing for live editing.
+  - title: 🗂️ Flexible Data Structure
+    details: Organize your configs using a robust struct-based JSON layout with Window, Section and Group Scope Widgets.
   - title: 🎛️ Wide Data Type Coverage
     details: Built on GM's cross-platform DBG system, Figgy provides many Value Widgets for a wide range of data types.
   - title: 💾 Persistent Project Storage
-    details: Keep your configs inside your GitHub repo with Figgy's datafiles saving/loading support.
+    details: Keep your configs inside your GitHub repo with Figgy's datafiles saving/loading support, quickly accessible through the DBG interface.
   - title: 👨‍🎨 Code-Free Design
-    details: Allow your game designers to tweak and balance the game live without ever having to dig through code.
+    details: Allow your designers to tweak and balance the game live without ever having to dig through a single line of code.
   - title: 👨‍🎨 Another One
-    details: TODO
+    details: Some cool info here.
 
 ---
 

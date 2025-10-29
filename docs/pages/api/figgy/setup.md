@@ -15,7 +15,7 @@ TODO tips
 TODO description
 
 ---
-### .Window()
+### `.Window()`
 
 > `Figgy.Window(name, [visible?], [x], [y], [width], [height])` ➜ :Struct:.:Figgy:
 
@@ -48,7 +48,7 @@ Figgy.Window("Enemy", false, _x, FIGGY_WINDOW_DEFAULT_Y, _width);
 :::
 
 ---
-### .Section()
+### `.Section()`
 
 > `Figgy.Section(name, [scoped?], [open?])` ➜ :Struct:.:Figgy:
 
@@ -72,7 +72,7 @@ TODO
 :::
 
 ---
-### .Group()
+### `.Group()`
 
 > `Figgy.Group(name, [scoped?], [align])` ➜ :Struct:.:Figgy:
 
@@ -98,7 +98,7 @@ TODO
 Overview...
 
 ---
-### .Int()
+### `.Int()`
 
 > `Figgy.Int(name, default, min, max, [step], [onChange])` ➜ :Struct:.:Figgy:
 
@@ -111,7 +111,7 @@ asdasd
 :::
 
 ---
-### .Float()
+### `.Float()`
 
 > `Figgy.Float(name, default, min, max, [step], [onChange])` ➜ :Struct:.:Figgy:
 
@@ -124,7 +124,7 @@ asdasd
 :::
 
 ---
-### .Bool()
+### `.Bool()`
 
 > `Figgy.Bool(name, default, [onChange])` ➜ :Struct:.:Figgy:
 
@@ -137,7 +137,7 @@ asdasd
 :::
 
 ---
-### .Text()
+### `.Text()`
 
 > `Figgy.Text(name, default, [onChange])` ➜ :Struct:.:Figgy:
 
@@ -150,7 +150,7 @@ asdasd
 :::
 
 ---
-### .Color()
+### `.Color()`
 
 > `Figgy.Color(name, default, [onChange])` ➜ :Struct:.:Figgy:
 
@@ -163,7 +163,7 @@ asdasd
 :::
 
 ---
-### .Multi()
+### `.Multi()`
 
 > `Figgy.Multi(name, default, values, names, [onChange])` ➜ :Struct:.:Figgy:
 
@@ -178,18 +178,18 @@ asdasd
 ## Decor Widgets
 
 ---
-### .Button()
+### `.Button()`
 
 ---
-### .Comment()
+### `.Comment()`
 
 ---
-### .Separator()
+### `.Separator()`
 
 ## OnChange
 
 ---
-### .OnChangeSet()
+### `.OnChangeSet()`
 
 ---
-### .OnChangeReset()
+### `.OnChangeReset()`

@@ -4,6 +4,8 @@ function Figgy() {
 	#region __private
 	
 	static __inIDE = (GM_build_type == "run");
+	static __onDesktop = ((os_type == os_windows) or (os_type == os_macosx) or (os_type == os_linux));
+	static __ioEnabled = (__inIDE and __onDesktop);
 	
 	static __scope = undefined;
 	static __window = undefined;
@@ -39,7 +41,7 @@ function Figgy() {
 	};
 	static __InitControls = function() {
 		dbg_section(FIGGY_CONTROLS_NAME, FIGGY_CONTROLS_OPEN);
-		if (Figgy.__inIDE) {
+		if (Figgy.__ioEnabled) {
 			dbg_button("Save", function() {
 				__Save();
 			}, 55, 20);
@@ -56,7 +58,7 @@ function Figgy() {
 		dbg_button("Default", function() {
 			ResetToDefault();
 		}, 75, 20);
-		if (Figgy.__inIDE) {
+		if (Figgy.__ioEnabled) {
 			dbg_same_line();
 			dbg_button("Last Save", function() {
 				ResetToLastSave();
@@ -191,7 +193,7 @@ function Figgy() {
             
             __LoadProcess(_data, __current);
             
-            if (Figgy.__inIDE and _mainLoad and _flippedObfuscate) {
+            if (Figgy.__ioEnabled and _mainLoad and _flippedObfuscate) {
                 __Save(false);
                 __FiggyLog("LOAD: file re-saved");
             }
@@ -201,7 +203,7 @@ function Figgy() {
             }
         } 
         catch (_) {
-            if (Figgy.__inIDE) {
+            if (Figgy.__ioEnabled) {
                 __Save(false);
                 __FiggyLog($"LOAD: fail at \"{_path}\". Initialized to Default");
             }

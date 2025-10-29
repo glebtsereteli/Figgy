@@ -2,7 +2,7 @@
 
 Follow = function(_snap = false) {
 	static _GetTarget = function(_delta, _threshold) {
-		return (abs(_delta) > _threshold) * ((abs(_delta) - _threshold) * sign(_delta));
+		return ((abs(_delta) > _threshold) * ((abs(_delta) - _threshold) * sign(_delta)));
 	};
 	
 	if (instance_exists(target)) {
