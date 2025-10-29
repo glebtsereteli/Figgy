@@ -14,7 +14,12 @@
 #macro __FIGGY_FILE_PATH $"{Figgy.__inIDE ? ($"{filename_dir(GM_project_filename)}/datafiles/") : ""}{__FIGGY_FILE_NAME}"
 #macro __FIGGY_FILE_FILTER $"Figgy Config File|*{FIGGY_FILE_EXT}"
 
-#macro __FIGGY_RAWNAME var _rawName = string_replace_all(_name, " ", "")
+#macro __FIGGY_RAWNAME \
+var _rawName = _name; \
+if (FIGGY_FILE_REMOVE_SPACES) { \
+	_rawName = string_replace_all(_rawName, " ", ""); \
+}
+
 #macro __FIGGY_SCOPEDNAME _name + (_scoped ? "" : FIGGY_NOSCOPE_SUFFIX)
 
 #macro __FIGGY_CATCH_WINDOW \

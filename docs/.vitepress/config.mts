@@ -218,6 +218,7 @@ export default defineConfig({
         'Debug Overlay': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Debugging/The_Debug_Overlay.htm',
 
         'Figgy': '/pages/api/figgy/overview',
+        'Setup': '/pages/api/figgy/setup',
         'Scope Widgets': '/pages/api/figgy/setup#scope-widgets',
 
         // config

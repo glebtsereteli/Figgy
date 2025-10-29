@@ -20,7 +20,7 @@ hero:
 features:
   - title: ⚙️ Automatic Live Interface
     details: Figgy creates debug view(s) for your configs automatically, freeing you from dreaded UI coding of any kind and allowing for live editing.
-  - title: 🗂️ Flexible Data Structure
+  - title: 🗂️ Flexible Data Structuring
     details: Organize your configs using a robust struct-based JSON layout with Window, Section and Group Scope Widgets.
   - title: 🎛️ Wide Data Type Coverage
     details: Built on GM's cross-platform DBG system, Figgy provides many Value Widgets for a wide range of data types.

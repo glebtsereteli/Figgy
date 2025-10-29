@@ -35,14 +35,14 @@ Once called, the Root scope becomes inaccessible. All following Widgets will be 
 ::: code-group
 ```js [Example]
 // Creates a Player window with default parameters:
-Figgy.Window("Player");
+Figgy.Window("Player"); // [!code highlight]
     // Widgets here...
 
 // Creates an "Enemy" window at the top-right corner of the game window, hidden by default.
 var _width = 300;
 var _xPad = 8;
 var _x = window_get_width() - _width - _xPad;
-Figgy.Window("Enemy", false, _x, FIGGY_WINDOW_DEFAULT_Y, _width);
+Figgy.Window("Enemy", false, _x, FIGGY_WINDOW_DEFAULT_Y, _width); // [!code highlight]
     // Widgets here...
 ```
 :::

@@ -31,10 +31,11 @@ When enabled (`true`), only variables that differ from their default values are 
 When disabled (`false`), all variables are saved regardless of whether they match defaults.
 Useful for inspecting or exporting the full config state.
 
-**Note:** Setting this to `false` may reduce input/output performance at scale.
+::: tip warning
+Setting this to `false` may reduce input/output performance at scale.
+:::
 
 ---
-
 ### `FIGGY_FILE_PRETTIFY`
 > Default: `true`
 
@@ -46,6 +47,19 @@ Whether to format the config file for readability by prettifying the output JSON
 
 Whether to obfuscate (base64 encode and compress) the config file (`true`) or not (`false`).
 Set to `true` to make the config file unreadable to users.
+
+---
+### `FIGGY_FILE_REMOVE_SPACES`
+> Default: `false`
+
+Whether to remove spaces from variable names (`true`) or not (`false`), e.g. `"Move Speed"` in :Setup: becomes `"MoveSpeed"` in code.
+
+* Set to `true` if you use variable names like `"Move Speed"` AND want to avoid using the struct accessor for accessing configs in code.
+* Leave as `false` if you use variable names like `"move_speed"` or `"moveSpeed"`.
+
+::: warning
+Changing this mid-game will erase existing saved configs, so make sure to decide on this early on.
+:::
 
 ## Scope Widgets
 
