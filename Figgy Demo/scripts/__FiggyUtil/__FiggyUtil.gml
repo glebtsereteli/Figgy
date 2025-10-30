@@ -1,4 +1,4 @@
-/// feather ignore all
+// feather ignore all
 
 function __FiggyLogFree(_message) {
 	show_debug_message($"{__FIGGY_LOG_PREFIX} {_message}.");

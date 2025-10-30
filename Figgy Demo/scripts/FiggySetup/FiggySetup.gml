@@ -1,4 +1,4 @@
-/// feather ignore all
+// feather ignore all
 
 /// @func FiggySetup()
 /// @desc @TODO

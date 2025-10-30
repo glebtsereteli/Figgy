@@ -1,4 +1,4 @@
-/// feather ignore all
+// feather ignore all
 
 #region Info
 
@@ -8,10 +8,19 @@
 #macro __FIGGY_LOG_PREFIX $"[{__FIGGY_NAME}]"
 
 #endregion
+#region Status
+
+// Whether the game is running from IDE (true) or from EXE (false).
+#macro __FIGGY_IN_IDE (GM_build_type == "run")
+
+// Whether the game is running on a Desktop platform (true) or not (false).
+#macro __FIGGY_ON_DESKTOP ((os_type == os_windows) or (os_type == os_macosx) or (os_type == os_linux))
+
+#endregion
 #region Utility
 
 #macro __FIGGY_FILE_NAME $"{FIGGY_FILE_NAME}{FIGGY_FILE_EXT}"
-#macro __FIGGY_FILE_PATH $"{Figgy.__inIDE ? ($"{filename_dir(GM_project_filename)}/datafiles/") : ""}{__FIGGY_FILE_NAME}"
+#macro __FIGGY_FILE_PATH $"{__FIGGY_IN_IDE ? ($"{filename_dir(GM_project_filename)}/datafiles/") : ""}{__FIGGY_FILE_NAME}"
 #macro __FIGGY_FILE_FILTER $"Figgy Config File|*{FIGGY_FILE_EXT}"
 
 #macro __FIGGY_RAWNAME \

@@ -5,9 +5,7 @@
     {"$GMAudioGroup":"","%Name":"audiogroup_default","name":"audiogroup_default","resourceType":"GMAudioGroup","resourceVersion":"2.0","targets":-1,},
   ],
   "configs":{
-    "children":[
-      {"children":[],"name":"NoDelta",},
-    ],
+    "children":[],
     "name":"Default",
   },
   "defaultScriptType":1,
@@ -247,7 +245,6 @@
     {"id":{"name":"BulbStaticOccluder","path":"scripts/BulbStaticOccluder/BulbStaticOccluder.yy",},},
     {"id":{"name":"BulbSunlight","path":"scripts/BulbSunlight/BulbSunlight.yy",},},
     {"id":{"name":"FiggyConfig","path":"scripts/FiggyConfig/FiggyConfig.yy",},},
-    {"id":{"name":"FiggyEnums","path":"scripts/FiggyEnums/FiggyEnums.yy",},},
     {"id":{"name":"FiggyMain","path":"scripts/FiggyMain/FiggyMain.yy",},},
     {"id":{"name":"FiggySetup","path":"scripts/FiggySetup/FiggySetup.yy",},},
     {"id":{"name":"InputBindingFind","path":"scripts/InputBindingFind/InputBindingFind.yy",},},

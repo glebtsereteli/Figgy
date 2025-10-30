@@ -1,5 +1,4 @@
 
-#macro NoDelta:FIGGY_FILE_DELTA false
 #macro CFG global.__config
 CFG = Figgy.GetCurrent();
 

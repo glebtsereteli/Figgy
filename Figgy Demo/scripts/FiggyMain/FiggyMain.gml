@@ -8,9 +8,7 @@
 function Figgy() {
 	#region __private
 	
-	static __inIDE = (GM_build_type == "run");
-	static __onDesktop = ((os_type == os_windows) or (os_type == os_macosx) or (os_type == os_linux));
-	static __ioEnabled = (__inIDE and __onDesktop);
+	static __ioEnabled = (__FIGGY_IN_IDE and __FIGGY_ON_DESKTOP);
 	
 	static __scope = undefined;
 	static __window = undefined;
