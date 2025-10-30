@@ -1,4 +1,4 @@
-/// feather ignore all
+// feather ignore all
 
 /// @func Figgy()
 /// @desc Main Figgy interface. Handles Setup, Getters, Resetting and Input/Output.
@@ -314,7 +314,7 @@ function Figgy() {
 	/// @param {Real} default The default value.
 	/// @param {Real} min The minimum value.
 	/// @param {Real} max The maximum value.
-	/// @param {Real} step Step value. [Default: FIGGY_FLOAT_DEFAULT_STEP)
+	/// @param {Real} step Step value. [Default: FIGGY_FLOAT_DEFAULT_STEP]
 	/// @param {Func} onChange The function to call when the value is changed. [Default: current onChange callback if set, or FIGGY_CHANGES_DEFAULT_CALLBACK]
 	/// @returns {Struct.Figgy}
 	/// @desc Value Widget: creates a Real value in the current scope (Root, Window, Section or Group), represented as a DBG Float Slider.
@@ -368,7 +368,7 @@ function Figgy() {
 	/// @param {String} name The dropdown name.
 	/// @param {Any} default The default value.
 	/// @param {Array<Any>} values The array of option values.
-	/// @param {Array<String>} names The array of option names. [Default: values)
+	/// @param {Array<String>} names The array of option names. [Default: values]
 	/// @param {Func} onChange The function to call when the value is changed. [Default: current onChange callback if set, or FIGGY_CHANGES_DEFAULT_CALLBACK]
 	/// @returns {Struct.Figgy}
 	/// @desc Value Widget: creates an <Any> value in the current scope (Root, Window, Section or Group), represented as a DBG Dropdown.
@@ -477,7 +477,7 @@ function Figgy() {
 	/// @returns {Struct}
 	/// @desc Returns the default config.
 	static GetDefault = function() {
-		return __current;
+		return __default;
 	};
 	
 	/// @returns {Struct}

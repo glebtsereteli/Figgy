@@ -12,8 +12,8 @@
   "name":"objCamera",
   "overriddenProperties":[],
   "parent":{
-    "name":"01. Core",
-    "path":"folders/01. Demo/01. Core.yy",
+    "name":"03. World",
+    "path":"folders/01. Demo/03. World.yy",
   },
   "parentObjectId":null,
   "persistent":false,

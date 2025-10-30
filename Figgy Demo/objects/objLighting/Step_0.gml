@@ -1,0 +1,2 @@
+
+renderer.ambientColor = cfg.AmbientColor;

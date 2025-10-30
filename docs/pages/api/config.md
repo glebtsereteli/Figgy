@@ -146,7 +146,7 @@ Default step increment for :Float: Value Widgets.
 ### `FIGGY_MULTI_BUTTONS`
 > Default: `true`
 
-Whether to include -/+ cycling buttons for :Multi: Value Widgets (true) or not (false).
+Whether to include -/+ cycling buttons for :Multi: Value Widgets (`true`) or not (`false`).
 
 ## Decor Widgets
 
@@ -162,14 +162,17 @@ Default :Separator: text alignment. 0 is left, 1 is center, 2 is right.
 ### `FIGGY_CHANGES_ENABLED`
 > Default: `true`
 
-Whether to enable the Changes tracking system (`true`) or not (`false`).  
-**Note:** Disable to improve performance at scale.  
-**Note:** It's a good idea to disable this when running the game outside of the IDE (check `GM_build_type` for that).
+Whether to enable the Changes tracking system (`true`) or not (`false`).
+::: tip
+Disable to improve performance at scale.
+
+It's a good idea to disable this when running the game outside of the IDE (check `GM_build_type` for that).
+:::
 
 ---
 ### `FIGGY_CHANGES_DEFAULT_CALLBACK`
 > Default: `undefined`
 
-The default function to call when a Value Widget's value is changed.  
-`undefined` stands for "no function".  
+The default function to call when a Value Widgets' values are changed. `undefined` stands for "no function".
+
 Arguments passed to the callback: `(newValue, oldValue, variableName)`.

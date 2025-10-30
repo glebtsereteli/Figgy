@@ -1,2 +1,23 @@
-# Figgy
+<!-- ![](https://github.com/glebtsereteli/Figgy/assets/50461722/e82ecee8-149d-4a04-bf85-4010535ce033) -->
 
+<h1 align="center">Figgy v1.0.0 </h1>
+<p align="center"> Persistent live configuration solution for GameMaker 2024.13+ </p>
+
+# Overview
+Figgy is a pure GML [Free and Open Source](https://en.wikipedia.org/wiki/Free_and_open-source_software) GameMaker library made for TODO
+
+* ℹ️ Download the `.yymps` local package from the [Releases](https://github.com/glebtsereteli/Figgy/releases) page.
+* ℹ️ Refer to the [Documentation](https://glebtsereteli.github.io/Figgy/) for installation instructions, usage examples and full API reference.
+
+# Use Cases
+TODO
+
+# Features
+TODO
+
+# Credits
+TODO
+
+# Games Using Figgy
+* [Thomas Threlfo](https://bsky.app/profile/tthrelfo.bsky.social)'s tobu.
+* And more to come :)

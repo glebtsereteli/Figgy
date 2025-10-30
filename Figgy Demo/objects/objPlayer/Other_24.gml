@@ -20,13 +20,15 @@ UpdateFacing = function() {
 ResetJumps = function() {
 	nJumps = cfg.MaxJumps;
 };
+
 MoveCollide = function() {
+	MoveCollideX();
+	MoveCollideY();
+};
+MoveCollideX = function() {
 	xSpdFrac += xSpd;
-	ySpdFrac += ySpd;
 	var _xSpd = round(xSpdFrac);
-	var _ySpd = round(ySpdFrac);
 	xSpdFrac -= _xSpd;
-	ySpdFrac -= _ySpd;
 	
 	repeat (abs(_xSpd)) {
 	    if (place_meeting(x + sign(_xSpd), y, colliders)) {
@@ -35,12 +37,39 @@ MoveCollide = function() {
 		}
 		x += sign(_xSpd);
 	}
-	repeat (abs(_ySpd)) {
-	    if (place_meeting(x, y + sign(_ySpd), colliders)) {
-	        ySpd = 0;
-	        break;
+};
+MoveCollideY = function() {
+	static _SkipCorner = function(_ySpd) {
+		if (_ySpd >= 0) return false;
+		
+		var _corrected = false;
+		for (var _i = 1; _i <= cfg.CornerTolerance; _i++) {
+		    if (not place_meeting(x - _i, y + _ySpd, colliders)) {
+		        x -= _i;
+		        _corrected = true;
+		        break;
+		    }
+		    if (not place_meeting(x + _i, y + _ySpd, colliders)) {
+		        x += _i;
+		        _corrected = true;
+		        break;
+		    }
 		}
-		y += sign(_ySpd);
+		
+		return _corrected;
+	};
+	
+	ySpdFrac += ySpd;
+	var _ySpd = round(ySpdFrac);
+	ySpdFrac -= _ySpd;
+	
+	var _sign = sign(_ySpd);
+	repeat (abs(_ySpd)) {
+		if (place_meeting(x, y + _sign, colliders) and not _SkipCorner(_ySpd)) {
+		    ySpd = 0;
+		    break;
+		}
+		y += _sign;
 	}
 };
 

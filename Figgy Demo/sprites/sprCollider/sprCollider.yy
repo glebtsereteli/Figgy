@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"03. Colliders",
-    "path":"folders/01. Demo/03. Colliders.yy",
+    "name":"Collider",
+    "path":"folders/01. Demo/03. World/Collider.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

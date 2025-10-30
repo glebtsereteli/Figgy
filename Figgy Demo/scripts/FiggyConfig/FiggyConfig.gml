@@ -1,5 +1,5 @@
-/// feather ignore all
-/// Documentation: https://glebtsereteli.github.io/Figgy/pages/api/config
+// feather ignore all
+// Documentation: https://glebtsereteli.github.io/Figgy/pages/api/config
 
 // Whether to show debug messages in the Output window (true) or not (false).
 #macro FIGGY_DEBUG true
@@ -41,7 +41,7 @@
 // B. The prefix used for custom .Window()s (e.g. "Figgy: Player").
 #macro FIGGY_WINDOW_NAME "Figgy"
 
-// Whether Figgy windows starts visible by default (true) or not (false).
+// Whether Figgy windows start visible by default (true) or not (false).
 #macro FIGGY_WINDOW_DEFAULT_START_VISIBLE false
 
 // Default X position of Figgy windows.
@@ -94,7 +94,7 @@
 
 // Whether to enable the Changes tracking system (true) or not (false).
 // NOTE: Disable to improve performance at scale.
-// NOTE: It's a good idea to disable this when running the game outside of the IDE. (check GM_build_type for that)
+// NOTE: It's a good idea to disable this when running the game outside of the IDE (check GM_build_type for that).
 #macro FIGGY_CHANGES_ENABLED true
 
 // The default function to call when a Value Widget value is changed. undefined stands for "no function".

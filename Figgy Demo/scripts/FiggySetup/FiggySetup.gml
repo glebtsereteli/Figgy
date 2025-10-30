@@ -22,6 +22,7 @@ function FiggySetup() {
 		Figgy.Int("Max Jumps", 1, 1, 3);
 		Figgy.Int("Coyote Time", 10, 0, 20);
 		Figgy.Float("Max Fall Speed", 15, 10, 20);
+		Figgy.Int("Corner Tolerance", 16, 0, 32);
 	
 	Figgy.Window("Camera");
 		Figgy.Float("Lerp Step X", 0.2, 0.05, 1, 0.05);
@@ -30,4 +31,7 @@ function FiggySetup() {
 		Figgy.Int("Deadzone Y", 0, 0, 200, 10);
 		Figgy.Bool("Clamp", true);
 		Figgy.Float("Zoom", 0.5, 0.1, 2);
+	
+	Figgy.Window("Lighting");
+		Figgy.Color("Ambient Color", c_dkgray);
 }

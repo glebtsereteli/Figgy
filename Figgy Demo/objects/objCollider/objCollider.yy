@@ -6,8 +6,8 @@
   "name":"objCollider",
   "overriddenProperties":[],
   "parent":{
-    "name":"03. Colliders",
-    "path":"folders/01. Demo/03. Colliders.yy",
+    "name":"Collider",
+    "path":"folders/01. Demo/03. World/Collider.yy",
   },
   "parentObjectId":null,
   "persistent":false,
