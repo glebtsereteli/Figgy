@@ -4,7 +4,7 @@
   "name":"__shdBulbLightWithoutNormalMap",
   "parent":{
     "name":"Light",
-    "path":"folders/01. Demo/99. Libraries/Bulb/(System)/(Pay no attention to that man behind the curtain)/Shaders/Light.yy",
+    "path":"folders/01. Demo/99. Tools/Bulb/(System)/(Pay no attention to that man behind the curtain)/Shaders/Light.yy",
   },
   "resourceType":"GMShader",
   "resourceVersion":"2.0",

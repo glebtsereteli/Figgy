@@ -43,6 +43,8 @@ function Figgy() {
 		__changes.__Init();
 	};
 	static __InitControls = function() {
+		__FIGGY_NO_INTERFACE;
+		
 		dbg_section(FIGGY_CONTROLS_NAME, FIGGY_CONTROLS_OPEN);
 		if (Figgy.__ioEnabled) {
 			dbg_button("Save", function() {
@@ -232,7 +234,9 @@ function Figgy() {
 	/// Call this method again to switch the scope to another Window.
 	static Window = function(_name, _visible = FIGGY_WINDOW_DEFAULT_START_VISIBLE, _x = FIGGY_WINDOW_DEFAULT_X, _y = FIGGY_WINDOW_DEFAULT_Y, _w = FIGGY_WINDOW_DEFAULT_WIDTH, _h = FIGGY_WINDOW_DEFAULT_HEIGHT) {
 		__FIGGY_RAWNAME;
-		dbg_view($"{FIGGY_WINDOW_NAME}: {_name}", _visible, _x, _y, _w, _h);
+		if (FIGGY_BUILD_INTERFACE) {
+			dbg_view($"{FIGGY_WINDOW_NAME}: {_name}", _visible, _x, _y, _w, _h);
+		}
 		
 		__section = undefined;
 		__window = {};
@@ -256,7 +260,9 @@ function Figgy() {
 	static Section = function(_name, _scoped = true, _open = FIGGY_SECTION_DEFAULT_OPEN) {
 		__FIGGY_CATCH_WINDOW;
 		__FIGGY_RAWNAME;
-		dbg_section(__FIGGY_SCOPEDNAME, _open);
+		if (FIGGY_BUILD_INTERFACE) {
+			dbg_section(__FIGGY_SCOPEDNAME, _open);
+		}
 		if (_scoped) {
 			__section = {};
 			__window[$ _rawName] = __section;
@@ -278,7 +284,9 @@ function Figgy() {
 		__FIGGY_CATCH_WINDOW;
 		__FIGGY_CATCH_FIRST_WINDOW_SECTION;
 		__FIGGY_RAWNAME;
-		dbg_text_separator(__FIGGY_SCOPEDNAME, _align);
+		if (FIGGY_BUILD_INTERFACE) {
+			dbg_text_separator(__FIGGY_SCOPEDNAME, _align);
+		}
 		if (_scoped) {
 			var _group = {};
 			var _scope = __section ?? __window;
@@ -303,7 +311,9 @@ function Figgy() {
 	/// The onChange callback function receives 3 arguments: (new value, old value, variable name).
 	static Int = function(_name, _default, _min, _max, _step = FIGGY_INT_DEFAULT_STEP, _onChange = __onChange) {
 		__FIGGY_WIDGET;
-		dbg_slider_int(_ref, _min, _max, _name, _step);
+		if (FIGGY_BUILD_INTERFACE) {
+			dbg_slider_int(_ref, _min, _max, _name, _step);
+		}
 		
 		return self;
 	};
@@ -319,7 +329,9 @@ function Figgy() {
 	/// The onChange callback function receives 3 arguments: (new value, old value, variable name).
 	static Float = function(_name, _default, _min, _max, _step = FIGGY_FLOAT_DEFAULT_STEP, _onChange = __onChange) {
 		__FIGGY_WIDGET;
-		dbg_slider(_ref, _min, _max, _name, _step);
+		if (FIGGY_BUILD_INTERFACE) {
+			dbg_slider(_ref, _min, _max, _name, _step);
+		}
 		
 		return self;
 	};
@@ -332,7 +344,9 @@ function Figgy() {
 	/// The onChange callback function receives 3 arguments: (new value, old value, variable name).
 	static Bool = function(_name, _default, _onChange = __onChange) {
 		__FIGGY_WIDGET;
-		dbg_checkbox(_ref, _name);
+		if (FIGGY_BUILD_INTERFACE) {
+			dbg_checkbox(_ref, _name);
+		}
 		
 		return self;
 	};
@@ -345,7 +359,9 @@ function Figgy() {
 	/// The onChange callback function receives 3 arguments: (new value, old value, variable name).
 	static Text = function(_name, _default, _onChange = __onChange) {
 		__FIGGY_WIDGET;
-		dbg_text_input(_ref, _name);
+		if (FIGGY_BUILD_INTERFACE) {
+			dbg_text_input(_ref, _name);
+		}
 		
 		return self;
 	};
@@ -358,7 +374,9 @@ function Figgy() {
 	/// The onChange callback function receives 3 arguments: (new value, old value, variable name).
 	static Color = function(_name, _default, _onChange = __onChange) {
 		__FIGGY_WIDGET;
-		dbg_colour(_ref, _name);
+		if (FIGGY_BUILD_INTERFACE) {
+			dbg_colour(_ref, _name);
+		}
 		
 		return self;
 	};
@@ -373,6 +391,8 @@ function Figgy() {
 	/// The onChange callback function receives 3 arguments: (new value, old value, variable name).
 	static Multi = function(_name, _default, _values, _names = _values, _onChange = __onChange) {
 		__FIGGY_WIDGET;
+		__FIGGY_NO_INTERFACE;
+		
 		dbg_drop_down(_ref, _values, _names, _name);
 		
 		if (FIGGY_MULTI_BUTTONS) {
@@ -409,6 +429,8 @@ function Figgy() {
 	/// @returns {Struct.Figgy}
 	/// @desc Decor Widget: creates a button, represented by DBG Button.
 	static Button = function(_name, _callback, _w = undefined, _h = undefined, _sameLine = false) {
+		__FIGGY_NO_INTERFACE;
+		
 		if (_sameLine) {
 			dbg_same_line();
 		}
@@ -422,6 +444,8 @@ function Figgy() {
 	/// @returns {Struct.Figgy}
 	/// @desc Decor Widget: creates a text comment, represented by DBG Text.
 	static Comment = function(_string, _sameLine = false) {
+		__FIGGY_NO_INTERFACE;
+		
 		if (_sameLine) {
 			dbg_same_line();
 		}
@@ -435,6 +459,8 @@ function Figgy() {
 	/// @returns {Struct.Figgy}
 	/// @desc Decor Widget: creates a separator, represented by DBG Separator with an optional name.
 	static Separator = function(_name = "", _align = 0) {
+		__FIGGY_NO_INTERFACE;
+		
 		dbg_text_separator(_name, _align);
 		
 		return self;

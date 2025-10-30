@@ -6,7 +6,7 @@
   "name":"InputGetHotswap",
   "parent":{
     "name":"Hotswap",
-    "path":"folders/01. Demo/99. Libraries/Input/Hotswap.yy",
+    "path":"folders/01. Demo/99. Tools/Input/Hotswap.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -14,11 +14,3 @@
 #macro CAM_XCENTER (CAM_X1 + CAM_HALFW)
 #macro CAM_YCENTER (CAM_Y1 + CAM_HALFH)
 #macro CAM_ANG camera_get_view_angle(CAM)
-
-function Approach(_a, _b, _step) {
-    return (_a + clamp(_b - _a, -_step, _step));
-}
-
-function DemoOnChange(_new, _old, _name) {
-	show_debug_message($"Changed variable \"{_name}\" from {_old} to {_new}.");
-}

@@ -6,7 +6,7 @@
   "name":"__InputGamepadIdentifyDescriptionType",
   "parent":{
     "name":"Gamepads",
-    "path":"folders/01. Demo/99. Libraries/Input/(System)/Gamepads.yy",
+    "path":"folders/01. Demo/99. Tools/Input/(System)/Gamepads.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

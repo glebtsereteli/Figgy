@@ -6,7 +6,7 @@
   "name":"BulbNormalMapDrawSprite",
   "parent":{
     "name":"Normal Map",
-    "path":"folders/01. Demo/99. Libraries/Bulb/Normal Map.yy",
+    "path":"folders/01. Demo/99. Tools/Bulb/Normal Map.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

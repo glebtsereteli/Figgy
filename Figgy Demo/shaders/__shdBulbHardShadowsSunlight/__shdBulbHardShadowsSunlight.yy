@@ -4,7 +4,7 @@
   "name":"__shdBulbHardShadowsSunlight",
   "parent":{
     "name":"Shadow",
-    "path":"folders/01. Demo/99. Libraries/Bulb/(System)/(Pay no attention to that man behind the curtain)/Shaders/Shadow.yy",
+    "path":"folders/01. Demo/99. Tools/Bulb/(System)/(Pay no attention to that man behind the curtain)/Shaders/Shadow.yy",
   },
   "resourceType":"GMShader",
   "resourceVersion":"2.0",

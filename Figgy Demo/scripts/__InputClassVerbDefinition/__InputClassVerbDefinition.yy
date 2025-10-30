@@ -6,7 +6,7 @@
   "name":"__InputClassVerbDefinition",
   "parent":{
     "name":"Classes",
-    "path":"folders/01. Demo/99. Libraries/Input/(System)/Classes.yy",
+    "path":"folders/01. Demo/99. Tools/Input/(System)/Classes.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

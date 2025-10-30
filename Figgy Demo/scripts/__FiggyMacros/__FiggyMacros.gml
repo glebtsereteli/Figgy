@@ -23,6 +23,8 @@
 #macro __FIGGY_FILE_PATH $"{__FIGGY_IN_IDE ? ($"{filename_dir(GM_project_filename)}/datafiles/") : ""}{__FIGGY_FILE_NAME}"
 #macro __FIGGY_FILE_FILTER $"Figgy Config File|*{FIGGY_FILE_EXT}"
 
+#macro __FIGGY_NO_INTERFACE if (not FIGGY_BUILD_INTERFACE) return self
+
 #macro __FIGGY_RAWNAME \
 var _rawName = _name; \
 if (FIGGY_FILE_REMOVE_SPACES) { \
@@ -34,14 +36,18 @@ if (FIGGY_FILE_REMOVE_SPACES) { \
 #macro __FIGGY_CATCH_WINDOW \
 if (not __windowed) { \
 	__windowed = true; \
-	dbg_view(FIGGY_WINDOW_NAME, FIGGY_WINDOW_DEFAULT_START_VISIBLE, FIGGY_WINDOW_DEFAULT_X, FIGGY_WINDOW_DEFAULT_Y, FIGGY_WINDOW_DEFAULT_WIDTH, FIGGY_WINDOW_DEFAULT_HEIGHT); \
-	Figgy.__InitControls(); \
+	if (FIGGY_BUILD_INTERFACE) { \
+		dbg_view(FIGGY_WINDOW_NAME, FIGGY_WINDOW_DEFAULT_START_VISIBLE, FIGGY_WINDOW_DEFAULT_X, FIGGY_WINDOW_DEFAULT_Y, FIGGY_WINDOW_DEFAULT_WIDTH, FIGGY_WINDOW_DEFAULT_HEIGHT); \
+		Figgy.__InitControls(); \
+	} \
 }
 
 #macro __FIGGY_CATCH_FIRST_WINDOW_SECTION \
 if (not __windowSectioned) { \
 	__windowSectioned = true; \
-	dbg_section($"Configs{FIGGY_NOSCOPE_SUFFIX}", true); \
+	if (FIGGY_BUILD_INTERFACE) { \
+		dbg_section($"Configs{FIGGY_NOSCOPE_SUFFIX}", true); \
+	} \
 }
 
 #macro __FIGGY_WIDGET \
@@ -49,8 +55,10 @@ __FIGGY_CATCH_WINDOW; \
 __FIGGY_CATCH_FIRST_WINDOW_SECTION; \
 __FIGGY_RAWNAME; \
 __scope[$ _rawName] = _default; \
-var _ref = ref_create(__scope, _rawName); \
-if ((FIGGY_CHANGES_ENABLED) and (_onChange != undefined)) { \
+if (FIGGY_BUILD_INTERFACE) { \
+	var _ref = ref_create(__scope, _rawName); \
+} \
+if (FIGGY_CHANGES_ENABLED and (_onChange != undefined)) { \
 	__changes.__Add(__scope, _rawName, _onChange); \
 }
 

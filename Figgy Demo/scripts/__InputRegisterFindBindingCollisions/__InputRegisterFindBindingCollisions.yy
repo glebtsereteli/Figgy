@@ -6,7 +6,7 @@
   "name":"__InputRegisterFindBindingCollisions",
   "parent":{
     "name":"Callbacks",
-    "path":"folders/01. Demo/99. Libraries/Input/(System)/Callbacks.yy",
+    "path":"folders/01. Demo/99. Tools/Input/(System)/Callbacks.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

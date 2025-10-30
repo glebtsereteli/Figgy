@@ -1,9 +1,16 @@
 // feather ignore all
 // Documentation: https://glebtsereteli.github.io/Figgy/pages/api/config
 
+#region General
+
 // Whether to show debug messages in the Output window (true) or not (false).
 #macro FIGGY_DEBUG true
 
+// Whether to build the Figgy debug interface (true) or not (false).
+// By default, this is enabled when running the game from IDE and disabled when running from EXE, using the __FIGGY_IN_IDE status macro.
+#macro FIGGY_BUILD_INTERFACE __FIGGY_IN_IDE
+
+#endregion
 #region File
 
 // The config file name.
@@ -69,7 +76,8 @@
 #macro FIGGY_GROUP_DEFAULT_ALIGN 0
 
 // The suffix added to NOT SCOPED Sections and Groups (when the "scoped" argument set to false).
-#macro FIGGY_NOSCOPE_SUFFIX " [NO SCOPE]"
+// NOTE: You may want to set this to something descriptive (or just a symbol) for extra interface clarity.
+#macro FIGGY_NOSCOPE_SUFFIX ""
 
 #endregion
 #region Value Widgets
@@ -93,8 +101,8 @@
 #region Changes
 
 // Whether to enable the Changes tracking system (true) or not (false).
-// By default, this is enabled when running the game from IDE and Disabled when running from EXE, using the __FIGGY_IN_IDE status macro.
-// NOTE: Disable to improve performance at scale.
+// By default, this is enabled when running the game from IDE and disabled when running from EXE, using the __FIGGY_IN_IDE status macro.
+// NOTE: Set this to false to improve performance at scale.
 #macro FIGGY_CHANGES_ENABLED __FIGGY_IN_IDE
 
 // The default function to call when a Value Widget value is changed. undefined stands for "no function".

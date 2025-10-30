@@ -6,7 +6,7 @@
   "name":"InputPressed",
   "parent":{
     "name":"Basics",
-    "path":"folders/01. Demo/99. Libraries/Input/Checkers/Basics.yy",
+    "path":"folders/01. Demo/99. Tools/Input/Checkers/Basics.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
