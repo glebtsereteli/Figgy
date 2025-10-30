@@ -42,6 +42,19 @@
 #macro FIGGY_FILE_REMOVE_SPACES true
 
 #endregion
+#region Controls
+
+// Name of the Controls section.
+#macro FIGGY_CONTROLS_NAME "[CONTROLS]"
+
+// Whether the Controls section starts open (true) or not (false).
+#macro FIGGY_CONTROLS_OPEN true
+
+// Whether to include the Controls section in every window (true) or not (false).
+// If set to false, the Controls section will only be included in the first window.
+#macro FIGGY_CONTROLS_IN_EVERY_WINDOW true
+
+#endregion
 #region Scope Widgets
 
 // A. The name of the default window that's created if no .Window()s are used.
@@ -62,12 +75,6 @@
 
 // Default height of Figgy windows.
 #macro FIGGY_WINDOW_DEFAULT_HEIGHT 600
-
-// Name of the Controls section.
-#macro FIGGY_CONTROLS_NAME "[CONTROLS]"
-
-// Whether the Controls section starts open (true) or not (false).
-#macro FIGGY_CONTROLS_OPEN true
 
 // Whether .Section()s are open by default (true) or not (false).
 #macro FIGGY_SECTION_DEFAULT_OPEN true

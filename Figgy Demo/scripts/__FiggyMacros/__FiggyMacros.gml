@@ -10,11 +10,9 @@
 #endregion
 #region Status
 
-// Whether the game is running from IDE (true) or from EXE (false).
 #macro __FIGGY_IN_IDE (GM_build_type == "run")
-
-// Whether the game is running on a Desktop platform (true) or not (false).
 #macro __FIGGY_ON_DESKTOP ((os_type == os_windows) or (os_type == os_macosx) or (os_type == os_linux))
+#macro __FIGGY_IO_ENABLED (__FIGGY_IN_IDE and __FIGGY_ON_DESKTOP)
 
 #endregion
 #region Utility

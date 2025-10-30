@@ -67,6 +67,26 @@ Whether to remove spaces from variable names (`true`) or not (`false`), e.g. `"M
 Changing this mid-game will erase existing saved configs, so make sure to decide on this early on.
 :::
 
+## Controls
+
+---
+### `FIGGY_CONTROLS_NAME`
+> Default: `"[CONTROLS]"`.
+
+Name of the Controls section.
+
+---
+### `FIGGY_CONTROLS_OPEN`
+> Default: `true`.
+
+Whether the Controls section starts open (`true`) or not (`false`).
+
+---
+### `FIGGY_CONTROLS_IN_EVERY_WINDOW`
+> Default: `true`.
+
+Whether to include the Controls section in every window (`true`) or not (`false`). If set to false, the Controls section will only be included in the first window.
+
 ## Scope Widgets
 
 ### `FIGGY_WINDOW_NAME`
@@ -104,18 +124,6 @@ Default width of Figgy :Windows:.
 > Default: `600`.
 
 Default height of Figgy :Windows:.
-
----
-### `FIGGY_CONTROLS_NAME`
-> Default: `"[CONTROLS]"`.
-
-Name of the Controls section.
-
----
-### `FIGGY_CONTROLS_OPEN`
-> Default: `true`.
-
-Whether the Controls section starts open (`true`) or not (`false`).
 
 ---
 ### `FIGGY_SECTION_DEFAULT_OPEN`
