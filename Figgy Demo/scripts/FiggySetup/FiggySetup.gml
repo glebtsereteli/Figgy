@@ -25,6 +25,11 @@ function FiggySetup() {
 			Figgy.Int("Coyote Time", 10, 0, 20);
 			Figgy.Float("Max Fall Speed", 15, 10, 20);
 			Figgy.Int("Corner Tolerance", 16, 0, 32);
+		Figgy.Section("Light");
+			Figgy.Float("X Scale", 1, 0.1, 2);
+			Figgy.Float("Y Scale", 1, 0.1, 2);
+			Figgy.Float("Intensity", 1, 0.1, 2);
+			Figgy.Color("Color", c_white);
 	
 	Figgy.Window("Camera");
 		Figgy.Float("Lerp Step X", 0.2, 0.05, 1, 0.05);
@@ -35,7 +40,10 @@ function FiggySetup() {
 		Figgy.Float("Zoom", 0.5, 0.1, 2);
 	
 	Figgy.Window("Lighting");
+		Figgy.Bool("Enabled", true);
 		Figgy.Color("Ambient Color", c_dkgray);
+		Figgy.Bool("Soft", true);
+		Figgy.Bool("Smooth", true);
 	
 	Figgy.Window("Display");
 		static _modes = [DISPLAY_MODE_WINDOWED, DISPLAY_MODE_EXCLUSIVE_FULLSCREEN, DISPLAY_MODE_BORDERLESS_FULLSCREEN];

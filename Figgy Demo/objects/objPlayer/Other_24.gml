@@ -109,3 +109,7 @@ IsFalling = function() {
 IsCoyoteLeft = function() {
 	return (coyote > 0);
 };
+
+GetYCenter = function() {
+	return mean(bbox_top, bbox_bottom);
+};

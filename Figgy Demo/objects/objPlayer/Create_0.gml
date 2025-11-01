@@ -9,8 +9,9 @@ facing = 1;
 coyote = 0;
 nJumps = 0;
 colliders = [objCollider];
-sprites = {};
+light = new BulbLight(objLighting.renderer, sprPlayerLight, 0, x, GetYCenter());
 
+sprites = {};
 array_foreach(global.playerSkins, function(_skin) {
 	sprites[$ _skin] = {};
 	
