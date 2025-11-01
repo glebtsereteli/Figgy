@@ -74,7 +74,7 @@
 #macro FIGGY_WINDOW_DEFAULT_WIDTH 400
 
 // Default height of Figgy windows.
-#macro FIGGY_WINDOW_DEFAULT_HEIGHT 600
+#macro FIGGY_WINDOW_DEFAULT_HEIGHT 500
 
 // Whether .Section()s are open by default (true) or not (false).
 #macro FIGGY_SECTION_DEFAULT_OPEN true

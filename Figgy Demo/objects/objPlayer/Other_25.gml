@@ -29,7 +29,7 @@ fsm
 	enter: function() {
 		FsmEnter();
 		ySpd = -cfg.JumpSpeed;
-		nJumps = max(nJumps - 1, 0);
+		ReduceJumps();
 		InputVerbConsume(INPUT_VERB.JUMP);
 	},
 	update: function() {
@@ -67,11 +67,14 @@ fsm
 .add_transition("tJump", "Jump", "Jump", function() {
 	return (nJumps > 0);
 })
-.add_transition("tFall", ["Idle", "Run"], "Fall")
+.add_transition("tFall", ["Idle", "Run"], "Fall",,, function() {
+	(fsm.event_get_current_function())();
+	ReduceJumps();
+})
 .add_transition("tFall", "Jump", "Fall", IsFalling)
 .add_transition("tLand", ["Jump", "Fall"], "Idle", IsStill)
 .add_transition("tLand", ["Jump", "Fall"], "Run", IsTryingToMoveOrMoving)
 
 .on("state changed", function(_to, _from) {
-	show_debug_message($"PLAYER: State chanced from \"{_from}\" to \"{_to}\".");
+	show_debug_message($"PLAYER: State changed from \"{_from}\" to \"{_to}\".");
 });

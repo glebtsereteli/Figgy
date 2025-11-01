@@ -1,4 +1,7 @@
 
+#macro BASE_W 640
+#macro BASE_H 360
+
 #macro EVENT_METHOD event_user(14)
 #macro EVENT_FSM event_user(15)
 

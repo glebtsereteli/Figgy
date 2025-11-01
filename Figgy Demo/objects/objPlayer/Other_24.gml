@@ -17,6 +17,9 @@ UpdateFacing = function() {
 		facing = sign(xSpd);
 	}
 };
+ReduceJumps = function() {
+	nJumps = max(nJumps - 1, 0);
+};
 ResetJumps = function() {
 	nJumps = cfg.MaxJumps;
 };

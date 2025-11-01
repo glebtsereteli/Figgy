@@ -36,4 +36,11 @@ function FiggySetup() {
 	
 	Figgy.Window("Lighting");
 		Figgy.Color("Ambient Color", c_dkgray);
+	
+	Figgy.Window("Display");
+		static _modes = [DISPLAY_MODE_WINDOWED, DISPLAY_MODE_EXCLUSIVE_FULLSCREEN, DISPLAY_MODE_BORDERLESS_FULLSCREEN];
+		Figgy.Multi("Mode", _modes[0], _modes,, DemoRefreshDisplay);
+		Figgy.Int("Window Scale", 2, 1, 6);
+		Figgy.Button("Apply", DemoRefreshDisplay, 48, 19, true);
+		Figgy.Float("Resolution Scale", 2, 0.5, 4, 0.5, DemoRefreshAppsurf);
 }
