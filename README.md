@@ -1,7 +1,7 @@
 <!-- ![](https://github.com/glebtsereteli/Figgy/assets/50461722/e82ecee8-149d-4a04-bf85-4010535ce033) -->
 
 <h1 align="center">Figgy v1.0.0 </h1>
-<p align="center"> Persistent live configuration solution for GameMaker 2024.13+ </p>
+<p align="center"> Persistent live configuration solution for GameMaker 2024.14+ </p>
 
 # Overview
 Figgy is a pure GML [Free and Open Source](https://en.wikipedia.org/wiki/Free_and_open-source_software) GameMaker library made for TODO

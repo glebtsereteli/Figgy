@@ -60,6 +60,18 @@ if (FIGGY_CHANGES_ENABLED and (_onChange != undefined)) { \
 	__changes.__Add(__scope, _rawName, _onChange); \
 }
 
+#macro __FIGGY_SLIDER_BUTTONS \
+if (FIGGY_SLIDER_BUTTONS) { \
+	with ({}) { \
+		__scope = other.__scope; \
+		__name = _rawName; \
+		__min = _min; \
+		__max = _max; \
+		__step = _step; \
+		__FiggySliderButtons(); \
+	} \
+}
+
 #macro __FIGGY_BENCH_START Figgy.__t = get_timer();
 #macro __FIGGY_BENCH_END ((get_timer() - Figgy.__t) / 1000)
 

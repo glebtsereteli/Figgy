@@ -7,5 +7,3 @@ randomize();
 application_surface_draw_enable(false);
 show_debug_overlay(true, true, 1, 1, false);
 display_set_gui_size(BASE_W, BASE_H);
-
-DemoRefreshDisplay();

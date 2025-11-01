@@ -123,7 +123,7 @@
     {"id":{"name":"__FiggyChanges","path":"scripts/__FiggyChanges/__FiggyChanges.yy",},},
     {"id":{"name":"__FiggyInit","path":"scripts/__FiggyInit/__FiggyInit.yy",},},
     {"id":{"name":"__FiggyMacros","path":"scripts/__FiggyMacros/__FiggyMacros.yy",},},
-    {"id":{"name":"__FiggyUtil","path":"scripts/__FiggyUtil/__FiggyUtil.yy",},},
+    {"id":{"name":"__FiggyUtility","path":"scripts/__FiggyUtility/__FiggyUtility.yy",},},
     {"id":{"name":"__InputBindingIsThumbstick","path":"scripts/__InputBindingIsThumbstick/__InputBindingIsThumbstick.yy",},},
     {"id":{"name":"__InputBindingScan","path":"scripts/__InputBindingScan/__InputBindingScan.yy",},},
     {"id":{"name":"__InputClassCluster","path":"scripts/__InputClassCluster/__InputClassCluster.yy",},},

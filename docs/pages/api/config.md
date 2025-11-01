@@ -37,7 +37,7 @@ When enabled (`true`), only variables that differ from their default values are 
 When disabled (`false`), all variables are saved regardless of whether they match defaults.
 Useful for inspecting or exporting the full config state.
 
-::: tip warning
+::: warning
 Setting this to `false` may reduce input/output performance at scale.
 :::
 
@@ -64,12 +64,11 @@ Whether to remove spaces from variable names (`true`) or not (`false`), e.g. `"M
 * Leave as `false` if you use variable names like `"move_speed"` or `"moveSpeed"`.
 
 ::: warning
-Changing this mid-game will erase existing saved configs, so make sure to decide on this early on.
+Changing this mid-development will erase existing saved configs, so make sure to decide on this early on.
 :::
 
 ## Controls
 
----
 ### `FIGGY_CONTROLS_NAME`
 > Default: `"[CONTROLS]"`.
 
@@ -149,6 +148,16 @@ You may want to set this to something descriptive (or just a symbol) for extra i
 
 ## Value Widgets
 
+### `FIGGY_SLIDER_BUTTONS`
+> Default: `false`.
+
+Whether to include -/+ cycling buttons for :.Int(): and :.Float(): Value Widgets (`true`) or not (`false`).
+
+::: warning
+Having this enabled might slow down :Setup: at scale.
+:::
+
+---
 ### `FIGGY_INT_DEFAULT_STEP`
 > Default: `1`.
 
@@ -165,6 +174,10 @@ Default step increment for :Float: Value Widgets.
 > Default: `true`.
 
 Whether to include -/+ cycling buttons for :Multi: Value Widgets (`true`) or not (`false`).
+
+:::
+Having this enabled might slow down :Setup: at scale.
+:::
 
 ## Decor Widgets
 

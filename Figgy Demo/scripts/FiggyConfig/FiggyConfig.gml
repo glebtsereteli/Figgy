@@ -89,6 +89,10 @@
 #endregion
 #region Value Widgets
 
+// Whether to include -/+ cycling buttons for .Int() and .Float() Value Widgets (true) or not (false).
+// NOTE: If true, might slow down FiggySetup() at scale.
+#macro FIGGY_SLIDER_BUTTONS false
+
 // Default step increment for .Int() Value Widgets.
 #macro FIGGY_INT_DEFAULT_STEP 1
 
@@ -96,6 +100,7 @@
 #macro FIGGY_FLOAT_DEFAULT_STEP 0.1
 
 // Whether to include -/+ cycling buttons for .Multi() Value Widgets (true) or not (false).
+// NOTE: If true, might slow down FiggySetup() at scale.
 #macro FIGGY_MULTI_BUTTONS true
 
 #endregion

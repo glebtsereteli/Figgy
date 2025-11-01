@@ -313,9 +313,13 @@ function Figgy() {
 	/// @desc Value Widget: creates a Real value in the current scope (Root, Window, Section or Group), represented as a DBG Slider.
 	/// The onChange callback function receives 3 arguments: (new value, old value, variable name).
 	static Int = function(_name, _default, _min, _max, _step = FIGGY_INT_DEFAULT_STEP, _onChange = __onChange) {
+		static _buttonCache = [];
+		static _index = 0;
+		
 		__FIGGY_WIDGET;
 		if (FIGGY_BUILD_INTERFACE) {
 			dbg_slider_int(_ref, _min, _max, _name, _step);
+			__FIGGY_SLIDER_BUTTONS;
 		}
 		
 		return self;
@@ -334,6 +338,7 @@ function Figgy() {
 		__FIGGY_WIDGET;
 		if (FIGGY_BUILD_INTERFACE) {
 			dbg_slider(_ref, _min, _max, _name, _step);
+			__FIGGY_SLIDER_BUTTONS;
 		}
 		
 		return self;
