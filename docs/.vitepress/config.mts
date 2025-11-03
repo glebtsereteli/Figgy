@@ -25,19 +25,19 @@ export default defineConfig({
     ["meta", { name: "twitter:description", content: "Documentation for the Figgy GameMaker library. Setup instructions, usage examples and full API coverage." }],
     ["meta", { name: "twitter:image", content: "https://glebtsereteli.github.io/Figgy/socialPreview.png" }],
   
-    // // analytics
-    // [
-    //   'script',
-    //   { async: '', src: 'https://www.googletagmanager.com/gtag/js?id=G-5T6N7GGRNE' }
-    // ],
-    // [
-    //   'script',
-    //   {},
-    //   `window.dataLayer = window.dataLayer || [];
-    //    function gtag(){dataLayer.push(arguments);}
-    //    gtag('js', new Date());
-    //    gtag('config', 'G-5T6N7GGRNE');`
-    // ]
+    // analytics
+    [
+      'script',
+      { async: '', src: 'https://www.googletagmanager.com/gtag/js?id=G-5T6N7GGRNE' }
+    ],
+    [
+      'script',
+      {},
+      `window.dataLayer = window.dataLayer || [];
+       function gtag(){dataLayer.push(arguments);}
+       gtag('js', new Date());
+       gtag('config', 'G-Y7N1YYYGY7');`
+    ]
   ],
 
   themeConfig: {
@@ -198,7 +198,7 @@ export default defineConfig({
         'Undefined': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm',
         'Noone': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Instance%20Keywords/noone.htm',
         'Enum': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Variables/Constants.htm#:~:text=of%20this%20page.-,Enums,-An%20enum%20is',
-
+        
         // assets
         'Asset.GMRoom': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Asset_Management/Rooms/Rooms.htm',
         'Asset.GMObject': 'https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Asset_Management/Objects/Objects.htm',
@@ -216,10 +216,19 @@ export default defineConfig({
         // links
         'New Issue': 'https://github.com/glebtsereteli/Figgy/issues/new',
         'Debug Overlay': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Debugging/The_Debug_Overlay.htm',
+        'DBG View': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Debugging/dbg_view.htm',
+        'DBG Section': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Debugging/dbg_section.htm',
+        'DBG Text Separator': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Debugging/dbg_text_separator.htm',
 
         'Figgy': '/pages/api/figgy/overview',
         'Setup': '/pages/api/figgy/setup',
         'Scope Widgets': '/pages/api/figgy/setup#scope-widgets',
+        'Scope': '/pages/api/figgy/setup#scope-widgets',
+        'Value Widgets': '/pages/api/figgy/setup#value-widgets',
+        'Value': '/pages/api/figgy/setup#value-widgets',
+        'Decor Widgets': '/pages/api/figgy/setup#decor-widgets',
+        'Decor': '/pages/api/figgy/setup#decor-widgets',
+        'OnChange': '/pages/api/figgy/setup#onchange',
 
         // config
         'FIGGY_DEBUG': '/pages/api/config#figgy-debug',

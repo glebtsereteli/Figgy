@@ -138,7 +138,7 @@ Default :Group: text alignment. `0` is left, `1` is center, `2` is right.
 
 ---
 ### `FIGGY_NOSCOPE_SUFFIX`
-> Default: `""` (empty string).
+> Default: `""`.
 
 The suffix added to **non-scoped** :Sections: and :Groups: (when the `scoped` argument is set to `false`).
 
