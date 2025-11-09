@@ -9,6 +9,6 @@ display_set_gui_size(BASE_W, BASE_H);
 #macro CFG global.__config
 CFG = Figgy.GetCurrent();
 
-// The only way to open the debug overview with hidden FPS:
+// Open the debug overview with hidden FPS:
 var _view = dbg_view("dummy", false);
 dbg_view_delete(_view);

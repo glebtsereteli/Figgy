@@ -1,6 +1,8 @@
 # Setup
 
-Your Figgy workflow begins with the global `FiggySetup()` function, which acts as the library's main entry point. Inside it, you create your :Windows:, :Sections:, :Groups:, :Value: and :Decor: Widgets that shape both the visual debug interface and the underlying config data layout for your game.
+## Overview
+
+Your Figgy workflow begins in the global `FiggySetup()` function, which acts as the library's main entry point. Inside it, you create your :Windows:, :Sections:, :Groups:, :Value: and :Decor: Widgets that shape both the visual debug interface and the underlying config data layout for your game.
 
 Figgy's setup process is built around Widgets - modular building blocks that define what appears in your debug view and how it's reflected in your game's config data struct.
 
@@ -13,20 +15,117 @@ Setup is organized into the following categories:
 * :OnChange: allows you to assign callbacks for a set of :Value Widgets: that are triggered whenever you change your widgets' values.
 
 ::: danger IMPORTANT
-Setup methods <u>must be declared</u> inside the `FiggySetup()` function within the `FiggySetup` script, and all examples on this page are assumed to be executed from within `FiggySetup()`.
+Setup methods <u>must be declared</u> inside the `FiggySetup()` function located in the `FiggySetup` script. `FiggySetup()` **must not** be renamed or removed!
+:::
+::: tip NAME FORMATTING
+By default, Figgy removes all spaces when generating data entry names, e.g. `"Move Speed"` becomes `"MoveSpeed"` in code.
+
+If you don't plan to use variable names with spaces in your interface, this can be disabled for performance gains by disabling the :FIGGY_FILE_REMOVE_SPACES: config macro.
 :::
 
-## Formatting
+## Organization
 
-everything inside setup
+Figgy uses a syntax-lite approach for setup code: you don't write curly braces or manual struct blocks. Scope is defined entirely by the order of your Widget calls - any indentation or extra formatting is optional and is used purely for organization readability.
 
-syntax-lite setup, no curlies necessary, methods can be called one after another. if so, tab out each level
+Below are some common organization approaches you can use to organize your setup code. All of them are purely organizational and don't affect Figgy's scoping system in any way.
 
-fake scope using arbitrary {}
+* **No Extra Formatting**. All setup calls live directly inside `FiggySetup()` with no regions, helper functions, or grouping. This is fine for small projects or when you're just getting started, but can become harder to navigate as your configuration grows.
+::: code-group
+```js [Interface]
+function FiggySetup() {
+    Figgy.Window("Player");
+        Figgy.NoScope().Section("Movement");
+            Figgy.NoScope().Group("Horizontal");
+                Figgy.Float("Walk Speed", 2, 0.1, 20);
+                Figgy.Float("Run Speed", 4, 0.1, 20);
+    Figgy.Window("Enemies");
+        Figgy.Section("Slime");
+            Figgy.Int("Health", 5, 1, 15);
+            Figgy.Int("Damage", 1, 1, 10);
+}
+```
+```js [Data]
+{
+    Player: {
+        WalkSpeed: 4,
+        RunSpeed: 2,
+    },
+    Enemies: {
+        Slime: {
+            Health: 3,
+            Damage: 1,
+        }
+    },
+}
+```
+:::
+* **Regions**. You can use `#region` and `#endregion` or simple `{}` blocks to visually group related setup code. Both provide code folding, with curly brackets taking less space.
+::: code-group
+```js [#region Regions]
+function FiggySetup() {
+    #region Player
 
-regions
+    Figgy.Window("Player");
+        Figgy.NoScope().Section("Movement");
+            Figgy.NoScope().Group("Horizontal");
+                Figgy.Float("Walk Speed", 2, 0.1, 20);
+                Figgy.Float("Run Speed", 4, 0.1, 20);
 
-global function per category
+    #endregion
+    #region Enemies
+
+    Figgy.Window("Enemies");
+        Figgy.Section("Slime");
+            Figgy.Int("Health", 5, 1, 15);
+            Figgy.Int("Damage", 1, 1, 10);
+
+    #endregion
+}
+```
+```js [Curly Brackets]
+function FiggySetup() {
+    Figgy.Window("Player"); {
+        Figgy.NoScope().Section("Movement");
+            Figgy.NoScope().Group("Horizontal");
+                Figgy.Float("Walk Speed", 2, 0.1, 20);
+                Figgy.Float("Run Speed", 4, 0.1, 20);
+    }
+    Figgy.Window("Enemies"); {
+        Figgy.Section("Slime");
+            Figgy.Int("Health", 5, 1, 15);
+            Figgy.Int("Damage", 1, 1, 10);
+    }
+}
+```
+:::
+* **Separate Setup Functions**. For larger projects, you can move each category of configs (such as Player, Enemies, Items, World, etc.) into their own global functions stored in separate scripts. Then simply call these functions inside `FiggySetup()`. This keeps `FiggySetup()` clean and makes each config section easier to maintain.
+
+::: code-group
+```js [FiggySetup]
+function FiggySetup() {
+    PlayerConfigs();
+    EnemiesConfigs();
+    // ...
+}
+```
+```js [scrPlayerConfigs]
+function PlayerConfigs() {
+    Figgy.Window("Player");
+        Figgy.NoScope().Section("Movement");
+            Figgy.NoScope().Group("Horizontal");
+                Figgy.Float("Walk Speed", 2, 0.1, 20);
+                Figgy.Float("Run Speed", 4, 0.1, 20);
+}
+```
+```js [scrEnemiesConfigs]
+function EnemiesConfigs() {
+    Figgy.Window("Enemies");
+        Figgy.Section("Slime");
+            Figgy.Int("Health", 5, 1, 15);
+            Figgy.Int("Damage", 1, 1, 10);
+}
+```
+:::
 
 ## Scope Widgets
 
@@ -62,16 +161,18 @@ Once called, the Root scope becomes inaccessible. All following Widgets will be 
 
 ::: code-group
 ```js [Interface]
-// Creates a Player window with default parameters:
-Figgy.Window("Player"); // [!code highlight]
-    // Sections, Groups and Value Widgets here...
+function FiggySetup() {
+    // Creates a Player window with default parameters:
+    Figgy.Window("Player"); // [!code highlight]
+        // Sections, Groups and Value Widgets here...
 
-// Creates an "Enemy" window at the top-right corner of the game window, hidden by default.
-var _width = 300;
-var _xPad = 8;
-var _x = window_get_width() - _width - _xPad;
-Figgy.Window("Enemy", false, _x, FIGGY_WINDOW_DEFAULT_Y, _width); // [!code highlight]
-    // Sections, Groups and Value Widgets here...
+    // Creates an "Enemy" window at the top-right corner of the game window, hidden by default.
+    var _width = 300;
+    var _xPad = 8;
+    var _x = window_get_width() - _width - _xPad;
+    Figgy.Window("Enemy", false, _x, FIGGY_WINDOW_DEFAULT_Y, _width); // [!code highlight]
+        // Sections, Groups and Value Widgets here...
+}
 ```
 ```js [Data]
 // Structure:
@@ -113,10 +214,12 @@ Call :.NoScope(): before :.Section(): to mark the upcoming Section as **unscoped
 
 ::: code-group
 ```js [Interface]
-// Creates a scoped Skeleton Section inside the Enemies window:
-Figgy.Window("Enemies");
-    Figgy.Section("Skeleton"); // [!code highlight]
-        // Groups and/or Value Widgets here...
+function FiggySetup() {
+    // Creates a scoped Skeleton Section inside the Enemies window:
+    Figgy.Window("Enemies");
+        Figgy.Section("Skeleton"); // [!code highlight]
+            // Groups and/or Value Widgets here...
+}
 ```
 ```js [Data]
 // Structure:
@@ -148,21 +251,23 @@ Call :.NoScope(): before :.Group(): to mark the upcoming Group as **unscoped**. 
 | Parameter | Type | Description |
 | --- | --- | --- |
 | `name` | :String: | The group name |
-| `[scoped?]` | :Bool: | Whether the group creates a new scope (`true`) or not (`false`) [Default: `true`]` |
+| `[scoped?]` | :Bool: | Whether the group creates a new scope (`true`) or not (`false`) [Default: `true`] |
 | `[align]` | :Real: | Whether the group starts open (`true`) or not (`false`) [Default: :FIGGY_GROUP_DEFAULT_ALIGN:] |
 
 ::: code-group
 ```js [Interface]
-// Creates Dash, Slam and Uppercut scoped groups inside the Player window,
-// grouped under an unscoped Abilities section:
-Figgy.Window("Player");
-    Figgy.NoScope().Section("Abilities");
-        Figgy.Group("Dash"); // [!code highlight]
-            // Value Widgets here...
-        Figgy.Group("Slam"); // [!code highlight]
-            // Value Widgets here...
-        Figgy.Group("Uppercut"); // [!code highlight]
-            // Value Widgets here...
+function FiggySetup() {
+    // Creates Dash, Slam and Uppercut scoped groups inside the Player window,
+    // grouped under an unscoped Abilities section:
+    Figgy.Window("Player");
+        Figgy.NoScope().Section("Abilities");
+            Figgy.Group("Dash"); // [!code highlight]
+                // Value Widgets here...
+            Figgy.Group("Slam"); // [!code highlight]
+                // Value Widgets here...
+            Figgy.Group("Uppercut"); // [!code highlight]
+                // Value Widgets here...
+}
 ```
 ```js [Data]
 // Structure:
@@ -195,17 +300,17 @@ uppercutCfg = cfg.Uppercut;
 
 Marks the next :.Section(): or :.Group(): call as **unscoped**, treating it as a purely visual interface element. This applies only to the immediately following :Section: or :Group: and resets automatically afterward.
 
-::: info NOTE
-:Windows: can not be unscoped. 
-:::
+> ℹ️ :Windows: can not be unscoped. 
 
 ::: code-group
 ```js [Interface]
-// Creates a unscoped Abilities section in the Player window:
-Figgy.Window("Player");
-    Figgy.NoScope().Section("Abilities"); // [!code highlight]
-        Figgy.Group("Dash");
-            // Value Widgets here...
+function FiggySetup() {
+    // Creates a unscoped Abilities section in the Player window:
+    Figgy.Window("Player");
+        Figgy.NoScope().Section("Abilities"); // [!code highlight]
+            Figgy.Group("Dash");
+                // Value Widgets here...
+}
 ```
 ```js [Data]
 // Structure:
@@ -217,7 +322,7 @@ Figgy.Window("Player");
     },
 }
 
-// Accessing Dash configs:
+// Access Dash configs:
 dashCfg = Figgy.GetCurrent().Player.Dash;
 ```
 :::
@@ -233,9 +338,22 @@ Overview...
 
 Description...
 
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `name` | :Type: | Description |
+| `name` | :Type: | Description |
+| `name` | :Type: | Description |
+
 ::: code-group
-```js [Example]
-asdasd
+```js [Interface]
+function FiggySetup() {
+
+}
+```
+```js [Data]
+{
+
+}
 ```
 :::
 
@@ -246,9 +364,22 @@ asdasd
 
 Description...
 
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `name` | :Type: | Description |
+| `name` | :Type: | Description |
+| `name` | :Type: | Description |
+
 ::: code-group
-```js [Example]
-asdasd
+```js [Interface]
+function FiggySetup() {
+
+}
+```
+```js [Data]
+{
+
+}
 ```
 :::
 
@@ -259,9 +390,22 @@ asdasd
 
 Description...
 
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `name` | :Type: | Description |
+| `name` | :Type: | Description |
+| `name` | :Type: | Description |
+
 ::: code-group
-```js [Example]
-asdasd
+```js [Interface]
+function FiggySetup() {
+
+}
+```
+```js [Data]
+{
+
+}
 ```
 :::
 
@@ -272,9 +416,22 @@ asdasd
 
 Description...
 
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `name` | :Type: | Description |
+| `name` | :Type: | Description |
+| `name` | :Type: | Description |
+
 ::: code-group
-```js [Example]
-asdasd
+```js [Interface]
+function FiggySetup() {
+
+}
+```
+```js [Data]
+{
+
+}
 ```
 :::
 
@@ -285,9 +442,22 @@ asdasd
 
 Description...
 
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `name` | :Type: | Description |
+| `name` | :Type: | Description |
+| `name` | :Type: | Description |
+
 ::: code-group
-```js [Example]
-asdasd
+```js [Interface]
+function FiggySetup() {
+
+}
+```
+```js [Data]
+{
+
+}
 ```
 :::
 
@@ -298,9 +468,22 @@ asdasd
 
 Description...
 
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `name` | :Type: | Description |
+| `name` | :Type: | Description |
+| `name` | :Type: | Description |
+
 ::: code-group
-```js [Example]
-asdasd
+```js [Interface]
+function FiggySetup() {
+
+}
+```
+```js [Data]
+{
+
+}
 ```
 :::
 
@@ -309,11 +492,81 @@ asdasd
 ---
 ### `.Button()`
 
+> `Figgy.Button(name, callback, [width], [height], [sameLine?])` ➜ :Struct:.:Figgy:
+
+Description...
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `name` | :Type: | Description |
+| `name` | :Type: | Description |
+| `name` | :Type: | Description |
+
+::: code-group
+```js [Interface]
+function FiggySetup() {
+
+}
+```
+```js [Data]
+{
+
+}
+```
+:::
+
 ---
 ### `.Comment()`
 
+> `Figgy.Button(string, [sameLine?])` ➜ :Struct:.:Figgy:
+
+Description...
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `name` | :Type: | Description |
+| `name` | :Type: | Description |
+| `name` | :Type: | Description |
+
+::: code-group
+```js [Interface]
+function FiggySetup() {
+
+}
+```
+```js [Data]
+{
+
+}
+```
+:::
+
 ---
 ### `.Separator()`
+
+> `Figgy.Separator([name], [align])` ➜ :Struct:.:Figgy:
+
+Description...
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `name` | :Type: | Description |
+| `name` | :Type: | Description |
+| `name` | :Type: | Description |
+
+::: code-group
+```js [Interface]
+function FiggySetup() {
+
+}
+```
+```js [Data]
+{
+
+}
+```
+:::
+
 
 ## OnChange
 
@@ -325,19 +578,40 @@ asdasd
 > `Figgy.OnChangeSet(callback)` ➜ :Struct:.:Figgy:
 
 Description
-Description
-Description
 
-|Parameter|Type|Description|
-|---|---|---|
-| `name` | Type | description |
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `name` | :Type: | Description |
+| `name` | :Type: | Description |
+| `name` | :Type: | Description |
 
 ::: code-group
-```js [Example]
-Figgy.Window("player");
-    // Widgets here...
+```js [Interface]
+function FiggySetup() {
+
+}
+```
+```js [Data]
+{
+
+}
 ```
 :::
 
 ---
 ### `.OnChangeReset()`
+
+> `Figgy.OnChangeReset()` ➜ :Struct:.:Figgy:
+
+::: code-group
+```js [Interface]
+function FiggySetup() {
+
+}
+```
+```js [Data]
+{
+
+}
+```
+:::
