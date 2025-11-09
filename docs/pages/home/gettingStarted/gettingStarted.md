@@ -1,17 +1,41 @@
 # Getting Started
 
+This page walks you through installing and setting up Figgy in your GameMaker project for the first time.
+
+We'll begin by importing the `.yymps` package. Then in the [Usage](#usage) section, we'll go through core library operations with [Setup](#_1-setup), [Acess](#_2-access), and [Editing](#_3-editing). By the end, TODO
 
 ## Requirements
 
+* [GameMaker](https://gamemaker.io/en/download) version `IDE v2024.14.0.207` and `Runtime v2024.14.0.251` or above.
+* Basic familiarity with GameMaker and GML, including:
+    * Asset types (rooms, objects, scripts, sprites, tilemaps, etc).
+    * Working with objects and events.
+    * Structs, functions/methods and arguments, macros.
 
 ## Installation
 
+1. Download the `Figgy v1.0.0.yymps` package from the latest [Release](https://github.com/glebtsereteli/Figgy/releases/v1.0.0).
+2. Import the package into your project.
+    * Navigate to __Tools__ in the top toolbar and click __Import Local Package__, or just drag and drop the file into GameMaker.
+    ![](import01.png)
+    * Locate and select the `Figgy v2.4.0.yymps` local package in Explorer/Finder.
+    * Click __Add All__.
+    ![](import02.png)
+    * Click __Import__.
+    ![](import03.png)
+        > The whole library lives inside the `Figgy` folder, and the only file under `Included Files` is the [MIT license](/pages/home/faq/#📍-how-is-gmroomloader-licensed-can-i-use-it-in-commercial-projects). TODO
+3. You're good to go! Next, check out the [Usage](#first-setup) section below to set up your first configs.
 
 ## Usage
 
 ### 1. Setup
 
+Navigate the `FiggySetup()` function
+
 ### 2. Access
+
+
+
 
 ### 3. Editing
 

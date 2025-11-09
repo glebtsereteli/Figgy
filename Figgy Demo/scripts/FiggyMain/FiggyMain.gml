@@ -13,6 +13,7 @@ function Figgy() {
 	static __windowed = false;
 	static __windowSectioned = false;
 	static __section = undefined;
+	static __scoped = true;
 	
 	static __changes = new __FiggyChanges();
 	static __onChange = FIGGY_CHANGES_DEFAULT_CALLBACK;
@@ -241,61 +242,71 @@ function Figgy() {
 			dbg_view($"{FIGGY_WINDOW_NAME}: {_name}", _visible, _x, _y, _w, _h);
 		}
 		
-		__section = undefined;
 		__window = {};
 		__scope = __window;
 		__current[$ _rawName] = __window;
 		__windowed = true;
 		__windowSectioned = false;
+		__section = undefined;
 		__InitControls();
 		
 		return self;
 	};
 	
 	/// @param {String} name The section name.
-	/// @param {Bool} scoped Whether the section creates a new scope (true) or not (false). [Default: true]
 	/// @param {Bool} open Whether the section starts open (true) or not (false). [Default: FIGGY_SECTION_DEFAULT_OPEN]
 	/// @returns {Struct.Figgy}
-	/// @desc Scope Widget. IF SCOPED, creates a struct at the current scope (Root/Window), represented as a DBG Section.
+	/// @desc Scope Widget. Creates a struct at the current scope (Root/Window), represented as a DBG Section.
 	/// Once called, the previous non-Section scope (Root or Window) becomes inaccessible. All following Widgets will be created in the context of the current Section.
 	/// Call this method again to switch the scope to another Section.
-	/// IF NOT SCOPED, acts as a purely visual DBG Section.
-	static Section = function(_name, _scoped = true, _open = FIGGY_SECTION_DEFAULT_OPEN) {
+	/// Use .NoScope() before .Section() to avoid creating a struct and make a purely visual Section.
+	static Section = function(_name, _open = FIGGY_SECTION_DEFAULT_OPEN) {
 		__FIGGY_CATCH_WINDOW;
 		__FIGGY_RAWNAME;
 		if (FIGGY_BUILD_INTERFACE) {
 			dbg_section(__FIGGY_SCOPEDNAME, _open);
 		}
-		if (_scoped) {
+		if (__scoped) {
 			__section = {};
 			__window[$ _rawName] = __section;
 			__scope = __section;
 		}
 		__windowSectioned = true;
+		__scoped = true;
 		
 		return self;
 	};
 	
 	/// @param {String} name The group name.
-	/// @param {Bool} scoped Whether the section creates a new scope (true) or not (false). [Default: true]
 	/// @param {Real} align The group name alignment. 0 is left, 1 is center, 2 is right. [Default: FIGGY_GROUP_DEFAULT_ALIGN]
 	/// @returns {Struct.Figgy}
-	/// @desc Scope Widget. IF SCOPED: creates a struct at the current scope (Root, Window or Section), represented as a DBG Text Separator.
+	/// @desc Scope Widget. Creates a struct at the current scope (Root, Window or Section), represented as a DBG Text Separator.
 	/// Once called, all following Value Widgets will be created in the context of the current Group.
-	/// IF NOT SCOPED, acts as a purely visual DBG Text Separator.
-	static Group = function(_name, _scoped = true, _align = 0) {
+	/// Use .NoScope() before .Group() to avoid creating a struct and make a purely visual Group.
+	static Group = function(_name, _align = 0) {
 		__FIGGY_CATCH_WINDOW;
 		__FIGGY_CATCH_FIRST_WINDOW_SECTION;
 		__FIGGY_RAWNAME;
 		if (FIGGY_BUILD_INTERFACE) {
 			dbg_text_separator(__FIGGY_SCOPEDNAME, _align);
 		}
-		if (_scoped) {
+		if (__scoped) {
 			var _group = {};
 			var _scope = __section ?? __window;
 			_scope[$ _rawName] = _group;
 			__scope = _group;
 		}
+		__scoped = true;
+		
+		return self;
+	};
+	
+	/// @desc Marks the next .Section() or .Group() call as NOT SCOPED, treating it as a purely visual interface element.  
+	/// This applies only to the immediately following Section or Group and resets automatically afterward.
+	/// @returns {Struct.Figgy}
+	/// @context Figgy
+	static NoScope = function() {
+		__scoped = false;
 		
 		return self;
 	};

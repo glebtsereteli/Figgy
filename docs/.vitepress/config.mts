@@ -201,7 +201,7 @@ export default defineConfig({
         
         // assets
         'Asset.GMRoom': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Asset_Management/Rooms/Rooms.htm',
-        'Asset.GMObject': 'https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Asset_Management/Objects/Objects.htm',
+        'Asset.GMObject': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Asset_Management/Objects/Objects.htm',
         'Asset.GMSprite': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Asset_Management/Sprites/Sprites.htm',
         'Asset.GMTileset': 'https://manual.gamemaker.io/monthly/en/Quick_Start_Guide/Creating_Tile_Sets.htm',
         'Asset.GMSequence': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Asset_Management/Sequences/Sequences.htm',
@@ -229,6 +229,8 @@ export default defineConfig({
         'Decor Widgets': '/pages/api/figgy/setup#decor-widgets',
         'Decor': '/pages/api/figgy/setup#decor-widgets',
         'OnChange': '/pages/api/figgy/setup#onchange',
+        
+        '.NoScope()': '/pages/api/figgy/setup#noscope',
 
         // config
         'FIGGY_DEBUG': '/pages/api/config#figgy-debug',

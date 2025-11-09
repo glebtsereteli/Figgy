@@ -5,14 +5,14 @@
 /// Documentation: https://glebtsereteli.github.io/Figgy/pages/api/figgy/overview
 function FiggySetup() {
 	Figgy.Window("Player", true);
-		Figgy.Section("General", false);
+		Figgy.NoScope().Section("General");
 			global.playerSkins = ["Green", "Pink", "Purple", "Yellow"];
 			Figgy.Multi("Skin", global.playerSkins[0], global.playerSkins, global.playerSkins, function() {
 				with (objPlayer) {
 					UpdateSprite();
 				}
 			});
-		Figgy.Section("Movement", false);
+		Figgy.NoScope().Section("Movement");
 			Figgy.Float("Move Speed", 5, 0.1, 10);
 			Figgy.Float("Ground Acceleration", 1, 0, 1, 0.05);
 			Figgy.Float("Ground Deceleration", 1, 0, 1, 0.05);
@@ -30,7 +30,7 @@ function FiggySetup() {
 			Figgy.Float("Y Scale", 1, 0.1, 2);
 			Figgy.Float("Intensity", 1, 0.1, 2);
 			Figgy.Color("Color", c_white);
-	
+			
 	Figgy.Window("Camera");
 		Figgy.Float("Lerp Step X", 0.2, 0.05, 1, 0.05);
 		Figgy.Float("Lerp Step Y", 0.2, 0.05, 1, 0.05);

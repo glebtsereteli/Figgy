@@ -18,19 +18,29 @@ Setup methods <u>must be declared</u> inside the `FiggySetup()` function within 
 
 ## Formatting
 
+everything inside setup
+
+syntax-lite setup, no curlies necessary, methods can be called one after another. if so, tab out each level
+
+fake scope using arbitrary {}
+
+regions
+
+global function per category
+
 ## Scope Widgets
 
 Scope Widgets define new scopes (structs) and are used to organize other nested widgets.
 
 * Visually, they serve as containers that organize other widgets within the DBG interface.
-* Internally, they create new structs (unless explicitly marked as non-scoped), and all subsequent widgets are added within their scope.
+* Internally, they create new structs (unless explicitly marked as **unscoped** with :.NoScope():), and all subsequent widgets are added within their scope, until the scope is changed with another Scope Widget.
 
 ---
 
 There are 3 Scope Widgets, each defining a different *scope level*, from highest to lowest:
 1. :.Window(): is the highest-level Scope Widget. It creates a :DBG View: with a struct in the Root scope and serves as a container for :Sections:, :Groups:, :Value Widgets:, and :Decor Widgets:.
-2. :.Section(): comes second after :.Window(): and creates a :DBG Section: with a struct in the current (Root or Window) scope, unless optionally specified as non-scope. It serves as a container for :Groups:, :Value Widgets: and :Decor Widgets:.
-3. :.Group(): is the The third and lowest scope level. It creates a new :DBG Text Separator: with a struct in the current (Root, Window, or Section) scope, unless optionally specified as non-scoped. It serves as a container for :Value Widgets: and :Decor Widgets:.
+2. :.Section(): comes second after :.Window(): and creates a :DBG Section: with a struct in the current (Root or Window) scope, unless optionally specified as **unscoped**. It serves as a container for :Groups:, :Value Widgets: and :Decor Widgets:.
+3. :.Group(): is the third and lowest scope level. It creates a new :DBG Text Separator: with a struct in the current (Root, Window, or Section) scope, unless optionally specified as **unscoped**. It serves as a container for :Value Widgets: and :Decor Widgets:.
 
 ---
 ### `.Window()`
@@ -51,7 +61,7 @@ Once called, the Root scope becomes inaccessible. All following Widgets will be 
 | `[height]` | :Real: | The height of the window [Default: :FIGGY_WINDOW_DEFAULT_HEIGHT:] |
 
 ::: code-group
-```js [Example]
+```js [Interface]
 // Creates a Player window with default parameters:
 Figgy.Window("Player"); // [!code highlight]
     // Sections, Groups and Value Widgets here...
@@ -63,6 +73,23 @@ var _x = window_get_width() - _width - _xPad;
 Figgy.Window("Enemy", false, _x, FIGGY_WINDOW_DEFAULT_Y, _width); // [!code highlight]
     // Sections, Groups and Value Widgets here...
 ```
+```js [Data]
+// Structure:
+{
+    Player: {
+        // Section/Group structs, and Values here...
+    },
+    Enemy: {
+        // Section/Group structs, and Values here...
+    },
+}
+
+// Access Player configs:
+cfg = Figgy.GetCurrent().Player;
+
+// Access Enemy configs:
+cfg = Figgy.GetCurrent().Enemy;
+```
 :::
 
 ---
@@ -70,25 +97,39 @@ Figgy.Window("Enemy", false, _x, FIGGY_WINDOW_DEFAULT_Y, _width); // [!code high
 
 > `Figgy.Section(name, [scoped?], [open?])` ➜ :Struct:.:Figgy:
 
-If `scoped` (default), creates a struct at the current scope (Root or Window), represented as a :DBG Section:.
+Creates a struct at the current scope (Root or Window), represented as a :DBG Section:.
 Once called, the previous non-Section scope (Root or Window) becomes inaccessible. All following Widgets will be created in the context of the current Section.
 
 Call this method again to switch scope to another Section.
 
-If not `scoped`, a struct is not created in the file and the scope does not change. In this case, the widget acts as a purely visual :DBG Section: with an optional suffix for interface clarity, configured via the :FIGGY_NOSCOPE_SUFFIX: config macro.
+::: tip
+Call :.NoScope(): before :.Section(): to mark the upcoming Section as **unscoped**. This prevents a struct from being created, keeps the current scope unchanged, and makes the Section behave as a purely visual :DBG Section:.
+:::
 
 | Parameter | Type | Description |
 | --- | --- | --- |
 | `name` | :String: | The section name |
-| `[scoped?]` | :Bool: | Whether the section creates a new scope (`true`) or not (`false`) [Default: `true`]` |
 | `[open]` | :Bool: | Whether the section starts open (`true`) or not (`false`) [Default: :FIGGY_SECTION_DEFAULT_OPEN:] |
 
 ::: code-group
-```js [Example]
+```js [Interface]
 // Creates a scoped Skeleton Section inside the Enemies window:
 Figgy.Window("Enemies");
     Figgy.Section("Skeleton"); // [!code highlight]
         // Groups and/or Value Widgets here...
+```
+```js [Data]
+// Structure:
+{
+    Enemies: {
+        Skeleton: {
+            // Group structs and Values here...
+        }
+    },
+}
+
+// Accessing Skeleton configs:
+cfg = Figgy.GetCurrent().Enemies.Skeleton;
 ```
 :::
 
@@ -97,29 +138,87 @@ Figgy.Window("Enemies");
 
 > `Figgy.Group(name, [scoped?], [align])` ➜ :Struct:.:Figgy:
 
-If `scoped` (default), creates a struct at the current scope (Root, Window or Section), represented as a :DBG Text Separator:.
+Creates a struct at the current scope (Root, Window or Section), represented as a :DBG Text Separator:.
 Once called, all following Value Widgets will be created in the context of the current Group.
 
-If not `scoped`, acts as a purely visual :DBG Text Separator:.
+::: tip
+Call :.NoScope(): before :.Group(): to mark the upcoming Group as **unscoped**. This prevents a struct from being created, keeps the current scope unchanged, and makes the Group behave as a purely visual :DBG Text Separator:.
+:::
 
 | Parameter | Type | Description |
 | --- | --- | --- |
 | `name` | :String: | The group name |
 | `[scoped?]` | :Bool: | Whether the group creates a new scope (`true`) or not (`false`) [Default: `true`]` |
-| `[align]` | :Enum:.:FIGGY_ALIGN: | Whether the group starts open (`true`) or not (`false`) [Default: :FIGGY_SECTION_DEFAULT_OPEN:] |
+| `[align]` | :Real: | Whether the group starts open (`true`) or not (`false`) [Default: :FIGGY_GROUP_DEFAULT_ALIGN:] |
 
 ::: code-group
-```js [Example]
+```js [Interface]
 // Creates Dash, Slam and Uppercut scoped groups inside the Player window,
-// grouped under a non-scoped Abilities section:
+// grouped under an unscoped Abilities section:
 Figgy.Window("Player");
-    Figgy.Section("Abilities", false);
+    Figgy.NoScope().Section("Abilities");
         Figgy.Group("Dash"); // [!code highlight]
             // Value Widgets here...
         Figgy.Group("Slam"); // [!code highlight]
             // Value Widgets here...
         Figgy.Group("Uppercut"); // [!code highlight]
             // Value Widgets here...
+```
+```js [Data]
+// Structure:
+{
+    Player: {
+        Dash: {
+            // Values here...
+        },
+        Slam: {
+            // Values here...
+        },
+        Uppercut: {
+            // Values here...
+        },
+    },
+}
+
+// Accessing ability configs:
+cfg = Figgy.GetCurrent().Player;
+dashCfg = cfg.Dash;
+slamCfg = cfg.Dash;
+uppercutCfg = cfg.Uppercut;
+```
+:::
+
+---
+### `.NoScope()`
+
+> `Figgy.NoScope()` ➜ :Struct:.:Figgy:
+
+Marks the next :.Section(): or :.Group(): call as **unscoped**, treating it as a purely visual interface element. This applies only to the immediately following :Section: or :Group: and resets automatically afterward.
+
+::: info NOTE
+:Windows: can not be unscoped. 
+:::
+
+::: code-group
+```js [Interface]
+// Creates a unscoped Abilities section in the Player window:
+Figgy.Window("Player");
+    Figgy.NoScope().Section("Abilities"); // [!code highlight]
+        Figgy.Group("Dash");
+            // Value Widgets here...
+```
+```js [Data]
+// Structure:
+{
+    Player: {
+        Dash: {
+            // Values here...
+        },
+    },
+}
+
+// Accessing Dash configs:
+dashCfg = Figgy.GetCurrent().Player.Dash;
 ```
 :::
 

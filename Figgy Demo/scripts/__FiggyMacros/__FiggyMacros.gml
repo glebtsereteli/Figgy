@@ -18,7 +18,7 @@
 #region Utility
 
 #macro __FIGGY_FILE_NAME $"{FIGGY_FILE_NAME}{FIGGY_FILE_EXT}"
-#macro __FIGGY_FILE_PATH $"{__FIGGY_IN_IDE ? ($"{filename_dir(GM_project_filename)}/datafiles/") : ""}{__FIGGY_FILE_NAME}"
+#macro __FIGGY_FILE_PATH $"{__FIGGY_IN_IDE ? $"{filename_dir(GM_project_filename)}/datafiles/" : ""}{__FIGGY_FILE_NAME}"
 #macro __FIGGY_FILE_FILTER $"Figgy Config File|*{FIGGY_FILE_EXT}"
 
 #macro __FIGGY_NO_INTERFACE if (not FIGGY_BUILD_INTERFACE) return self
@@ -29,7 +29,7 @@ if (FIGGY_FILE_REMOVE_SPACES) { \
 	_rawName = string_replace_all(_rawName, " ", ""); \
 }
 
-#macro __FIGGY_SCOPEDNAME _name + (_scoped ? "" : FIGGY_NOSCOPE_SUFFIX)
+#macro __FIGGY_SCOPEDNAME $"{_name}{__scoped ? "" : FIGGY_NOSCOPE_SUFFIX}"
 
 #macro __FIGGY_CATCH_WINDOW \
 if (not __windowed) { \
