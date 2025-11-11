@@ -1,4 +1,5 @@
-<img width="1280" height="300" alt="Untitled24_20251111173109" src="https://github.com/user-attachments/assets/5661e0ab-723b-4d4a-82a3-e7b00d46a5ba" />
+
+<img width="1280" height="300" alt="szYdcL" src="https://github.com/user-attachments/assets/a1bfa0c4-84b9-469d-a1d2-0d5bea41bcd3" />
 
 <h1 align="center">Figgy v1.0.0 </h1>
 <p align="center"> Persistent live configuration solution for GameMaker 2024.14+ </p>
