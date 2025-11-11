@@ -1,4 +1,4 @@
-<!-- ![](https://github.com/glebtsereteli/Figgy/assets/50461722/e82ecee8-149d-4a04-bf85-4010535ce033) -->
+
 
 <h1 align="center">Figgy v1.0.0 </h1>
 <p align="center"> Persistent live configuration solution for GameMaker 2024.14+ </p>

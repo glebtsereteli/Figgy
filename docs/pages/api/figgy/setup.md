@@ -640,6 +640,8 @@ UpdateSprite = function() {
 
 ## Decor Widgets
 
+Decor Widgets like :Comments:, :Buttons: and :Separators: are purely visual and do not map to any underlying data. They exist to improve readability add structure, and provide optional interface controls.
+
 ---
 ### `.Button()`
 
@@ -649,7 +651,7 @@ Description...
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| `name` | :Type: | Description |
+| `name` | :String: | The button name |
 | `name` | :Type: | Description |
 | `name` | :Type: | Description |
 

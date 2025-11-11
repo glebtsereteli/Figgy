@@ -3,7 +3,7 @@
 #region Info
 
 #macro __FIGGY_VERSION "v1.0.0" // major.minor.patch
-#macro __FIGGY_DATE "2025.xx.xx" // year.month.day
+#macro __FIGGY_DATE "2025.11.18" // year.month.day
 #macro __FIGGY_NAME "Figgy"
 #macro __FIGGY_LOG_PREFIX $"[{__FIGGY_NAME}]"
 

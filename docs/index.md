@@ -20,16 +20,16 @@ hero:
 features:
   - title: ⚙️ Automatic Live Interface
     details: Figgy creates debug view(s) for your configs automatically, freeing you from dreaded UI coding of any kind and allowing for live editing.
-  - title: 🗂️ Flexible Data Structuring
-    details: Organize your configs using a robust struct-based JSON layout with Window, Section and Group Scope Widgets.
+  - title: 🗂️ Flexible Data Structure
+    details: Organize your configs using a robust struct-based tree-like JSON layout with Window, Section and Group Scope Widgets.
   - title: 🎛️ Wide Data Type Coverage
-    details: Built on GM's cross-platform DBG system, Figgy provides many Value Widgets for a wide range of data types.
+    details: Built on GM's cross-platform DBG system, Figgy provides many Value Widgets for all commonly used data types (Reals, Bools, Strings, Colors).
   - title: 💾 Persistent Project Storage
-    details: Keep your configs inside your GitHub repo with Figgy's datafiles saving/loading support, quickly accessible through the DBG interface.
+    details: Keep your configs inside your GitHub repo with Figgy's datafiles saving/loading support that tracks variables differing from default values.
+  - title: 🧠 Centralized Configuration
+    details: Keep all gameplay values in one place and read them from the config struct - no more scattered Create-event variables or magic numbers.
   - title: 👨‍🎨 Code-Free Design
-    details: Allow your designers to tweak and balance the game live without ever having to dig through a single line of code.
-  - title: 👨‍🎨 Another One
-    details: Some cool info here.
+    details: Allow your designers to tweak and balance the game live without ever having to touch code. Everything is accessible through the interface.
 
 ---
 

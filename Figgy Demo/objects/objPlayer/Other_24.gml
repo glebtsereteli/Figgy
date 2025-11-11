@@ -1,7 +1,7 @@
 /// @desc Methods
 
 MoveX = function(_accel, _decel) {
-	var _input = InputX(INPUT_CLUSTER.NAV);
+	var _input = GetXInput();
 	var _xSpd = cfg.MoveSpeed * _input;
 	var _xStep = ((_input != 0) ? _accel : _decel);
 	xSpd = lerp(xSpd, _xSpd, _xStep);
@@ -86,7 +86,7 @@ FsmEnter = function() {
 };
 
 IsTryingToMove = function() {
-	return (InputX(INPUT_CLUSTER.NAV) != 0);
+	return (GetXInput() != 0);
 };
 IsMoving = function() {
 	return (xSpd != 0);
@@ -110,6 +110,9 @@ IsCoyoteLeft = function() {
 	return (coyote > 0);
 };
 
+GetXInput = function() {
+	return (InputCheck(INPUT_VERB.RIGHT) - InputCheck(INPUT_VERB.LEFT));
+};
 GetYCenter = function() {
 	return mean(bbox_top, bbox_bottom);
 };
