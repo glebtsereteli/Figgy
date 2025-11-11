@@ -106,7 +106,6 @@
     {"id":{"name":"objDemoControl","path":"objects/objDemoControl/objDemoControl.yy",},},
     {"id":{"name":"objLighting","path":"objects/objLighting/objLighting.yy",},},
     {"id":{"name":"objPlayer","path":"objects/objPlayer/objPlayer.yy",},},
-    {"id":{"name":"objTest","path":"objects/objTest/objTest.yy",},},
     {"id":{"name":"rmDemo","path":"rooms/rmDemo/rmDemo.yy",},},
     {"id":{"name":"rmDemoInit","path":"rooms/rmDemoInit/rmDemoInit.yy",},},
     {"id":{"name":"__BulbAddOcclusionHard","path":"scripts/__BulbAddOcclusionHard/__BulbAddOcclusionHard.yy",},},

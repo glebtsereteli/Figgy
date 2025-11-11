@@ -652,8 +652,10 @@ Description...
 | Parameter | Type | Description |
 | --- | --- | --- |
 | `name` | :String: | The button name |
-| `name` | :Type: | Description |
-| `name` | :Type: | Description |
+| `callback` | :Id.Function: | The function to call when the button is pressed |
+| `[width]` | :Real: | The button width [Default: automatic DBG default] |
+| `[height]` | :Real: | The button height [Default: automatic DBG default] |
+| `[sameLine?]` | :Bool: | Whether the button should be placed on the same line with the last element (`true`) or not (`false`) |
 
 ::: code-group
 ```js [Interface]

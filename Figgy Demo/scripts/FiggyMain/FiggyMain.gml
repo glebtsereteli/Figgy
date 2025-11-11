@@ -481,14 +481,14 @@ function Figgy() {
 	#region Setup: Decor Widgets
 	
 	/// @param {String} name The button name.
-	/// @param {Func} callback The function to trigger on press.
+	/// @param {Func} callback The function to trigger when the button is press.
 	/// @param {Real} width The button width. [Default: auto dbg default]
 	/// @param {Real} height The button height. [Default: auto dbg default]
-	/// @param {Bool} sameLine? Whether the button should be on the same line with the last element (true) or not (false). [Default: false]
+	/// @param {Bool} sameLine? Whether the button should be placed on the same line with the last element (true) or not (false). [Default: false]
 	/// @returns {Struct.Figgy}
 	/// @desc Decor Widget: creates a button, represented by DBG Button.
 	/// @self Figgy
-	static Button = function(_name, _callback, _w = undefined, _h = undefined, _sameLine = false) {
+	static Button = function(_name, _callback, _w = undefined, _h = undefined, _sameLine = FIGGY_BUTTON_SAME_LINE) {
 		static _methodName = "Button";
 		
 		__FIGGY_NO_INIT;

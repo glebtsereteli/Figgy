@@ -6,6 +6,7 @@
 .VPHomeHero .text {
     font-size: 2rem;
     line-height: 1.2;
+    color: #B7D8E6
 }
 .VPHomeHero .tagline {
     font-size: 1.5rem;
@@ -21,7 +22,12 @@ html.dark:has(.VPHome) body {
 }
 :root {
   --vp-home-hero-name-color: transparent;
-  --vp-home-hero-name-background: -webkit-linear-gradient(0deg, #3eaf7c, #3eaf7c);
+  --vp-home-hero-name-background: -webkit-linear-gradient(0deg, #ED493D);
+  --vp-home-hero-tagline-color: #B7D8E6;
+
+  --vp-button-brand-bg: #ED493D;
+  --vp-button-brand-hover-bg: #87599e;
+
   --vp-home-hero-image-background-image: linear-gradient(
     rgba(95, 62, 111, 0.4) 60%,
     rgba(229, 55, 52, 0.6) 40%

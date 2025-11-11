@@ -16,7 +16,6 @@
     {"name":"inst_52B494B6","path":"rooms/rmDemo/rmDemo.yy",},
     {"name":"inst_1D5D04E6","path":"rooms/rmDemo/rmDemo.yy",},
     {"name":"inst_3960C677","path":"rooms/rmDemo/rmDemo.yy",},
-    {"name":"inst_72F6B363","path":"rooms/rmDemo/rmDemo.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -24,7 +23,6 @@
         {"$GMRInstance":"v4","%Name":"inst_760591A3","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_760591A3","objectId":{"name":"objDemoControl","path":"objects/objDemoControl/objDemoControl.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":0.0,"y":-32.0,},
         {"$GMRInstance":"v4","%Name":"inst_6DDF8458","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_6DDF8458","objectId":{"name":"objCamera","path":"objects/objCamera/objCamera.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":32.0,"y":-32.0,},
         {"$GMRInstance":"v4","%Name":"inst_1C069F7F","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_1C069F7F","objectId":{"name":"objLighting","path":"objects/objLighting/objLighting.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":64.0,"y":-32.0,},
-        {"$GMRInstance":"v4","%Name":"inst_72F6B363","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_72F6B363","objectId":{"name":"objTest","path":"objects/objTest/objTest.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":928.0,"y":-32.0,},
       ],"layers":[],"name":"Control","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRInstanceLayer":"","%Name":"Colliders","depth":100,"effectEnabled":true,"effectType":null,"gridX":16,"gridY":16,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
         {"$GMRInstance":"v4","%Name":"inst_55EE18E0","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_55EE18E0","objectId":{"name":"objCollider","path":"objects/objCollider/objCollider.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":62.5,"scaleY":1.0,"x":0.0,"y":608.0,},
