@@ -14,6 +14,7 @@ function Figgy() {
 	static __windowSectioned = false;
 	static __section = undefined;
 	static __scoped = true;
+	static __initInactive = true;
 	
 	static __changes = new __FiggyChanges();
 	static __onChange = FIGGY_CHANGES_DEFAULT_CALLBACK;
@@ -30,7 +31,9 @@ function Figgy() {
 		var _overlayOpen = is_debug_overlay_open();
 		
 		__FIGGY_BENCH_START;
+		__initInactive = false;
 		FiggySetup();
+		__initInactive = true;
 		__default = variable_clone(__current);
 		__FiggyLogTimed("SETUP: completed");
 		
@@ -237,6 +240,9 @@ function Figgy() {
 	/// Once called, the Root scope becomes inaccessible. All following Widgets will be created in the context of the current Window.
 	/// Call this method again to switch the scope to another Window.
 	static Window = function(_name, _visible = FIGGY_WINDOW_DEFAULT_START_VISIBLE, _x = FIGGY_WINDOW_DEFAULT_X, _y = FIGGY_WINDOW_DEFAULT_Y, _w = FIGGY_WINDOW_DEFAULT_WIDTH, _h = FIGGY_WINDOW_DEFAULT_HEIGHT) {
+		static _methodName = "Window";
+		
+		__FIGGY_NO_INIT;
 		__FIGGY_RAWNAME;
 		if (FIGGY_BUILD_INTERFACE) {
 			dbg_view($"{FIGGY_WINDOW_NAME}: {_name}", _visible, _x, _y, _w, _h);
@@ -261,6 +267,9 @@ function Figgy() {
 	/// Call this method again to switch the scope to another Section.
 	/// Use .NoScope() before .Section() to avoid creating a struct and make a purely visual Section.
 	static Section = function(_name, _open = FIGGY_SECTION_DEFAULT_OPEN) {
+		static _methodName = "Section";
+		
+		__FIGGY_NO_INIT;
 		__FIGGY_CATCH_WINDOW;
 		__FIGGY_RAWNAME;
 		if (FIGGY_BUILD_INTERFACE) {
@@ -284,6 +293,9 @@ function Figgy() {
 	/// Once called, all following Value Widgets will be created in the context of the current Group.
 	/// Use .NoScope() before .Group() to avoid creating a struct and make a purely visual Group.
 	static Group = function(_name, _align = 0) {
+		static _methodName = "Group";
+		
+		__FIGGY_NO_INIT;
 		__FIGGY_CATCH_WINDOW;
 		__FIGGY_CATCH_FIRST_WINDOW_SECTION;
 		__FIGGY_RAWNAME;
@@ -306,6 +318,10 @@ function Figgy() {
 	/// @returns {Struct.Figgy}
 	/// @context Figgy
 	static NoScope = function() {
+		static _methodName = "NoScope";
+		
+		__FIGGY_NO_INIT;
+		
 		__scoped = false;
 		
 		return self;
@@ -324,9 +340,9 @@ function Figgy() {
 	/// @desc Value Widget: creates a Real value in the current scope (Root, Window, Section or Group), represented as a DBG Slider.
 	/// The onChange callback function receives 3 arguments: (new value, old value, variable name).
 	static Int = function(_name, _default, _min, _max, _step = FIGGY_INT_DEFAULT_STEP, _onChange = __onChange) {
-		static _buttonCache = [];
-		static _index = 0;
+		static _methodName = "Int";
 		
+		__FIGGY_NO_INIT;
 		__FIGGY_WIDGET;
 		if (FIGGY_BUILD_INTERFACE) {
 			dbg_slider_int(_ref, _min, _max, _name, _step);
@@ -346,6 +362,9 @@ function Figgy() {
 	/// @desc Value Widget: creates a Real value in the current scope (Root, Window, Section or Group), represented as a DBG Float Slider.
 	/// The onChange callback function receives 3 arguments: (new value, old value, variable name).
 	static Float = function(_name, _default, _min, _max, _step = FIGGY_FLOAT_DEFAULT_STEP, _onChange = __onChange) {
+		static _methodName = "Float";
+		
+		__FIGGY_NO_INIT;
 		__FIGGY_WIDGET;
 		if (FIGGY_BUILD_INTERFACE) {
 			dbg_slider(_ref, _min, _max, _name, _step);
@@ -362,6 +381,9 @@ function Figgy() {
 	/// @desc Value Widget: creates a Boolean value in the current scope (Root, Window, Section or Group), represented as a DBG Checkbox.
 	/// The onChange callback function receives 3 arguments: (new value, old value, variable name).
 	static Bool = function(_name, _default, _onChange = __onChange) {
+		static _methodName = "Bool";
+		
+		__FIGGY_NO_INIT;
 		__FIGGY_WIDGET;
 		if (FIGGY_BUILD_INTERFACE) {
 			dbg_checkbox(_ref, _name);
@@ -377,6 +399,9 @@ function Figgy() {
 	/// @desc Value Widget: creates a String value in the current scope (Root, Window, Section or Group), represented as a DBG Text Input.
 	/// The onChange callback function receives 3 arguments: (new value, old value, variable name).
 	static String = function(_name, _default, _onChange = __onChange) {
+		static _methodName = "String";
+		
+		__FIGGY_NO_INIT;
 		__FIGGY_WIDGET;
 		if (FIGGY_BUILD_INTERFACE) {
 			dbg_text_input(_ref, _name);
@@ -392,6 +417,9 @@ function Figgy() {
 	/// @desc Value Widget: creates a color value in the current scope (Root, Window, Section or Group), represented as a DBG Color Picker.
 	/// The onChange callback function receives 3 arguments: (new value, old value, variable name).
 	static Color = function(_name, _default, _onChange = __onChange) {
+		static _methodName = "Color";
+		
+		__FIGGY_NO_INIT;
 		__FIGGY_WIDGET;
 		if (FIGGY_BUILD_INTERFACE) {
 			dbg_colour(_ref, _name);
@@ -409,6 +437,9 @@ function Figgy() {
 	/// @desc Value Widget: creates an <Any> value in the current scope (Root, Window, Section or Group), represented as a DBG Dropdown.
 	/// The onChange callback function receives 3 arguments: (new value, old value, variable name).
 	static Any = function(_name, _default, _values, _names = _values, _onChange = __onChange) {
+		static _methodName = "Any";
+		
+		__FIGGY_NO_INIT;
 		__FIGGY_WIDGET;
 		__FIGGY_NO_INTERFACE;
 		
@@ -448,6 +479,9 @@ function Figgy() {
 	/// @returns {Struct.Figgy}
 	/// @desc Decor Widget: creates a button, represented by DBG Button.
 	static Button = function(_name, _callback, _w = undefined, _h = undefined, _sameLine = false) {
+		static _methodName = "Button";
+		
+		__FIGGY_NO_INIT;
 		__FIGGY_NO_INTERFACE;
 		
 		if (_sameLine) {
@@ -463,6 +497,9 @@ function Figgy() {
 	/// @returns {Struct.Figgy}
 	/// @desc Decor Widget: creates a text comment, represented by DBG Text.
 	static Comment = function(_string, _sameLine = false) {
+		static _methodName = "Comment";
+		
+		__FIGGY_NO_INIT;
 		__FIGGY_NO_INTERFACE;
 		
 		if (_sameLine) {
@@ -478,6 +515,9 @@ function Figgy() {
 	/// @returns {Struct.Figgy}
 	/// @desc Decor Widget: creates a separator, represented by DBG Separator with an optional name.
 	static Separator = function(_name = "", _align = 0) {
+		static _methodName = "Separator";
+		
+		__FIGGY_NO_INIT;
 		__FIGGY_NO_INTERFACE;
 		
 		dbg_text_separator(_name, _align);
@@ -494,6 +534,10 @@ function Figgy() {
 	/// The callback function receives 3 arguments: (new value, old value, variable name).
 	/// Call Figgy.OnChangeReset() to reset it.
 	static OnChangeSet = function(_callback) {
+		static _methodName = "OnChangeSet";
+		
+		__FIGGY_NO_INIT;
+		
 		__onChange = _callback;
 		
 		return self;
@@ -502,6 +546,10 @@ function Figgy() {
 	/// @returns {Struct.Figgy}
 	/// @desc Resets the default onChange callback back to FIGGY_CHANGES_DEFAULT_CALLBACK.
 	static OnChangeReset = function() {
+		static _methodName = "OnChangeReset";
+		
+		__FIGGY_NO_INIT;
+		
 		__onChange = FIGGY_CHANGES_DEFAULT_CALLBACK;
 		
 		return self;

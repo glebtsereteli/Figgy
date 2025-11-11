@@ -21,6 +21,11 @@
 #macro __FIGGY_FILE_PATH $"{__FIGGY_IN_IDE ? $"{filename_path(GM_project_filename)}datafiles/" : ""}{__FIGGY_FILE_NAME}"
 #macro __FIGGY_FILE_FILTER $"Figgy Config File|*{FIGGY_FILE_EXT}"
 
+#macro __FIGGY_NO_INIT \
+if (__initInactive) { \
+	__FiggyError($"{__FIGGY_NAME}.{_methodName}(): Setup methods must be called inside the global FiggySetup() function"); \
+}
+
 #macro __FIGGY_NO_INTERFACE if (not FIGGY_BUILD_INTERFACE) return self
 
 #macro __FIGGY_RAWNAME \
