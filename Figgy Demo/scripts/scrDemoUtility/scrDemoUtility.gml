@@ -1,4 +1,7 @@
 
+#macro GUI_W display_get_gui_width()
+#macro GUI_H display_get_gui_height()
+
 function Approach(_a, _b, _step) {
     return (_a + clamp(_b - _a, -_step, _step));
 }

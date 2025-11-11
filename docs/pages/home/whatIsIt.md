@@ -10,6 +10,8 @@ the figgy workflow can effectively be divided into 4 parts - setup, interface, s
 
 setup ➜ interface ➜ struct ➜ file
 
+### 1. Setup
+
 * first we setup up our widgets in `FiggySetup()`
 ::: code-group
 ```js [Setup]
@@ -17,8 +19,12 @@ setup ➜ interface ➜ struct ➜ file
 ```
 :::
 
+### 2. Interface
+
 * that creates a DBG interface that we use to balance the game live by changing configs, save them to file, reset them, etc
 TODO screenshot
+
+### 3. Data Struct
 
 * it also builds a data struct that we use to access config values in our code at runtime
 ::: code-group
@@ -26,6 +32,8 @@ TODO screenshot
 
 ```
 :::
+
+### 4. File
 
 * from that data structs comes the final data file that is saved into datafiles
 
@@ -41,5 +49,6 @@ keep in mind that by default, delta saving is enabled and you will only see valu
 
 ## Games Using Figgy
 
-* tobu by [Thomas Threlfo](https://bsky.app/profile/tthrelfo.bsky.social).
 * [DirtWorld](https://jbw-games.itch.io/dirtworld) by [Joe Baxter-Webb](https://indiegameclinic.com/).
+* tobu by [Thomas Threlfo](https://bsky.app/profile/tthrelfo.bsky.social).
+

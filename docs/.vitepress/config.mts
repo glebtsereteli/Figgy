@@ -11,7 +11,7 @@ export default defineConfig({
   title: "Figgy",
   description: "Figgy Documentation",
   head: [
-    ['link', { rel: 'icon', href: 'logo.png' }],
+    ['link', { rel: 'icon', href: 'logoSmall.png' }],
 
     // embeds
     ["meta", { property: "og:title", content: "Figgy Documentation" }],
@@ -41,7 +41,7 @@ export default defineConfig({
   ],
 
   themeConfig: {
-    logo: '/logo.png',
+    logo: '/logoSmall.png',
 
     search: {
       provider: 'local'
@@ -170,9 +170,9 @@ export default defineConfig({
         'Int': '/pages/api/figgy/setup#int',
         'Float': '/pages/api/figgy/setup#float',
         'Bool': '/pages/api/figgy/setup#bool',
-        'Text': '/pages/api/figgy/setup#text',
+        'String': '/pages/api/figgy/setup#string',
         'Color': '/pages/api/figgy/setup#color',
-        'Multi': '/pages/api/figgy/setup#multi',
+        'Any': '/pages/api/figgy/setup#any',
         
         'Button': '/pages/api/figgy/setup#button',
         'Comment': '/pages/api/figgy/setup#comment',
@@ -213,6 +213,9 @@ export default defineConfig({
         'Id.Function': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm',
         'Id.Background': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Asset_Management/Rooms/Background_Layers/Background_Layers.htm',
 
+        // constants
+        'Constant.Color': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Drawing/Colour_And_Alpha/Colour_And_Alpha.htm',
+        
         // links
         'New Issue': 'https://github.com/glebtsereteli/Figgy/issues/new',
         'Debug Overlay': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Debugging/The_Debug_Overlay.htm',
@@ -223,12 +226,15 @@ export default defineConfig({
         'Figgy': '/pages/api/figgy/overview',
         'Setup': '/pages/api/figgy/setup',
         'Scope Widgets': '/pages/api/figgy/setup#scope-widgets',
+        'Scope Widget': '/pages/api/figgy/setup#scope-widgets',
         'Scope': '/pages/api/figgy/setup#scope-widgets',
         'Value Widgets': '/pages/api/figgy/setup#value-widgets',
         'Value': '/pages/api/figgy/setup#value-widgets',
         'Decor Widgets': '/pages/api/figgy/setup#decor-widgets',
         'Decor': '/pages/api/figgy/setup#decor-widgets',
         'OnChange': '/pages/api/figgy/setup#onchange',
+        '.OnChangeSet()': '/pages/api/figgy/setup#onchangeset',
+        '.OnChangeReset()': '/pages/api/figgy/setup#onchangereset',
         
         '.NoScope()': '/pages/api/figgy/setup#noscope',
 

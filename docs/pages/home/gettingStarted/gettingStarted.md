@@ -1,6 +1,6 @@
 # Getting Started
 
-This page walks you through installing and setting up Figgy in your GameMaker project for the first time.
+This page walks you through installing and setting up Figgy configs in your GameMaker project for the first time.
 
 We'll begin by importing the `.yymps` package. Then in the [Usage](#usage) section, we'll go through core library operations with [Setup](#_1-setup), [Acess](#_2-access), and [Editing](#_3-editing). By the end, TODO
 
@@ -18,25 +18,39 @@ We'll begin by importing the `.yymps` package. Then in the [Usage](#usage) secti
 2. Import the package into your project.
     * Navigate to __Tools__ in the top toolbar and click __Import Local Package__, or just drag and drop the file into GameMaker.
     ![](import01.png)
-    * Locate and select the `Figgy v2.4.0.yymps` local package in Explorer/Finder.
+    * Locate and select the `Figgy v1.1.0.yymps` local package in Explorer/Finder.
     * Click __Add All__.
     ![](import02.png)
     * Click __Import__.
     ![](import03.png)
-        > The whole library lives inside the `Figgy` folder, and the only file under `Included Files` is the [MIT license](/pages/home/faq/#📍-how-is-gmroomloader-licensed-can-i-use-it-in-commercial-projects). TODO
+        > The whole library lives inside the `Figgy` folder, and the only file under `Included Files` is the [MIT license](/pages/home/faq/#📍-how-is-figgy-licensed-can-i-use-it-in-commercial-projects). TODO
 3. You're good to go! Next, check out the [Usage](#first-setup) section below to set up your first configs.
 
 ## Usage
 
 ### 1. Setup
 
-Navigate the `FiggySetup()` function
+
+
+
+Open the `FiggySetup` script, you'll see a `FiggySetup()` function
 
 ### 2. Access
 
+With our configs now established in :Setup:, let's make use of them in our player object
 
+in this example we have a very simple 
+
+I recommend making a global + pair macro for cleaner root config access. The config struct reference never changes no matter what, so we can safely store our current config in a global variable once and reference it throughout the game
+
+```js
+#macro CFG global.__config
+CFG = Figgy.GetCurrent();
+```
 
 
 ### 3. Editing
+
+ok cool, now we've initialized our configs in :Setup: and used them in our player object. Now let's make some live changes and see them reflected in the player
 
 ## What's Next?

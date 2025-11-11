@@ -99,9 +99,9 @@
 // Default step increment for .Float() Value Widgets.
 #macro FIGGY_FLOAT_DEFAULT_STEP 0.1
 
-// Whether to include -/+ cycling buttons for .Multi() Value Widgets (true) or not (false).
+// Whether to include -/+ cycling buttons for .Any() Value Widgets (true) or not (false).
 // NOTE: If true, might slow down FiggySetup() at scale.
-#macro FIGGY_MULTI_BUTTONS true
+#macro FIGGY_ANY_BUTTONS true
 
 #endregion
 #region Decor Widgets

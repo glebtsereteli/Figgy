@@ -14,8 +14,9 @@ Setup is organized into the following categories:
 * :Decor Widgets: provide visual or interactive elements such as comments, buttons, and separators that are not related to any data and are there to prettify the interface and allow for additional controls.
 * :OnChange: allows you to assign callbacks for a set of :Value Widgets: that are triggered whenever you change your widgets' values.
 
-::: danger IMPORTANT
-Setup methods <u>must be declared</u> inside the `FiggySetup()` function located in the `FiggySetup` script. `FiggySetup()` **must not** be renamed or removed!
+::: danger ❗ IMPORTANT
+* All Setup methods must be called inside the `FiggySetup()` function located in the `FiggySetup` script. Calling them outside the function will throw an error.
+* Figgy calls `FiggySetup()` internally during initialization. Do NOT remove, rename or call `FiggySetup()` manually! Doing so will break initialization.
 :::
 ::: tip NAME FORMATTING
 By default, Figgy removes all spaces when generating data entry names, e.g. `"Move Speed"` becomes `"MoveSpeed"` in code.
@@ -25,9 +26,9 @@ If you don't plan to use variable names with spaces in your interface, this can 
 
 ## Organization
 
-Figgy uses a syntax-lite approach for setup code: you don't write curly braces or manual struct blocks. Scope is defined entirely by the order of your Widget calls - any indentation or extra formatting is optional and is used purely for organization readability.
+Figgy uses a syntax-lite approach for setup code: you don't write curly braces or manual struct blocks. Scope is defined entirely by the order of your Widget calls - any indentation or extra formatting is optional and is used purely for organization and readability.
 
-Below are some common organization approaches you can use to organize your setup code. All of them are purely organizational and don't affect Figgy's scoping system in any way.
+Below are some common approaches you can use to organize your setup code. All of them are purely organizational and don't affect Figgy's scoping system in any way.
 
 * **No Extra Formatting**. All setup calls live directly inside `FiggySetup()` with no regions, helper functions, or grouping. This is fine for small projects or when you're just getting started, but can become harder to navigate as your configuration grows.
 ::: code-group
@@ -146,7 +147,7 @@ There are 3 Scope Widgets, each defining a different *scope level*, from highest
 
 > `Figgy.Window(name, [visible?], [x], [y], [width], [height])` ➜ :Struct:.:Figgy:
 
-Creates a struct at the Root scope, represented as a :DBG View:
+Creates a struct at the Root scope, represented as a :DBG View:.
 
 Once called, the Root scope becomes inaccessible. All following Widgets will be created in the context of the current Window. Call this method again to switch scope to another Window.
 
@@ -175,20 +176,20 @@ function FiggySetup() {
 }
 ```
 ```js [Data]
-// Structure:
 {
     Player: {
-        // Section/Group structs, and Values here...
+        // Section/Group structs and Values here...
     },
     Enemy: {
-        // Section/Group structs, and Values here...
+        // Section/Group structs and Values here...
     },
 }
-
-// Access Player configs:
+```
+```js [Access]
+// In objPlayer's Create event, store the config struct for future use:
 cfg = Figgy.GetCurrent().Player;
 
-// Access Enemy configs:
+// In objEnemy's Create event, store the config struct for future use:
 cfg = Figgy.GetCurrent().Enemy;
 ```
 :::
@@ -222,7 +223,6 @@ function FiggySetup() {
 }
 ```
 ```js [Data]
-// Structure:
 {
     Enemies: {
         Skeleton: {
@@ -230,8 +230,9 @@ function FiggySetup() {
         }
     },
 }
-
-// Accessing Skeleton configs:
+```
+```js [Access]
+// In objEnemySkeleton's Create event, store the config struct for future use:
 cfg = Figgy.GetCurrent().Enemies.Skeleton;
 ```
 :::
@@ -239,7 +240,7 @@ cfg = Figgy.GetCurrent().Enemies.Skeleton;
 ---
 ### `.Group()`
 
-> `Figgy.Group(name, [scoped?], [align])` ➜ :Struct:.:Figgy:
+> `Figgy.Group(name, [align])` ➜ :Struct:.:Figgy:
 
 Creates a struct at the current scope (Root, Window or Section), represented as a :DBG Text Separator:.
 Once called, all following Value Widgets will be created in the context of the current Group.
@@ -251,8 +252,7 @@ Call :.NoScope(): before :.Group(): to mark the upcoming Group as **unscoped**. 
 | Parameter | Type | Description |
 | --- | --- | --- |
 | `name` | :String: | The group name |
-| `[scoped?]` | :Bool: | Whether the group creates a new scope (`true`) or not (`false`) [Default: `true`] |
-| `[align]` | :Real: | Whether the group starts open (`true`) or not (`false`) [Default: :FIGGY_GROUP_DEFAULT_ALIGN:] |
+| `[align]` | :Real: | The group name alignment. `0` is left, `1` is center, `2` is right [Default: FIGGY_GROUP_DEFAULT_ALIGN] |
 
 ::: code-group
 ```js [Interface]
@@ -270,7 +270,6 @@ function FiggySetup() {
 }
 ```
 ```js [Data]
-// Structure:
 {
     Player: {
         Dash: {
@@ -284,12 +283,15 @@ function FiggySetup() {
         },
     },
 }
-
-// Accessing ability configs:
+```
+```js [Access]
+// In objPlayer's Create event, store the config struct for future use:
 cfg = Figgy.GetCurrent().Player;
-dashCfg = cfg.Dash;
-slamCfg = cfg.Dash;
-uppercutCfg = cfg.Uppercut;
+
+// Access relevant ability configs when needed:
+var _dashCfg = cfg.Dash;
+var _slamCfg = cfg.Slam;
+var _uppercutCfg = cfg.Uppercut;
 ```
 :::
 
@@ -313,7 +315,6 @@ function FiggySetup() {
 }
 ```
 ```js [Data]
-// Structure:
 {
     Player: {
         Dash: {
@@ -321,39 +322,87 @@ function FiggySetup() {
         },
     },
 }
-
-// Access Dash configs:
-dashCfg = Figgy.GetCurrent().Player.Dash;
+```
+```js [Access]
+var _dashCfg = Figgy.GetCurrent().Player.Dash;
 ```
 :::
 
 ## Value Widgets
 
-Overview...
+Value Widgets represent editable data values - numbers, strings, booleans, and colors. These map directly to gameplay variables such as `moveSpeed` or `attackRange` that you'll reference throughout your code.
+
+You can place Value Widgets anywhere within your setup. Their parent scope is determined by the most recently used :Scope Widget:. If no :Scope Widgets: have been called yet, Value Widgets are placed in the Root scope.
+
+All Value Widgets start with a name, which is how you reference them in your code. They also support an optional `[onChange]` callback that lets you run custom logic whenever the value is modified.
+
+---
+
+Value Widgets include the following:
+* :Ints: and :Floats: define :Int: and :Float: :Real: values. They are represented as :DBG Slider: and :DBG Float Slider: elements, with control over min-max ranges and step sizes.
+* :Bools: define :Bool: values, and are represented as a :DBG Checkbox:.
+* :Strings: define :String: values, and are represented as a :DBG Text Input:.
+* :Colors: define :Color: values, and are represented as a :DBG Color:.
+* :Any: widgets define values of any type. Represented as a :DBG Dropdown:, they let you pick from the given array of options displayed as the given array of option names.
 
 ---
 ### `.Int()`
 
 > `Figgy.Int(name, default, min, max, [step], [onChange])` ➜ :Struct:.:Figgy:
 
-Description...
+Creates a Real value in the current scope (Root, :Window:, :Section: or :Group:), represented as a :DBG Slider:.
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| `name` | :Type: | Description |
-| `name` | :Type: | Description |
-| `name` | :Type: | Description |
+| `name` | :String: | The variable name |
+| `default` | :Real: | The default value |
+| `min` | :Real: | The minimum slider value |
+| `max` | :Real: | The maximum slider value |
+| `[step]` | :Real: | The slider step [Default: :FIGGY_INT_DEFAULT_STEP:] |
+| `[onChange]` | :Id.Function: | The function to call when the value is changed [Default: :.OnChangeSet(): callback if set, or :FIGGY_CHANGES_DEFAULT_CALLBACK:] |
 
 ::: code-group
 ```js [Interface]
 function FiggySetup() {
+    Figgy.Window("Player");
+        // Creates a JumpSpeed value in the Player window:
+        Figgy.Int("Jump Speed", 15, 10, 20); // [!code highlight]
+    
+    Figgy.Window("Camera");
+        // Creates DeadzoneX and DeadzoneY values in the Camera window
+        // with a step of 10, for easier editing in a wider 0-200 range:
+        Figgy.Int("Deadzone X", 100, 0, 200, 10);
+        Figgy.Int("Deadzone Y", 100, 0, 200, 10);
 
+    Figgy.Window("Terrain");
+        // Creates an Octaves value in the Terrain window,
+        // and regenerate the terrain when the value is changed:
+        Figgy.Int("Octaves", 6, 4, 10, 1, function(_octaves) { // [!code highlight]
+            with (objTerrain) {
+                Regenerate();
+            }
+        });
 }
 ```
 ```js [Data]
 {
-
+    Player: {
+        JumpSpeed: 15,
+    },
+    Camera: {
+        DeadzoneX: 100,
+        DeadzoneY: 100,
+    },
+    Terrain: {
+        Octaves: 6
+    },
 }
+```
+```js [Access]
+var _jumpSpeed = Figgy.GetCurrent().Player.JumpSpeed;
+var _deadzoneX = Figgy.GetCurrent().Camera.DeadzoneX;
+var _deadzoneY = Figgy.GetCurrent().Camera.DeadzoneY;
+var _octaves = Figgy.GetCurrent().Terrain.Octaves;
 ```
 :::
 
@@ -362,23 +411,64 @@ function FiggySetup() {
 
 > `Figgy.Float(name, default, min, max, [step], [onChange])` ➜ :Struct:.:Figgy:
 
-Description...
+Creates a Real value in the current scope (Root, :Window:, :Section: or :Group:), represented as a :DBG Float Slider:.
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| `name` | :Type: | Description |
-| `name` | :Type: | Description |
-| `name` | :Type: | Description |
+| `name` | :String: | The variable name |
+| `default` | :Real: | The default value |
+| `min` | :Real: | The minimum slider value |
+| `max` | :Real: | The maximum slider value |
+| `[step]` | :Real: | The slider step [Default: :FIGGY_FLOAT_DEFAULT_STEP:] |
+| `[onChange]` | :Id.Function: | The function to call when the value is changed [Default: :.OnChangeSet(): callback if set, or :FIGGY_CHANGES_DEFAULT_CALLBACK:] |
 
 ::: code-group
 ```js [Interface]
 function FiggySetup() {
-
+    Figgy.Window("Player");
+        Figgy.NoScope().Section("Movement");
+			Figgy.NoScope().Group("Horizontal");
+                // Creates a RunSpeed Float value in the Player window.
+                // Movement Section and Horizontal Group are unscoped:
+                Figgy.Float("Run Speed", 5, 0.1, 10); // [!code highlight]
+        Figgy.Section("Light");
+            // Creates an Intensity Float value in the scoped Light section:
+			Figgy.Float("Intensity", 1, 0.1, 2); // [!code highlight]
+    Figgy.Window("Display");
+        // Creates a ResolutionScale Float value in the Display window with a
+        // 0.5 step, and resizes application_surface when changed:
+		Figgy.Float("Resolution Scale", 2, 0.5, 4, 0.5, RefreshAppSurf); // [!code highlight]
 }
 ```
 ```js [Data]
 {
+    Player: {
+        RunSpeed: 5,
+        Light: {
+            Intensity: 1
+        },
+    },
+    Display: {
+        ResolutionScale: 2,
+    },
+}
+```
+```js [Access]
+// In objPlayer's Create event, store the config struct for future use:
+cfg = Figgy.GetCurrent().Player;
 
+// In objPlayer's Step event, use the RunSpeed config to move:
+xSpd = xInput * cfg.RunSpeed;
+
+// In objPlayer's Step event, use the Light.Intensity config to adjust the
+// intensity of the player light:
+light.intensity = cfg.Light.Intensity;
+
+// In our application_surface refreshing function:
+function RefreshAppSurf() {
+    // Grab the resolution scale from the Display config:
+    var _scale = Figgy.GetCurrent().Display.ResolutionScale;
+    surface_resize(application_surface, BASE_WIDTH * _scale, BASE_HEIGHT * _scale);
 }
 ```
 :::
@@ -388,49 +478,76 @@ function FiggySetup() {
 
 > `Figgy.Bool(name, default, [onChange])` ➜ :Struct:.:Figgy:
 
-Description...
+Creates a :Bool: value in the current scope (Root, :Window:, :Section: or :Group:), represented as a :DBG Checkbox:.
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| `name` | :Type: | Description |
-| `name` | :Type: | Description |
-| `name` | :Type: | Description |
+| `name` | :String: | The variable name |
+| `default` | :Bool: | The default value |
+ `[onChange]` | :Id.Function: | The function to call when the value is changed [Default: :.OnChangeSet(): callback if set, or :FIGGY_CHANGES_DEFAULT_CALLBACK:] |
 
 ::: code-group
 ```js [Interface]
 function FiggySetup() {
-
+    Figgy.Window("Lighting");
+        // Creates an Enabled Bool values inside the Lighting window:
+		Figgy.Bool("Enabled", true);
 }
 ```
 ```js [Data]
 {
+    Lighting: {
+        Enabled: true,
+    },
+}
+```
+```js [Access]
+{
+    // In objLightingManager's Create event, store the config struct for future use:
+    cfg = Figgy.GetCurrent().Lighting;
 
+    // In objLightingManager's Step Post Draw event, handle application_surface drawing:
+    if (cfg.Enabled) {
+        // Draw appsurf with lighting applied.
+    }
+    else {
+        // Draw appsurf normally.
+    }
 }
 ```
 :::
 
 ---
-### `.Text()`
+### `.String()`
 
-> `Figgy.Text(name, default, [onChange])` ➜ :Struct:.:Figgy:
+> `Figgy.String(name, default, [onChange])` ➜ :Struct:.:Figgy:
 
-Description...
+Creates a :String: value in the current scope (Root, :Window:, :Section: or :Group:), represented as a :DBG Text Input:.
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| `name` | :Type: | Description |
-| `name` | :Type: | Description |
-| `name` | :Type: | Description |
+| `name` | :String: | The variable name |
+| `default` | :String: | The default value |
+ `[onChange]` | :Id.Function: | The function to call when the value is changed [Default: :.OnChangeSet(): callback if set, or :FIGGY_CHANGES_DEFAULT_CALLBACK:] |
 
 ::: code-group
 ```js [Interface]
 function FiggySetup() {
-
+    // Adds a WelcomeMessage String value in the Root scope:
+    Figgy.String("Welcome Message", "Hey {0}, welcome to GameName!");
 }
 ```
 ```js [Data]
 {
-
+    WelcomeMessage: "Hey {0}, welcome to GameName!",
+}
+```
+```js [Access]
+{
+    // Draw the welcome message on at the bottom center of the title screen:
+    draw_set_halign(fa_center);
+    draw_set_valign(fa_bottom);
+    draw_text(GUI_W / 2, GUI_H - 4, Figgy.GetCurrent().WelcomeMessage);
 }
 ```
 :::
@@ -440,50 +557,84 @@ function FiggySetup() {
 
 > `Figgy.Color(name, default, [onChange])` ➜ :Struct:.:Figgy:
 
-Description...
+Creates a :Constant.GMColor: value in the current scope (Root, :Window:, :Section: or :Group:), represented as a :DBG Color:.
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| `name` | :Type: | Description |
-| `name` | :Type: | Description |
-| `name` | :Type: | Description |
+| `name` | :String: | The variable name |
+| `default` | :Constant.Color: | The default value |
+ `[onChange]` | :Id.Function: | The function to call when the value is changed [Default: :.OnChangeSet(): callback if set, or :FIGGY_CHANGES_DEFAULT_CALLBACK:] |
 
 ::: code-group
 ```js [Interface]
 function FiggySetup() {
-
+    Figgy.Window("Lighting");
+        // Creates an AmbientColor Color value in the Lighting window:
+        Figgy.Color("Ambient Color", #191919);
 }
 ```
 ```js [Data]
 {
-
+    Lighting: {
+        AmbientColor: 1644825,
+    }
 }
+```
+```js [Access]
+// In objLightingManager's Create event, store the config struct for future use:
+cfg = CFG.Lighting;
+
+// In objLightingManager's Step event, update the ambient color:
+renderer.ambientColor = cfg.AmbientColor;
 ```
 :::
 
 ---
-### `.Multi()`
+### `.Any()`
 
-> `Figgy.Multi(name, default, values, names, [onChange])` ➜ :Struct:.:Figgy:
+> `Figgy.Any(name, default, values, [names], [onChange])` ➜ :Struct:.:Figgy:
 
-Description...
+Creates a value of any type in the current scope (Root, :Window:, :Section: or :Group:), represented as a :DBG Dropdown:.
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| `name` | :Type: | Description |
-| `name` | :Type: | Description |
-| `name` | :Type: | Description |
+| `name` | :String: | The variable name |
+| `default` | `Any` | The default value |
+| `values` | :Array: of `Any` | The array of option values |
+| `[names]` | :Array: of :String: | The array of option names [Default: `values`] |
+| `[onChange]` | :Id.Function: | The function to call when the value is changed [Default: :.OnChangeSet(): callback if set, or :FIGGY_CHANGES_DEFAULT_CALLBACK:] |
 
 ::: code-group
 ```js [Interface]
 function FiggySetup() {
-
+    Figgy.Window("Player");
+        global.playerSkins = ["Green", "Pink", "Purple", "Yellow"];
+        // Creates a Skin String value in the Player window and updates
+        // objPlayer's sprite when the value is changed:
+        Figgy.Any("Skin", global.playerSkins[0], global.playerSkins,, function() {
+            with (objPlayer) {
+                UpdateSprite();
+            }
+        });
 }
 ```
 ```js [Data]
 {
-
+    Player: {
+        Skin: "Green",
+    },
 }
+```
+```js [Access]
+// In objPlayer's Create event, store the config struct for future use:
+cfg = CFG.Player;
+
+// In objPlayer's UpdateSprite method, changes sprite by updating sprite_index to a
+// sprite based the current skin and state and resets image_index:
+UpdateSprite = function() {
+    sprite_index = sprites[$ cfg.Skin][$ fsm.get_current_state()];
+	image_index = 0;
+};
 ```
 :::
 
@@ -508,11 +659,6 @@ function FiggySetup() {
 
 }
 ```
-```js [Data]
-{
-
-}
-```
 :::
 
 ---
@@ -531,11 +677,6 @@ Description...
 ::: code-group
 ```js [Interface]
 function FiggySetup() {
-
-}
-```
-```js [Data]
-{
 
 }
 ```

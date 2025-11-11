@@ -170,10 +170,10 @@ Default step increment for :Int: Value Widgets.
 Default step increment for :Float: Value Widgets.
 
 ---
-### `FIGGY_MULTI_BUTTONS`
+### `FIGGY_ANY_BUTTONS`
 > Default: `true`.
 
-Whether to include -/+ cycling buttons for :Multi: Value Widgets (`true`) or not (`false`).
+Whether to include -/+ cycling buttons for :Any: Value Widgets (`true`) or not (`false`).
 
 :::
 Having this enabled might slow down :Setup: at scale.

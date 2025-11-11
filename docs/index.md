@@ -14,7 +14,7 @@ hero:
       text: Get Started
       link: '/pages/home/gettingStarted/gettingStarted'
   image:
-    src: /logo.png
+    src: /logoBig.png
     alt: Icon
 
 features:

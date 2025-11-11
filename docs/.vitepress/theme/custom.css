@@ -1,5 +1,4 @@
 
-
 .VPHomeHero .title {
     font-size: 2rem;
     line-height: 1.2;
@@ -24,11 +23,10 @@ html.dark:has(.VPHome) body {
   --vp-home-hero-name-color: transparent;
   --vp-home-hero-name-background: -webkit-linear-gradient(0deg, #3eaf7c, #3eaf7c);
   --vp-home-hero-image-background-image: linear-gradient(
-    #bac87e94 20%,
-    #5d00ff94 50%,
-    #9d030392 30%
+    rgba(95, 62, 111, 0.4) 60%,
+    rgba(229, 55, 52, 0.6) 40%
   );
-  --vp-home-hero-image-filter: blur(60px);
+  --vp-home-hero-image-filter: blur(50px);
 }
 /* .main {
     margin-left: -30px;

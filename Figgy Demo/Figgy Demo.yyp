@@ -97,6 +97,7 @@
   "name":"Figgy Demo",
   "resources":[
     {"id":{"name":"extExecuteShellSimpleExt","path":"extensions/extExecuteShellSimpleExt/extExecuteShellSimpleExt.yy",},},
+    {"id":{"name":"fntDemo","path":"fonts/fntDemo/fntDemo.yy",},},
     {"id":{"name":"Figgy Info","path":"notes/Figgy Info/Figgy Info.yy",},},
     {"id":{"name":"__InputUpdateController","path":"objects/__InputUpdateController/__InputUpdateController.yy",},},
     {"id":{"name":"objCamera","path":"objects/objCamera/objCamera.yy",},},
@@ -479,6 +480,7 @@
     {"id":{"name":"__shdBulbTonemapUncharted2","path":"shaders/__shdBulbTonemapUncharted2/__shdBulbTonemapUncharted2.yy",},},
     {"id":{"name":"__shdBulbTonemapUnreal3","path":"shaders/__shdBulbTonemapUnreal3/__shdBulbTonemapUnreal3.yy",},},
     {"id":{"name":"__sprBulbPixel","path":"sprites/__sprBulbPixel/__sprBulbPixel.yy",},},
+    {"id":{"name":"_008","path":"sprites/_008/_008.yy",},},
     {"id":{"name":"sprBg","path":"sprites/sprBg/sprBg.yy",},},
     {"id":{"name":"sprCollider","path":"sprites/sprCollider/sprCollider.yy",},},
     {"id":{"name":"sprPlayerCollmask","path":"sprites/sprPlayerCollmask/sprPlayerCollmask.yy",},},
