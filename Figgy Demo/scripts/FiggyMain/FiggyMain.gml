@@ -239,6 +239,7 @@ function Figgy() {
 	/// @desc Scope Widget. Creates a struct at the Root level, represented as a DBG View.
 	/// Once called, the Root scope becomes inaccessible. All following Widgets will be created in the context of the current Window.
 	/// Call this method again to switch the scope to another Window.
+	/// @self Figgy
 	static Window = function(_name, _visible = FIGGY_WINDOW_DEFAULT_START_VISIBLE, _x = FIGGY_WINDOW_DEFAULT_X, _y = FIGGY_WINDOW_DEFAULT_Y, _w = FIGGY_WINDOW_DEFAULT_WIDTH, _h = FIGGY_WINDOW_DEFAULT_HEIGHT) {
 		static _methodName = "Window";
 		
@@ -266,6 +267,7 @@ function Figgy() {
 	/// Once called, the previous non-Section scope (Root or Window) becomes inaccessible. All following Widgets will be created in the context of the current Section.
 	/// Call this method again to switch the scope to another Section.
 	/// Use .NoScope() before .Section() to avoid creating a struct and make a purely visual Section.
+	/// @self Figgy
 	static Section = function(_name, _open = FIGGY_SECTION_DEFAULT_OPEN) {
 		static _methodName = "Section";
 		
@@ -292,6 +294,7 @@ function Figgy() {
 	/// @desc Scope Widget. Creates a struct at the current scope (Root, Window or Section), represented as a DBG Text Separator.
 	/// Once called, all following Value Widgets will be created in the context of the current Group.
 	/// Use .NoScope() before .Group() to avoid creating a struct and make a purely visual Group.
+	/// @self Figgy
 	static Group = function(_name, _align = 0) {
 		static _methodName = "Group";
 		
@@ -313,10 +316,10 @@ function Figgy() {
 		return self;
 	};
 	
-	/// @desc Marks the next .Section() or .Group() call as NOT SCOPED, treating it as a purely visual interface element.  
+	/// @desc Marks the next .Section() or .Group() call as UNSCOPED, treating it as a purely visual interface element.  
 	/// This applies only to the immediately following Section or Group and resets automatically afterward.
 	/// @returns {Struct.Figgy}
-	/// @context Figgy
+	/// @self Figgy
 	static NoScope = function() {
 		static _methodName = "NoScope";
 		
@@ -339,6 +342,7 @@ function Figgy() {
 	/// @returns {Struct.Figgy}
 	/// @desc Value Widget: creates a Real value in the current scope (Root, Window, Section or Group), represented as a DBG Slider.
 	/// The onChange callback function receives 3 arguments: (new value, old value, variable name).
+	/// @self Figgy
 	static Int = function(_name, _default, _min, _max, _step = FIGGY_INT_DEFAULT_STEP, _onChange = __onChange) {
 		static _methodName = "Int";
 		
@@ -361,6 +365,7 @@ function Figgy() {
 	/// @returns {Struct.Figgy}
 	/// @desc Value Widget: creates a Real value in the current scope (Root, Window, Section or Group), represented as a DBG Float Slider.
 	/// The onChange callback function receives 3 arguments: (new value, old value, variable name).
+	/// @self Figgy
 	static Float = function(_name, _default, _min, _max, _step = FIGGY_FLOAT_DEFAULT_STEP, _onChange = __onChange) {
 		static _methodName = "Float";
 		
@@ -380,6 +385,7 @@ function Figgy() {
 	/// @returns {Struct.Figgy}
 	/// @desc Value Widget: creates a Boolean value in the current scope (Root, Window, Section or Group), represented as a DBG Checkbox.
 	/// The onChange callback function receives 3 arguments: (new value, old value, variable name).
+	/// @self Figgy
 	static Bool = function(_name, _default, _onChange = __onChange) {
 		static _methodName = "Bool";
 		
@@ -398,6 +404,7 @@ function Figgy() {
 	/// @returns {Struct.Figgy}
 	/// @desc Value Widget: creates a String value in the current scope (Root, Window, Section or Group), represented as a DBG Text Input.
 	/// The onChange callback function receives 3 arguments: (new value, old value, variable name).
+	/// @self Figgy
 	static String = function(_name, _default, _onChange = __onChange) {
 		static _methodName = "String";
 		
@@ -416,6 +423,7 @@ function Figgy() {
 	/// @returns {Struct.Figgy}
 	/// @desc Value Widget: creates a color value in the current scope (Root, Window, Section or Group), represented as a DBG Color Picker.
 	/// The onChange callback function receives 3 arguments: (new value, old value, variable name).
+	/// @self Figgy
 	static Color = function(_name, _default, _onChange = __onChange) {
 		static _methodName = "Color";
 		
@@ -436,6 +444,7 @@ function Figgy() {
 	/// @returns {Struct.Figgy}
 	/// @desc Value Widget: creates an <Any> value in the current scope (Root, Window, Section or Group), represented as a DBG Dropdown.
 	/// The onChange callback function receives 3 arguments: (new value, old value, variable name).
+	/// @self Figgy
 	static Any = function(_name, _default, _values, _names = _values, _onChange = __onChange) {
 		static _methodName = "Any";
 		
@@ -478,6 +487,7 @@ function Figgy() {
 	/// @param {Bool} sameLine? Whether the button should be on the same line with the last element (true) or not (false). [Default: false]
 	/// @returns {Struct.Figgy}
 	/// @desc Decor Widget: creates a button, represented by DBG Button.
+	/// @self Figgy
 	static Button = function(_name, _callback, _w = undefined, _h = undefined, _sameLine = false) {
 		static _methodName = "Button";
 		
@@ -496,6 +506,7 @@ function Figgy() {
 	/// @param {Bool} sameLine? Whether the comment should be on the same line with the last element (true) or not (false). [Default: false]
 	/// @returns {Struct.Figgy}
 	/// @desc Decor Widget: creates a text comment, represented by DBG Text.
+	/// @self Figgy
 	static Comment = function(_string, _sameLine = false) {
 		static _methodName = "Comment";
 		
@@ -514,6 +525,7 @@ function Figgy() {
 	/// @param {Real} align The separator name alignment. 0 is left, 1 is center, 2 is right. [Default: FIGGY_GROUP_DEFAULT_ALIGN]
 	/// @returns {Struct.Figgy}
 	/// @desc Decor Widget: creates a separator, represented by DBG Separator with an optional name.
+	/// @self Figgy
 	static Separator = function(_name = "", _align = 0) {
 		static _methodName = "Separator";
 		
@@ -533,6 +545,7 @@ function Figgy() {
 	/// @desc Sets the default onChange callback for all following Value Widgets.
 	/// The callback function receives 3 arguments: (new value, old value, variable name).
 	/// Call Figgy.OnChangeReset() to reset it.
+	/// @self Figgy
 	static OnChangeSet = function(_callback) {
 		static _methodName = "OnChangeSet";
 		
@@ -545,6 +558,7 @@ function Figgy() {
 	
 	/// @returns {Struct.Figgy}
 	/// @desc Resets the default onChange callback back to FIGGY_CHANGES_DEFAULT_CALLBACK.
+	/// @self Figgy
 	static OnChangeReset = function() {
 		static _methodName = "OnChangeReset";
 		
@@ -561,18 +575,21 @@ function Figgy() {
 	
 	/// @returns {Struct}
 	/// @desc Returns the current config.
+	/// @self Figgy
 	static GetCurrent = function() {
 		return __current;
 	};
 	
 	/// @returns {Struct}
 	/// @desc Returns the default config.
+	/// @self Figgy
 	static GetDefault = function() {
 		return __default;
 	};
 	
 	/// @returns {Struct}
 	/// @desc Returns the last saved config.
+	/// @self Figgy
 	static GetLastSave = function() {
 		return __lastSave;
 	};
@@ -582,6 +599,7 @@ function Figgy() {
 	
 	/// @returns {Struct.Figgy}
 	/// @desc Resets the current config to the default.
+	/// @self Figgy
 	static ResetToDefault = function() {
 		__FIGGY_BENCH_START;
 		__Move(__default, __current);
@@ -593,6 +611,7 @@ function Figgy() {
 	
 	/// @returns {Struct.Figgy}
 	/// @desc Resets the current config to the last save.
+	/// @self Figgy
 	static ResetToLastSave = function() {
 		__FIGGY_BENCH_START;
 		if (__lastSave == undefined) {
@@ -611,6 +630,7 @@ function Figgy() {
 	/// @param {String} path The path to import the config file from. [Default: undefined, prompt popup]
 	/// @returns {Struct.Figgy}
 	/// @desc Imports an external config file from the given path.
+	/// @self Figgy
 	static Import = function(_path = undefined) {
 		_path ??= get_open_filename_ext(__FIGGY_FILE_FILTER, __FIGGY_FILE_NAME, "", "Figgy: Import Config");
 		if (_path == "") {
@@ -628,6 +648,7 @@ function Figgy() {
 	/// @param {String} path The path to import the config file to. [Default: undefined, prompt popup]
 	/// @returns {Struct.Figgy}
 	/// @desc Exports the current configs into a file at the given path.
+	/// @self Figgy
 	static Export = function(_path = undefined) {
 		_path ??= get_save_filename_ext(__FIGGY_FILE_FILTER, __FIGGY_FILE_NAME, "", "Figgy: Export Config");
 		if (_path == "") {
