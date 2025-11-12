@@ -181,6 +181,13 @@ Having this enabled might slow down :Setup: at scale.
 
 ## Decor Widgets
 
+### `FIGGY_BUTTON`
+
+> Default `false`.
+
+Whether :Buttons: should be placed on the same line with the last widget by default (`true`) or not (`false`).
+
+---
 ### `FIGGY_SEPARATOR_DEFAULT_ALIGN`
 > Default: `0`.
 

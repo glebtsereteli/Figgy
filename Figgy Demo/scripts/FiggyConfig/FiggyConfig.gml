@@ -106,7 +106,7 @@
 #endregion
 #region Decor Widgets
 
-// Whether .Button()s should be placed on the same line with the last widget (true) or not (false).
+// Whether .Button()s should be placed on the same line with the last widget by default (true) or not (false).
 #macro FIGGY_BUTTON_DEFAULT_SAME_LINE false
 
 // Default .Separator() text alignment.

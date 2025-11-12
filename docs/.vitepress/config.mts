@@ -142,7 +142,8 @@ export default defineConfig({
         link: 'https://glebtsereteli.itch.io/figgy',
       },
       { icon: 'discord', link: 'https://discord.gg/gamemakerkitchen' },
-      { icon: 'twitter', link: 'https://x.com/glebtsereteli' }, 
+      { icon: 'twitter', link: 'https://x.com/glebtsereteli' },
+      { icon: 'bluesky', link: 'https://bsky.app/profile/glebtsereteli.bsky.social' },
     ],
 
     footer: {
