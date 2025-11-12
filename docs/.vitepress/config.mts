@@ -259,10 +259,12 @@ export default defineConfig({
         'FIGGY_CONTROLS_OPEN': '/pages/api/config#figgy-controls-open',
         'FIGGY_SECTION_DEFAULT_OPEN': '/pages/api/config#figgy-section-default-open',
         'FIGGY_GROUP_DEFAULT_ALIGN': '/pages/api/config#figgy-group-default-align',
-        'FIGGY_NOSCOPE_SUFFIX': '/pages/api/config#figgy-noscope-suffix',
+        'FIGGY_UNSCOPED_NAME_FORMAT': '/pages/api/config#figgy-unscoped-name-format',
 
         'FIGGY_INT_DEFAULT_STEP': '/pages/api/config#figgy-int-default-step',
         'FIGGY_FLOAT_DEFAULT_STEP': '/pages/api/config#figgy-float-default-step',
+        
+        'FIGGY_BUTTON_DEFAULT_SAME_LINE': '/pages/api/config#figgy-button-default-same-line',
         'FIGGY_SEPARATOR_DEFAULT_ALIGN': '/pages/api/config#figgy-separator-default-align',
 
         'FIGGY_CHANGES_ENABLED': '/pages/api/config#figgy-changes-enabled',

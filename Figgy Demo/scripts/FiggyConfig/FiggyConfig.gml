@@ -74,7 +74,7 @@
 #macro FIGGY_WINDOW_DEFAULT_WIDTH 400
 
 // Default height of Figgy windows.
-#macro FIGGY_WINDOW_DEFAULT_HEIGHT 500
+#macro FIGGY_WINDOW_DEFAULT_HEIGHT 600
 
 // Whether .Section()s are open by default (true) or not (false).
 #macro FIGGY_SECTION_DEFAULT_OPEN true
@@ -82,9 +82,9 @@
 // Default .Group() and .Separator() text alignment. 0 is left, 1 is center, 2 is right.
 #macro FIGGY_GROUP_DEFAULT_ALIGN 0
 
-// The suffix added to NOT SCOPED Sections and Groups (when the "scoped" argument set to false).
-// NOTE: You may want to set this to something descriptive (or just a symbol) for extra interface clarity.
-#macro FIGGY_NOSCOPE_SUFFIX ""
+// The custom String Format used for UNSCOPED Sections and Groups names (with .NoScope() called beforehand).
+// TIP: You may want to set this to something like "[{0}]" or "[-{0}-]" for extra interface clarity.
+#macro FIGGY_UNSCOPED_NAME_FORMAT "{0}"
 
 #endregion
 #region Value Widgets
@@ -108,6 +108,9 @@
 
 // Whether .Button()s should be placed on the same line with the last widget by default (true) or not (false).
 #macro FIGGY_BUTTON_DEFAULT_SAME_LINE false
+
+// Whether .Comment()s should be placed on the same line with the last widget by default (true) or not (false).
+#macro FIGGY_COMMENT_DEFAULT_SAME_LINE false
 
 // Default .Separator() text alignment.
 #macro FIGGY_SEPARATOR_DEFAULT_ALIGN 0

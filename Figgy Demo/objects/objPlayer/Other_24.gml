@@ -7,7 +7,7 @@ MoveX = function(_accel, _decel) {
 	xSpd = lerp(xSpd, _xSpd, _xStep);
 };
 MoveXAir = function() {
-	MoveX(cfg.AirAcceleration, cfg.AirDeceleration);
+	MoveX(cfg.AirAcceleration, cfg.AirFriction);
 };
 ApplyGravity = function() {
 	ySpd = min(ySpd + cfg.Gravity, cfg.MaxFallSpeed);

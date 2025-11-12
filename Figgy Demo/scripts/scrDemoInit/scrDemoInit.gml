@@ -12,6 +12,11 @@ function DemoInit() {
 		outlineDistance: 2,
 	});
 	
+	if (__FIGGY_IN_IDE) {
+		var _view = dbg_view("dummy", false);
+		dbg_view_delete(_view);
+	}
+	
 	instance_create_depth(0, 0, -15000, objDemoControl);
 	
 	room_goto(rmDemo);

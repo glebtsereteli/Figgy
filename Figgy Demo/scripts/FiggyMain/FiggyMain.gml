@@ -116,6 +116,9 @@ function Figgy() {
 		if (FIGGY_FILE_DELTA) {
 			_data = variable_clone(_data);
 			__SaveDelta(_data, __default);
+			if (struct_names_count(_data) == 0) {
+				return false;
+			}
 		}
         
         var _string = json_stringify(_data, FIGGY_FILE_PRETTIFY);
@@ -137,6 +140,8 @@ function Figgy() {
         
         buffer_save(_saveBuffer, _path);
         buffer_delete(_saveBuffer);
+		
+		return true;
     };
     static __Save = function(_log = true) {
         if (_log) {
@@ -144,12 +149,19 @@ function Figgy() {
         }
         
         var _path = __FIGGY_FILE_PATH;
-        __SaveRaw(_path);
+		if (__SaveRaw(_path)) {
+			if (_log) {
+				__FiggyLogTimed($"SAVE: success at \"{_path}\"");
+			}
+		}
+		else {
+			file_delete(_path);
+			if (_log) {
+				__FiggyLogTimed($"SAVE: no data to save, deleted file");
+			}
+		}
+		
         __RefreshLastSave();
-        
-        if (_log) {
-            __FiggyLogTimed($"SAVE: success at \"{_path}\"");
-        }
         
         return self;
     };
@@ -486,9 +498,9 @@ function Figgy() {
 	/// @param {Real} height The button height. [Default: auto dbg default]
 	/// @param {Bool} sameLine? Whether the button should be placed on the same line with the last element (true) or not (false). [Default: false]
 	/// @returns {Struct.Figgy}
-	/// @desc Decor Widget: creates a button, represented by DBG Button.
+	/// @desc Decor Widget: creates a button that triggers the given callback function when pressed, represented as a DBG Button.
 	/// @self Figgy
-	static Button = function(_name, _callback, _w = undefined, _h = undefined, _sameLine = FIGGY_BUTTON_SAME_LINE) {
+	static Button = function(_name, _callback, _w = undefined, _h = undefined, _sameLine = FIGGY_BUTTON_DEFAULT_SAME_LINE) {
 		static _methodName = "Button";
 		
 		__FIGGY_NO_INIT;
@@ -505,9 +517,9 @@ function Figgy() {
 	/// @param {String} string The comment string.
 	/// @param {Bool} sameLine? Whether the comment should be on the same line with the last element (true) or not (false). [Default: false]
 	/// @returns {Struct.Figgy}
-	/// @desc Decor Widget: creates a text comment, represented by DBG Text.
+	/// @desc Decor Widget: creates a text comment, represented as a DBG Text.
 	/// @self Figgy
-	static Comment = function(_string, _sameLine = false) {
+	static Comment = function(_string, _sameLine = FIGGY_COMMENT_DEFAULT_SAME_LINE) {
 		static _methodName = "Comment";
 		
 		__FIGGY_NO_INIT;
@@ -524,9 +536,10 @@ function Figgy() {
 	/// @param {String} name The separator name. [Default: empty]
 	/// @param {Real} align The separator name alignment. 0 is left, 1 is center, 2 is right. [Default: FIGGY_GROUP_DEFAULT_ALIGN]
 	/// @returns {Struct.Figgy}
-	/// @desc Decor Widget: creates a separator, represented by DBG Separator with an optional name.
+	/// @desc Decor Widget: creates a horizontal line separator with an optional name, represented as a DBG Separator.
+	/// This is practically just an UNSCOPED Group() under a different name.
 	/// @self Figgy
-	static Separator = function(_name = "", _align = 0) {
+	static Separator = function(_name = "", _align = FIGGY_SEPARATOR_DEFAULT_ALIGN) {
 		static _methodName = "Separator";
 		
 		__FIGGY_NO_INIT;

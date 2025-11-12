@@ -41,7 +41,7 @@ With our configs now established in :Setup:, let's make use of them in our playe
 
 in this example we have a very simple 
 
-I recommend making a global + pair macro for cleaner root config access. The config struct reference never changes no matter what, so we can safely store our current config in a global variable once and reference it throughout the game
+I recommend making a global + macro pair for cleaner root config access. The config struct reference never changes no matter what, so we can safely store our current config in a global variable once and reference it throughout the game.
 
 ```js
 #macro CFG global.__config

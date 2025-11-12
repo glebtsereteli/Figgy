@@ -27,6 +27,7 @@ html.dark:has(.VPHome) body {
 
   --vp-button-brand-bg: #ED493D;
   --vp-button-brand-hover-bg: #87599e;
+  --vp-button-brand-active-bg: #87599e;
 
   --vp-home-hero-image-background-image: linear-gradient(
     rgba(95, 62, 111, 0.4) 60%,

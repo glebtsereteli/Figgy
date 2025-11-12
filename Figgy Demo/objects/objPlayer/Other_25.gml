@@ -20,7 +20,7 @@ fsm
 		ResetJumps();
 	},
 	update: function() {
-		MoveX(cfg.GroundAcceleration, cfg.GroundDeceleration);
+		MoveX(cfg.GroundAcceleration, cfg.GroundFriction);
 		UpdateFacing();
 		fsm.trigger("tIdle");
 	},

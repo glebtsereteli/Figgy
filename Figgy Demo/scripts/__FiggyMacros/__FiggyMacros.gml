@@ -34,7 +34,7 @@ if (FIGGY_FILE_REMOVE_SPACES) { \
 	_rawName = string_replace_all(_rawName, " ", ""); \
 }
 
-#macro __FIGGY_SCOPEDNAME $"{_name}{__scoped ? "" : FIGGY_NOSCOPE_SUFFIX}"
+#macro __FIGGY_SCOPEDNAME string(FIGGY_UNSCOPED_NAME_FORMAT, _name)
 
 #macro __FIGGY_CATCH_WINDOW \
 if (not __windowed) { \
@@ -49,7 +49,7 @@ if (not __windowed) { \
 if (not __windowSectioned) { \
 	__windowSectioned = true; \
 	if (FIGGY_BUILD_INTERFACE) { \
-		dbg_section($"Configs{FIGGY_NOSCOPE_SUFFIX}", true); \
+		dbg_section(string(FIGGY_UNSCOPED_NAME_FORMAT, "Configs"), true); \
 	} \
 }
 

@@ -2,7 +2,7 @@
 
 ## Overview
 
-Your Figgy workflow begins in the global `FiggySetup()` function, which acts as the library's main entry point. Inside it, you create your :Windows:, :Sections:, :Groups:, :Value: and :Decor: Widgets that shape both the visual debug interface and the underlying config data layout for your game.
+Figgy workflow begins in the global `FiggySetup()` function, which acts as the library's main entry point. Inside it, you create your :Windows:, :Sections:, :Groups:, :Value: and :Decor: Widgets that shape both the visual debug interface and the underlying config data layout for your game.
 
 Figgy's setup process is built around Widgets - modular building blocks that define what appears in your debug view and how it's reflected in your game's config data struct.
 
@@ -32,7 +32,7 @@ Below are some common approaches you can use to organize your setup code. All of
 
 * **No Extra Formatting**. All setup calls live directly inside `FiggySetup()` with no regions, helper functions, or grouping. This is fine for small projects or when you're just getting started, but can become harder to navigate as your configuration grows.
 ::: code-group
-```js [Interface]
+```js [Setup]
 function FiggySetup() {
     Figgy.Window("Player");
         Figgy.NoScope().Section("Movement");
@@ -161,7 +161,7 @@ Once called, the Root scope becomes inaccessible. All following Widgets will be 
 | `[height]` | :Real: | The height of the window [Default: :FIGGY_WINDOW_DEFAULT_HEIGHT:] |
 
 ::: code-group
-```js [Interface]
+```js [Setup]
 function FiggySetup() {
     // Creates a Player window with default parameters:
     Figgy.Window("Player"); // [!code highlight]
@@ -199,10 +199,9 @@ cfg = Figgy.GetCurrent().Enemy;
 
 > `Figgy.Section(name, [scoped?], [open?])` ➜ :Struct:.:Figgy:
 
-Creates a struct at the current scope (Root or Window), represented as a :DBG Section:.
-Once called, the previous non-Section scope (Root or Window) becomes inaccessible. All following Widgets will be created in the context of the current Section.
+Creates a struct at the current scope (Root or :Window:), represented as a :DBG Section:.
 
-Call this method again to switch scope to another Section.
+Once called, the previous non-Section scope (Root or :Window:) becomes inaccessible. All following Widgets will be created in the context of the current Section. Call this method again to switch scope to another Section.
 
 ::: tip
 Call :.NoScope(): before :.Section(): to mark the upcoming Section as **unscoped**. This prevents a struct from being created, keeps the current scope unchanged, and makes the Section behave as a purely visual :DBG Section:.
@@ -214,7 +213,7 @@ Call :.NoScope(): before :.Section(): to mark the upcoming Section as **unscoped
 | `[open]` | :Bool: | Whether the section starts open (`true`) or not (`false`) [Default: :FIGGY_SECTION_DEFAULT_OPEN:] |
 
 ::: code-group
-```js [Interface]
+```js [Setup]
 function FiggySetup() {
     // Creates a scoped Skeleton Section inside the Enemies window:
     Figgy.Window("Enemies");
@@ -243,7 +242,8 @@ cfg = Figgy.GetCurrent().Enemies.Skeleton;
 > `Figgy.Group(name, [align])` ➜ :Struct:.:Figgy:
 
 Creates a struct at the current scope (Root, Window or Section), represented as a :DBG Text Separator:.
-Once called, all following Value Widgets will be created in the context of the current Group.
+
+Once called, all following Value Widgets will be created in the context of the current Group. All following Widgets will be created in the context of the current Group. Call this method again to switch scope to another Group.
 
 ::: tip
 Call :.NoScope(): before :.Group(): to mark the upcoming Group as **unscoped**. This prevents a struct from being created, keeps the current scope unchanged, and makes the Group behave as a purely visual :DBG Text Separator:.
@@ -255,7 +255,7 @@ Call :.NoScope(): before :.Group(): to mark the upcoming Group as **unscoped**. 
 | `[align]` | :Real: | The group name alignment. `0` is left, `1` is center, `2` is right [Default: FIGGY_GROUP_DEFAULT_ALIGN] |
 
 ::: code-group
-```js [Interface]
+```js [Setup]
 function FiggySetup() {
     // Creates Dash, Slam and Uppercut scoped groups inside the Player window,
     // grouped under an unscoped Abilities section:
@@ -305,7 +305,7 @@ Marks the next :.Section(): or :.Group(): call as **unscoped**, treating it as a
 > ℹ️ :Windows: can not be unscoped. 
 
 ::: code-group
-```js [Interface]
+```js [Setup]
 function FiggySetup() {
     // Creates a unscoped Abilities section in the Player window:
     Figgy.Window("Player");
@@ -362,7 +362,7 @@ Creates a Real value in the current scope (Root, :Window:, :Section: or :Group:)
 | `[onChange]` | :Id.Function: | The function to call when the value is changed [Default: :.OnChangeSet(): callback if set, or :FIGGY_CHANGES_DEFAULT_CALLBACK:] |
 
 ::: code-group
-```js [Interface]
+```js [Setup]
 function FiggySetup() {
     Figgy.Window("Player");
         // Creates a JumpSpeed value in the Player window:
@@ -423,7 +423,7 @@ Creates a Real value in the current scope (Root, :Window:, :Section: or :Group:)
 | `[onChange]` | :Id.Function: | The function to call when the value is changed [Default: :.OnChangeSet(): callback if set, or :FIGGY_CHANGES_DEFAULT_CALLBACK:] |
 
 ::: code-group
-```js [Interface]
+```js [Setup]
 function FiggySetup() {
     Figgy.Window("Player");
         Figgy.NoScope().Section("Movement");
@@ -487,7 +487,7 @@ Creates a :Bool: value in the current scope (Root, :Window:, :Section: or :Group
  `[onChange]` | :Id.Function: | The function to call when the value is changed [Default: :.OnChangeSet(): callback if set, or :FIGGY_CHANGES_DEFAULT_CALLBACK:] |
 
 ::: code-group
-```js [Interface]
+```js [Setup]
 function FiggySetup() {
     Figgy.Window("Lighting");
         // Creates an Enabled Bool values inside the Lighting window:
@@ -531,7 +531,7 @@ Creates a :String: value in the current scope (Root, :Window:, :Section: or :Gro
  `[onChange]` | :Id.Function: | The function to call when the value is changed [Default: :.OnChangeSet(): callback if set, or :FIGGY_CHANGES_DEFAULT_CALLBACK:] |
 
 ::: code-group
-```js [Interface]
+```js [Setup]
 function FiggySetup() {
     // Adds a WelcomeMessage String value in the Root scope:
     Figgy.String("Welcome Message", "Hey {0}, welcome to GameName!");
@@ -566,7 +566,7 @@ Creates a :Constant.GMColor: value in the current scope (Root, :Window:, :Sectio
  `[onChange]` | :Id.Function: | The function to call when the value is changed [Default: :.OnChangeSet(): callback if set, or :FIGGY_CHANGES_DEFAULT_CALLBACK:] |
 
 ::: code-group
-```js [Interface]
+```js [Setup]
 function FiggySetup() {
     Figgy.Window("Lighting");
         // Creates an AmbientColor Color value in the Lighting window:
@@ -605,7 +605,7 @@ Creates a value of any type in the current scope (Root, :Window:, :Section: or :
 | `[onChange]` | :Id.Function: | The function to call when the value is changed [Default: :.OnChangeSet(): callback if set, or :FIGGY_CHANGES_DEFAULT_CALLBACK:] |
 
 ::: code-group
-```js [Interface]
+```js [Setup]
 function FiggySetup() {
     Figgy.Window("Player");
         global.playerSkins = ["Green", "Pink", "Purple", "Yellow"];
@@ -647,7 +647,7 @@ Decor Widgets like :Comments:, :Buttons: and :Separators: are purely visual and 
 
 > `Figgy.Button(name, callback, [width], [height], [sameLine?])` ➜ :Struct:.:Figgy:
 
-Description...
+Creates a button that triggers the given callback function when pressed, represented as a :DBG Button:.
 
 | Parameter | Type | Description |
 | --- | --- | --- |
@@ -655,12 +655,17 @@ Description...
 | `callback` | :Id.Function: | The function to call when the button is pressed |
 | `[width]` | :Real: | The button width [Default: automatic DBG default] |
 | `[height]` | :Real: | The button height [Default: automatic DBG default] |
-| `[sameLine?]` | :Bool: | Whether the button should be placed on the same line with the last element (`true`) or not (`false`) |
+| `[sameLine?]` | :Bool: | Whether the button should be placed on the same line with the last widget (`true`) or not (`false`) [Default: :FIGGY_BUTTON_DEFAULT_SAME_LINE:] |
 
 ::: code-group
-```js [Interface]
+```js [Setup]
 function FiggySetup() {
-
+    Figgy.Window("World");
+        Figgy.Float("Miniboss Chunk Chance", 0.1, 0, 1, 0.01);
+        Figgy.Float("Treasure Chunk Chance", 0.05, 0, 1, 0.01);
+        Figgy.Float("Tree Density", 0.1, 0, 1, 0.01);
+        // Adds a Button widget that regenerates the world when pressed: 
+        Figgy.Button("Regenerate", WorldRegenerate);
 }
 ```
 :::
@@ -668,20 +673,22 @@ function FiggySetup() {
 ---
 ### `.Comment()`
 
-> `Figgy.Button(string, [sameLine?])` ➜ :Struct:.:Figgy:
+> `Figgy.Comment(string, [sameLine?])` ➜ :Struct:.:Figgy:
 
-Description...
+Creates a text comment, represented as a :DBG Text:.
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| `name` | :Type: | Description |
-| `name` | :Type: | Description |
-| `name` | :Type: | Description |
+| `string` | :String: | The string to display in the comment |
+| `[sameLine?]` | :Bool: | Whether the comment should be on the same line with the last widget (`true`) or not (`false`) [Default: ] |
 
 ::: code-group
-```js [Interface]
+```js [Setup]
 function FiggySetup() {
-
+    Figgy.Window("World");
+        Figgy.Float("Miniboss Chunk Chance", 0.1, 0, 1, 0.01);
+        // Adds a Comment describing the Float value above:
+        Figgy.Comment("The chance to spawn a Miniboss chunk, as a 0-1 percentage.");
 }
 ```
 :::
@@ -691,27 +698,31 @@ function FiggySetup() {
 
 > `Figgy.Separator([name], [align])` ➜ :Struct:.:Figgy:
 
-Description...
+Creates a horizontal line separator with an optional name, represented as a DBG Separator.
+
+This is practically just an **unscoped** :Group: under a different name.
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| `name` | :Type: | Description |
-| `name` | :Type: | Description |
-| `name` | :Type: | Description |
+| `[name]` | :String: | The separator name [Default: no name] |
+| `[align]` | :Real: | The separator name alignment. 0 is left, 1 is center, 2 is right. [Default: :FIGGY_SEPARATOR_DEFAULT_ALIGN:] |
 
 ::: code-group
-```js [Interface]
+```js [Setup]
 function FiggySetup() {
-
-}
-```
-```js [Data]
-{
-
+    Figgy.Window("Player");
+        // Creates a Separator with an optional name:
+        Figgy.Separator("Horizontal Movement");
+            Figgy.Float("Walk Speed", 2, 0.1, 20);
+            Figgy.Float("Run Speed", 4, 0.1, 20);
+            // Creates a Separator with no name:
+            Figgy.Separator();
+            Figgy.Float("Acceleration", 1, 0.1, 1);
+            Figgy.Float("Friction", 0.5, 0.1, 20);
+            
 }
 ```
 :::
-
 
 ## OnChange
 
@@ -731,7 +742,7 @@ Description
 | `name` | :Type: | Description |
 
 ::: code-group
-```js [Interface]
+```js [Setup]
 function FiggySetup() {
 
 }
@@ -749,7 +760,7 @@ function FiggySetup() {
 > `Figgy.OnChangeReset()` ➜ :Struct:.:Figgy:
 
 ::: code-group
-```js [Interface]
+```js [Setup]
 function FiggySetup() {
 
 }

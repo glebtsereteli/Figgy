@@ -137,13 +137,13 @@ Whether :Sections: are open by default (`true`) or not (`false`).
 Default :Group: text alignment. `0` is left, `1` is center, `2` is right.
 
 ---
-### `FIGGY_NOSCOPE_SUFFIX`
-> Default: `""`.
+### `FIGGY_UNSCOPED_NAME_FORMAT`
+> Default: `"{0}"`.
 
-The suffix added to **non-scoped** :Sections: and :Groups: (when the `scoped` argument is set to `false`).
+The custom [String Format](https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Strings/string.htm#:~:text=to%20a%20string.-,Format%20String,-When%20you%20pass) for **unscoped** Section and Group names (with :.NoScope(): called beforehand).
 
 ::: tip
-You may want to set this to something descriptive (or just a symbol) for extra interface clarity.
+You may want to set this to something like `"[{0}]"` or `"-{0}-"` for extra interface clarity.
 :::
 
 ## Value Widgets
@@ -181,7 +181,14 @@ Having this enabled might slow down :Setup: at scale.
 
 ## Decor Widgets
 
-### `FIGGY_BUTTON`
+### `FIGGY_BUTTON_DEFAULT_SAME_LINE`
+
+> Default `false`.
+
+Whether :Buttons: should be placed on the same line with the last widget by default (`true`) or not (`false`).
+
+---
+### `FIGGY_BUTTON_DEFAULT_SAME_LINE`
 
 > Default `false`.
 
