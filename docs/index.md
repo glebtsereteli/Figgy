@@ -54,11 +54,10 @@ const team = [
   },
   {
     avatar: 'neeri.jpg',
-    name: 'Neeri',
+    name: 'Neerikiffu',
     title: 'Promo Art',
     links: [
       { icon: 'bluesky', link: 'https://bsky.app/profile/neerikiffu.bsky.social' },
-      { icon: 'instagram', link: 'https://www.instagram.com/neerikiffu/' },
     ]
   }
 ]
