@@ -18,12 +18,12 @@ export default defineConfig({
     ["meta", { property: "og:description", content: "Documentation for the Figgy GameMaker library. Setup instructions, usage examples and full API coverage." }],
     ["meta", { property: "og:type", content: "website" }],
     ["meta", { property: "og:url", content: "https://glebtsereteli.github.io/Figgy/" }],
-    ["meta", { property: "og:image", content: "https://glebtsereteli.github.io/Figgy/socialPreview.png" }],
+    ["meta", { property: "og:image", content: "https://glebtsereteli.github.io/Figgy/socialEmbed.png" }],
 
     ["meta", { name: "twitter:card", content: "summary_large_image" }],
     ["meta", { name: "twitter:title", content: "Figgy Documentation" }],
     ["meta", { name: "twitter:description", content: "Documentation for the Figgy GameMaker library. Setup instructions, usage examples and full API coverage." }],
-    ["meta", { name: "twitter:image", content: "https://glebtsereteli.github.io/Figgy/socialPreview.png" }],
+    ["meta", { name: "twitter:image", content: "https://glebtsereteli.github.io/Figgy/socialEmbed.png" }],
   
     // analytics
     [
