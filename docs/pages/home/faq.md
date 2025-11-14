@@ -9,7 +9,7 @@ This page contains answers to frequently asked questions about Figgy.
 | Windows | ✅ Fully supported |
 | macOS | ✅ Fully supported |
 | Linux | ✅ Fully supported |
-| GX.games | ✅🚧 Everything but input/output |
+| GX.games | ✅🚧 Everything but :Input/Output: |
 | Android | 🚧 Planned |
 | iOS | 🚧 Planned |
 | PS5 | 🚧 Planned |

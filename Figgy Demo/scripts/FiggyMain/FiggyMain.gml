@@ -335,19 +335,18 @@ function Figgy() {
 	#region Setup: Value Widgets
 	
 	/// @param {String} name The variable name.
-	/// @param {Real.Int} default The default value.
+	/// @param {Real.Int} value The default value.
 	/// @param {Real.Int} min The minimum slider value.
 	/// @param {Real.Int} max The maximum slider value.
 	/// @param {Real.Int} step The slider step. [Default: FIGGY_INT_DEFAULT_STEP]
 	/// @param {Func} onChange The function to call when the value is changed. [Default: current onChange callback if set, or FIGGY_CHANGES_DEFAULT_CALLBACK]
 	/// @returns {Struct.Figgy}
-	/// @desc Value Widget: creates a Real value in the current scope (Root, Window, Section or Group), represented as a DBG Slider.
+	/// @desc Value Widget: creates an Real value in the current scope (Root, Window, Section or Group), represented as a DBG Slider.
 	/// The onChange callback function receives 3 arguments: (new value, old value, variable name).
 	/// @self Figgy
-	static Int = function(_name, _default, _min, _max, _step = FIGGY_INT_DEFAULT_STEP, _onChange = __onChange) {
+	static Int = function(_name, _value, _min, _max, _step = FIGGY_INT_DEFAULT_STEP, _onChange = __onChange) {
 		static _methodName = "Int";
 		
-		__FIGGY_NO_INIT;
 		__FIGGY_WIDGET;
 		if (FIGGY_BUILD_INTERFACE) {
 			dbg_slider_int(_ref, _min, _max, _name, _step);
@@ -358,7 +357,7 @@ function Figgy() {
 	};
 	
 	/// @param {String} name The variable name.
-	/// @param {Real} default The default value.
+	/// @param {Real} value The default value.
 	/// @param {Real} min The minimum slider value.
 	/// @param {Real} max The maximum slider value.
 	/// @param {Real} step The slider step. [Default: FIGGY_FLOAT_DEFAULT_STEP]
@@ -367,10 +366,9 @@ function Figgy() {
 	/// @desc Value Widget: creates a Real value in the current scope (Root, Window, Section or Group), represented as a DBG Float Slider.
 	/// The onChange callback function receives 3 arguments: (new value, old value, variable name).
 	/// @self Figgy
-	static Float = function(_name, _default, _min, _max, _step = FIGGY_FLOAT_DEFAULT_STEP, _onChange = __onChange) {
+	static Float = function(_name, _value, _min, _max, _step = FIGGY_FLOAT_DEFAULT_STEP, _onChange = __onChange) {
 		static _methodName = "Float";
 		
-		__FIGGY_NO_INIT;
 		__FIGGY_WIDGET;
 		if (FIGGY_BUILD_INTERFACE) {
 			dbg_slider(_ref, _min, _max, _name, _step);
@@ -381,16 +379,48 @@ function Figgy() {
 	};
 	
 	/// @param {String} name The variable name.
-	/// @param {Bool} default The default value.
+	/// @param {Real} value The default value.
+	/// @param {Func} onChange The function to call when the value is changed. [Default: current onChange callback if set, or FIGGY_CHANGES_DEFAULT_CALLBACK]
+	/// @returns {Struct.Figgy}
+	/// @desc Value Widget: creates a Real value in the current scope (Root, Window, Section or Group), represented as a Real-filtered DBG Text Input.
+	/// The onChange callback function receives 3 arguments: (new value, old value, variable name).
+	/// @self Figgy
+	static Real = function(_name, _value, _onChange = __onChange) {
+		static _methodName = "Real";
+		
+		__FIGGY_WIDGET;
+		if (FIGGY_BUILD_INTERFACE) {
+			dbg_text_input(_ref, _name, "r");
+			
+			if (FIGGY_REAL_BUTTONS) {
+				with ({}) {
+					__scope = other.__scope;
+					__name = _rawName;
+					dbg_same_line();
+					dbg_button("-", function() {
+						__scope[$ __name]--;
+					}, 19, 19);
+					dbg_same_line();
+					dbg_button("+", function() {
+						__scope[$ __name]++;
+					}, 19, 19);
+				}
+			}
+		}
+		
+		return self;
+	};
+	
+	/// @param {String} name The variable name.
+	/// @param {Bool} value The default value.
 	/// @param {Func} onChange The function to call when the value is changed. [Default: current onChange callback if set, or FIGGY_CHANGES_DEFAULT_CALLBACK]
 	/// @returns {Struct.Figgy}
 	/// @desc Value Widget: creates a Boolean value in the current scope (Root, Window, Section or Group), represented as a DBG Checkbox.
 	/// The onChange callback function receives 3 arguments: (new value, old value, variable name).
 	/// @self Figgy
-	static Bool = function(_name, _default, _onChange = __onChange) {
+	static Bool = function(_name, _value, _onChange = __onChange) {
 		static _methodName = "Bool";
 		
-		__FIGGY_NO_INIT;
 		__FIGGY_WIDGET;
 		if (FIGGY_BUILD_INTERFACE) {
 			dbg_checkbox(_ref, _name);
@@ -400,16 +430,15 @@ function Figgy() {
 	};
 	
 	/// @param {String} name The variable name.
-	/// @param {String} default The default value.
+	/// @param {String} value The default value.
 	/// @param {Func} onChange The function to call when the value is changed. [Default: current onChange callback if set, or FIGGY_CHANGES_DEFAULT_CALLBACK]
 	/// @returns {Struct.Figgy}
 	/// @desc Value Widget: creates a String value in the current scope (Root, Window, Section or Group), represented as a DBG Text Input.
 	/// The onChange callback function receives 3 arguments: (new value, old value, variable name).
 	/// @self Figgy
-	static String = function(_name, _default, _onChange = __onChange) {
+	static String = function(_name, _value, _onChange = __onChange) {
 		static _methodName = "String";
 		
-		__FIGGY_NO_INIT;
 		__FIGGY_WIDGET;
 		if (FIGGY_BUILD_INTERFACE) {
 			dbg_text_input(_ref, _name);
@@ -419,16 +448,15 @@ function Figgy() {
 	};
 	
 	/// @param {String} name The variable name.
-	/// @param {Real,Constant.Color} default The default value.
+	/// @param {Real,Constant.Color} value The default value.
 	/// @param {Func} onChange The function to call when the value is changed. [Default: current onChange callback if set, or FIGGY_CHANGES_DEFAULT_CALLBACK]
 	/// @returns {Struct.Figgy}
 	/// @desc Value Widget: creates a color value in the current scope (Root, Window, Section or Group), represented as a DBG Color Picker.
 	/// The onChange callback function receives 3 arguments: (new value, old value, variable name).
 	/// @self Figgy
-	static Color = function(_name, _default, _onChange = __onChange) {
+	static Color = function(_name, _value, _onChange = __onChange) {
 		static _methodName = "Color";
 		
-		__FIGGY_NO_INIT;
 		__FIGGY_WIDGET;
 		if (FIGGY_BUILD_INTERFACE) {
 			dbg_colour(_ref, _name);
@@ -438,7 +466,7 @@ function Figgy() {
 	};
 	
 	/// @param {String} name The dropdown name.
-	/// @param {Any} default The default value.
+	/// @param {Any} value The default value.
 	/// @param {Array<Any>} values The array of option values.
 	/// @param {Array<String>} names The array of option names. [Default: values]
 	/// @param {Func} onChange The function to call when the value is changed. [Default: current onChange callback if set, or FIGGY_CHANGES_DEFAULT_CALLBACK]
@@ -446,10 +474,9 @@ function Figgy() {
 	/// @desc Value Widget: creates an <Any> value in the current scope (Root, Window, Section or Group), represented as a DBG Dropdown.
 	/// The onChange callback function receives 3 arguments: (new value, old value, variable name).
 	/// @self Figgy
-	static Any = function(_name, _default, _values, _names = _values, _onChange = __onChange) {
+	static Any = function(_name, _value, _values, _names = _values, _onChange = __onChange) {
 		static _methodName = "Any";
 		
-		__FIGGY_NO_INIT;
 		__FIGGY_WIDGET;
 		__FIGGY_NO_INTERFACE;
 		

@@ -54,10 +54,11 @@ if (not __windowSectioned) { \
 }
 
 #macro __FIGGY_WIDGET \
+__FIGGY_NO_INIT; \
 __FIGGY_CATCH_WINDOW; \
 __FIGGY_CATCH_FIRST_WINDOW_SECTION; \
 __FIGGY_RAWNAME; \
-__scope[$ _rawName] = _default; \
+__scope[$ _rawName] = _value; \
 if (FIGGY_BUILD_INTERFACE) { \
 	var _ref = ref_create(__scope, _rawName); \
 } \

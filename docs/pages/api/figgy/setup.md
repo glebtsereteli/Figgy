@@ -339,7 +339,8 @@ All Value Widgets start with a name, which is how you reference them in your cod
 ---
 
 Value Widgets include the following:
-* :Ints: and :Floats: define :Int: and :Float: :Real: values. They are represented as :DBG Slider: and :DBG Float Slider: elements, with control over min-max ranges and step sizes.
+* :Ints: and :Floats: define :Real: values (AKA numbers). They are represented as :DBG Slider: and :DBG Float Slider: elements, and provide controls over min-max ranges and step sizes.
+* :Reals: also define :Real: values, but are represented as a Real-filtered :DBG Text Input:.
 * :Bools: define :Bool: values, and are represented as a :DBG Checkbox:.
 * :Strings: define :String: values, and are represented as a :DBG Text Input:.
 * :Colors: define :Color: values, and are represented as a :DBG Color:.
@@ -348,14 +349,14 @@ Value Widgets include the following:
 ---
 ### `.Int()`
 
-> `Figgy.Int(name, default, min, max, [step], [onChange])` ➜ :Struct:.:Figgy:
+> `Figgy.Int(name, value, min, max, [step], [onChange])` ➜ :Struct:.:Figgy:
 
-Creates a Real value in the current scope (Root, :Window:, :Section: or :Group:), represented as a :DBG Slider:.
+Creates a :Real: value (number) in the current scope (Root, :Window:, :Section: or :Group:), represented as a :DBG Slider:.
 
 | Parameter | Type | Description |
 | --- | --- | --- |
 | `name` | :String: | The variable name |
-| `default` | :Real: | The default value |
+| `value` | :Real: | The default value |
 | `min` | :Real: | The minimum slider value |
 | `max` | :Real: | The maximum slider value |
 | `[step]` | :Real: | The slider step [Default: :FIGGY_INT_DEFAULT_STEP:] |
@@ -409,14 +410,14 @@ var _octaves = Figgy.GetCurrent().Terrain.Octaves; // [!code highlight]
 ---
 ### `.Float()`
 
-> `Figgy.Float(name, default, min, max, [step], [onChange])` ➜ :Struct:.:Figgy:
+> `Figgy.Float(name, value, min, max, [step], [onChange])` ➜ :Struct:.:Figgy:
 
-Creates a Real value in the current scope (Root, :Window:, :Section: or :Group:), represented as a :DBG Float Slider:.
+Creates a :Real: value (number) in the current scope (Root, :Window:, :Section: or :Group:), represented as a :DBG Float Slider:.
 
 | Parameter | Type | Description |
 | --- | --- | --- |
 | `name` | :String: | The variable name |
-| `default` | :Real: | The default value |
+| `value` | :Real: | The default value |
 | `min` | :Real: | The minimum slider value |
 | `max` | :Real: | The maximum slider value |
 | `[step]` | :Real: | The slider step [Default: :FIGGY_FLOAT_DEFAULT_STEP:] |
@@ -474,16 +475,51 @@ function RefreshAppSurf() {
 :::
 
 ---
+### `.Real()`
+
+> `Figgy.Real(name, value [onChange])` ➜ :Struct:.:Figgy:
+
+Creates a :Real: value (number) in the current scope (Root, :Window:, :Section: or :Group:), represented as a Real-filtered :DBG Text Input:.
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `name` | :String: | The variable name |
+| `value` | :Real: | The default value |
+| `[onChange]` | :Id.Function: | The function to call when the value is changed [Default: :.OnChangeSet(): callback if set, or :FIGGY_CHANGES_DEFAULT_CALLBACK:] |
+
+::: code-group
+```js [Setup]
+function FiggySetup() {
+    Figgy.Window("Weapons");
+        Figgy.Section("Katana");
+            Figgy.Real("Cost", 50); // Creates a Cost Real value. [!code highlight]
+}
+```
+```js [Data]
+{
+    Weapons: {
+        Katana: {
+            Cost: 50, // [!code highlight]
+        },
+    },
+}
+```
+```js [Access]
+var _katanaCost = Figgy.GetCurrent().Weapons.Katana.Cost; // [!code highlight]
+```
+:::
+
+---
 ### `.Bool()`
 
-> `Figgy.Bool(name, default, [onChange])` ➜ :Struct:.:Figgy:
+> `Figgy.Bool(name, value, [onChange])` ➜ :Struct:.:Figgy:
 
 Creates a :Bool: value in the current scope (Root, :Window:, :Section: or :Group:), represented as a :DBG Checkbox:.
 
 | Parameter | Type | Description |
 | --- | --- | --- |
 | `name` | :String: | The variable name |
-| `default` | :Bool: | The default value |
+| `value` | :Bool: | The default value |
 | `[onChange]` | :Id.Function: | The function to call when the value is changed [Default: :.OnChangeSet(): callback if set, or :FIGGY_CHANGES_DEFAULT_CALLBACK:] |
 
 ::: code-group
@@ -497,7 +533,7 @@ function FiggySetup() {
 ```js [Data]
 {
     Lighting: {
-        Enabled: true,
+        Enabled: true, // [!code highlight]
     },
 }
 ```
@@ -520,14 +556,14 @@ function FiggySetup() {
 ---
 ### `.String()`
 
-> `Figgy.String(name, default, [onChange])` ➜ :Struct:.:Figgy:
+> `Figgy.String(name, value, [onChange])` ➜ :Struct:.:Figgy:
 
 Creates a :String: value in the current scope (Root, :Window:, :Section: or :Group:), represented as a :DBG Text Input:.
 
 | Parameter | Type | Description |
 | --- | --- | --- |
 | `name` | :String: | The variable name |
-| `default` | :String: | The default value |
+| `value` | :String: | The default value |
 | `[onChange]` | :Id.Function: | The function to call when the value is changed [Default: :.OnChangeSet(): callback if set, or :FIGGY_CHANGES_DEFAULT_CALLBACK:] |
 
 ::: code-group
@@ -539,7 +575,7 @@ function FiggySetup() {
 ```
 ```js [Data]
 {
-    WelcomeMessage: "Hey {0}, welcome to GameName!",
+    WelcomeMessage: "Hey {0}, welcome to GameName!", // [!code highlight]
 }
 ```
 ```js [Access]
@@ -555,14 +591,14 @@ function FiggySetup() {
 ---
 ### `.Color()`
 
-> `Figgy.Color(name, default, [onChange])` ➜ :Struct:.:Figgy:
+> `Figgy.Color(name, value, [onChange])` ➜ :Struct:.:Figgy:
 
 Creates a :Constant.GMColor: value in the current scope (Root, :Window:, :Section: or :Group:), represented as a :DBG Color:.
 
 | Parameter | Type | Description |
 | --- | --- | --- |
 | `name` | :String: | The variable name |
-| `default` | :Constant.Color: | The default value |
+| `value` | :Constant.Color: | The default value |
 | `[onChange]` | :Id.Function: | The function to call when the value is changed [Default: :.OnChangeSet(): callback if set, or :FIGGY_CHANGES_DEFAULT_CALLBACK:] |
 
 ::: code-group
@@ -592,14 +628,14 @@ renderer.ambientColor = cfg.AmbientColor; // [!code highlight]
 ---
 ### `.Any()`
 
-> `Figgy.Any(name, default, values, [names], [onChange])` ➜ :Struct:.:Figgy:
+> `Figgy.Any(name, value, values, [names], [onChange])` ➜ :Struct:.:Figgy:
 
 Creates a value of any type in the current scope (Root, :Window:, :Section: or :Group:), represented as a :DBG Dropdown:.
 
 | Parameter | Type | Description |
 | --- | --- | --- |
 | `name` | :String: | The variable name |
-| `default` | `Any` | The default value |
+| `value` | `Any` | The default value |
 | `values` | :Array: of `Any` | The array of option values |
 | `[names]` | :Array: of :String: | The array of option names [Default: `values`] |
 | `[onChange]` | :Id.Function: | The function to call when the value is changed [Default: :.OnChangeSet(): callback if set, or :FIGGY_CHANGES_DEFAULT_CALLBACK:] |

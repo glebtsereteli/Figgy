@@ -154,7 +154,7 @@ You may want to set this to something like `"[{0}]"` or `"-{0}-"` for extra inte
 Whether to include -/+ cycling buttons for :.Int(): and :.Float(): Value Widgets (`true`) or not (`false`).
 
 ::: warning
-Having this enabled might slow down :Setup: at scale.
+If `true`, might slow down :Setup: at scale.
 :::
 
 ---
@@ -170,13 +170,23 @@ Default step increment for :Int: Value Widgets.
 Default step increment for :Float: Value Widgets.
 
 ---
+### `FIGGY_REAL_BUTTONS`
+> Default: `false`.
+
+Whether to include -/+ cycling buttons for :.Real(): Value Widgets (`true`) or not (`false`).
+
+::: warning
+If `true`, might slow down :Setup: at scale.
+:::
+
+---
 ### `FIGGY_ANY_BUTTONS`
 > Default: `true`.
 
 Whether to include -/+ cycling buttons for :Any: Value Widgets (`true`) or not (`false`).
 
-:::
-Having this enabled might slow down :Setup: at scale.
+::: warning
+If `true`, might slow down :Setup: at scale.
 :::
 
 ## Decor Widgets
@@ -198,7 +208,7 @@ Whether :Buttons: should be placed on the same line with the last widget by defa
 ### `FIGGY_SEPARATOR_DEFAULT_ALIGN`
 > Default: `0`.
 
-Default :Separator: text alignment. 0 is left, 1 is center, 2 is right.
+Default :Separator: text alignment. `0` is left, `1` is center, `2` is right.
 
 ## Changes
 

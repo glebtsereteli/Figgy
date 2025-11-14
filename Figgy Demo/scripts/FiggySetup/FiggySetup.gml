@@ -23,7 +23,7 @@ function FiggySetup() {
 				Figgy.Float("Air Friction", 1, 0, 1, 0.05);
 			Figgy.NoScope().Group("Vertical");
 				Figgy.Float("Gravity", 1, 0.1, 1.5);
-				Figgy.Int("Jump Speed", 15, 10, 20);
+				Figgy.Real("Jump Speed", 15);
 				Figgy.Int("Jump Buffer", 7, 5, 15);
 				Figgy.Int("Max Jumps", 1, 1, 3);
 				Figgy.Int("Coyote Time", 10, 0, 20);
