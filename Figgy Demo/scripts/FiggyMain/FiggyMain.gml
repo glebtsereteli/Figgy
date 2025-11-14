@@ -1,10 +1,11 @@
 // feather ignore all
 
-/// @func Figgy()
-/// @desc Main Figgy interface. Handles Setup, Getters, Resetting and Input/Output.
-/// Initialized internally, no additional setup required.
-/// Call public methods using the Figgy.MethodName(<arguments>); syntax.
-/// Documentation: https://glebtsereteli.github.io/Figgy/pages/api/figgy/overview
+/** 
+	This is the main Figgy interface. It handles Setup, Getters, Resetting and Input/Output.
+	• Initialized internally, no additional setup required.
+	• Call public methods using the Figgy.MethodName(arguments...); syntax.
+	• Documentation: https://glebtsereteli.github.io/Figgy/pages/api/figgy/overview
+*/
 function Figgy() {
 	#region __private
 	
@@ -20,15 +21,13 @@ function Figgy() {
 	static __onChange = FIGGY_CHANGES_DEFAULT_CALLBACK;
 	
 	static __current = undefined;
+	static __initial = undefined;
 	static __default = undefined;
-	static __lastSave = undefined;
 	
 	static __Init = function() {
 		__current = {};
 		__scope = __current;
 		__window = __scope;
-		
-		var _overlayOpen = is_debug_overlay_open();
 		
 		__FIGGY_BENCH_START;
 		__initInactive = false;
@@ -37,11 +36,8 @@ function Figgy() {
 		__default = variable_clone(__current);
 		__FiggyLogTimed("SETUP: completed");
 		
-		if (not _overlayOpen and not FIGGY_WINDOW_DEFAULT_START_VISIBLE) {
-			show_debug_overlay(false);
-		}
-		
 		__Load();
+		__initial = variable_clone(__current);
 		__changes.__Init();
 	};
 	static __InitControls = function() {
@@ -67,15 +63,13 @@ function Figgy() {
 			Export();
 		}, 65, 20);
 		dbg_same_line();
+		dbg_button("Initial", function() {
+			ResetToInitial();
+		}, 85, 20);
+		dbg_same_line();
 		dbg_button("Default", function() {
 			ResetToDefault();
 		}, 75, 20);
-		if (__FIGGY_IO_ENABLED) {
-			dbg_same_line();
-			dbg_button("Last Save", function() {
-				ResetToLastSave();
-			}, 85, 20);
-		}
 	};
 	
 	static __Move = function(_a, _b) {
@@ -161,13 +155,8 @@ function Figgy() {
 			}
 		}
 		
-        __RefreshLastSave();
-        
         return self;
     };
-	static __RefreshLastSave = function() {
-		__lastSave = variable_clone(__current);
-	};
 	
 	static __LoadProcess = function(_new, _current) {
         var _names = struct_get_names(_new);
@@ -601,14 +590,26 @@ function Figgy() {
 	};
 	
 	/// @returns {Struct}
-	/// @desc Returns the last saved config.
+	/// @desc Returns the initial config snapshot, captured after defaults are applied and saved changes are loaded at game startup.
 	/// @self Figgy
-	static GetLastSave = function() {
-		return __lastSave;
+	static GetInitial = function() {
+		return __initial;
 	};
 	
 	#endregion
 	#region Reset
+	
+	/// @returns {Struct.Figgy}
+	/// @desc Resets the current config to its initial startup snapshot.
+	/// @self Figgy
+	static ResetToInitial = function() {
+		__FIGGY_BENCH_START;
+		__Move(__initial, __current);
+		__changes.__Refresh();
+		__FiggyLogTimed("RESET TO INITIAL: completed");
+		
+		return self;
+	};
 	
 	/// @returns {Struct.Figgy}
 	/// @desc Resets the current config to the default.
@@ -618,21 +619,6 @@ function Figgy() {
 		__Move(__default, __current);
 		__changes.__Refresh();
 		__FiggyLogTimed("RESET TO DEFAULT: completed");
-		
-		return self;
-	};
-	
-	/// @returns {Struct.Figgy}
-	/// @desc Resets the current config to the last save.
-	/// @self Figgy
-	static ResetToLastSave = function() {
-		__FIGGY_BENCH_START;
-		if (__lastSave == undefined) {
-			__RefreshLastSave();
-		}
-		__Move(__lastSave, __current);
-		__changes.__Refresh();
-		__FiggyLogTimed("RESET TO LAST SAVE: completed");
 		
 		return self;
 	};

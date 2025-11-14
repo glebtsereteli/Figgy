@@ -1,5 +1,6 @@
 {
   "Player":{
-    "MoveSpeed":6.1999998092651367
+    "Skin":"Purple",
+    "MoveSpeed":6.0
   }
 }
