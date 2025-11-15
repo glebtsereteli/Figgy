@@ -56,6 +56,8 @@ export default defineConfig({
             items: [
               { text: 'What is Figgy?', link: '/pages/home/whatIsIt' },
               { text: 'Getting Started', link: '/pages/home/gettingStarted/gettingStarted' },
+              { text: 'Interface', link: '/pages/home/interface' },
+              { text: 'Persistence', link: '/pages/home/persistence' },
               { text: 'Demo', link: '/pages/home/demo/demo' },
               { text: 'FAQ', link: '/pages/home/faq' },
             ]
@@ -95,10 +97,11 @@ export default defineConfig({
       {
         text: '🏡 Home',
         link: '/pages/home/whatIsIt',
-        collapsed: false,
         items: [
           { text: 'What is Figgy?', link: '/pages/home/whatIsIt' },
           { text: 'Getting Started', link: '/pages/home/gettingStarted/gettingStarted' },
+          { text: 'Interface', link: '/pages/home/interface' },
+          { text: 'Persistence', link: '/pages/home/persistence' },
           { text: 'Demo', link: '/pages/home/demo/demo' },
           { text: 'FAQ', link: '/pages/home/faq' },
         ]
@@ -106,7 +109,6 @@ export default defineConfig({
       {
         text: '💻 API',
         link: '/pages/api/overview',
-        collapsed: false,
         items: [
           {
             text: 'Figgy',
@@ -124,7 +126,6 @@ export default defineConfig({
       {
           text: '🗂️ Others',
           link: '/pages/others/contactSupport',
-          collapsed: false,
           items: [
             { text: 'Contact & Support', link: '/pages/others/contactSupport' },
             { text: 'Upcoming Features', link: '/pages/others/upcomingFeatures' },
@@ -170,7 +171,7 @@ export default defineConfig({
 
         'Int': '/pages/api/figgy/setup#int',
         'Float': '/pages/api/figgy/setup#float',
-        'Real': '/pages/api/figgy/setup#float',
+        'Real': '/pages/api/figgy/setup#real',
         'Bool': '/pages/api/figgy/setup#bool',
         'String': '/pages/api/figgy/setup#string',
         'Color': '/pages/api/figgy/setup#color',
@@ -224,12 +225,17 @@ export default defineConfig({
         'DBG View': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Debugging/dbg_view.htm',
         'DBG Section': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Debugging/dbg_section.htm',
         'DBG Slider': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Debugging/dbg_slider.htm',
-        'DBG Slider Float': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Debugging/dbg_slider_float.htm',
+        'DBG Slider Int': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Debugging/dbg_slider_int.htm',
         'DBG Checkbox': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Debugging/dbg_checkbox.htm',
+        'DBG Button': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Debugging/dbg_button.htm',
+        'DBG Dropdown': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Debugging/dbg_drop_down.htm',
         'DBG Color': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Debugging/dbg_colour.htm',
         'DBG Text Input': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Debugging/dbg_text_input.htm',
         'DBG Text Separator': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Debugging/dbg_text_separator.htm',
 
+        // shortcuts
+        'Interface': '/pages/home/interface',
+        'Persistence': '/pages/home/persistence',
         'Figgy': '/pages/api/figgy/overview',
         'Setup': '/pages/api/figgy/setup',
         'Scope Widgets': '/pages/api/figgy/setup#scope-widgets',
@@ -243,6 +249,10 @@ export default defineConfig({
         '.OnChangeSet()': '/pages/api/figgy/setup#onchangeset',
         '.OnChangeReset()': '/pages/api/figgy/setup#onchangereset',
         '.NoScope()': '/pages/api/figgy/setup#noscope',
+        'Getters': '/pages/api/figgy/getters',
+        '.GetCurrent()': '/pages/api/figgy/getters#getcurrent',
+        '.GetInitial()': '/pages/api/figgy/getters#getinitial',
+        '.GetDefault()': '/pages/api/figgy/getters#getdefault',
         'Input/Output': '/pages/api/figgy/inputOutput',
 
         // config

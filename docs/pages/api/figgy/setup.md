@@ -178,10 +178,10 @@ function FiggySetup() {
 ```js [Data]
 {
     Player: { // [!code highlight]
-        // Section/Group structs and Values here...
+       // Section/Group structs and Value Widget values here...
     },
     Enemy: { // [!code highlight]
-        // Section/Group structs and Values here...
+        // Section/Group structs and Value Widget values here...
     },
 }
 ```
@@ -351,7 +351,7 @@ Value Widgets include the following:
 
 > `Figgy.Int(name, value, min, max, [step], [onChange])` ➜ :Struct:.:Figgy:
 
-Creates a :Real: value (number) in the current scope (Root, :Window:, :Section: or :Group:), represented as a :DBG Slider:.
+Creates a :Real: value (number) in the current scope (Root, :Window:, :Section: or :Group:), represented as a :DBG Slider Int:.
 
 | Parameter | Type | Description |
 | --- | --- | --- |
@@ -412,7 +412,7 @@ var _octaves = Figgy.GetCurrent().Terrain.Octaves; // [!code highlight]
 
 > `Figgy.Float(name, value, min, max, [step], [onChange])` ➜ :Struct:.:Figgy:
 
-Creates a :Real: value (number) in the current scope (Root, :Window:, :Section: or :Group:), represented as a :DBG Float Slider:.
+Creates a :Real: value (number) in the current scope (Root, :Window:, :Section: or :Group:), represented as a :DBG Slider:.
 
 | Parameter | Type | Description |
 | --- | --- | --- |

@@ -49,27 +49,29 @@ function Figgy() {
 		_used = true;
 		
 		dbg_section(FIGGY_CONTROLS_NAME, FIGGY_CONTROLS_OPEN);
+		var _w = 70;
+		var _h = 20;
 		if (__FIGGY_IO_ENABLED) {
 			dbg_button("Save", function() {
 				__Save();
-			}, 55, 20);
+			}, _w, _h);
 			dbg_same_line();
 		}
 		dbg_button("Import", function() {
 			Import();
-		}, 65, 20);
+		}, _w, _h);
 		dbg_same_line();
 		dbg_button("Export", function() {
 			Export();
-		}, 65, 20);
+		}, _w, _h);
 		dbg_same_line();
 		dbg_button("Initial", function() {
 			ResetToInitial();
-		}, 85, 20);
+		}, _w + 1, _h);
 		dbg_same_line();
 		dbg_button("Default", function() {
 			ResetToDefault();
-		}, 75, 20);
+		}, _w + 1, _h);
 	};
 	
 	static __Move = function(_a, _b) {
@@ -603,24 +605,24 @@ function Figgy() {
 	#region Getters
 	
 	/// @returns {Struct}
-	/// @desc Returns the current config.
+	/// @desc Returns the current config struct that you edit through the :DBG Interface: and fetch values from throughout your game code.
 	/// @self Figgy
 	static GetCurrent = function() {
 		return __current;
 	};
 	
 	/// @returns {Struct}
-	/// @desc Returns the default config.
-	/// @self Figgy
-	static GetDefault = function() {
-		return __default;
-	};
-	
-	/// @returns {Struct}
-	/// @desc Returns the initial config snapshot, captured after defaults are applied and saved changes are loaded at game startup.
+	/// @desc Returns the initial config struct, captured after defaults are initialized and saved changes are loaded at game startup.
 	/// @self Figgy
 	static GetInitial = function() {
 		return __initial;
+	};
+	
+	/// @returns {Struct}
+	/// @desc Returns the default config struct that holds the original defaults values defined in FiggySetup().
+	/// @self Figgy
+	static GetDefault = function() {
+		return __default;
 	};
 	
 	#endregion

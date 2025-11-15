@@ -18,7 +18,7 @@
 #region Utility
 
 #macro __FIGGY_FILE_NAME $"{FIGGY_FILE_NAME}{FIGGY_FILE_EXT}"
-#macro __FIGGY_FILE_PATH $"{__FIGGY_IN_IDE ? $"{filename_path(GM_project_filename)}datafiles/" : ""}{__FIGGY_FILE_NAME}"
+#macro __FIGGY_FILE_PATH $"{__FIGGY_IN_IDE ? $"{filename_path(GM_project_filename)}datafiles/" : program_directory}{__FIGGY_FILE_NAME}"
 #macro __FIGGY_FILE_FILTER $"Figgy Config File|*{FIGGY_FILE_EXT}"
 
 #macro __FIGGY_NO_INIT \
