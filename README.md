@@ -2,16 +2,31 @@
 <img width="1280" height="300" alt="banner" src="https://github.com/user-attachments/assets/9e31e7d0-c9d8-40fa-abb8-e15c1ce28479" />
 
 <h1 align="center">Figgy v1.0.0 </h1>
-<p align="center"> Persistent live configuration solution for GameMaker 2024.14+ </p>
+<p align="center"> Persistent live configs for GameMaker 2024.14+ </p>
 
 # Overview
-Figgy is a pure GML [Free and Open Source](https://en.wikipedia.org/wiki/Free_and_open-source_software) GameMaker library made for TODO
+Figgy is a pure GML [Free and Open Source](https://en.wikipedia.org/wiki/Free_and_open-source_software) lightweight GameMaker library - a centralized and persistent live configuration system for seamless game tuning and balancing.
 
 * ℹ️ Download the `.yymps` local package from the [Releases](https://github.com/glebtsereteli/Figgy/releases) page.
 * ℹ️ Refer to the [Documentation](https://glebtsereteli.github.io/Figgy/) for installation instructions, usage examples and full API reference.
 
+# Why Use It?
+Figgy eliminates the constant cycle of recompiling and searching through assets to adjust gameplay values. After defining your stats and parameters in Setup, Figgy automatically builds a Debug Overlay interface that lets you live-edit values while the game is running, access them in code, and save changes directly within your project's datafiles.
+
+Whether you're a solo developer or part of a team, working on a big project or a weekend-long game jam, Figgy streamlines balancing and tuning, keeping iteration fast and effortless. It also gives your non-programmer team members full design control without touching a single line of code.
+
 # Features
-TODO
+⚙️ **Automatic Live Interface**. Figgy creates debug view(s) for your configs automatically, freeing you from dreaded UI coding of any kind and allowing for live editing.
+
+🗂️ **Flexible Data Structure**. Organize your configs using a robust struct-based tree-like JSON layout with Window, Section and Group Scope Widgets.
+
+🎛️ **Wide Data Type Coverage**. Built on GameMaker's cross-platform Debug Overlay, Figgy provides many Value Widgets for all commonly used data types (Numbers, Booleans, Strings, Colors).
+
+💾 **Persistent Project Storage**. Keep your configs inside your GitHub repo with Figgy's automatic (and optionally obfuscated) datafiles saving/loading support that tracks variables differing from default values (or the whole config, if specified).
+
+🧠 **Centralized Configuration**. Keep all gameplay values in one place and read them from the config struct - no more scattered Create-event variables or magic numbers.
+
+👨‍🎨 **Code-Free Design**. Allow your designers to tweak and balance the game live without ever having to touch code. Everything is accessible through the interface.
 
 # Credits
 * Created and maintained by [Gleb Tsereteli](https://twitter.com/glebtsereteli).
