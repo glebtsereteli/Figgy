@@ -2,7 +2,7 @@
 <img width="1280" height="300" alt="banner" src="https://github.com/user-attachments/assets/9e31e7d0-c9d8-40fa-abb8-e15c1ce28479" />
 
 <h1 align="center">Figgy v1.0.0 </h1>
-<p align="center"> Persistent live configs for GameMaker 2024.14+ </p>
+<!-- <p align="center"> Persistent live configs for GameMaker 2024.14+ </p> -->
 
 # Overview
 Figgy is a pure GML [Free and Open Source](https://en.wikipedia.org/wiki/Free_and_open-source_software) lightweight GameMaker library - a centralized and persistent live configuration system for seamless game tuning and balancing.
@@ -40,5 +40,6 @@ Whether you're a solo developer or part of a team, working on a big project or a
 * Demo graphics by [Pixel Frog](https://x.com/PixelFrogStudio).
 
 # Games Using Figgy
+* [DirtWorld](https://krankenhaus-uk.itch.io/dirtworld) by [Joe Baxter-Webb (Indie Game Clinic)](https://indiegameclinic.com/).
 * [Thomas Threlfo](https://bsky.app/profile/tthrelfo.bsky.social)'s tobu.
 * And more to come :)

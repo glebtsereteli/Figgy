@@ -252,9 +252,16 @@ function Figgy() {
 			dbg_view($"{FIGGY_WINDOW_NAME}: {_name}", _visible, _x, _y, _w, _h);
 		}
 		
-		__window = {};
-		__scope = __window;
-		__current[$ _rawName] = __window;
+		if (__scoped) {
+			__window = {};
+			__scope = __window;
+			__current[$ _rawName] = __window;
+		}
+		else {
+			__scope = __current;
+		}
+		__scoped = true;
+		
 		__windowed = true;
 		__windowSectioned = false;
 		__section = undefined;

@@ -2,9 +2,9 @@
 
 ## Overview
 
-The Figgy workflow begins in the global `FiggySetup()` function, which acts as the library's main entry point. Inside it, you create your :Windows:, :Sections:, :Groups:, :Value: and :Decor: Widgets that shape both the visual debug interface and the underlying config data layout for your game.
+The Figgy workflow begins in the global `FiggySetup()` function, which acts as the library's main entry point. This is where you create your :Windows:, :Sections:, :Groups:, :Value: and :Decor: Widgets that shape both the :Interface: and the underlying config data layout for your game.
 
-Figgy's setup process is built around Widgets - modular building blocks that define what appears in your debug view and how it's reflected in your game's config data struct.
+The Setup process is built around Widgets - modular building blocks that define what appears in your debug view and how it's reflected in your game's config data struct.
 
 ---
 
@@ -138,9 +138,13 @@ Scope Widgets define new scopes (structs) and are used to organize other nested 
 ---
 
 There are 3 Scope Widgets, each defining a different *scope level*, from highest to lowest:
-1. :.Window(): is the highest-level Scope Widget. It creates a :DBG View: with a struct in the Root scope and serves as a container for :Sections:, :Groups:, :Value Widgets:, and :Decor Widgets:.
-2. :.Section(): comes second after :.Window(): and creates a :DBG Section: with a struct in the current (Root or Window) scope, unless optionally specified as **unscoped**. It serves as a container for :Groups:, :Value Widgets: and :Decor Widgets:.
-3. :.Group(): is the third and lowest scope level. It creates a new :DBG Text Separator: with a struct in the current (Root, Window, or Section) scope, unless optionally specified as **unscoped**. It serves as a container for :Value Widgets: and :Decor Widgets:.
+1. :.Window(): is the highest-level Scope Widget. It creates a :DBG View: with a struct in the Root scope, and serves as a container for :Sections:, :Groups:, :Value Widgets:, and :Decor Widgets:.
+2. :.Section(): comes second after :.Window(): and creates a :DBG Section: with a struct in the current (Root or Window) scope, and serves as a container for :Groups:, :Value Widgets: and :Decor Widgets:.
+3. :.Group(): is the third and lowest scope level. It creates a new :DBG Text Separator: with a struct in the current (Root, Window, or Section) scope. It serves as a container for :Value Widgets: and :Decor Widgets:.
+
+::: tip
+Each Scope Widget can also be optionally specified as **unscoped** via :.NoScope():. This prevents a struct from being created, keeps the current scope unchanged, and makes the Widget behave as a purely visual :DBG View:.
+:::
 
 ---
 ### `.Window()`
@@ -150,6 +154,10 @@ There are 3 Scope Widgets, each defining a different *scope level*, from highest
 Creates a struct at the Root scope, represented as a :DBG View:.
 
 Once called, the Root scope becomes inaccessible. All following Widgets will be created in the context of the current Window. Call this method again to switch scope to another Window.
+
+::: tip
+Call :.NoScope(): before :.Window(): to mark the upcoming Window as **unscoped**. This prevents a struct from being created, keeps the current scope unchanged, and makes the Window behave as a purely visual :DBG View:.
+:::
 
 | Parameter | Type | Description |
 | --- | --- | --- |
@@ -300,13 +308,15 @@ var _uppercutCfg = cfg.Uppercut; // [!code highlight]
 
 > `Figgy.NoScope()` ➜ :Struct:.:Figgy:
 
-Marks the next :.Section(): or :.Group(): call as **unscoped**, treating it as a purely visual interface element. This applies only to the immediately following :Section: or :Group: and resets automatically afterward.
-
-> ℹ️ :Windows: cannot be unscoped. 
+Marks the next :.Window():, :.Section(): or :.Group(): call as **unscoped**, treating it as a purely visual interface element. This applies only to the immediately following :Scope Widget: call and resets automatically afterward.
 
 ::: code-group
 ```js [Setup]
 function FiggySetup() {
+    // Creates a General unscoped window in the Root scope:
+    Figgy.NoScope().Window("General");
+        Figgy.Int("Difficulty", 0.75, 0, 1, 0.05); // [!code highlight]
+
     // Creates an unscoped Abilities section in the Player window:
     Figgy.Window("Player");
         Figgy.NoScope().Section("Abilities"); // [!code highlight]
@@ -316,6 +326,7 @@ function FiggySetup() {
 ```
 ```js [Data]
 {
+    Difficulty: 0.75,
     Player: {
         Dash: {
             // Values here...
