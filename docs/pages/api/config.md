@@ -1,6 +1,6 @@
 # Configuration
 
-This page covers Figgy configuration macros.
+This page provides an overview of all Figgy configuration macros. These settings control how the :Interface: is built, how config files are saved and loaded, and how various Widgets behave at runtime.
 
 ## General
 

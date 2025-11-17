@@ -5,8 +5,9 @@
 * Don't change FiggySetup function
 * All Setup methods must be called inside the FiggySetup function
 
-## Setup
+* Setup
+* Getters
+* Resetters
+* Input/Output
 
-## Control
-
-## Configuration
+* [Configuration](/pages/api/config.md) provides an overview of all Figgy configuration macros. These settings control how the interface is built, how config files are saved and loaded, and how various Widgets behave at runtime.

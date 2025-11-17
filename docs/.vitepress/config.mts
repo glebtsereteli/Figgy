@@ -256,6 +256,8 @@ export default defineConfig({
         '.ResetToInitial()': '/pages/api/figgy/resetters#resettoinitial',
         '.ResetToDefault()': '/pages/api/figgy/resetters#resettodefault',
         'Input/Output': '/pages/api/figgy/inputOutput',
+        '.Import()': '/pages/api/figgy/inputOutput#import',
+        '.Export()': '/pages/api/figgy/inputOutput#export',
 
         // config
         'FIGGY_DEBUG': '/pages/api/config#figgy-debug',

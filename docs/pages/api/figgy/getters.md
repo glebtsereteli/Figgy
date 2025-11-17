@@ -4,7 +4,7 @@
 
 Once your configs are set up in Setup, you need a way to fetch values in your game code. Figgy provides getters for all three sets of config structs: [Current](#getcurrent), [Initial](#getinitial), and [Default](#getdefault).
 * :.GetCurrent(): returns the current config struct that you edit through the :Interface: and fetch values from throughout your game code.
-* :.GetInitial(): returns the initial config struct, captured after defaults are initialized in :Setup: and saved changes are loaded at game startup.
+* :.GetInitial(): returns the initial config struct, captured after defaults are initialized in :Setup: and saved changes (if any) are loaded at game startup.
 * :.GetDefault(): returns the default config struct that holds the original baseline values defined in :Setup:.
 
 ## Getters
@@ -73,13 +73,13 @@ cfg = CFG.Player; // With global + macro. [!code highlight]
 
 > `Figgy.GetInitial()` ➜ :Struct:
 
-Returns the initial config struct, captured after defaults are initialized in :Setup: and saved changes are loaded at game startup.
+Returns the initial config struct, captured after defaults are initialized in :Setup: and saved changes (if any) are loaded at game startup.
 
 The method is primarily intended for resetting the current config back to its initial state using the :Interface: or the :.ResetToInitial(): method, but feel free use it for any other purpose.
 
 :::code-group
 ```js [Example]
-var _initialConfig = Figgy.GetInitial();
+var _initialConfig = Figgy.GetInitial(); // [!code highlight]
 ```
 :::
 
@@ -94,6 +94,6 @@ The method is primarily intended for resetting the current config back to its de
 
 :::code-group
 ```js [Example]
-var _defaultConfig = Figgy.GetDefault();
+var _defaultConfig = Figgy.GetDefault(); // [!code highlight]
 ```
 :::
