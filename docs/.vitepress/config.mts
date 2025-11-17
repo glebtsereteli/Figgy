@@ -54,7 +54,7 @@ export default defineConfig({
           {
             text: '🏡 Home',
             items: [
-              { text: 'What is Figgy?', link: '/pages/home/whatIsIt' },
+              { text: 'What is Figgy?', link: '/pages/home/whatIsIt/whatIsIt' },
               { text: 'Getting Started', link: '/pages/home/gettingStarted/gettingStarted' },
               { text: 'Interface', link: '/pages/home/interface' },
               { text: 'Persistence', link: '/pages/home/persistence' },
@@ -76,7 +76,7 @@ export default defineConfig({
         text: 'API',
         activeMatch: '^/pages/api/',
         items: [
-          { text: '📖 Overview', link: '/pages/api/overview' },
+          { text: '📖 Overview', link: '/pages/api/figgy/overview' },
           { 
             text: '📜 Figgy',
             items: [
@@ -96,9 +96,9 @@ export default defineConfig({
     sidebar: [
       {
         text: '🏡 Home',
-        link: '/pages/home/whatIsIt',
+        link: '/pages/home/whatIsIt/whatIsIt',
         items: [
-          { text: 'What is Figgy?', link: '/pages/home/whatIsIt' },
+          { text: 'What is Figgy?', link: '/pages/home/whatIsIt/whatIsIt' },
           { text: 'Getting Started', link: '/pages/home/gettingStarted/gettingStarted' },
           { text: 'Interface', link: '/pages/home/interface' },
           { text: 'Persistence', link: '/pages/home/persistence' },
@@ -108,7 +108,7 @@ export default defineConfig({
       },
       {
         text: '💻 API',
-        link: '/pages/api/overview',
+        link: '/pages/api/figgy/overview/',
         items: [
           {
             text: 'Figgy',
@@ -253,6 +253,7 @@ export default defineConfig({
         '.GetCurrent()': '/pages/api/figgy/getters#getcurrent',
         '.GetInitial()': '/pages/api/figgy/getters#getinitial',
         '.GetDefault()': '/pages/api/figgy/getters#getdefault',
+        'Resetters': '/pages/api/figgy/resetters',
         '.ResetToInitial()': '/pages/api/figgy/resetters#resettoinitial',
         '.ResetToDefault()': '/pages/api/figgy/resetters#resettodefault',
         'Input/Output': '/pages/api/figgy/inputOutput',

@@ -1,7 +1,7 @@
-![banner](banner.png)
+
 
 # What is Figgy?
-
+![alt text](banner.png)
 ## Overview
 
 Figgy is a pure GML [Free and Open Source](https://en.wikipedia.org/wiki/Free_and_open-source_software) lightweight GameMaker library - a centralized and persistent live configuration system for seamless game tuning and balancing.

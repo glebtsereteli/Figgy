@@ -9,7 +9,7 @@ hero:
   actions:
     - theme: brand
       text: What is Figgy?
-      link: '/pages/home/whatIsIt'
+      link: '/pages/home/whatIsIt/whatIsIt'
     - theme: alt
       text: Get Started
       link: '/pages/home/gettingStarted/gettingStarted'
