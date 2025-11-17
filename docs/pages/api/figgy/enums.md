@@ -1,3 +1,0 @@
-# Enums
-
-## FIGGY_ALIGN

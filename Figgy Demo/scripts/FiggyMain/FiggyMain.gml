@@ -633,7 +633,7 @@ function Figgy() {
 	};
 	
 	#endregion
-	#region Reset
+	#region Resetters
 	
 	/// @returns {Struct.Figgy}
 	/// @desc Resets the current config to its initial startup snapshot.

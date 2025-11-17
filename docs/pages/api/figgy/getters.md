@@ -7,7 +7,7 @@ Once your configs are set up in Setup, you need a way to fetch values in your ga
 * :.GetInitial(): returns the initial config struct, captured after defaults are initialized in :Setup: and saved changes are loaded at game startup.
 * :.GetDefault(): returns the default config struct that holds the original baseline values defined in :Setup:.
 
-## Methods
+## Getters
 
 ### `.GetCurrent()`
 

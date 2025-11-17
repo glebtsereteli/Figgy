@@ -82,7 +82,7 @@ export default defineConfig({
             items: [
               { text: 'Setup', link: '/pages/api/figgy/setup' },
               { text: 'Getters', link: '/pages/api/figgy/getters' },
-              { text: 'Resetting', link: '/pages/api/figgy/resetting' },
+              { text: 'Resetters', link: '/pages/api/figgy/resetters' },
               { text: 'Input/Output', link: '/pages/api/figgy/inputOutput' },
             ]
           },
@@ -116,7 +116,7 @@ export default defineConfig({
             items: [
               { text: 'Setup', link: '/pages/api/figgy/setup' },
               { text: 'Getters', link: '/pages/api/figgy/getters' },
-              { text: 'Resetting', link: '/pages/api/figgy/resetting' },
+              { text: 'Resetters', link: '/pages/api/figgy/resetters' },
               { text: 'Input/Output', link: '/pages/api/figgy/inputOutput' },
             ]
           },
@@ -253,6 +253,8 @@ export default defineConfig({
         '.GetCurrent()': '/pages/api/figgy/getters#getcurrent',
         '.GetInitial()': '/pages/api/figgy/getters#getinitial',
         '.GetDefault()': '/pages/api/figgy/getters#getdefault',
+        '.ResetToInitial()': '/pages/api/figgy/resetters#resettoinitial',
+        '.ResetToDefault()': '/pages/api/figgy/resetters#resettodefault',
         'Input/Output': '/pages/api/figgy/inputOutput',
 
         // config
