@@ -1,3 +1,5 @@
+![banner](banner.png)
+
 # What is Figgy?
 
 ## Overview

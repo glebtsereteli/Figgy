@@ -2,7 +2,7 @@
 
 ## Overview
 
-Resetter methods let you restore the current Figgy config to one the following states.
+Resetter methods let you restore the current Figgy config to one of the following states.
 * The **Initial** state using :.ResetToInitial():, captured after defaults are initialized in :Setup: and saved changes (if any) are loaded at game startup.
 * The **Default** state using :.ResetToDefault():, captured after default values are initialized in :Setup:, before saved changes (if any) are loaded at game startup.
 
