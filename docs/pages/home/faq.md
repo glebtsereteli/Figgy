@@ -17,7 +17,7 @@ This page contains answers to frequently asked questions about Figgy.
 | Nintendo Switch | 🚧 Planned |
 | HTML5 | ❌ Not planned |
 
-## 📍 What versions of GameMaker does GMRoomLoader support?
+## 📍 What versions of GameMaker does Figgy support?
   
 The latest Monthly. Currently that's `IDE v2024.14.0.207` and `Runtime v2024.14.0.251`.
 
@@ -27,12 +27,12 @@ Figgy is licensed under the [MIT license](https://github.com/glebtsereteli/Figgy
 
 Mentioning my name (Gleb Tsereteli) in your game's credits would be greatly appreciated and would totally make my day, but it's entirely optional 🙂
 
-## 📍 How do I update to the latest version of GMRoomLoader?
+## 📍 How do I update to the latest version of Figgy?
 
 1. If you've made changes to the `FiggyConfig` script, make a backup of the script before continuing.
 2. Delete the Figgy folder from your project.
 3. Repeat the [Installation](/pages/home/gettingStarted/gettingStarted#installation) process.
-4. If you've made changes to the `RoomLoaderConfig` script, paste the changes back from your backup.
+4. If you've made changes to the `FiggyConfig` script, paste the changes back from your backup.
 
 ::: warning KEEP IN MIND
 The config setup might change between versions, so make sure to pay attention to the release notes and adjust your pasted configs accordingly.

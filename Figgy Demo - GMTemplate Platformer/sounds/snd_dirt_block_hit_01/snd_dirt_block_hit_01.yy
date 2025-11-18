@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"snd_dirt_block_hit_01",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":1,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":0.767354,
+  "exportDir":"",
+  "name":"snd_dirt_block_hit_01",
+  "parent":{
+    "name":"Gameplay",
+    "path":"folders/01. Platformer Template/Sounds/SFX/Gameplay.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"snd_dirt_block_hit_01.wav",
+  "volume":0.4,
+}
