@@ -58,7 +58,7 @@ export default defineConfig({
               { text: 'Getting Started', link: '/pages/home/gettingStarted/gettingStarted' },
               { text: 'Interface', link: '/pages/home/interface' },
               { text: 'Persistence', link: '/pages/home/persistence' },
-              { text: 'Demo', link: '/pages/home/demo/demo' },
+              { text: 'Demos', link: '/pages/home/demos/demos' },
               { text: 'FAQ', link: '/pages/home/faq' },
             ]
           },
@@ -102,7 +102,7 @@ export default defineConfig({
           { text: 'Getting Started', link: '/pages/home/gettingStarted/gettingStarted' },
           { text: 'Interface', link: '/pages/home/interface' },
           { text: 'Persistence', link: '/pages/home/persistence' },
-          { text: 'Demo', link: '/pages/home/demo/demo' },
+          { text: 'Demos', link: '/pages/home/demos/demos' },
           { text: 'FAQ', link: '/pages/home/faq' },
         ]
       },
