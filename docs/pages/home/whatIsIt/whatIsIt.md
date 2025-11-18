@@ -28,7 +28,9 @@ Whether you're a solo developer or part of a team, working on a big project or a
 
 ## How does it work?
 
-the figgy workflow can effectively be divided into 4 parts - setup, interface, struct, and file
+**COMING SOON!**
+
+<!-- the figgy workflow can effectively be divided into 4 parts - setup, interface, struct, and file
 
 setup ➜ interface ➜ struct ➜ file
 
@@ -74,4 +76,4 @@ keep in mind that by default, delta saving is enabled and you will only see valu
 * [DirtWorld](https://jbw-games.itch.io/dirtworld) by [Joe Baxter-Webb (Indie Game Clinic)](https://indiegameclinic.com/).
 * tobu by [Thomas Threlfo](https://bsky.app/profile/tthrelfo.bsky.social).
 * And more to come :)
-
+ -->

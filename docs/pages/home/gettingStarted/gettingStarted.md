@@ -115,4 +115,4 @@ You've now seen how to get Figgy up and running in your GameMaker project — fr
 
 By creating a global reference to your config and linking object-level shortcuts, you can comfortably scale Figgy to handle large and complex setups. And with the automaticically built :Interface:, you can tweak values live, instantly seeing the effects in your game.
 
-Next up, check out... **[COMING SOON]**
+Next up, check out... **COMING SOON!**
