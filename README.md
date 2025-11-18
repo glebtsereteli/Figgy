@@ -12,6 +12,18 @@ Figgy is a pure GML [Free and Open Source](https://en.wikipedia.org/wiki/Free_an
 * ℹ️ **GameMaker Version:** [v2024.14](https://releases.gamemaker.io/release-notes/2024/14) (the latest Monthly).
 * ℹ️ **Platforms:** Windows, macOS and Linux are fully supported. GX.games supports everything but IO. Console & Mobile support is planned. HTML5 support is not planned.
 
+<details>
+
+<summary>Screeshots</summary>
+
+<img width="1920" height="1080" alt="7f1I_k" src="https://github.com/user-attachments/assets/e4c219f0-9d7a-4e83-84ae-d09a5ce8b43b" />
+<img width="1920" height="1080" alt="ciM2Zt" src="https://github.com/user-attachments/assets/a1b743a3-1482-4d4c-aa0b-c16484d15dce" />
+<img width="1920" height="1080" alt="8zMl9R" src="https://github.com/user-attachments/assets/8727d8d1-1d30-402b-888d-3ca681e794db" />
+<img width="1920" height="1080" alt="7+z+lJ" src="https://github.com/user-attachments/assets/dd164707-250b-457b-bf3b-13889a77b57a" />
+
+</details>
+
+
 ## Why Use It?
 Figgy eliminates the constant cycle of recompiling and searching through assets to adjust gameplay values. After defining your stats and parameters in Setup, Figgy automatically builds a Debug Overlay interface that lets you live-edit values while the game is running, access them in code, and save changes directly within your project's datafiles.
 
