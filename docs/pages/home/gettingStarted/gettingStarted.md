@@ -47,7 +47,7 @@ function FiggySetup() {
 
 ### 2. Understanding Data
 
-Now let's see how this setup is represented in the config struct you'll be accessing throughout your game:
+Now let's see how this setup is represented in the config struct that you'll be accessing throughout your game:
 ```js
 {
     Player: {
