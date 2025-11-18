@@ -51,6 +51,6 @@ Whether you're a solo developer or part of a team, working on a big project or a
 * Demo graphics by [Pixel Frog](https://x.com/PixelFrogStudio).
 
 # Games Using Figgy
-* [DirtWorld](https://krankenhaus-uk.itch.io/dirtworld) by [Joe Baxter-Webb (Indie Game Clinic)](https://indiegameclinic.com/).
+* [DirtWorld](https://krankenhaus-uk.itch.io/dirtworld) by [Joe Baxter-Webb/Indie Game Clinic/KRANKENHAUS](https://indiegameclinic.com/).
 * [Thomas Threlfo](https://bsky.app/profile/tthrelfo.bsky.social)'s tobu.
 * And more to come :)
