@@ -30,7 +30,7 @@ if (__initInactive) { \
 
 #macro __FIGGY_RAWNAME \
 var _rawName = _name; \
-if (FIGGY_FILE_REMOVE_SPACES) { \
+if (FIGGY_REMOVE_SPACES) { \
 	_rawName = string_replace_all(_rawName, " ", ""); \
 }
 

@@ -21,7 +21,7 @@ The Setup process is organized into the following categories:
 ::: tip NAME FORMATTING
 By default, Figgy removes all spaces when generating data entry names (e.g. `"Move Speed"` becomes `"MoveSpeed"` in code).
 
-If you don't plan to use variable names with spaces in your interface, this can be disabled for performance gains by setting the :FIGGY_FILE_REMOVE_SPACES: config macro to `false`.
+If you don't plan to use variable names with spaces in your interface, this can be disabled for performance gains by setting the :FIGGY_REMOVE_SPACES: config macro to `false`.
 :::
 
 ## Organization
@@ -64,7 +64,7 @@ function FiggySetup() {
 ::: code-group
 ```js [#region Regions]
 function FiggySetup() {
-    #region Player
+    #region Player // [!code highlight]
 
     Figgy.Window("Player");
         Figgy.NoScope().Section("Movement");
@@ -72,30 +72,30 @@ function FiggySetup() {
                 Figgy.Float("Walk Speed", 2, 0.1, 20);
                 Figgy.Float("Run Speed", 4, 0.1, 20);
 
-    #endregion
-    #region Enemies
+    #endregion // [!code highlight]
+    #region Enemies // [!code highlight]
 
     Figgy.Window("Enemies");
         Figgy.Section("Slime");
             Figgy.Int("Health", 5, 1, 15);
             Figgy.Int("Damage", 1, 1, 10);
 
-    #endregion
+    #endregion // [!code highlight]
 }
 ```
 ```js [Curly Brackets]
 function FiggySetup() {
-    Figgy.Window("Player"); {
+    Figgy.Window("Player"); { // [!code highlight]
         Figgy.NoScope().Section("Movement");
             Figgy.NoScope().Group("Horizontal");
                 Figgy.Float("Walk Speed", 2, 0.1, 20);
                 Figgy.Float("Run Speed", 4, 0.1, 20);
-    }
-    Figgy.Window("Enemies"); {
+    } // [!code highlight]
+    Figgy.Window("Enemies"); { // [!code highlight]
         Figgy.Section("Slime");
             Figgy.Int("Health", 5, 1, 15);
             Figgy.Int("Damage", 1, 1, 10);
-    }
+    } // [!code highlight]
 }
 ```
 :::
@@ -104,13 +104,13 @@ function FiggySetup() {
 ::: code-group
 ```js [FiggySetup]
 function FiggySetup() {
-    PlayerConfigs();
-    EnemiesConfigs();
+    PlayerConfigs(); // [!code highlight]
+    EnemiesConfigs(); // [!code highlight]
     // ...
 }
 ```
 ```js [scrPlayerConfigs]
-function PlayerConfigs() {
+function PlayerConfigs() { // [!code highlight]
     Figgy.Window("Player");
         Figgy.NoScope().Section("Movement");
             Figgy.NoScope().Group("Horizontal");
@@ -119,7 +119,7 @@ function PlayerConfigs() {
 }
 ```
 ```js [scrEnemiesConfigs]
-function EnemiesConfigs() {
+function EnemiesConfigs() { // [!code highlight]
     Figgy.Window("Enemies");
         Figgy.Section("Slime");
             Figgy.Int("Health", 5, 1, 15);

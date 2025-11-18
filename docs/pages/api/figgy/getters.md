@@ -16,7 +16,7 @@ Once your configs are set up in :Setup:, you need a way to fetch values in your 
 Returns the current config struct that you edit through the :Interface: and access your game code.
 
 ::: tip
-I recommend storing the current config struct in a convenient global + macro pair for cleaner access instead of having to call `Figgy.GetCurrent()` every time you need to fetch a config value.
+I highly recommend storing the current config struct in a convenient global + macro pair for cleaner access instead of having to call `Figgy.GetCurrent()` for grabbing each config value.
 
 You'll need to do it at the start of your game where you perform initialization. Make sure it's done **after** scripts are initialized (in some master object's Create event, or the first room's Creation Code) and **before** you need to access your first configs.
 :::code-group

@@ -48,7 +48,7 @@ If no path is provided, the method will open a file selection dialog via [get_sa
 // Exports the current Figgy config to the given path: [!code highlight]
 Figgy.Export("...someCustomPath/config.figgy");
 
-// Export the current Figgy config to the path chosen in the file selection dialog: [!code highlight]
+// Exports the current Figgy config to the path chosen in the file selection dialog: [!code highlight]
 Figgy.Export();
 ```
 :::

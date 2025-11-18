@@ -15,6 +15,19 @@ Whether to show debug messages in the Output window (`true`) or not (`false`).
 Whether to build the Figgy debug interface (`true`) or not (`false`).
 By default, this is enabled when running the game from IDE and disabled when running from EXE, using the `__FIGGY_IN_IDE` status macro.
 
+---
+### `FIGGY_REMOVE_SPACES`
+> Default: `false`.
+
+Whether to remove spaces from variable names (`true`) or not (`false`), e.g. `"Move Speed"` in :Setup: becomes `"MoveSpeed"` in code.
+
+* Set to `true` if you use variable names like `"Move Speed"` AND want to avoid using the struct accessor for accessing configs in code.
+* Leave as `false` if you use variable names like `"move_speed"` or `"moveSpeed"`.
+
+::: warning
+Changing this mid-development will erase existing saved configs, so make sure to decide on this early on.
+:::
+
 ## File
 
 ### `FIGGY_FILE_NAME`
@@ -22,11 +35,19 @@ By default, this is enabled when running the game from IDE and disabled when run
 
 The config file name.
 
+::: tip
+Read about file handling in :Persistence:.
+:::
+
 ---
 ### `FIGGY_FILE_EXT`
 > Default: `".figgy"`.
 
 The config file extension.
+
+::: tip
+Read about file handling in :Persistence:.
+:::
 
 ---
 ### `FIGGY_FILE_DELTA`
@@ -41,11 +62,19 @@ Useful for inspecting or exporting the full config state.
 Setting this to `false` may reduce input/output performance at scale.
 :::
 
+::: tip
+Read about file handling in :Persistence:.
+:::
+
 ---
 ### `FIGGY_FILE_PRETTIFY`
 > Default: `true`.
 
 Whether to format the config file for readability by prettifying the output JSON (`true`) or keep it compact (`false`).
+
+::: tip
+Read about file handling in :Persistence:.
+:::
 
 ---
 ### `FIGGY_FILE_OBFUSCATE`
@@ -54,17 +83,8 @@ Whether to format the config file for readability by prettifying the output JSON
 Whether to obfuscate (base64 encode and compress) the config file (`true`) or not (`false`).
 Set to `true` to make the config file unreadable to users.
 
----
-### `FIGGY_FILE_REMOVE_SPACES`
-> Default: `false`.
-
-Whether to remove spaces from variable names (`true`) or not (`false`), e.g. `"Move Speed"` in :Setup: becomes `"MoveSpeed"` in code.
-
-* Set to `true` if you use variable names like `"Move Speed"` AND want to avoid using the struct accessor for accessing configs in code.
-* Leave as `false` if you use variable names like `"move_speed"` or `"moveSpeed"`.
-
-::: warning
-Changing this mid-development will erase existing saved configs, so make sure to decide on this early on.
+::: tip
+Read about file handling in :Persistence:.
 :::
 
 ## Controls

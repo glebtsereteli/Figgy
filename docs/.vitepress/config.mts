@@ -262,13 +262,14 @@ export default defineConfig({
 
         // config
         'FIGGY_DEBUG': '/pages/api/config#figgy-debug',
+        'FIGGY_BUILD_INTERFACE': '/pages/api/config#figgy-build-interface',
+        'FIGGY_REMOVE_SPACES': '/pages/api/config#figgy-remove-spaces',
         
         'FIGGY_FILE_NAME': '/pages/api/config#figgy-file-name',
         'FIGGY_FILE_EXT': '/pages/api/config#figgy-file-ext',
         'FIGGY_FILE_DELTA': '/pages/api/config#figgy-file-delta',
         'FIGGY_FILE_PRETTIFY': '/pages/api/config#figgy-file-prettify',
         'FIGGY_FILE_OBFUSCATE': '/pages/api/config#figgy-file-obfuscate',
-        'FIGGY_FILE_REMOVE_SPACES': '/pages/api/config#figgy-file-remove-spaces',
         
         'FIGGY_WINDOW_NAME': '/pages/api/config#figgy-window-name',
         'FIGGY_WINDOW_DEFAULT_START_VISIBLE': '/pages/api/config#figgy-window-default-start-visible',
