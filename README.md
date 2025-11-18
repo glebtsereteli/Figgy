@@ -14,7 +14,7 @@ Figgy is a pure GML [Free and Open Source](https://en.wikipedia.org/wiki/Free_an
 
 <details>
 
-<summary>Screeshots</summary>
+<summary>Screenshots</summary>
 
 <img width="1920" height="1080" alt="7f1I_k" src="https://github.com/user-attachments/assets/e4c219f0-9d7a-4e83-84ae-d09a5ce8b43b" />
 <img width="1920" height="1080" alt="ciM2Zt" src="https://github.com/user-attachments/assets/a1b743a3-1482-4d4c-aa0b-c16484d15dce" />
@@ -22,7 +22,6 @@ Figgy is a pure GML [Free and Open Source](https://en.wikipedia.org/wiki/Free_an
 <img width="1920" height="1080" alt="7+z+lJ" src="https://github.com/user-attachments/assets/dd164707-250b-457b-bf3b-13889a77b57a" />
 
 </details>
-
 
 ## Why Use It?
 Figgy eliminates the constant cycle of recompiling and searching through assets to adjust gameplay values. After defining your stats and parameters in Setup, Figgy automatically builds a Debug Overlay interface that lets you live-edit values while the game is running, access them in code, and save changes directly within your project's datafiles.
