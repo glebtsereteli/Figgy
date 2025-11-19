@@ -58,7 +58,7 @@ Now let's see how this setup is represented in the config struct that you'll be 
 
 You'll notice that our variable name `"Move Speed"` turned into `MoveSpeed` in the config. By default, Figgy removes spaces from variable names so you can access them easily without using the struct accessor with string keys, while keeping the interface label more readable.
 
-### 2. Accessing Values
+### 3. Accessing Values
 
 Now that our configs are defined in :Setup: and we understand how they appear in the config struct, let's actually use the `MoveSpeed` value in our player object.
 
@@ -79,7 +79,7 @@ You can access the current config struct with :.GetCurrent():, which works fine 
 cfg = CFG.Player;
 ```
 :::
-* With all that set up, we can finally use our config in `objPlayer`'s movement code. For example, here's you could use `MoveSpeed` for simple top-down movement and collision:
+* With all that set up, we can finally use our config in `objPlayer`'s movement code. For example, here's how you could use `MoveSpeed` for simple top-down movement and collision:
 :::code-group
 ```js [objPlayer's Step event]
 var _xInput = keyboard_check(ord("D")) - keyboard_check(ord("A"));
@@ -105,14 +105,12 @@ var _dummy = dbg_view("dummy", false);
 dbg_view_delete(_dummy);
 ```
 
-Once the overlay is open, go to the **Views** menu in the top bar. Under **Views**, select the **Figgy: Player** window to access your player configs. There, you'll see the :Group: had created a :DBG Section:, and the :Float: had created a `Move Speed` :DBG Slider:, which we can now adjust to change the player's movement speed in real time.
-
-Under the Controls section at the top of the window, you can Save your changes 
+Once the overlay is open, go to the **Views** menu in the top bar. Under **Views**, select the **Figgy: Player** window to access your player configs. There, you'll see the :Group: Scope Widget created a :DBG Section:, and the :Float: Value Widget created a `Move Speed` :DBG Slider:, which we can now adjust to change the player's movement speed in real time.
 
 ## That's it! What's Next?
 
 You've now seen how to get Figgy up and running in your GameMaker project — from installing the package, defining your first configs in :Setup:, understanding how they appear in the config struct, to accessing and using them in your objects.
 
-By creating a global reference to your config and linking object-level shortcuts, you can comfortably scale Figgy to handle large and complex setups. And with the automaticically built :Interface:, you can tweak values live, instantly seeing the effects in your game.
+By creating a global reference to your config and linking object-level shortcuts, you can comfortably scale Figgy to handle large and complex setups. And with the automatically built :Interface:, you can tweak values live, instantly seeing the effects in your game.
 
 Next up, check out... **COMING SOON!**

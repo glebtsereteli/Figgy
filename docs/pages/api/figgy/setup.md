@@ -350,7 +350,7 @@ All Value Widgets start with a name, which is how you reference them in your cod
 ---
 
 Value Widgets include the following:
-* :Ints: and :Floats: define :Real: values (AKA numbers). They are represented as :DBG Slider: and :DBG Float Slider: elements, and provide controls over min-max ranges and step sizes.
+* :Ints: and :Floats: define :Real: values (AKA numbers). They are represented as :DBG Slider: and :DBG Slider: elements, and provide controls over min-max ranges and step sizes.
 * :Reals: also define :Real: values, but are represented as a Real-filtered :DBG Text Input:.
 * :Bools: define :Bool: values, and are represented as a :DBG Checkbox:.
 * :Strings: define :String: values, and are represented as a :DBG Text Input:.
