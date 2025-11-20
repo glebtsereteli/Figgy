@@ -9,7 +9,7 @@ Figgy is a pure GML [Free and Open Source](https://en.wikipedia.org/wiki/Free_an
 
 * ℹ️ Download the `.yymps` local package from the [Releases](https://github.com/glebtsereteli/Figgy/releases) page.
 * ℹ️ Refer to the [Documentation](https://glebtsereteli.github.io/Figgy/) for installation instructions, usage examples and full API reference.
-* ℹ️ **GameMaker Version:** [v2024.14](https://releases.gamemaker.io/release-notes/2024/14) (the latest Monthly).
+* ℹ️ **GameMaker Version:** [v2024.14](https://releases.gamemaker.io/release-notes/2024/14_1) (the latest Monthly).
 * ℹ️ **Platforms:** Windows, macOS and Linux are fully supported. GX.games supports everything but IO. Console & Mobile support is planned. HTML5 support is not planned.
 
 <details>
@@ -24,25 +24,25 @@ Figgy is a pure GML [Free and Open Source](https://en.wikipedia.org/wiki/Free_an
 </details>
 
 ## Why Use It?
-Figgy eliminates the constant cycle of recompiling and searching through assets to adjust gameplay values. After defining your stats and parameters in Setup, Figgy automatically builds a Debug Overlay interface that lets you live-edit values while the game is running, access them in code, and save changes directly within your project's datafiles.
+Figgy eliminates the constant cycle of recompiling and searching through assets to adjust gameplay values. After defining your stats and parameters in Setup, Figgy automatically builds a [Debug Overlay](https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Debugging/The_Debug_Overlay.htm) interface that lets you live-edit values while the game is running, access them in code, and save changes directly within your project's datafiles.
 
 Whether you're a solo developer or part of a team, working on a big project or a weekend-long game jam, Figgy streamlines balancing and tuning, keeping iteration fast and effortless. It also gives your non-programmer team members full design control without touching a single line of code.
 
 # Features
-⚙️ **Automatic Live Interface**. Figgy creates debug view(s) for your configs automatically, freeing you from dreaded UI coding of any kind and allowing for live editing.
+⚙️ **Automatic Live Interface**. Figgy creates [debug views](https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Debugging/The_Debug_Overlay.htm#:~:text=using%C2%A0dbg_view.-,Views,-This%20menu%20lists) for your configs automatically, freeing you from dreaded UI coding of any kind and allowing for live editing.
 
-🗂️ **Flexible Data Structure**. Organize your configs using a robust struct-based tree-like JSON layout with Window, Section and Group Scope Widgets.
+🗂️ **Flexible Data Structure**. Organize your configs using a robust struct-based tree-like JSON layout with [Scope Widgets](https://glebtsereteli.github.io/Figgy/pages/api/figgy/setup#scope-widgets), including [Windows](https://glebtsereteli.github.io/Figgy/pages/api/figgy/setup#window), [Sections](https://glebtsereteli.github.io/Figgy/pages/api/figgy/setup#section), and [Groups](https://glebtsereteli.github.io/Figgy/pages/api/figgy/setup#group).
 
-🎛️ **Wide Data Type Coverage**. Built on GameMaker's cross-platform Debug Overlay, Figgy provides many Value Widgets for all commonly used data types (Numbers, Booleans, Strings, Colors).
+🎛️ **Wide Data Type Coverage**. Built on GameMaker's cross-platform Debug Overlay, Figgy provides many Value Widgets for all commonly used data types: [Integers](https://glebtsereteli.github.io/Figgy/pages/api/figgy/setup#int)​, [Floats](https://glebtsereteli.github.io/Figgy/pages/api/figgy/setup#float)​, [Reals](https://glebtsereteli.github.io/Figgy/pages/api/figgy/setup#real)​, [Booleans](https://glebtsereteli.github.io/Figgy/pages/api/figgy/setup#bool), [Strings](https://glebtsereteli.github.io/Figgy/pages/api/figgy/setup#string), [Colors](https://glebtsereteli.github.io/Figgy/pages/api/figgy/setup#color), and [Anys](https://glebtsereteli.github.io/Figgy/pages/api/figgy/setup#any)​.
 
-💾 **Persistent Project Storage**. Keep your configs inside your GitHub repo with Figgy's automatic (and optionally obfuscated) datafiles saving/loading support that tracks variables differing from default values (or the whole config, if specified).
+💾 **Persistent Project Storage**. Keep your configs inside your GitHub repo with Figgy's automatic (and optionally [obfuscated](https://glebtsereteli.github.io/Figgy/pages/home/persistence#obfuscate)) datafiles [saving & loading](https://glebtsereteli.github.io/Figgy/pages/home/persistence) support that tracks variables differing from default values (or the whole config, if [specified](https://glebtsereteli.github.io/Figgy/pages/api/config#figgy-file-delta)).
 
 🧠 **Centralized Configuration**. Keep all gameplay values in one place and read them from the config struct - no more scattered Create-event variables or magic numbers.
 
-👨‍🎨 **Code-Free Design**. Allow your designers to tweak and balance the game live without ever having to touch code. Everything is accessible through the interface.
+👨‍🎨 **Code-Free Design**. Allow your designers to tweak and balance the game live through the [Interface](https://glebtsereteli.github.io/Figgy/pages/home/interface), without ever having to touch code.
 
 # Credits
-* Created and maintained by [Gleb Tsereteli](https://twitter.com/glebtsereteli).
+* Created and maintained by Gleb Tsereteli ([GitHub](https://github.com/glebtsereteli), [Itch](https://glebtsereteli.itch.io/), [Twitter](https://x.com/glebtsereteli), [Bluesky](https://bsky.app/profile/glebtsereteli.bsky.social)).
 * Wonderful promo art by the very talented [neerikiffu](https://bsky.app/profile/neerikiffu.bsky.social)!
 * Initially created as a submission for [TabularElf](https://tabelf.link/)'s [CookBook Jam #5](https://itch.io/jam/cookbook-jam-5).
 * Thanks to [Gutpunch Studios](https://gutpunchstudios.com/) for the original "knobs and levers" design philosophy and inspiration.
