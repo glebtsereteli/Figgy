@@ -42,7 +42,7 @@ Whether you're a solo developer or part of a team, working on a big project or a
 👨‍🎨 **Code-Free Design**. Allow your designers to tweak and balance the game live through the [Interface](https://glebtsereteli.github.io/Figgy/pages/home/interface), without ever having to touch code.
 
 # Credits
-* Created and maintained by Gleb Tsereteli ([GitHub](https://github.com/glebtsereteli), [Itch](https://glebtsereteli.itch.io/), [Twitter](https://x.com/glebtsereteli), [Bluesky](https://bsky.app/profile/glebtsereteli.bsky.social)).
+* Created and maintained by [Gleb Tsereteli](https://linktr.ee/GlebTsereteli).
 * Wonderful promo art by the very talented [neerikiffu](https://bsky.app/profile/neerikiffu.bsky.social)!
 * Initially created as a submission for [TabularElf](https://tabelf.link/)'s [CookBook Jam #5](https://itch.io/jam/cookbook-jam-5).
 * Thanks to [Gutpunch Studios](https://gutpunchstudios.com/) for the original "knobs and levers" design philosophy and inspiration.
