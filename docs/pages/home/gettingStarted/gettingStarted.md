@@ -95,7 +95,7 @@ if ((_xInput != 0) or (_yInput != 0)) {
 
 Now, this is all great, but where can we actually edit the config live while the game is running to see our changes reflected in the player movement?
 
-### 3. Editing
+### 4. Editing
 
 If at least one of the :Windows: you defined in :Setup: is marked as `visible`, Figgy will automatically open the :Debug Interface: for you.
 
