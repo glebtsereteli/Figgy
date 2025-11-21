@@ -56,7 +56,7 @@ export default defineConfig({
             items: [
               { text: 'What is Figgy?', link: '/pages/home/whatIsIt/whatIsIt' },
               { text: 'Getting Started', link: '/pages/home/gettingStarted/gettingStarted' },
-              { text: 'Interface', link: '/pages/home/interface' },
+              { text: 'Interface', link: '/pages/home/interface/interface' },
               { text: 'Persistence', link: '/pages/home/persistence' },
               { text: 'Demos', link: '/pages/home/demos/demos' },
               { text: 'FAQ', link: '/pages/home/faq' },
@@ -100,7 +100,7 @@ export default defineConfig({
         items: [
           { text: 'What is Figgy?', link: '/pages/home/whatIsIt/whatIsIt' },
           { text: 'Getting Started', link: '/pages/home/gettingStarted/gettingStarted' },
-          { text: 'Interface', link: '/pages/home/interface' },
+          { text: 'Interface', link: '/pages/home/interface/interface' },
           { text: 'Persistence', link: '/pages/home/persistence' },
           { text: 'Demos', link: '/pages/home/demos/demos' },
           { text: 'FAQ', link: '/pages/home/faq' },
@@ -234,7 +234,7 @@ export default defineConfig({
         'DBG Text Separator': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Debugging/dbg_text_separator.htm',
 
         // shortcuts
-        'Interface': '/pages/home/interface',
+        'Interface': '/pages/home/interface/interface',
         'Persistence': '/pages/home/persistence',
         'Figgy': '/pages/api/figgy/overview',
         'Setup': '/pages/api/figgy/setup',
@@ -279,6 +279,8 @@ export default defineConfig({
         'FIGGY_WINDOW_DEFAULT_HEIGHT': '/pages/api/config#figgy-window-default-height',
         'FIGGY_CONTROLS_NAME': '/pages/api/config#figgy-controls-name',
         'FIGGY_CONTROLS_OPEN': '/pages/api/config#figgy-controls-open',
+        'FIGGY_CONTROLS_IN_EVERY_WINDOW': '/pages/api/config#figgy-controls-in-every-window',
+        
         'FIGGY_SECTION_DEFAULT_OPEN': '/pages/api/config#figgy-section-default-open',
         'FIGGY_GROUP_DEFAULT_ALIGN': '/pages/api/config#figgy-group-default-align',
         'FIGGY_UNSCOPED_NAME_FORMAT': '/pages/api/config#figgy-unscoped-name-format',

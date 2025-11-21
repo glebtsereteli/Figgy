@@ -155,6 +155,8 @@ Creates a struct at the Root scope, represented as a :DBG View:.
 
 Once called, the Root scope becomes inaccessible. All following Widgets will be created in the context of the current Window. Call this method again to switch scope to another Window.
 
+By default, each Window includes a set of root-level controls at the top. See the [Controls Section](/pages/home/interface/interface/#controls-section) for more details.
+
 ::: tip
 Call :.NoScope(): before :.Window(): to mark the upcoming Window as **unscoped**. This prevents a struct from being created, keeps the current scope unchanged, and makes the Window behave as a purely visual :DBG View:.
 :::
