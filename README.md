@@ -12,12 +12,14 @@ Figgy is a pure GML [Free and Open Source](https://en.wikipedia.org/wiki/Free_an
 * ℹ️ **GameMaker Version:** [v2024.14](https://releases.gamemaker.io/release-notes/2024/14_1) (the latest Monthly).
 * ℹ️ **Platforms:** Windows, macOS and Linux are fully supported. GX.games supports everything but IO. Console & Mobile support is planned. HTML5 support is not planned.
 
-<table style="width: 100%; table-layout: fixed;">
+<table style="width: 100%; table-layout: fixed; border-collapse: separate; border-spacing: 10px;">
   <tr>
-    <td style="width: 25%;"><a href="https://github.com/user-attachments/assets/e4c219f0-9d7a-4e83-84ae-d09a5ce8b43b"><img src="https://github.com/user-attachments/assets/e4c219f0-9d7a-4e83-84ae-d09a5ce8b43b" style="width: 100%;"></a></td>
-    <td style="width: 25%;"><a href="https://github.com/user-attachments/assets/a1b743a3-1482-4d4c-aa0b-c16484d15dce"><img src="https://github.com/user-attachments/assets/a1b743a3-1482-4d4c-aa0b-c16484d15dce" style="width: 100%;"></a></td>
-    <td style="width: 25%;"><a href="https://github.com/user-attachments/assets/8727d8d1-1d30-402b-888d-3ca681e794db"><img src="https://github.com/user-attachments/assets/8727d8d1-1d30-402b-888d-3ca681e794db" style="width: 100%;"></a></td>
-    <td style="width: 25%;"><a href="https://github.com/user-attachments/assets/dd164707-250b-457b-bf3b-13889a77b57a"><img src="https://github.com/user-attachments/assets/dd164707-250b-457b-bf3b-13889a77b57a" style="width: 100%;"></a></td>
+    <td style="width: 50%;"><a href="https://github.com/user-attachments/assets/e4c219f0-9d7a-4e83-84ae-d09a5ce8b43b"><img src="https://github.com/user-attachments/assets/e4c219f0-9d7a-4e83-84ae-d09a5ce8b43b" style="width: 100%; display: block;"></a></td>
+    <td style="width: 50%;"><a href="https://github.com/user-attachments/assets/a1b743a3-1482-4d4c-aa0b-c16484d15dce"><img src="https://github.com/user-attachments/assets/a1b743a3-1482-4d4c-aa0b-c16484d15dce" style="width: 100%; display: block;"></a></td>
+  </tr>
+  <tr>
+    <td style="width: 50%;"><a href="https://github.com/user-attachments/assets/8727d8d1-1d30-402b-888d-3ca681e794db"><img src="https://github.com/user-attachments/assets/8727d8d1-1d30-402b-888d-3ca681e794db" style="width: 100%; display: block;"></a></td>
+    <td style="width: 50%;"><a href="https://github.com/user-attachments/assets/dd164707-250b-457b-bf3b-13889a77b57a"><img src="https://github.com/user-attachments/assets/dd164707-250b-457b-bf3b-13889a77b57a" style="width: 100%; display: block;"></a></td>
   </tr>
 </table>
 
