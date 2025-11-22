@@ -92,19 +92,19 @@ Read about file handling in :Persistence:.
 ### `FIGGY_CONTROLS_NAME`
 > Default: `"[CONTROLS]"`.
 
-Name of the Controls section.
+The name of the :Controls Section:.
 
 ---
 ### `FIGGY_CONTROLS_OPEN`
 > Default: `true`.
 
-Whether the Controls section starts open (`true`) or not (`false`).
+Whether the :Controls Section: starts open (`true`) or not (`false`).
 
 ---
 ### `FIGGY_CONTROLS_IN_EVERY_WINDOW`
 > Default: `true`.
 
-Whether to include the Controls section in every window (`true`) or not (`false`). If set to false, the Controls section will only be included in the first window.
+Whether to include the :Controls Section: in every window (`true`) or not (`false`). If set to false, the :Controls Section: will only be included in the first window.
 
 ## Scope Widgets
 

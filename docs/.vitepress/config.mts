@@ -244,6 +244,7 @@ export default defineConfig({
 
         // shortcuts
         'Interface': '/pages/home/interface/interface',
+        'Controls Section': '/pages/home/interface/interface#controls-section',
         'Persistence': '/pages/home/persistence',
         'Demos': '/pages/home/demos',
         'FAQ': '/pages/home/faq',

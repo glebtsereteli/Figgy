@@ -129,8 +129,7 @@ If at least one of the :Windows: you defined in :Setup: is marked as `visible`, 
 
 Otherwise, you can open it manually with `show_debug_overlay(true, true);`, or use this little trick to open the overlay without the FPS window:
 ```js
-var _dummy = dbg_view("dummy", false);
-dbg_view_delete(_dummy);
+dbg_view_delete(dbg_view("dummy", false));
 ```
 
 Once the overlay is open, go to the **Views** menu in the top bar. Under **Views**, select the **Figgy: Player** window created by our :Window: :Scope Widget: to access your player configs.
@@ -138,7 +137,7 @@ Once the overlay is open, go to the **Views** menu in the top bar. Under **Views
 ![whereIsWindow](whereIsWindow.png)
 
 There, you'll see 3 things:
-* The [Controls Section](/pages/home/interface/interface/#controls-section) that offers root-level controls over your configs and is created in all :Windows: by default.
+* The :Controls Section: that offers root-level controls over your configs and is created in all :Windows: by default.
 * The automatic `Configs` section that is created inside :Windows: if no :Sections: were used at the start.
 * The `Move Speed` :DBG Slider: created by our :Float: :Value Widget:, which we can now adjust to change the player's movement speed in real time.
 
