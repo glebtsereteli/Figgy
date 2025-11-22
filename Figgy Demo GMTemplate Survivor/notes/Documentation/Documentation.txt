@@ -1,0 +1,341 @@
+This note is high-level documentation for the core parts of this template project.
+All events in this project are commented, so you can open any event and read the comments to understand what it does, and how it works.
+
+
+# OBJECTS
+
+There are 27 Objects within this project:
+	
+Game
+	obj_game
+		Main game loop object for gameplay called in the instances layer or the game room.
+		
+		Create		Create the main game music on loop, sets up the xp and level variables, sets up the function handling enemy spawning and creates a new button for pausing.
+			- spawn_enemy()			Resets the cooldown and chooses and enemy to spawn based on the level at a random direction 1200 pixels away from the player so they appear off screen.
+		Clean Up	Stops all audio.
+		Step		Checks the player hasn't ran out of hitpoints ending the game if they have, otherwise it checks the players xp and if they have met the threshold pushes them into the next upgrade screen or complete screen.
+		Draw GUI	Draws the XP hud at the top of the screen when not in game over or upgrade screens.
+		
+	obj_shadow
+		Shadow objects that are set to the player, enemies and collectables to shadow them in game.
+		
+		Create		Creates owner and offet variables.
+		End Step	Updates position to owner at the offsets.
+		
+	obj_text_popup
+		Object used for the health text popups that occur after any combat where damage is given.
+		
+		Create		Creates variables for the text input and its lifetime and speed.
+		Step		Checks if the game isnt paused before reducing its lifetime and then fading it out before destroying when no longer visable.
+		Draw		Draws the text with the correct transparency.
+		
+		Enemies
+			obj_enemy
+				Base enemy object used by all types of enemies.
+				
+				Create					Sets the enemies inital health, speed and scale as well as creating their shadow.
+				Destroy					Creates a pickup drop at random.
+				Step					Sets the direction towards the player, updates the depth based on the y position and cheeks the horizontal speed to scale the image based on that speed.
+				Draw End				Shows the enemies healthbars and decreases their life when the game isnt paused.
+				-><- obj_enemy			Pushes the enemies away from eachother.
+				-><- obj_hero_bullet	Checks enemy health before playing a sound effect, giving the healthbar time to be alive and removing health based on bullet damage, showing the hit sprite and destroying the enemy if out of health.
+				-><- obj_hero_swipe		Checks enemy health before playing a sound effect, giving the healthbar time to be alive and removing health based on swipe damage, showing the hit sprite and destroying the enemy if out of health.
+				-><- obj_hero_trail		Checks enemy health before playing a sound effect, giving the healthbar time to be alive and removing health based on trail damage, showing the hit sprite and destroying the enemy if out of health.
+				Animation End			Sets the sprite to walking sprite animation.
+				
+			obj_pigun
+				Pigun enemy object that uses the base enemy object as a parent.
+				
+				Create			Inherits previous create and customises speed and health as well as its walk, attack and hit animations. 
+				- All other events inherited
+				
+			obj_pumpkill
+				Pumpkill enemy object that uses the base enemy object as a parent.
+				
+				Create			Inherits previous create and customises speed and health as well as its walk, attack and hit animations. 
+				- All other events inherited
+				
+			obj_rooster
+				Rooster enemy object that uses the base enemy object as a parent.
+				
+				Create			Inherits previous create and customises speed as well as its walk, attack and hit animations. 
+				- All other events inherited
+			
+		Game Over
+			obj_button_exit
+				Button used within the game over and template complete screens to return the game to the splash screen.
+			
+				Create			Sets default variables for click state and scaling.
+				Step			Adjusts scale based on if button is moused over or clicked. Also preforms go to menu action when requirments met.
+				End Step		Releases button click state when mouse is released.
+				Draw			Skips normal draw as object is drawn in GUI.
+				Draw GUI		Draws the button and its contained text to scale.
+			
+			obj_button_retry
+				Button used within the game over and template complete screens to restart the game.
+			
+				Create			Sets default variables for click state and scaling.
+				Step			Adjusts scale based on if button is moused over or clicked. Also preforms restart action when requirments met.
+				End Step		Releases button click state when mouse is released.
+				Draw			Skips normal draw as object is drawn in GUI.
+				Draw GUI		Draws the button and its contained text to scale.
+			
+			obj_game_over
+				Object used for the end of game screen when player dies.
+				
+				Create			Stops all the audio and creates the buttons for menu.
+				Draw GUI		Draws the background and banner for screen.
+			
+		Hero and Weapons
+			obj_hero
+				Object used for the main player character.
+				
+				Create					Sets up players health and inital attack functions as well as creating the heros shadow object.
+						- hero_shoot()			Attack logic for shooting, will shoot when enemy is in range and reset cooldown to attack speed, otherwise test again later on next frame.
+						- hero_swipe()			Attack logic for swipping, will swipe when enemy is very near and reset cooldown to attack speed, otherwise test again later on next frame.
+						- hero_trail()			Attack logic for trail weapon, will attack with trail weapon when enemies are close to player and then reset attack speed, otherwise will test again in next frame.
+				Step					Updates the players movements, restricts them to the room and sets their nearest enemy, also calls the players attacks when needed.
+				Draw End				Draws the players back and front health bars based on the offsets to the players position as well as its current health.
+				Draw GUI				Draws the vitual joystick on screen when player is not in pause screen or menu for mouse based movement.
+				-><- obj_collectable	Adds experience points and plays sound effect before destroying the pickup collected.
+				-><- obj_enemy			Checks if the hero is being hit already then deducts health points before creating text popups for the hit changing then enemy animations to their attack ones.
+				-><- obj_heart			Adds health to the hero while playing sound effect before destroying the pickups.
+				Animation End			Checks the players current speed to set animation to an idle or running one.
+			
+			obj_hero_bullet
+				Object created when player uses the bullet firing attack.
+				
+				Step			sets its depth to its -y position.
+				Draw			Draws the sprite at an offset.
+				Outside room	Checks game is not paused and will gradually increase transparency till invisible and then destroy itself. 
+			
+			obj_hero_swipe
+				Object created when player uses the swipe attack.
+				
+				Create			Sets the depth and scale variables.
+				Step			Follows the players positon.
+				Animation End	Destroys itself when finished animating.
+			
+			obj_hero_trail
+				Object created when player uses the trail attack.
+				
+				Create			Sets the depth and scale variables.
+				Step			Follows the players positon.
+				Animation End	Destroys itself when finished animating.
+			
+		Pause
+			obj_button_resume
+				Button used within the pause menu to resume the game.
+			
+				Create			Sets default variables for click state and scaling.
+				Step			Adjusts scale based on if button is moused over or clicked. Also preforms resume action when requirments met destroying the pause menu and its components.
+				End Step		Releases button click state when mouse is released.
+				Draw			Skips normal draw as object is drawn in GUI.
+				Draw GUI		Draws the button and its contained text to scale.
+			
+			obj_pause_button
+				Button used in corner of main playing screen to pause game.
+				
+				Create			Sets default variables for click state and scaling.
+				Step			Adjusts scale based on if button is moused over or clicked. Also preforms pause action when requirments met.
+				End Step		Releases button click state when mouse is released.
+				Draw			Skips normal draw as object is drawn in GUI.
+				Draw GUI		Checks if game is in a pause menu or other type of menu before drawing.
+			
+			obj_pause_screen
+				Object used for when pause screen is created.
+				
+				Create			Creates the buttons for menu.
+				Clean Up		Calls the unpause function.
+				Draw GUI		Draws the background and banner for screen. 
+			
+		Pickups
+			obj_collectable
+				Pickup object for player experience dropped by defeated enemies.
+				
+				Create			Creates shadow object and sets itself as the owner.
+				Step			Checks for pauses and will move towards the player when close.
+				Draw			Draws the sprite but animates it moving up and down when unpaused.
+				
+			obj_heart
+				Pickup object for player health dropped by defeated enemies.
+				
+				Create			Creates shadow object and sets itself as the owner.
+				Step			Checks for pauses and will move towards the player when close.
+				Draw			Draws the sprite but animates it moving up and down when unpaused.
+			
+		Template Complete
+			obj_template_complete
+				Object used for the end of game screen when player successfully finish 10 waves.
+				
+				Create			Stops all the audio and creates the buttons for menu.
+				Draw GUI		Draws the background and banner for screen.
+				
+		Upgrade
+			obj_button_reroll
+				Button used in upgrade screen for rerolling upgrades.
+				
+				Create			Sets default variables for click state and scaling.
+				Step			Adjusts scale based on if button is moused over or clicked. Also preforms new upgrades actions and destroys itself when requirments met.
+				End Step		Releases button click state when mouse is released
+				Draw			Skips normal draw as object is drawn in GUI.
+				Draw GUI		Draws button seting the image index as well as the icon at correct scale.
+			
+			obj_upgrade
+				Objects used for the upgrade cards displayed on screen.
+				
+				Create			Setup for click state variables as well as reveal parameters.
+				Step			Controls when a card is highlighted or seleted and applies the upgrades stats.
+				End Step		Resets the click state and bypass.
+				Draw			Skips normal draw as object is drawn in GUI.
+				Draw GUI		Draws the card and stats as well as a glow when highlighted and an overlay when card is still being revealed.
+			
+			obj_upgrade_screen
+				Object that controls the upgrade screen
+				
+				Create			Stops the audio and calls the upgrades function to make the upgrades as well as creating the reroll button.
+				Draw GUI		Draws the menu background and upgrade heading text.
+Menu
+	obj_button_audio
+		Button used to quit the game from main menu.
+		
+		Create			Sets default variables for click state and scaling.
+		Step			Adjusts scale based on if button is moused over or clicked. Also changes the audio settings when action requirments met.
+		End Step		Releases button click state when mouse is released
+		Draw			Skips normal draw as object is drawn in GUI.
+		Draw GUI		Draws button seting the image index as well as the icon at its correct image index to the correct scale.
+	
+	obj_button_quit
+		Button used to quit the game from main menu.
+		
+		Create			Sets default variables for click state and scaling.
+		Step			Adjusts scale based on if button is moused over or clicked. Also ends game when action requirments met.
+		End Step		Releases button click state when mouse is released
+		Draw			Skips normal draw as object is drawn in GUI.
+		Draw GUI		Draws button seting the image index as well as the icon at correct scale.
+		
+	obj_button_start
+		Button used to start the game from main menu.
+		
+		Create			Sets default variables for click state and scaling.
+		Step			Adjusts scale based on if button is moused over or clicked. Also sends player to next room when action requirments met.
+		End Step		Releases button click state when mouse is released
+		Draw			Skips normal draw as object is drawn in GUI.
+		Draw GUI		Draws button and text at correct scale.
+	
+	obj_title
+		Used in the splash screen displays the game logo and controls the main menus audio.
+		
+		Create			Plays the main menu music on launch.
+		Clean Up		Stops all sound when destroyed.
+
+
+# SCRIPTS
+
+There are 13 Scripts within this project:
+
+Weapons
+	attack_trail
+		Called for trail attacks, checks for enemy before creating trail attack object.
+	shooting_attack
+		Called for shooting attacks, aims towards nearest enemy and fires shots at angles depending on upgrades applied.
+	swipe_attack
+		Called for swipe attacks, checks for enemy before creating swipe attack object.
+	weapon_shooting
+		Used for upgrade cards, details the values shooting upgrades will have depending on the current damage levels.
+	weapon_swipe
+		Used for upgrade cards, details the values swipe upgrades will have depending on the current damage levels.
+	weapon_trail
+		Used for upgrade cards, details the values trail upgrades will have depending on the current damage levels.
+get_upgrades
+	When called destroys all current upgrades and generates new ones depending on the lists available.
+keep_in_room
+	Keeps the player inside the play area when called.
+next_wave
+	Resets the players xp and up their goal needed while scaling up the enemy difficulty when called.
+pause
+	Pauses the game and saves and needed animation frames or speed for enemies and player.
+player_movement
+	Controls and updates the players movement when called.
+unpause
+	Similar to pause unpauses the game and all of it instances are given back their original speeds.
+
+
+# ROOMS
+
+There are 2 Rooms within this project:
+
+rm_menu
+	This is the main menu room and is the first room that is loaded into within the project.
+	
+	Instances		The instances layer of the room is the only instance layer at start with the all the UI objects on it.
+	Background		The background layer is kept in the room but has nothing set to it except the background image.
+	
+rm_game
+	This is the main game room that all the gameplay takes place within the project.
+	
+	Buttons			This instance layer is where all UI buttons and elements are sent.
+	UpgradeScreen	This is the instance layer used for all the menus.
+	Instances		This is the main instance layer used for the player, enemies, projectiles and pickups. 
+	Shadows			This is the instance layer used for any shadows that occur in the game.
+	Assets_1		An asset layer used for all the games background setting such as the bushes and cars.
+	Background		The background layer is kept in the room and has the background sprite tiled to it.
+	
+	
+# Sounds
+
+There are 18 sound files within this project:
+
+They are organised by their type.
+	Jingles
+		Used for win and lose senarios.
+	Music
+		Called in the menu and game looping.
+	Shooting
+		Variety of impact and throwing noises for the projectiles that the game will choose between.
+	UI
+		UI sounds for selecting buttons.
+	Unsorted
+		Attack sounds used when enemies attack or hit as well as pickups sound effects.
+
+
+# SPRITES
+
+There are 53 sprites within this project:
+
+They are organised by their use.
+	Backgrounds
+		All the sprites used for the levels background and decorations.
+	Collectables
+		Sprites used for the health and experience pickups.
+	Enemies
+		Pigun
+			Pigun attack, hit and walk animations.
+		Pumpkill
+			Pumpkill attack, hit and walk animations.
+		Rooster
+			Rooster attack, hit and walk animations.
+	GUI
+		Sprites used for all the UI elements like buttons and menus, banner backgrounds, joystick visual, as well as the xp and health bars.
+	Hero
+		Hero animations for walking, idle and being hit.
+	Splash
+		Background and title card for splash screen.
+	Weapons
+		Attack animations for player.
+	Unsorted
+		Shadow sprite used underneath characters and pickups.
+
+
+~~ Possible Edits! ~~
+
+If you want to edit parts of this project to make it more unique and personal feel free to!
+
+Why not try:
+	- Adjusting the levels layout and how it looks.
+	- Adding your types of enemies into the game.
+	- Creating more colletables that can drop from enemies.
+	- Changing some of the upgrades or effects.
+	- Or use this as an idea of how to make your own game from scratch!
+	
+Don't forget to share what you make to gx.games so others can play your game too!

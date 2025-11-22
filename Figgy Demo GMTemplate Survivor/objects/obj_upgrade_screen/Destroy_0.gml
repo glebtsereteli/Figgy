@@ -1,0 +1,2 @@
+// Unpause the game
+unpause();

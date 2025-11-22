@@ -1,0 +1,11 @@
+Shooting.png
+size:212,40
+filter:Linear,Linear
+pma:true
+scale:0.33
+Shooting 01
+bounds:126,2,84,36
+offsets:39,0,123,36
+Shooting 02
+bounds:2,2,122,36
+offsets:1,0,123,36
