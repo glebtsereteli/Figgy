@@ -56,10 +56,15 @@ export default defineConfig({
             items: [
               { text: 'What is Figgy?', link: '/pages/home/whatIsIt/whatIsIt' },
               { text: 'Getting Started', link: '/pages/home/gettingStarted/gettingStarted' },
-              { text: 'Interface', link: '/pages/home/interface/interface' },
-              { text: 'Persistence', link: '/pages/home/persistence' },
               { text: 'Demos', link: '/pages/home/demos/demos' },
               { text: 'FAQ', link: '/pages/home/faq' },
+            ]
+          },
+          {
+            text: '📝 Concepts',
+            items: [
+              { text: 'Interface', link: '/pages/home/interface/interface' },
+              { text: 'Persistence', link: '/pages/home/persistence' },
             ]
           },
           {
@@ -100,15 +105,19 @@ export default defineConfig({
         items: [
           { text: 'What is Figgy?', link: '/pages/home/whatIsIt/whatIsIt' },
           { text: 'Getting Started', link: '/pages/home/gettingStarted/gettingStarted' },
-          { text: 'Interface', link: '/pages/home/interface/interface' },
-          { text: 'Persistence', link: '/pages/home/persistence' },
           { text: 'Demos', link: '/pages/home/demos/demos' },
           { text: 'FAQ', link: '/pages/home/faq' },
         ]
       },
       {
+        text: '📝 Concepts',
+        items: [
+          { text: 'Interface', link: '/pages/home/interface/interface' },
+          { text: 'Persistence', link: '/pages/home/persistence' },
+        ]
+      },
+      {
         text: '💻 API',
-        link: '/pages/api/figgy/overview/',
         items: [
           {
             text: 'Figgy',
