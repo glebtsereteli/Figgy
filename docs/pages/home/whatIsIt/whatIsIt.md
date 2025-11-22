@@ -26,9 +26,17 @@ Whether you're a solo developer or part of a team, working on a big project or a
 
 👨‍🎨 **Code-Free Design**. Allow your designers to tweak and balance the game live without ever having to touch code. Everything is accessible through the :Interface:.
 
-## How does it work?
+## Games Using Figgy
 
-**COMING SOON!**
+* [DirtWorld](https://jbw-games.itch.io/dirtworld) by [Joe Baxter-Webb (Indie Game Clinic)](https://indiegameclinic.com/).
+* tobu by [Thomas Threlfo](https://bsky.app/profile/tthrelfo.bsky.social).
+* And more to come :)
+
+<!-- <!-- ## Alternatives
+
+* GMLive
+* dropbox/sheets to gm
+* json/yaml/csv with custom live reloading -->
 
 <!-- the figgy workflow can effectively be divided into 4 parts - setup, interface, struct, and file
 
@@ -63,17 +71,4 @@ TODO screenshot
 
 this is where the "persistent" part of the system comes from. once the interface is established, the intended workflow is to open the game, balance it live, save the changes, and then commit and push the to your repo. in case of working with designers, they do it on their own branch that you - the developer, then merge into your branch, develop features, merge your branch into theirs and the cycle continues 
 
-keep in mind that by default, delta saving is enabled and you will only see values that differ from defaults in the config file saved into datafiles
-
-## Alternatives
-
-* gmlive
-* dropbox/sheets to gm
-* json/yaml/csv with custom live reloading
-
-## Games Using Figgy
-
-* [DirtWorld](https://jbw-games.itch.io/dirtworld) by [Joe Baxter-Webb (Indie Game Clinic)](https://indiegameclinic.com/).
-* tobu by [Thomas Threlfo](https://bsky.app/profile/tthrelfo.bsky.social).
-* And more to come :)
- -->
+keep in mind that by default, delta saving is enabled and you will only see values that differ from defaults in the config file saved into datafiles -->

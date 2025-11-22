@@ -18,8 +18,8 @@ This page contains answers to frequently asked questions about Figgy.
 | HTML5 | ❌ Not planned |
 
 ## 📍 What versions of GameMaker does Figgy support?
-  
-The latest Monthly. Currently that's `IDE v2024.14.0.207` and `Runtime v2024.14.0.251`.
+
+The latest [Monthly](https://releases.gamemaker.io/release-notes/2024/14_1). Currently that's `IDE v2024.14.1.210` and `Runtime v2024.14.1.253`.
 
 ## 📍 How is Figgy licensed? Can I use it in commercial projects?
 
