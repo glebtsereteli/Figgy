@@ -20,22 +20,31 @@ Throughout this page, and the documentation as a whole, you'll see many hyperlin
 
 ## Installation
 
-1. Download the `Figgy v1.0.0.yymps` package from the latest [Release](https://github.com/glebtsereteli/Figgy/releases/v1.0.0).
-2. Import the package into your project.
-    * Navigate to __Tools__ in the top toolbar and click __Import Local Package__, or just drag and drop the file into GameMaker.
-    <!-- ![](import01.png) -->
-    * Locate and select the `Figgy v1.0.0.yymps` local package in Explorer/Finder.
-    * Click __Add All__.
-    <!-- ![](import02.png) -->
-    * Click __Import__.
-    <!-- ![](import03.png) -->
-    <!-- > The whole library lives inside the `Figgy` folder, and the only file under `Included Files` is the [MIT license](/pages/home/faq/#📍-how-is-figgy-licensed-can-i-use-it-in-commercial-projects). -->
-3. Disable sandboxing. This is required for Figgy to save changes inside your project's datafiles (for :Persistence:), and to enable :Input/Output:.
-    * Click the **Game Options** button in the top toolbar (it looks like a cog).
-    * Select your target platform under **Platform Settings**.
-    * At the very bottom of the **Platform/General** section, enable the **Disable file system sandbox** option.
-    * Click **Apply**, then **OK**.
-4. You're good to go! Continue to the [Usage](#usage) section below to set up your first configs.
+### 1. Download
+
+Download the `Figgy v1.0.0.yymps` package from the latest [Release](https://github.com/glebtsereteli/Figgy/releases/v1.0.0).
+
+### 2. Import
+
+Import the package into your project.
+* Navigate to __Tools__ in the top toolbar and click __Import Local Package__, or just drag and drop the file into GameMaker.
+<!-- ![](import01.png) -->
+* Locate and select the `Figgy v1.0.0.yymps` local package in Explorer/Finder.
+* Click **Add All**, then **Import**.
+![import](import.gif)
+> The whole library lives inside the `Figgy` folder, and the only file under `Included Files` is the [MIT license](/pages/home/faq/#📍-how-is-figgy-licensed-can-i-use-it-in-commercial-projects).
+
+### 3. Disable Sandboxing
+
+Disabling sandboxing is required for Figgy to save changes inside your project's datafiles (for :Persistence:), and to enable :Input/Output:.
+* Press **Ctrl+T** to bring up the search bar, look for **"sandbox"**, and select your target platform.
+![search](search.png)
+* At the very bottom of the **General/Options** section, enable the **Disable file system sandbox** option, click **Apply**, and close the window.
+![disable sandbox](disableSandbox.gif)
+
+---
+
+And you're good to go! Continue to the [Usage](#usage) section below to set up your first configs.
 
 :::tip
 If you already have Figgy installed and want to update to the latest version, check the [Updating](/pages/home/faq#📍-how-do-i-update-to-the-latest-version-of-figgy) :FAQ: entry for instructions.
