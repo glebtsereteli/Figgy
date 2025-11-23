@@ -1,5 +1,5 @@
 
-speed = cfg.Speed; // @Figgy: Use config.
+speed = cfg.Speed * not global.paused; // @Figgy: Use config.
 
 // Set depth to negative y.
 // This will cause instances to draw from

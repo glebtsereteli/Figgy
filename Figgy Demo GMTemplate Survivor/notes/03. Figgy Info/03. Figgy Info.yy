@@ -3,8 +3,8 @@
   "%Name":"03. Figgy Info",
   "name":"03. Figgy Info",
   "parent":{
-    "name":"02. Figgy",
-    "path":"folders/02. Figgy.yy",
+    "name":"03. Figgy Library",
+    "path":"folders/03. Figgy Library.yy",
   },
   "resourceType":"GMNotes",
   "resourceVersion":"2.0",

@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"FiggyConfig",
+  "%Name":"scr_init",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"FiggyConfig",
+  "name":"scr_init",
   "parent":{
-    "name":"01. Public",
-    "path":"folders/03. Figgy Library/01. Public.yy",
+    "name":"02. Figgy Impementation",
+    "path":"folders/02. Figgy Impementation.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
