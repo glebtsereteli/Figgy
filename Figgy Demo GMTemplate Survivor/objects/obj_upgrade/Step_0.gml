@@ -85,7 +85,7 @@ else
 }
 
 // If the mouse is over this card...
-if (device_mouse_x_to_gui(0) > bbox_left && device_mouse_x_to_gui(0) < bbox_right && device_mouse_y_to_gui(0) > bbox_top && device_mouse_y_to_gui(0) < bbox_bottom && global.is_mouse)
+if (device_mouse_x_to_gui(0) > bbox_left && device_mouse_x_to_gui(0) < bbox_right && device_mouse_y_to_gui(0) > bbox_top && device_mouse_y_to_gui(0) < bbox_bottom && global.is_mouse and not is_mouse_over_debug_overlay()) // @Figgy: Debug Overlay blocks mouse.
 {
 	// Set mouse_over to true, to enable
 	// the purple glow.

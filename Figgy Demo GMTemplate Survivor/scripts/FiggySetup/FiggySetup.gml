@@ -24,7 +24,7 @@ function FiggySetup() {
 				Figgy.Int("Bullet Speed", 10, 5, 30);
 			Figgy.Group("Base Stats");
 				Figgy.OnChangeSet(weapon_shooting_reset);
-				Figgy.Float("Damage", 0.75, 0.5, 2);
+				Figgy.Float("Damage", 0.8, 0.5, 2);
 				Figgy.Int("Attack Speed", 30, 5, 90);
 				Figgy.Int("Number Of Shots", 1, 1, 3);
 				Figgy.Bool("Unlocked", true);
@@ -60,7 +60,7 @@ function FiggySetup() {
 			Figgy.Float("Increase", 1.25, 1, 2, 0.05); Figgy.Comment("Multiplier", true);
 		Figgy.Section("Enemies");
 			Figgy.Group("Spawn Interval");
-				Figgy.Int("Start", 60, 10, 180, 5);
+				Figgy.Int("Start", 70, 10, 180, 5);
 				Figgy.Int("Decrease", 3, 0, 10);
 			Figgy.Group("Health Bonus");
 				Figgy.Float("Start", 1, 10, 180, 5);

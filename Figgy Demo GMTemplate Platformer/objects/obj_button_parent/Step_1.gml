@@ -8,7 +8,7 @@ var _mouse_gui_y = device_mouse_y_to_gui(0);
 
 // Check if the mouse point is colliding with this instance (using 'id').
 // This means the mouse is hovering on the button.
-if (collision_point(_mouse_gui_x, _mouse_gui_y, object_index, false, false) == id)
+if (collision_point(_mouse_gui_x, _mouse_gui_y, object_index, false, false) == id) and (not is_mouse_over_debug_overlay()) // @Figgy: Debug overlay blocks mouse.
 {
 	// If it is, change the frame to the hover frame (1)
 	image_index = 1;
