@@ -1,3 +1,7 @@
+
+// @Figgy: Debug Overlay blocks mouse movement.
+if (is_mouse_over_debug_overlay()) exit;
+
 // If the game is paused...
 if(global.paused)
 {

@@ -11,7 +11,7 @@ function player_movement()
 	vspeed = 0;
 	
 	// If the left mouse button is pressed...
-	if (mouse_check_button_pressed(mb_left))
+	if (mouse_check_button_pressed(mb_left) and not is_mouse_over_debug_overlay()) // @Figgy: Debug Overlay blocks mouse movement.
 	{
 		// Set the anchor point to the current mouse position.
 		global.mouse_anchor_x = device_mouse_x_to_gui(0);
@@ -19,7 +19,7 @@ function player_movement()
 	}
 
 	// If the left mouse button is held down...
-	if (mouse_check_button(mb_left))
+	if (mouse_check_button(mb_left) and not is_mouse_over_debug_overlay()) // @Figgy: Debug Overlay blocks mouse movement.
 	{
 		// If the button is active.
 		if (instance_exists(obj_pause_button))
