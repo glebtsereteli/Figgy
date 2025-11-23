@@ -1,0 +1,1 @@
+sprite_index = spr_gate_gold_1;

@@ -1,0 +1,20 @@
+{
+  "$GMPath":"",
+  "%Name":"path_enemy_8",
+  "closed":true,
+  "kind":1,
+  "name":"path_enemy_8",
+  "parent":{
+    "name":"Level1",
+    "path":"folders/01. Hero's Trail Template/Paths/Level1.yy",
+  },
+  "points":[
+    {"speed":100.0,"x":4672.0,"y":768.0,},
+    {"speed":100.0,"x":4736.0,"y":832.0,},
+    {"speed":100.0,"x":4800.0,"y":736.0,},
+    {"speed":100.0,"x":4736.0,"y":672.0,},
+  ],
+  "precision":4,
+  "resourceType":"GMPath",
+  "resourceVersion":"2.0",
+}

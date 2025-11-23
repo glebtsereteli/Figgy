@@ -13,7 +13,7 @@ The only additions are Figgy configs and the minimal glue needed to connect them
 * All Figgy inserts are marked with `// @Figgy` comments. Search for that globally (press **Ctrl+Shift+F** to bring up global search) to find all Figgy-touched pieces of code.
 * See out the `FiggySetup()` function to see the config layout for this project.
 * The game is initialized inside the `initialize_game()` function that is called in the first room's Creation Code. The room is named `rm_init`.
-* There is a helper object called `obj_debug_manager`. It is persistent and only used for toggling the [Debug Overlay](https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Debugging/The_Debug_Overlay.htm).
+* There is a helper object called `obj_debug_manager`. It is persistent and only used for toggling the [Debug Overlay](https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Debugging/The_Debug_Overlay.htm) with **F1**.
 * You can find these assets in the `02. Figgy Implementation` folder in the Asset Browser.
 * Mouse movement is blocked when you hover over the Debug Overlay via [is_mouse_over_debug_overlay()](https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Debugging/is_mouse_over_debug_overlay.htm).
 

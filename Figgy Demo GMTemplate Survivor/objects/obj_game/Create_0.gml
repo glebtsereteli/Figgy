@@ -1,5 +1,4 @@
-// @Figgy: Store the Game config struct to use throughout the object.
-cfg = CFG.Game;
+cfg = CFG.Game; // @Figgy: Store the Game config struct to use throughout the object.
 
 // Start the game music on a loop.
 audio_play_sound(snd_music_game, 0, true);

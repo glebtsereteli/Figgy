@@ -1,5 +1,4 @@
-// @Figgy: Store the Rooster config struct to use throughout the object.
-cfg = CFG.Enemies.Rooster;
+cfg = CFG.Enemies.Rooster; // @Figgy: Store the Rooster config struct to use throughout the object.
 
 // Call parent event to set up general enemy stuff.
 event_inherited();

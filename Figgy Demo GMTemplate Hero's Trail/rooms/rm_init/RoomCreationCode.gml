@@ -1,0 +1,2 @@
+
+initialize_game();

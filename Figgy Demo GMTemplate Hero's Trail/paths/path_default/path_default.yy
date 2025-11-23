@@ -1,0 +1,20 @@
+{
+  "$GMPath":"",
+  "%Name":"path_default",
+  "closed":true,
+  "kind":1,
+  "name":"path_default",
+  "parent":{
+    "name":"Paths",
+    "path":"folders/01. Hero's Trail Template/Paths.yy",
+  },
+  "points":[
+    {"speed":100.0,"x":63.0,"y":32.0,},
+    {"speed":100.0,"x":127.0,"y":32.0,},
+    {"speed":100.0,"x":128.0,"y":94.0,},
+    {"speed":100.0,"x":64.0,"y":93.0,},
+  ],
+  "precision":4,
+  "resourceType":"GMPath",
+  "resourceVersion":"2.0",
+}

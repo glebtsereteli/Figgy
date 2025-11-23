@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"snd_baddie_footstep",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":1,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":0.442708,
+  "exportDir":"",
+  "name":"snd_baddie_footstep",
+  "parent":{
+    "name":"Characters",
+    "path":"folders/01. Hero's Trail Template/Sounds/Characters.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"snd_baddie_footstep.wav",
+  "volume":1.0,
+}

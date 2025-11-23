@@ -1,5 +1,4 @@
-// @Figgy: Store the Pigun config struct to use throughout the object.
-cfg = CFG.Enemies.Pigun;
+cfg = CFG.Enemies.Pigun; // @Figgy: Store the Pigun config struct to use throughout the object.
 
 // Call parent event to set up general enemy stuff.
 event_inherited();

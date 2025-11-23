@@ -1,5 +1,4 @@
-// @Figgy: Store the Hero config struct to use throughout the object.
-cfg = CFG.Hero;
+cfg = CFG.Hero; // @Figgy: Store the Hero config struct to use throughout the object.
 
 // Set the maximum hitpoints that the player can have.
 //hitpoints_max = 10; // @Figgy: Using config instead.

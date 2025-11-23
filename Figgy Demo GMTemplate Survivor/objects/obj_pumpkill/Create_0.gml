@@ -1,5 +1,4 @@
-// @Figgy: Store the PumpKill config struct to use throughout the object.
-cfg = CFG.Enemies.Pumpkill;
+cfg = CFG.Enemies.Pumpkill; // @Figgy: Store the PumpKill config struct to use throughout the object.
 
 // Call parent event to set up general eney stuff.
 event_inherited();
