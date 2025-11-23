@@ -2,10 +2,10 @@
 cfg = CFG.Character.Defeat; // @Figgy: Store config struct in a variable to reference throughout the object.
 
 // Enable gravity
-gravity = cfg.Gravity;
+gravity = cfg.Gravity; // @Figgy: Use config.
 
 // Make the instance jump up
-vspeed = -cfg.Jump;
+vspeed = -cfg.Jump; // @Figgy: Use config.
 
 // Flip the sprite horizontally so it faces right (as the original sprite for this object faces left)
 image_xscale = -1;

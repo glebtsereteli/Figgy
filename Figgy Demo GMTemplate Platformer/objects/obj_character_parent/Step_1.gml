@@ -23,7 +23,7 @@ if (round(vel_x) != 0)
 {
 	// Here we calculate the friction that should be applied this frame. It is calculated by multiplying the sign of the X velocity (which
 	// will be -1 or 1) with the friction power. The result is stored in a local variable.
-	var _friction_applied = sign(vel_x) * cfg.Friction;
+	var _friction_applied = sign(vel_x) * cfg.Friction; // @Figgy: Use config.
 
 	// This checks if the character is NOT grounded, meaning it's in mid-air. In that case we want to reduce the friction that is applied (so in 
 	// mid-air the player takes more time to slow down).
@@ -45,4 +45,4 @@ else
 
 // This adds the grav_speed value to the vel_y variable.
 // Doing so applies gravity to the character's vertical velocity, pulling it down each frame to make it fall.
-vel_y += cfg.Gravity;
+vel_y += cfg.Gravity; // @Figgy: Use config.

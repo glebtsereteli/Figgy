@@ -31,7 +31,7 @@ function FiggySetup() {
 		Figgy.NoScope().Section("Movement");
 			Figgy.Float("MoveSpeed", 2, 1, 6, 0.1, function(_moveSpeed) {
 				with (obj_enemy_parent) {
-					StartMoving();
+					start_moving();
 				}
 			});
 			Figgy.Float("Friction", 0, 0.1, 2, 0.1);

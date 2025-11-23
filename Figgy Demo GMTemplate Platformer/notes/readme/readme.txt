@@ -1,10 +1,10 @@
-# Figgy Demo - GameMaker Survivor Template
+# Figgy Demo - GameMaker Platformer Template
 
-Welcome to the GMTemplate Survivor Figgy demo!
+Welcome to the GMTemplate Platformer Figgy demo!
 
 This project demonstrates how easily Figgy can be integrated into an existing GameMaker project.
 
-In this demo, we're using GameMaker's official [Survivor template](https://gamemaker.io/en/blog/survivor-gamemaker-template) as a base project. All mechanics are preserved exactly as they are in the original template.
+In this demo, we're using GameMaker's official [Platformer template](https://gamemaker.io/en/blog/windy-woods-platformer) as a base project. All mechanics are preserved exactly as they are in the original template.
 
 The only additions are Figgy configs and the minimal glue needed to connect them to the game. Create-event variables and magic numbers are replaced with persistent, live-editable Figgy configs.
 

@@ -9,7 +9,7 @@ if (!instance_exists(obj_player))
 var _width = sprite_get_width(spr_hud_heart_empty);
 var _x_pos = 0;
 
-for (var i = CFG.Character.Health; i > 0; --i)
+for (var i = CFG.Character.Health; i > 0; --i) // @Figgy: Use config.
 {
 	draw_sprite(spr_hud_heart_empty, 0, x + _x_pos, y);
 	

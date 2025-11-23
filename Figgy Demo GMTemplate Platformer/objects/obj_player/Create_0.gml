@@ -21,7 +21,7 @@ player_jump = function()
 	{
 		// This sets the Y velocity to negative jump_speed, making the player immediately jump upwards. It
 		// will automatically be brought down by the gravity code in the parent's Begin Step event.
-		vel_y = -cfg.JumpSpeed;
+		vel_y = -cfg.JumpSpeed; // @Figgy: Use config.
 
 		// This changes the player's sprite to the jump sprite, and resets the frame to 0.
 		sprite_index = spr_player_jump;
@@ -59,7 +59,7 @@ player_left = function()
 
 	// Set the X velocity to negative move_speed.
 	// This makes the character move left.
-	vel_x = -cfg.MoveSpeed;
+	vel_x = -cfg.MoveSpeed; // @Figgy: Use config.
 
 	// This checks if the current sprite is the fall sprite, meaning the player hasn't landed yet.
 	if (sprite_index == spr_player_fall)
@@ -95,7 +95,7 @@ player_right = function()
 
 	// Set the X velocity to move_speed.
 	// This makes the character move right.
-	vel_x = cfg.MoveSpeed;
+	vel_x = cfg.MoveSpeed; // @Figgy: Use config.
 
 	// This checks if the current sprite is the fall sprite, meaning the player hasn't landed yet.
 	if (sprite_index == spr_player_fall)

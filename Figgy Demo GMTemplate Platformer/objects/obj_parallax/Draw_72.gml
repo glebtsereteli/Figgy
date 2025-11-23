@@ -9,10 +9,10 @@ var _camera_x = camera_get_view_x(view_camera[0]);
 // We then run the layer_x function to change the X position of a layer.
 // The layer is "Back_Trees2" and its position is 60% of the camera's X position (camera_x * 0.6).
 // The higher this multiplier is, the "further" the layer appears, as it moves less as compared to the camera.
-layer_x("Back_Trees2", _camera_x * cfg.Trees2);
+layer_x("Back_Trees2", _camera_x * cfg.Trees2); // @Figgy: Use config.
 
 // The "Back_Trees1" layer is positioned at camera_x * 0.7.
-layer_x("Back_Trees1", _camera_x * cfg.Trees1);
+layer_x("Back_Trees1", _camera_x * cfg.Trees1); // @Figgy: Use config.
 
 // The "Back_Clouds" layer is positioned at camera_x * 0.8.
-layer_x("Back_Clouds", _camera_x * cfg.Clouds);
+layer_x("Back_Clouds", _camera_x * cfg.Clouds); // @Figgy: Use config.

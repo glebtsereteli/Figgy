@@ -7,7 +7,7 @@ cfg = CFG.Character; // @Figgy: Store config struct in a variable to reference t
 
 // This is the friction value applied to the character's horizontal movement every frame.
 // This is applied in the Begin Step event. The friction is reduced when the character is in mid-air.
-//friction_power = 0.7; @Figgy:  Using config.
+//friction_power = 0.7; @Figgy: Using config.
 
 // This is the jumping speed of the character.
 //jump_speed = 23; @Figgy: Using config.
@@ -32,8 +32,8 @@ grounded_y = y;
 // character.
 // 'hp' is the actual health of the character.
 // It's initialised at the same value as 'max_hp'.
-//max_hp = 3; // @Figgy: using config.
-hp = cfg.Health;
+//max_hp = 3; // @Figgy: Using config.
+hp = cfg.Health; // @Figgy: Use config.
 
 // This variable is used to grant the player invincibility, after it's hit by an enemy or after it falls off ground.
 // It stores the remaining number of frames where the player can't be hurt. If it's 0, it means the player is not invincible.

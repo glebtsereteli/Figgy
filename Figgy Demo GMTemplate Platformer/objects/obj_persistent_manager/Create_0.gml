@@ -1,12 +1,4 @@
 
-// @Figgy: Store current config struct in a global + macro pair for cleaner access:
-#macro CFG global.__cfg
-CFG = Figgy.GetCurrent();
-
-// @Figgy: Show debug debug overlay without the FPS view:
-var _dummy = dbg_view("dummy", false);
-dbg_view_delete(_dummy);
-
 // Create a global particle system that is persistent, so it can be used throughout the game
 global.part_system = part_system_create_layer("Instances", true);
 

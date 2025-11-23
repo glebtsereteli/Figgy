@@ -15,7 +15,7 @@ if (vel_y > 0)
 		other.hp = 0;
 	
 		// Set the vertical velocity of the player to -jump_speed so it bounces off the enemy.
-		vel_y = -cfg.JumpSpeed;
+		vel_y = -cfg.JumpSpeed; // @Figgy: Use config.
 	
 		// Change the sprite to spr_player_jump as the player is now jumping (and not falling anymore).
 		sprite_index = spr_player_jump;
@@ -58,11 +58,11 @@ vel_x = _x_sign * 15;
 // This first reduces the player's health by the damage amount in the 'other' instance
 // (which is the enemy).
 // Then it sets 'in_knockback' to true to tell the player that it's in knockback.
-hp -= other.cfg.Damage;
+hp -= other.cfg.Damage; // @Figgy: Use config.
 in_knockback = true;
 
 // This sets no_hurt_frames to 120, so the player is invincible for the next 2 seconds (as one second contains 60 frames).
-no_hurt_frames = cfg.iFrames; // @Figgy: using config.
+no_hurt_frames = cfg.iFrames; // @Figgy: Use config.
 
 // This changes the sprite to the hurt sprite.
 sprite_index = spr_player_hurt;

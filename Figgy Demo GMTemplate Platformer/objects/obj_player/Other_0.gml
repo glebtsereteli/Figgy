@@ -15,7 +15,7 @@ if (bbox_top > room_height)
 		y = grounded_y;
 
 		// This gives 2 seconds of invincibility to the player.
-		no_hurt_frames += cfg.iFrames; // @Figgy: Using config.
+		no_hurt_frames += cfg.iFrames; // @Figgy: Use config.
 
 		// This resets the X and Y velocities of the player so it stops all movement.
 		vel_x = 0;

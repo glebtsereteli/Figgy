@@ -1,5 +1,5 @@
 // Increase the coins variable of the player by 1
-coins += cfg.CoinValue;
+coins += cfg.CoinValue; // @Figgy: Use config.
 
 // Create an instance of obj_coin_collect_effect at the position of the 'other' instance, which is the
 // coin that the player touched.

@@ -8,12 +8,12 @@ cfg = CFG.Enemy; // @Figgy: Store config struct in a variable to reference throu
 // This sets the movement speed for the enemies.
 //move_speed = 2; @Figgy: Using config.
 
-StartMoving = function() {
+start_moving = function() {
 	// This applies either move_speed or negative move_speed to the enemy's X velocity. This way the enemy will
 	// either move left or right (at random).
-	vel_x = choose(-cfg.MoveSpeed, cfg.MoveSpeed);
+	vel_x = choose(-cfg.MoveSpeed, cfg.MoveSpeed); // @Figgy: Use config.
 };
-StartMoving();
+start_moving();
 
 // This sets the friction to 0 so the enemy never comes to a stop.
 //friction_power = 0; @Figgy: Using config.
