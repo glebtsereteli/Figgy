@@ -53,16 +53,30 @@ function FiggySetup() {
 				Figgy.OnChangeReset();
 		}
 	}
+	Figgy.Window("Game"); {
+		Figgy.Int("Total Waves", 10, 1, 30);
+		Figgy.Section("XP Goal");
+			Figgy.Int("Start", 10, 5, 50, 1);
+			Figgy.Float("Increase", 1.25, 1, 2, 0.05); Figgy.Comment("Multiplier", true);
+		Figgy.Section("Enemies");
+			Figgy.Group("Spawn Interval");
+				Figgy.Int("Start", 60, 10, 180, 5);
+				Figgy.Int("Decrease", 3, 0, 10);
+			Figgy.Group("Health Bonus");
+				Figgy.Float("Start", 1, 10, 180, 5);
+				Figgy.Float("Decrease", 3, 0, 10);
+	}
 	Figgy.Window("Enemies"); {
-		var _Enemy = function(_name) {
-			Figgy.Section(_name);
-				Figgy.Float("Speed", 4, 1, 10);
+		var _Enemy = function(_name, _health, _speed) {
+			Figgy.Section(_name, _speed);
+				Figgy.Float("Health", _health, 1, 10);
+				Figgy.Float("Speed", _speed, 1, 10);
 				Figgy.Int("Damage", 1, 1, 5);
 		};
 		
-		_Enemy("Pumpkill");
-		_Enemy("Pigun");
-		_Enemy("Rooster");
+		_Enemy("Pumpkill", 2, 2.5);
+		_Enemy("Pigun", 3, 3);
+		_Enemy("Rooster", 2, 2);
 	}
 	Figgy.Window("Pickups"); {
 		var _Pickup = function(_name) {
@@ -72,6 +86,7 @@ function FiggySetup() {
 		};
 		
 		_Pickup("Heart");
+			Figgy.Float("Drop Chance", 0.09, 0, 1, 0.01);
 		_Pickup("Collectable");
 	}
 }

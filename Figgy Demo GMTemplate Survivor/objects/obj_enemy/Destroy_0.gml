@@ -2,9 +2,8 @@
 // By default it should be a regular collectable
 var _drop = obj_collectable;
 
-// However, there is a 1/10 chance to replace it with a heart instead
-// Because computers start countin at 0, the maximum value must be 9 for a 1/10 chance
-if(irandom(9) == 0)
+// However, there is a N% chance to replace it with a heart instead
+if (random(1) < CFG.Pickups.Heart.DropChance) // @Figgy: Use config.
 {
 	_drop = obj_heart
 }

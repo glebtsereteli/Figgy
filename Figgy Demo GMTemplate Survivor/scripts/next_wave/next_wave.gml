@@ -6,11 +6,11 @@ function next_wave()
 	global.xp -= global.xp_goal;
 
 	// Increase the experience goal for the next wave.
-	global.xp_goal = floor(global.xp_goal * 1.2);
+	global.xp_goal = floor(global.xp_goal * cfg.XPGoal.Increase); // @Figgy: Use config.
 
 	// Decrease the time it takes to spawn enemies.
-	global.enemy_spawn_speed -= 3;
+	global.enemy_spawn_speed -= cfg.Enemies.SpawnInterval.Decrease; // @Figgy: Use config.
 
 	// Increase enemy health bonus, making all enemies slightly harder to kill each wave.
-	global.enemy_health_bonus = global.enemy_health_bonus * 1.25;
+	global.enemy_health_bonus *= cfg.Enemies.HealthBonus.Decrease; // @Figgy: Use config.
 }

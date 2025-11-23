@@ -1,5 +1,5 @@
 // Create variable for max hitpoints.
-hitpoints_max = 2 * global.enemy_health_bonus;
+hitpoints_max = cfg.Health * global.enemy_health_bonus; // @Figgy: Use config.
 
 // Create variable for hitpoints.
 hitpoints = hitpoints_max;

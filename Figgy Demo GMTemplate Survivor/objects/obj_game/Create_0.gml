@@ -1,3 +1,6 @@
+// @Figgy: Store the Game config struct to use throughout the object.
+cfg = CFG.Game;
+
 // Start the game music on a loop.
 audio_play_sound(snd_music_game, 0, true);
 
@@ -5,7 +8,7 @@ audio_play_sound(snd_music_game, 0, true);
 global.paused = false;
 
 // Set the experience goal to reach the next level.
-global.xp_goal = 10;
+global.xp_goal = cfg.XPGoal.Start; // @Figgy: Use config.
 
 // Set current experience.
 global.xp = 0;
@@ -14,12 +17,12 @@ global.xp = 0;
 global.level = 1;
 
 // Set the cooldown time for spawning enemies.
-global.enemy_spawn_speed = 60;
+global.enemy_spawn_speed = cfg.Enemies.SpawnInterval.Start; // @Figgy: Use config.
 
 // Set starting enemy health bonus.
 // This is a multiplier, and is increased each wave.
 // Result: enemy hp = enemy base hp * health bonus.
-global.enemy_health_bonus = 1;
+global.enemy_health_bonus = cfg.Enemies.HealthBonus.Start; // @Figgy: Use config.
 
 // Create the hero in the center of the room.
 instance_create_layer(room_width / 2, room_height / 2, "Instances", obj_hero);

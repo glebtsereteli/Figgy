@@ -5,7 +5,7 @@ cfg = CFG.Enemies.Rooster;
 event_inherited();
 
 // Set speed for this enemy type.
-speed = 2;
+//speed = 2; // @Figgy: Replaced with a config in obj_enemy's Step event.
 
 // Set sprites for this enemy type.
 walk_sprite = spr_rooster_walk;

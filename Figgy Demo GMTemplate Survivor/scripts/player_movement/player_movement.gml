@@ -55,8 +55,8 @@ function player_movement()
 				if (gamepad_axis_value(0, gp_axislv) != 0 || gamepad_axis_value(0, gp_axislh) != 0)
 				{
 					// Adds movement speed to player based on left stick input.
-					vspeed += cfg.Speed * gamepad_axis_value(0, gp_axislv); // @Figgy: Use Config.
-					hspeed += cfg.Speed * gamepad_axis_value(0, gp_axislh); // @Figgy: Use Config.
+					vspeed += cfg.Speed * gamepad_axis_value(0, gp_axislv); // @Figgy: Use config.
+					hspeed += cfg.Speed * gamepad_axis_value(0, gp_axislh); // @Figgy: Use config.
 				}
 			}
 		}
@@ -65,28 +65,28 @@ function player_movement()
 		if (keyboard_check(ord("W")))
 		{
 			// Add -10 to vertical speed.
-			vspeed += -cfg.Speed; // @Figgy: Use Config.
+			vspeed += -cfg.Speed; // @Figgy: Use config.
 		}
 	
 		// If the S key is down...
 		if (keyboard_check(ord("S")))
 		{
 			// Add 10 to vertical speed.
-			vspeed += cfg.Speed; // @Figgy: Use Config.
+			vspeed += cfg.Speed; // @Figgy: Use config.
 		}
 	
 		// If the A key is down...
 		if (keyboard_check(ord("A")))
 		{
 			// Add -10 to horizontal speed.
-			hspeed += -cfg.Speed; // @Figgy: Use Config.
+			hspeed += -cfg.Speed; // @Figgy: Use config.
 		}
 	
 		// If the D key is down...
 		if (keyboard_check(ord("D")))
 		{
 			// Add 10 to horizontal speed.
-			hspeed += cfg.Speed; // @Figgy: Use Config.
+			hspeed += cfg.Speed; // @Figgy: Use config.
 		}
 	}
 
@@ -94,8 +94,8 @@ function player_movement()
 	var _speed = sqrt(sqr(hspeed) + sqr(vspeed));
 	if (_speed > cfg.Speed)
 	{
-		hspeed *= cfg.Speed / _speed; // @Figgy: Use Config.
-		vspeed *= cfg.Speed / _speed; // @Figgy: Use Config.
+		hspeed *= cfg.Speed / _speed; // @Figgy: Use config.
+		vspeed *= cfg.Speed / _speed; // @Figgy: Use config.
 	}
 
 	// If hspeed does not equal 0...
