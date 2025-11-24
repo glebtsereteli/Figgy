@@ -16,7 +16,7 @@ Throughout this page, and the documentation as a whole, you'll see many hyperlin
 * Basic familiarity with GameMaker and GML, including:
     * Asset types (rooms, objects, scripts, sprites, tilemaps, etc).
     * Working with objects and events.
-    * Structs, functions/methods, macros.
+    * Structs, functions and methods, macros.
 
 ## Installation
 
@@ -54,7 +54,7 @@ If you already have Figgy installed and want to update to the latest version, ch
 
 ### 1. Setting Up
 
-Before you can use Figgy in your game, you need to define your configuration layout inside the global FiggySetup() function.
+Before you can use Figgy in your game, you need to define your configuration layout inside the global `FiggySetup()` function.
 
 :Setup: is Figgy's central hub and entry point. It's where you create your :Scope Widgets:, :Value Widgets:, and :Decor Widgets: - everything that appears in the :Interface: and becomes part of your config data struct.
 
@@ -136,7 +136,7 @@ Once the overlay is open, go to the **Views** menu in the top bar. Under **Views
 
 ![whereIsWindow](whereIsWindow.png)
 
-There, you'll see 3 things:
+There, you'll see three things:
 * The :Controls Section: that offers root-level controls over your configs and is created in all :Windows: by default.
 * The automatic `Configs` section that is created inside :Windows: if no :Sections: were used at the start.
 * The `Move Speed` :DBG Slider: created by our :Float: :Value Widget:, which we can now adjust to change the player's movement speed in real time.
@@ -156,4 +156,4 @@ Next up, check out:
 * The :Interface: and :Persistence: pages to learn about core Figgy concepts.
 * The :Figgy: section for an overview of the syntax and the key parts of the API.
 
-Once that is covered, I recommend diving into the :Setup: section that covers :Scope Widgets:, :Value Widgets:, :Decor Widgets:, :OnChange: callbacks, and formatting tips & best practices. This is where you'll be spending most of your time when working with Figgy.
+Once that is covered, I recommend diving into the :Setup: section that covers :Scope Widgets:, :Value Widgets:, :Decor Widgets:, :OnChange: callbacks, and formatting tips & best practices. This is where you'll spend of your time when working with Figgy.
