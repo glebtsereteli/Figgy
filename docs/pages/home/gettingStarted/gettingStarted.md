@@ -152,11 +152,8 @@ By creating a global reference to your config and linking object-level shortcuts
 ## What's Next?
 
 Next up, check out:
-* The :Interface: page to learn how Figgy builds its interface and how it operates.
-* The :Persistence: page to learn about Figgy's saving and loading operations.
 * The :Demos: page to explore the available demos.
+* The :Interface: and :Persistence: pages to learn about core Figgy concepts.
 * The :Figgy: section for an overview of the syntax and the key parts of the API.
 
-:::tip
-I recommend starting with the :Setup: section that covers :Scope Widgets:, :Value Widgets:, :Decor Widgets:, :OnChange: callbacks, and formatting tips & best practices. This is where you'll be spending most of your time when working with Figgy.
-:::
+Once that is covered, I recommend diving into the :Setup: section that covers :Scope Widgets:, :Value Widgets:, :Decor Widgets:, :OnChange: callbacks, and formatting tips & best practices. This is where you'll be spending most of your time when working with Figgy.

@@ -4,10 +4,10 @@ import MarkdownIt from 'markdown-it'
 export default defineConfig({
   base: '/Figgy/',
   cleanUrls: true,
-
+  
   ignoreDeadLinks: true,
   lastUpdated: true,
-
+  
   title: "Figgy",
   description: "Figgy Documentation",
   head: [
