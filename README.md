@@ -48,7 +48,7 @@ Whether you're a solo developer or part of a team, working on a big project or a
 * Thanks to [Gutpunch Studios](https://gutpunchstudios.com/) for the original "knobs and levers" design philosophy and inspiration.
 * Thanks to [Omar Cornut](https://www.miracleworld.net/) for making the infinitely useful [Dear ImGui](https://github.com/ocornut/imgui) and the GameMaker team for implementing it in the [Debug Overlay](https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Debugging/The_Debug_Overlay.htm).
 * Thanks to [Thomas Threlfo](https://bsky.app/profile/tthrelfo.bsky.social) and [Joe Baxter-Webb](https://indiegameclinic.com/) for initial testing.
-* Demo graphics by [Pixel Frog](https://x.com/PixelFrogStudio).
+* Demo project templates by [GameMaker](https://gamemaker.io/).
 
 # Games Using Figgy
 * [DirtWorld](https://krankenhaus-uk.itch.io/dirtworld) by [Joe Baxter-Webb](https://bsky.app/profile/indiegameclinic.bsky.social) (AKA [Indie Game Clinic](https://indiegameclinic.com/) and [KRANKENHAUS](https://krankenhaus-uk.itch.io/)).
