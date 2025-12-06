@@ -641,7 +641,7 @@ function Figgy() {
 	static ResetToInitial = function() {
 		__FIGGY_BENCH_START;
 		__Move(__initial, __current);
-		__changes.__Refresh();
+		__changes.__Update().__Refresh();
 		__FiggyLogTimed("RESET TO INITIAL: completed");
 		
 		return self;
@@ -653,7 +653,7 @@ function Figgy() {
 	static ResetToDefault = function() {
 		__FIGGY_BENCH_START;
 		__Move(__default, __current);
-		__changes.__Refresh();
+		__changes.__Update().__Refresh();
 		__FiggyLogTimed("RESET TO DEFAULT: completed");
 		
 		return self;

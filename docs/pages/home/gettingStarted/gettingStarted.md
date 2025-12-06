@@ -22,14 +22,14 @@ Throughout this page, and the documentation as a whole, you'll see many hyperlin
 
 ### 1. Download
 
-Download the `Figgy v1.0.0.yymps` package from the latest [Release](https://github.com/glebtsereteli/Figgy/releases/v1.0.0).
+Download the `Figgy v1.0.1.yymps` package from the latest [Release](https://github.com/glebtsereteli/Figgy/releases/latest/).
 
 ### 2. Import
 
 Import the package into your project.
 * Navigate to __Tools__ in the top toolbar and click __Import Local Package__, or just drag and drop the file into GameMaker.
 <!-- ![](import01.png) -->
-* Locate and select the `Figgy v1.0.0.yymps` local package in Explorer/Finder.
+* Locate and select the `Figgy v1.0.1.yymps` local package in Explorer/Finder.
 * Click **Add All**, then **Import**.
 ![import](import.gif)
 > The whole library lives inside the `Figgy` folder, and the only file under `Included Files` is the [MIT license](/pages/home/faq/#📍-how-is-figgy-licensed-can-i-use-it-in-commercial-projects).

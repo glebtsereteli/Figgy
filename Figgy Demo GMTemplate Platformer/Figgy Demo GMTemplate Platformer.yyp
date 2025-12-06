@@ -63,9 +63,9 @@
     {"$GMFolder":"","%Name":"VFX","folderPath":"folders/01. Platformer Template/Sprites/VFX.yy","name":"VFX","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Tile Sets","folderPath":"folders/01. Platformer Template/Tile Sets.yy","name":"Tile Sets","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"02. Figgy Implementation","folderPath":"folders/02. Figgy Implementation.yy","name":"02. Figgy Implementation","resourceType":"GMFolder","resourceVersion":"2.0",},
-    {"$GMFolder":"","%Name":"03. Figgy Library","folderPath":"folders/03. Figgy Library.yy","name":"03. Figgy Library","resourceType":"GMFolder","resourceVersion":"2.0",},
-    {"$GMFolder":"","%Name":"01. Public","folderPath":"folders/03. Figgy Library/01. Public.yy","name":"01. Public","resourceType":"GMFolder","resourceVersion":"2.0",},
-    {"$GMFolder":"","%Name":"02. Private","folderPath":"folders/03. Figgy Library/02. Private.yy","name":"02. Private","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Figgy","folderPath":"folders/Figgy.yy","name":"Figgy","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"02. Public","folderPath":"folders/Figgy/02. Public.yy","name":"02. Public","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"03. Private","folderPath":"folders/Figgy/03. Private.yy","name":"03. Private","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
   "ForcedPrefabProjectReferences":[
     {"link":"io.gamemaker.gm_effect_windblown_particles-1.0.0","name":"io.gamemaker.gm_effect_windblown_particles-1.0.0","path":"io.gamemaker.gm_effect_windblown_particles-1.0.0.yyp",},
@@ -84,7 +84,7 @@
   "resources":[
     {"id":{"name":"ft_button","path":"fonts/ft_button/ft_button.yy",},},
     {"id":{"name":"ft_hud","path":"fonts/ft_hud/ft_hud.yy",},},
-    {"id":{"name":"03. Figgy Info","path":"notes/03. Figgy Info/03. Figgy Info.yy",},},
+    {"id":{"name":"01. Figgy Info","path":"notes/01. Figgy Info/01. Figgy Info.yy",},},
     {"id":{"name":"Documentation","path":"notes/Documentation/Documentation.yy",},},
     {"id":{"name":"readme","path":"notes/readme/readme.yy",},},
     {"id":{"name":"obj_block_brick_destroy","path":"objects/obj_block_brick_destroy/obj_block_brick_destroy.yy",},},

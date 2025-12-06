@@ -9,21 +9,28 @@ function __FiggyChanges() constructor {
 		
 		__Refresh();
 		call_later(1, time_source_units_frames, function() {
-			array_foreach(__pool, function(_change) {
-				_change.__Update();
-			});
+			__Update();
 		}, true);
 	};
 	static __Add = function(_scope, _name, _callback) {
 		var _change = new __FiggyChange(_scope, _name, _callback);
 		array_push(__pool, _change);
 	};
+	static __Update = function() {
+		array_foreach(__pool, function(_change) {
+			_change.__Update();
+		});
+		
+		return self;
+	};
 	static __Refresh = function() {
-		if (not FIGGY_CHANGES_ENABLED) return;
+		if (not FIGGY_CHANGES_ENABLED) return self;
 		
 		array_foreach(__pool, function(_change) {
 			_change.__Refresh();
 		});
+		
+		return self;
 	};
 }
 function __FiggyChange(_scope, _name, _callback) constructor {

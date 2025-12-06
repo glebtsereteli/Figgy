@@ -2,10 +2,10 @@
 
 #region Info
 
-#macro __FIGGY_VERSION "v1.0.0" // major.minor.patch
-#macro __FIGGY_DATE "2025.11.18" // year.month.day
+#macro __FIGGY_VERSION "v1.0.1" // major.minor.patch
+#macro __FIGGY_DATE "2025.12.06" // year.month.day
 #macro __FIGGY_NAME "Figgy"
-#macro __FIGGY_LOG_PREFIX $"[{__FIGGY_NAME}]"
+#macro __FIGGY_LOG_PREFIX "[" + __FIGGY_NAME + "]"
 
 #endregion
 #region Status
@@ -17,9 +17,9 @@
 #endregion
 #region Utility
 
-#macro __FIGGY_FILE_NAME $"{FIGGY_FILE_NAME}{FIGGY_FILE_EXT}"
-#macro __FIGGY_FILE_PATH $"{__FIGGY_IN_IDE ? $"{filename_path(GM_project_filename)}datafiles/" : program_directory}{__FIGGY_FILE_NAME}"
-#macro __FIGGY_FILE_FILTER $"Figgy Config File|*{FIGGY_FILE_EXT}"
+#macro __FIGGY_FILE_NAME (FIGGY_FILE_NAME + FIGGY_FILE_EXT)
+#macro __FIGGY_FILE_PATH ((__FIGGY_IN_IDE ? filename_path(GM_project_filename) + "datafiles/" : program_directory) + __FIGGY_FILE_NAME)
+#macro __FIGGY_FILE_FILTER ("Figgy Config File|*" + FIGGY_FILE_EXT)
 
 #macro __FIGGY_NO_INIT \
 if (__initInactive) { \
