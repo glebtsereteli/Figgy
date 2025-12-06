@@ -9,7 +9,7 @@ Figgy is a pure GML [Free and Open Source](https://en.wikipedia.org/wiki/Free_an
 
 * ℹ️ Download the `.yymps` local package from the [Releases](https://github.com/glebtsereteli/Figgy/releases) page.
 * ℹ️ Refer to the [Documentation](https://glebtsereteli.github.io/Figgy/) for installation instructions, usage examples and full API reference.
-* ℹ️ **GameMaker Version:** [v2024.14](https://releases.gamemaker.io/release-notes/2024/14_1) (the latest Monthly).
+* ℹ️ **GameMaker Version:** [v2024.14.1](https://releases.gamemaker.io/release-notes/2024/14_1) (the latest Monthly).
 * ℹ️ **Platforms:** Windows, macOS and Linux are fully supported. GX.games supports everything but IO. Console & Mobile support is planned. HTML5 support is not planned.
 
 <table style="width: 100%; table-layout: fixed; border-collapse: separate; border-spacing: 10px;">

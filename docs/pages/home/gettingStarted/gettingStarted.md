@@ -11,8 +11,8 @@ Throughout this page, and the documentation as a whole, you'll see many hyperlin
 :::
 
 ## Requirements
-
-* [GameMaker](https://gamemaker.io/en/download) version `IDE v2024.14.0.207` and `Runtime v2024.14.0.251` or above.
+ 
+* [GameMaker](https://gamemaker.io/en/download) version `IDE v2024.14.1.210` and `Runtime v2024.14.1.253`.
 * Basic familiarity with GameMaker and GML, including:
     * Asset types (rooms, objects, scripts, sprites, tilemaps, etc).
     * Working with objects and events.
