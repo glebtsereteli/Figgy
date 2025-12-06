@@ -73,7 +73,6 @@
     {"link":"io.gamemaker.gm_filter_pixelate-1.0.0","name":"io.gamemaker.gm_filter_pixelate-1.0.0","path":"io.gamemaker.gm_filter_pixelate-1.0.0.yyp",},
   ],
   "IncludedFiles":[
-    {"$GMIncludedFile":"","%Name":"config.figgy","CopyToMask":-1,"filePath":"datafiles","name":"config.figgy","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"Figgy License.txt","CopyToMask":-1,"filePath":"datafiles","name":"Figgy License.txt","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
   ],
   "isEcma":false,
