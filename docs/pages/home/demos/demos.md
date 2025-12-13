@@ -7,15 +7,15 @@ Figgy comes with three fully integrated demos, each built on top of one of GameM
 <div style="display:flex;gap:12px;justify-content:space-between;flex-wrap:wrap;width:100%">
   <figure style="text-align:center;flex:1;min-width:150px">
     <img src="/pages/home/demos/demoPlatformer.png" style="width:100%;max-width:220px" data-zoomable>
-    <figcaption><a href="https://github.com/glebtsereteli/Figgy/releases/download/latest/Figgy.Demo.GMTemplate.Platformer.yyz" target="_blank" rel="noopener noreferrer">Platformer</a></figcaption>
+    <figcaption><a href="https://github.com/glebtsereteli/Figgy/releases/download/v1.0.1/Figgy.Demo.GMTemplate.Platformer.yyz" target="_blank" rel="noopener noreferrer">Platformer</a></figcaption>
   </figure>
   <figure style="text-align:center;flex:1;min-width:150px">
     <img src="/pages/home/demos/demoSurvivor.png" style="width:100%;max-width:220px" data-zoomable>
-    <figcaption><a href="https://github.com/glebtsereteli/Figgy/releases/download/latest/Figgy.Demo.GMTemplate.Survivor.yyz" target="_blank" rel="noopener noreferrer">Survivor</a></figcaption>
+    <figcaption><a href="https://github.com/glebtsereteli/Figgy/releases/download/v1.0.1/Figgy.Demo.GMTemplate.Survivor.yyz" target="_blank" rel="noopener noreferrer">Survivor</a></figcaption>
   </figure>
   <figure style="text-align:center;flex:1;min-width:150px">
     <img src="/pages/home/demos/demoHero.png" style="width:100%;max-width:220px" data-zoomable>
-    <figcaption><a href="https://github.com/glebtsereteli/Figgy/releases/download/latest/Figgy.Demo.GMTemplate.Hero.s.Trail.yyz" target="_blank" rel="noopener noreferrer">Hero's Trail</a></figcaption>
+    <figcaption><a href="https://github.com/glebtsereteli/Figgy/releases/download/v1.0.1/Figgy.Demo.GMTemplate.Hero.s.Trail.yyz" target="_blank" rel="noopener noreferrer">Hero's Trail</a></figcaption>
   </figure>
 </div>
 
