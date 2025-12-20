@@ -37,17 +37,17 @@ function Figgy() {
 		FiggySetup();
 		
 		switch (FIGGY_SHOW_DEBUG_OVERLAY) {
-			case FIGGY_DEBUG_OVERLAY.ALWAYS: {
+			case true: {
 				dbg_view_delete(dbg_view("dummy", false));
 				break;
 			}
-			case FIGGY_DEBUG_OVERLAY.VISIBLE_WINDOWS: {
+			case undefined: {
 				if (not _overlayWasOpen and not __openedWindow) {
 					show_debug_overlay(false);
 				}
 				break;
 			}
-			case FIGGY_DEBUG_OVERLAY.NEVER: {
+			case false: {
 				if (not _overlayWasOpen) {
 					show_debug_overlay(false);
 				}

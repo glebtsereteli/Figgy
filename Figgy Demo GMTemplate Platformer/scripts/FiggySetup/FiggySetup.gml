@@ -16,7 +16,7 @@ function FiggySetup() {
 		Figgy.Int("Coin Value", 1, 1, 10);
 		Figgy.NoScope().Section("Movement");
 			Figgy.NoScope().Group("Horizontal");
-				Figgy.Float("MoveSpeed", 8, 2, 16, 0.5);
+				Figgy.Float("Move Speed", 8, 2, 16, 0.5);
 				Figgy.Float("Friction", 0.7, 0.1, 2, 0.1);
 			Figgy.NoScope().Group("Vertical");
 				Figgy.Int("Jump Speed", 23, 10, 40);
@@ -29,7 +29,7 @@ function FiggySetup() {
 	Figgy.Window("Enemy"); {
 		Figgy.Int("Damage", 1, 0, 3);
 		Figgy.NoScope().Section("Movement");
-			Figgy.Float("MoveSpeed", 2, 1, 6, 0.1, function(_moveSpeed) {
+			Figgy.Float("Move Speed", 2, 1, 6, 0.1, function(_moveSpeed) {
 				with (obj_enemy_parent) {
 					start_moving();
 				}

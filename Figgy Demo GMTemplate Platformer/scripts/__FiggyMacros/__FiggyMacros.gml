@@ -30,8 +30,14 @@ if (__initInactive) { \
 
 #macro __FIGGY_RAWNAME \
 var _rawName = _name; \
-if (FIGGY_REMOVE_SPACES) { \
-	_rawName = string_replace_all(_rawName, " ", ""); \
+if (FIGGY_SPACE_REPLACER != undefined) { \
+	_rawName = string_replace_all(_rawName, " ", FIGGY_SPACE_REPLACER); \
+} \
+if (FIGGY_LOWERCASE == true) { \
+	_rawName = string_lower(_rawName); \
+} \
+else if (FIGGY_LOWERCASE == false) { \
+	_rawName = string_upper(_rawName); \
 }
 
 #macro __FIGGY_SCOPEDNAME string(FIGGY_UNSCOPED_NAME_FORMAT, _name)

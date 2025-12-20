@@ -7,24 +7,28 @@
 #macro FIGGY_DEBUG true
 
 // Controls when the Debug Overlay is shown on game startup.
-enum FIGGY_DEBUG_OVERLAY {
-	ALWAYS, // Always show the Debug Overlay.
-	VISIBLE_WINDOWS, // Show only the Debug Overlay if at least one Figgy Window is visible.
-	NEVER, // Never show the Debug Overlay.
-}
-#macro FIGGY_SHOW_DEBUG_OVERLAY FIGGY_DEBUG_OVERLAY.VISIBLE_WINDOWS
+// • undefined: Show the Debug Overlay if at least one Figgy Window is visible.
+// • true: Always show the Debug Overlay.
+// • false: Never show the Debug Overlay.
+#macro FIGGY_SHOW_DEBUG_OVERLAY undefined
 
 // Whether to build the Figgy debug interface (true) or not (false).
 // By default, this is enabled when running the game from IDE and disabled when running from EXE, using the __FIGGY_IN_IDE status macro.
 #macro FIGGY_BUILD_INTERFACE __FIGGY_IN_IDE
 
-// Whether to remove spaces from variable names (true) or not (false), e.g. "Move Speed" in Setup becomes "MoveSpeed" in code.
-// • Set to true if you use variable names with spaces, like "Move Speed", AND want to avoid using the struct accessor
-// for accessing configs in code.
-// • Leave as false if you use variable names like "move_speed" or "moveSpeed".
+// Symbol used to replace spaces in variable names when generating config fields.
+// • Using "" converts "Move Speed" in Setup to "MoveSpeed" in code.
+// • Using "_" converts "Move Speed" in Setup to "Move_Speed" in code.
+// • Set to undefined to disable replacement when not needed. Improves Setup performance at scale.
 //
-// WARNING: Changing this mid-game will erase existing saved configs, so make sure to decide on this early on.
-#macro FIGGY_REMOVE_SPACES true
+// WARNING: Changing this mid-project will invalidate existing saved configs. Decide on this early.
+#macro FIGGY_SPACE_REPLACER ""
+
+// Determines casing for generated config fields.
+// • undefined keeps original casing from Setup and improves Setup performance at scale.
+// • true forces lowercase.
+// • false forces UPPERCASE.
+#macro FIGGY_LOWERCASE undefined
 
 #endregion
 #region File
