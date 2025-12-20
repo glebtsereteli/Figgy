@@ -6,6 +6,14 @@
 // Whether to show debug messages in the Output window (true) or not (false).
 #macro FIGGY_DEBUG true
 
+// Controls when the Debug Overlay is shown on game startup.
+enum FIGGY_DEBUG_OVERLAY {
+	ALWAYS, // Always show the Debug Overlay.
+	VISIBLE_WINDOWS, // Show only the Debug Overlay if at least one Figgy Window is visible.
+	NEVER, // Never show the Debug Overlay.
+}
+#macro FIGGY_SHOW_DEBUG_OVERLAY FIGGY_DEBUG_OVERLAY.VISIBLE_WINDOWS
+
 // Whether to build the Figgy debug interface (true) or not (false).
 // By default, this is enabled when running the game from IDE and disabled when running from EXE, using the __FIGGY_IN_IDE status macro.
 #macro FIGGY_BUILD_INTERFACE __FIGGY_IN_IDE

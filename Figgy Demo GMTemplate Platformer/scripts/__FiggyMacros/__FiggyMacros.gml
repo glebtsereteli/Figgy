@@ -23,7 +23,7 @@
 
 #macro __FIGGY_NO_INIT \
 if (__initInactive) { \
-	__FiggyError($"{__FIGGY_NAME}.{_methodName}(): Setup methods must be called inside the global FiggySetup() function"); \
+	__FiggyError(__FIGGY_NAME + "." + _methodName + "(): Setup methods must be called inside the FiggySetup() function"); \
 }
 
 #macro __FIGGY_NO_INTERFACE if (not FIGGY_BUILD_INTERFACE) return self

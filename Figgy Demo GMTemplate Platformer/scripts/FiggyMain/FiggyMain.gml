@@ -35,8 +35,24 @@ function Figgy() {
 		
 		var _overlayWasOpen = is_debug_overlay_open();
 		FiggySetup();
-		if (not _overlayWasOpen and not __openedWindow) {
-			show_debug_overlay(false);
+		
+		switch (FIGGY_SHOW_DEBUG_OVERLAY) {
+			case FIGGY_DEBUG_OVERLAY.ALWAYS: {
+				dbg_view_delete(dbg_view("dummy", false));
+				break;
+			}
+			case FIGGY_DEBUG_OVERLAY.VISIBLE_WINDOWS: {
+				if (not _overlayWasOpen and not __openedWindow) {
+					show_debug_overlay(false);
+				}
+				break;
+			}
+			case FIGGY_DEBUG_OVERLAY.NEVER: {
+				if (not _overlayWasOpen) {
+					show_debug_overlay(false);
+				}
+				break;
+			}
 		}
 		
 		__initInactive = true;
