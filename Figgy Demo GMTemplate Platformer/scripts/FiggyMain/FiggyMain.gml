@@ -15,6 +15,7 @@ function Figgy() {
 	static __windowSectioned = false;
 	static __section = undefined;
 	static __scoped = true;
+	static __openedWindow = false;
 	static __initInactive = true;
 	
 	static __changes = new __FiggyChanges();
@@ -31,7 +32,13 @@ function Figgy() {
 		
 		__FIGGY_BENCH_START;
 		__initInactive = false;
+		
+		var _overlayWasOpen = is_debug_overlay_open();
 		FiggySetup();
+		if (not _overlayWasOpen and not __openedWindow) {
+			show_debug_overlay(false);
+		}
+		
 		__initInactive = true;
 		__default = variable_clone(__current);
 		__FiggyLogTimed("SETUP: completed");
@@ -250,6 +257,9 @@ function Figgy() {
 		__FIGGY_RAWNAME;
 		if (FIGGY_BUILD_INTERFACE) {
 			dbg_view($"{FIGGY_WINDOW_NAME}: {_name}", _visible, _x, _y, _w, _h);
+			if (_visible) {
+				__openedWindow = true;
+			}
 		}
 		
 		if (__scoped) {
