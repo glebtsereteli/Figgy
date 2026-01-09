@@ -382,11 +382,10 @@ function Figgy() {
 	static Int = function(_name, _value, _min, _max, _step = FIGGY_INT_DEFAULT_STEP, _onChange = __onChange) {
 		static _methodName = "Int";
 		
-		__FIGGY_WIDGET;
-		if (FIGGY_BUILD_INTERFACE) {
-			dbg_slider_int(_ref, _min, _max, _name, _step);
-			__FIGGY_SLIDER_BUTTONS;
-		}
+		__FIGGY_VALUE_WIDGET;
+		
+		dbg_slider_int(_ref, _min, _max, _name, _step);
+		__FIGGY_SLIDER_BUTTONS;
 		
 		return self;
 	};
@@ -404,11 +403,10 @@ function Figgy() {
 	static Float = function(_name, _value, _min, _max, _step = FIGGY_FLOAT_DEFAULT_STEP, _onChange = __onChange) {
 		static _methodName = "Float";
 		
-		__FIGGY_WIDGET;
-		if (FIGGY_BUILD_INTERFACE) {
-			dbg_slider(_ref, _min, _max, _name, _step);
-			__FIGGY_SLIDER_BUTTONS;
-		}
+		__FIGGY_VALUE_WIDGET;
+		
+		dbg_slider(_ref, _min, _max, _name, _step);
+		__FIGGY_SLIDER_BUTTONS;
 		
 		return self;
 	};
@@ -423,23 +421,22 @@ function Figgy() {
 	static Real = function(_name, _value, _onChange = __onChange) {
 		static _methodName = "Real";
 		
-		__FIGGY_WIDGET;
-		if (FIGGY_BUILD_INTERFACE) {
-			dbg_text_input(_ref, _name, "r");
+		__FIGGY_VALUE_WIDGET;
+		
+		dbg_text_input(_ref, _name, "r");
 			
-			if (FIGGY_REAL_BUTTONS) {
-				with ({}) {
-					__scope = other.__scope;
-					__name = _rawName;
-					dbg_same_line();
-					dbg_button("-", function() {
-						__scope[$ __name]--;
-					}, 19, 19);
-					dbg_same_line();
-					dbg_button("+", function() {
-						__scope[$ __name]++;
-					}, 19, 19);
-				}
+		if (FIGGY_REAL_BUTTONS) {
+			with ({}) {
+				__scope = other.__scope;
+				__name = _rawName;
+				dbg_same_line();
+				dbg_button("-", function() {
+					__scope[$ __name]--;
+				}, 19, 19);
+				dbg_same_line();
+				dbg_button("+", function() {
+					__scope[$ __name]++;
+				}, 19, 19);
 			}
 		}
 		
@@ -456,10 +453,9 @@ function Figgy() {
 	static Bool = function(_name, _value, _onChange = __onChange) {
 		static _methodName = "Bool";
 		
-		__FIGGY_WIDGET;
-		if (FIGGY_BUILD_INTERFACE) {
-			dbg_checkbox(_ref, _name);
-		}
+		__FIGGY_VALUE_WIDGET;
+		
+		dbg_checkbox(_ref, _name);
 		
 		return self;
 	};
@@ -474,10 +470,9 @@ function Figgy() {
 	static String = function(_name, _value, _onChange = __onChange) {
 		static _methodName = "String";
 		
-		__FIGGY_WIDGET;
-		if (FIGGY_BUILD_INTERFACE) {
-			dbg_text_input(_ref, _name);
-		}
+		__FIGGY_VALUE_WIDGET;
+		
+		dbg_text_input(_ref, _name);
 		
 		return self;
 	};
@@ -492,10 +487,9 @@ function Figgy() {
 	static Color = function(_name, _value, _onChange = __onChange) {
 		static _methodName = "Color";
 		
-		__FIGGY_WIDGET;
-		if (FIGGY_BUILD_INTERFACE) {
-			dbg_colour(_ref, _name);
-		}
+		__FIGGY_VALUE_WIDGET;
+		
+		dbg_colour(_ref, _name);
 		
 		return self;
 	};
@@ -512,8 +506,7 @@ function Figgy() {
 	static Any = function(_name, _value, _values, _names = _values, _onChange = __onChange) {
 		static _methodName = "Any";
 		
-		__FIGGY_WIDGET;
-		__FIGGY_NO_INTERFACE;
+		__FIGGY_VALUE_WIDGET;
 		
 		dbg_drop_down(_ref, _values, _names, _name);
 		
@@ -554,8 +547,7 @@ function Figgy() {
 	static Button = function(_name, _callback, _w = undefined, _h = undefined, _sameLine = FIGGY_BUTTON_DEFAULT_SAME_LINE) {
 		static _methodName = "Button";
 		
-		__FIGGY_NO_INIT;
-		__FIGGY_NO_INTERFACE;
+		__FIGGY_DECOR_WIDGET;
 		
 		if (_sameLine) {
 			dbg_same_line();
@@ -573,8 +565,7 @@ function Figgy() {
 	static Comment = function(_string, _sameLine = FIGGY_COMMENT_DEFAULT_SAME_LINE) {
 		static _methodName = "Comment";
 		
-		__FIGGY_NO_INIT;
-		__FIGGY_NO_INTERFACE;
+		__FIGGY_DECOR_WIDGET;
 		
 		if (_sameLine) {
 			dbg_same_line();

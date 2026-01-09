@@ -59,18 +59,21 @@ if (not __windowSectioned) { \
 	} \
 }
 
-#macro __FIGGY_WIDGET \
+#macro __FIGGY_VALUE_WIDGET \
 __FIGGY_NO_INIT; \
 __FIGGY_CATCH_WINDOW; \
 __FIGGY_CATCH_FIRST_WINDOW_SECTION; \
 __FIGGY_RAWNAME; \
 __scope[$ _rawName] = _value; \
-if (FIGGY_BUILD_INTERFACE) { \
-	var _ref = ref_create(__scope, _rawName); \
-} \
 if (FIGGY_CHANGES_ENABLED and (_onChange != undefined)) { \
 	__changes.__Add(__scope, _rawName, _onChange); \
-}
+} \
+__FIGGY_NO_INTERFACE; \
+var _ref = ref_create(__scope, _rawName); 
+
+#macro __FIGGY_DECOR_WIDGET \
+__FIGGY_NO_INIT; \
+__FIGGY_NO_INTERFACE
 
 #macro __FIGGY_SLIDER_BUTTONS \
 if (FIGGY_SLIDER_BUTTONS) { \
