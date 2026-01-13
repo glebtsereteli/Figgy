@@ -246,7 +246,7 @@ export default defineConfig({
         'Interface': '/pages/home/interface/interface',
         'Controls Section': '/pages/home/interface/interface#controls-section',
         'Persistence': '/pages/home/persistence',
-        'Demos': '/pages/home/demos',
+        'Demos': '/pages/home/demos/demos',
         'FAQ': '/pages/home/faq',
         'Figgy': '/pages/api/figgy/overview',
         'Setup': '/pages/api/figgy/setup',
