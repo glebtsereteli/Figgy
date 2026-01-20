@@ -75,18 +75,6 @@ var _ref = ref_create(__scope, _rawName);
 __FIGGY_NO_INIT; \
 __FIGGY_NO_INTERFACE
 
-#macro __FIGGY_SLIDER_BUTTONS \
-if (FIGGY_SLIDER_BUTTONS) { \
-	with ({}) { \
-		__scope = other.__scope; \
-		__name = _rawName; \
-		__min = _min; \
-		__max = _max; \
-		__step = _step; \
-		__FiggySliderButtons(); \
-	} \
-}
-
 #macro __FIGGY_BENCH_START Figgy.__t = get_timer();
 #macro __FIGGY_BENCH_END ((get_timer() - Figgy.__t) / 1000)
 
