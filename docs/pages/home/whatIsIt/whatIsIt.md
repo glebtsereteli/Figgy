@@ -20,7 +20,7 @@ Whether you're a solo developer or part of a team, working on a big project or a
 
 🎛️ **Wide Data Type Coverage**. Built on GameMaker's cross-platform :Debug Overlay:, Figgy provides several :Value Widgets: for all commonly used data types: :Ints:, :Floats:, :Reals:, :Bools:, :Strings:, :Colors: and :Anys:.
 
-💾 **Persistent Project Storage**. Keep your configs inside your GitHub repo with Figgy's automatic (and optionally [obfuscated](/pages/home/persistence/#obfuscate)) datafiles [saving & loading](/pages/home/persistence) support that tracks variables differing from default values (or the whole config, if specified).
+💾 **Persistent Project Storage**. Keep your configs inside your GitHub repo with Figgy's automatic (and optionally [obfuscated](/pages/home/persistence/#obfuscation)) datafiles [saving & loading](/pages/home/persistence) support that tracks variables differing from default values (or the whole config, if specified).
 
 🧠 **Centralized Configuration**. Keep all gameplay values in one place and read them from the config struct - no more scattered Create-event variables or magic numbers.
 

@@ -299,6 +299,7 @@ export default defineConfig({
         'FIGGY_UNSCOPED_NAME_FORMAT': '/pages/api/config#figgy-unscoped-name-format',
 
         'FIGGY_INT_DEFAULT_STEP': '/pages/api/config#figgy-int-default-step',
+        'FIGGY_COMMENT_DEFAULT_SAME_LINE': '/pages/api/config#figgy-comment-default-same-line',
         'FIGGY_FLOAT_DEFAULT_STEP': '/pages/api/config#figgy-float-default-step',
         
         'FIGGY_BUTTON_DEFAULT_SAME_LINE': '/pages/api/config#figgy-button-default-same-line',
