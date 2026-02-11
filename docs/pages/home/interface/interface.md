@@ -8,7 +8,7 @@ Figgy's interface lets you edit your configs live while the game is running, and
 
 The entire interface is generated automatically from your :Setup: using three types of widgets. :Scope Widgets: shape the struct-based hierarchy of your config, :Value Widgets: define the editable values used throughout your code (like `Health` and `MoveSpeed`), and :Decor Widgets: add extra visual structure and utility to the UI.
 
-The system is built on top of GameMaker's cross-platform :Debug Overlay:, so all Figgy views appear in the same debug hub as any other views you use (like [Lookout](https://github.com/glebtsereteli/Lookout)).
+The system is built on top of GameMaker's cross-platform :Debug Overlay:, so all Figgy views appear in the same debug hub as any other views (or libraries utilizing views) you use (like [Lookout](https://github.com/glebtsereteli/Lookout) or [Inspectron](https://github.com/shdwcat/Inspectron)).
 
 Figgy also includes a dedicated :Controls Section: that lets you manage the overall state of the entire config struct. See more info about it below.
 

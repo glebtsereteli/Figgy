@@ -2,6 +2,7 @@
   "$GMNotes":"v1",
   "%Name":"readme",
   "name":"readme",
+  "openedOnFirstLoad":true,
   "parent":{
     "name":"Figgy Demo GMTemplate Platformer",
     "path":"Figgy Demo GMTemplate Platformer.yyp",

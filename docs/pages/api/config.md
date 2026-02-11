@@ -225,6 +225,13 @@ Whether :Buttons: should be placed on the same line with the last widget by defa
 Whether :Buttons: should be placed on the same line with the last widget by default (`true`) or not (`false`).
 
 ---
+### `FIGGY_COMMENT_DEFAULT_SAME_LINE`
+
+> Default `false`.
+
+Whether :Comments: should be placed on the same line with the last widget by default (`true`) or not (`false`).
+
+---
 ### `FIGGY_SEPARATOR_DEFAULT_ALIGN`
 > Default: `0`.
 

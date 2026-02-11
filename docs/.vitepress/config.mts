@@ -246,7 +246,7 @@ export default defineConfig({
         'Interface': '/pages/home/interface/interface',
         'Controls Section': '/pages/home/interface/interface#controls-section',
         'Persistence': '/pages/home/persistence',
-        'Demos': '/pages/home/demos',
+        'Demos': '/pages/home/demos/demos',
         'FAQ': '/pages/home/faq',
         'Figgy': '/pages/api/figgy/overview',
         'Setup': '/pages/api/figgy/setup',
@@ -299,6 +299,7 @@ export default defineConfig({
         'FIGGY_UNSCOPED_NAME_FORMAT': '/pages/api/config#figgy-unscoped-name-format',
 
         'FIGGY_INT_DEFAULT_STEP': '/pages/api/config#figgy-int-default-step',
+        'FIGGY_COMMENT_DEFAULT_SAME_LINE': '/pages/api/config#figgy-comment-default-same-line',
         'FIGGY_FLOAT_DEFAULT_STEP': '/pages/api/config#figgy-float-default-step',
         
         'FIGGY_BUTTON_DEFAULT_SAME_LINE': '/pages/api/config#figgy-button-default-same-line',
