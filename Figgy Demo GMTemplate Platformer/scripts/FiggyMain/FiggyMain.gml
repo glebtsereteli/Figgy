@@ -300,8 +300,8 @@ function Figgy() {
 	/// 
 	/// @returns {Struct.Figgy}
 	/// @self Figgy
-	static AnimCurve = function(_name, _animCurve, _value, _onChange = __onChange) {
-		static _methodName = "AnimCurve";
+	static Curve = function(_name, _animCurve, _value, _onChange = __onChange) {
+		static _methodName = "Curve";
 		static _MapNames = function(_curve) {
 			return _curve.name;
 		};

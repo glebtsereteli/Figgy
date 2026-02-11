@@ -115,7 +115,7 @@
 // NOTE: If true, might slow down FiggySetup() at scale.
 #macro FIGGY_REAL_BUTTONS false
 
-// Whether to include -/+ cycling buttons for .Any() and .AnimCurve() Value Widgets (true) or not (false).
+// Whether to include -/+ cycling buttons for .Any() and .Curve() Value Widgets (true) or not (false).
 // NOTE: If true, might slow down FiggySetup() at scale.
 #macro FIGGY_DROPDOWN_BUTTONS true
 
