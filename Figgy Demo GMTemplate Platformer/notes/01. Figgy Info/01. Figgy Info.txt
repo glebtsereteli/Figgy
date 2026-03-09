@@ -1,8 +1,7 @@
 
-Figgy Info.
-+---------------+----------------------------------------+
-| Author        | Gleb Tsereteli                         |
-| GitHub        | https://github.com/glebtsereteli/Figgy |
-| itch.io       | https://glebtsereteli.itch.io/figgy    |
-| Documentation | https://glebtsereteli.github.io/Figgy  |
-+---------------+----------------------------------------+
+# Figgy Info
+- Version: v1.1.0 (2026.03.XX)
+- Author: Gleb Tsereteli
+- GitHub: https://github.com/glebtsereteli/Figgy
+- itch.io: https://glebtsereteli.itch.io/figgy
+- Documentation: https://glebtsereteli.github.io/Figgy

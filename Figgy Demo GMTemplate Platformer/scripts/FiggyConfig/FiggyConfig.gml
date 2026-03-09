@@ -91,7 +91,7 @@
 // Whether .Section()s are open by default (true) or not (false).
 #macro FIGGY_SECTION_DEFAULT_OPEN true
 
-// Default .Group() and .Separator() text alignment. 0 is left, 1 is center, 2 is right.
+// Default .Group() text alignment. 0 is left, 1 is center, 2 is right.
 #macro FIGGY_GROUP_DEFAULT_ALIGN 0
 
 // The custom String Format used for UNSCOPED Sections and Groups names (with .NoScope() called beforehand).
@@ -115,7 +115,7 @@
 // NOTE: If true, might slow down FiggySetup() at scale.
 #macro FIGGY_REAL_BUTTONS false
 
-// Whether to include -/+ cycling buttons for .Any() and .Curve() Value Widgets (true) or not (false).
+// Whether to include -/+ cycling buttons for .Any(), .Curve(), and .Asset() Value Widgets (true) or not (false).
 // NOTE: If true, might slow down FiggySetup() at scale.
 #macro FIGGY_DROPDOWN_BUTTONS true
 
