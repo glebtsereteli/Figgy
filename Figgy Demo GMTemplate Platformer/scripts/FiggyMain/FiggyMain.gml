@@ -289,26 +289,29 @@ function Figgy() {
 		return self;
 	};
 	
-	/// Value Widget. Creates a string value in the current scope (Root, Window, Section, or Group), represented as a DBG Dropdown.
+	/// Value Widget. Creates a string value representing an animation curve channel name in the current scope (Root, Window, Section, or Group), represented as a DBG Dropdown.
 	/// The dropdown options are populated from the channels of the provided animation curve.
 	/// The onChange callback function receives 3 arguments: (newValue, oldValue, variableName).
 	/// 
 	/// @param {String} name The variable name.
 	/// @param {Asset.GMAnimCurve} animCurve The animation curve whose channels will be used as dropdown options.
-	/// @param {String} value The default channel name.
+	/// @param {String} value The default channel name. [Default: first channel in the curve]
 	/// @param {Function} onChange The function to call when the value is changed. [Default: current onChange callback if set, or FIGGY_CHANGES_DEFAULT_CALLBACK]
 	/// 
 	/// @returns {Struct.Figgy}
 	/// @self Figgy
-	static Curve = function(_name, _animCurve, _value, _onChange = __onChange) {
+	static Curve = function(_name, _animCurve, _value = undefined, _onChange = __onChange) {
 		static _methodName = "Curve";
 		static _MapNames = function(_curve) {
 			return _curve.name;
 		};
 		
+		var _channels = animcurve_get(_animCurve).channels;
+		_value ??= array_first(_channels).name;
+		
 		__FIGGY_VALUE_WIDGET;
 		
-		var _values = array_map(animcurve_get(_animCurve).channels, _MapNames);
+		var _values = array_map(_channels, _MapNames);
 		dbg_drop_down(_ref, _values, _values, _name);
 		
 		__FiggyDropdownButtons(_rawName, _values);
@@ -316,13 +319,14 @@ function Figgy() {
 		return self;
 	};
 	
-	/// Value Widget. Creates a ref value in the current scope (Root, Window, Section, or Group), represented as a DBG Dropdown.
-	/// The dropdown options are populated from all assets of the given type via asset_get_ids(), or filtered by a specific tag if a tag is provided.
+	/// Value Widget. Creates an asset reference value in the current scope (Root, Window, Section, or Group), represented as a DBG Dropdown.
+	/// The dropdown options are automatically populated from all assets matching the type of the provided asset.
+	/// If an optional tag is provided, the options are filtered to only assets carrying that tag.
 	/// The onChange callback function receives 3 arguments: (newValue, oldValue, variableName).
 	/// 
 	/// @param {String} name The variable name.
-	/// @param {Asset.Any} value The default asset reference.
-	/// @param {String} tag An optional tag to further filter the dropdown options. [Default: undefined, shows all assets of the asset type]
+	/// @param {Asset.Any} value The default asset reference. Its asset type determines which assets populate the dropdown.
+	/// @param {String} tag An optional tag to filter the dropdown to only assets carrying that tag. [Default: undefined, shows all assets of the matching type]
 	/// @param {Function} onChange The function to call when the value is changed. [Default: current onChange callback if set, or FIGGY_CHANGES_DEFAULT_CALLBACK]
 	/// 
 	/// @returns {Struct.Figgy}

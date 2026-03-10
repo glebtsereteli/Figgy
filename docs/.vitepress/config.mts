@@ -217,6 +217,7 @@ export default defineConfig({
         'Asset.GMSprite': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Asset_Management/Sprites/Sprites.htm',
         'Asset.GMTileset': 'https://manual.gamemaker.io/monthly/en/Quick_Start_Guide/Creating_Tile_Sets.htm',
         'Asset.GMSequence': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Asset_Management/Sequences/Sequences.htm',
+        'Asset.GMAnimCurve': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Asset_Management/Animation_Curves/Animation_Curves.htm',
 
         // IDs
         'Id.Layer': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Asset_Management/Rooms/General_Layer_Functions/General_Layer_Functions.htm',
@@ -297,14 +298,14 @@ export default defineConfig({
         'FIGGY_SECTION_DEFAULT_OPEN': '/pages/api/config#figgy-section-default-open',
         'FIGGY_GROUP_DEFAULT_ALIGN': '/pages/api/config#figgy-group-default-align',
         'FIGGY_UNSCOPED_NAME_FORMAT': '/pages/api/config#figgy-unscoped-name-format',
-
+        
         'FIGGY_INT_DEFAULT_STEP': '/pages/api/config#figgy-int-default-step',
         'FIGGY_COMMENT_DEFAULT_SAME_LINE': '/pages/api/config#figgy-comment-default-same-line',
         'FIGGY_FLOAT_DEFAULT_STEP': '/pages/api/config#figgy-float-default-step',
         
         'FIGGY_BUTTON_DEFAULT_SAME_LINE': '/pages/api/config#figgy-button-default-same-line',
         'FIGGY_SEPARATOR_DEFAULT_ALIGN': '/pages/api/config#figgy-separator-default-align',
-
+        
         'FIGGY_CHANGES_ENABLED': '/pages/api/config#figgy-changes-enabled',
         'FIGGY_CHANGES_DEFAULT_CALLBACK': '/pages/api/config#figgy-changes-default-callback',
       })

@@ -82,6 +82,7 @@
   },
   "name":"Figgy Demo GMTemplate Platformer",
   "resources":[
+    {"id":{"name":"acTest","path":"animcurves/acTest/acTest.yy",},},
     {"id":{"name":"ft_button","path":"fonts/ft_button/ft_button.yy",},},
     {"id":{"name":"ft_hud","path":"fonts/ft_hud/ft_hud.yy",},},
     {"id":{"name":"01. Figgy Info","path":"notes/01. Figgy Info/01. Figgy Info.yy",},},

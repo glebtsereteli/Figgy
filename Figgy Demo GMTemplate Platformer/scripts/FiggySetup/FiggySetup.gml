@@ -41,4 +41,7 @@ function FiggySetup() {
 		Figgy.Float("Trees 2", 0.7, 0.1, 1, 0.05);
 		Figgy.Float("Clouds", 0.8, 0.1, 1, 0.05);
 	}
+
+	Figgy.Window("Test");
+		Figgy.Curve("Curve", acTest, "SecondChannel");
 }
