@@ -43,5 +43,5 @@ function FiggySetup() {
 	}
 
 	Figgy.Window("Test");
-		Figgy.Curve("Curve", acTest, "SecondChannel");
+		Figgy.Curve("Curve", acTest, "heythere");
 }

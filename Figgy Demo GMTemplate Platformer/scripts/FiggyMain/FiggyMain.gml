@@ -283,7 +283,6 @@ function Figgy() {
 		__FIGGY_VALUE_WIDGET;
 		
 		dbg_drop_down(_ref, _values, _names, _name);
-		
 		__FiggyDropdownButtons(_rawName, _values);
 		
 		return self;
@@ -307,13 +306,20 @@ function Figgy() {
 		};
 		
 		var _channels = animcurve_get(_animCurve).channels;
+		if (array_length(_channels) == 0) {
+			__FiggyError($"{_methodName}: animation curve \"{animcurve_get(_animCurve).name}\" doesn't have any channels");
+		}
+		
 		_value ??= array_first(_channels).name;
+		var _values = array_map(_channels, _MapNames);
 		
 		__FIGGY_VALUE_WIDGET;
 		
-		var _values = array_map(_channels, _MapNames);
-		dbg_drop_down(_ref, _values, _values, _name);
+		if (not array_contains(_values, _value)) {
+			__FiggyError($"{_methodName}: animation curve \"{animcurve_get(_animCurve).name}\" doesn't have a \"{_value}\" channel");
+		}
 		
+		dbg_drop_down(_ref, _values, _values, _name);
 		__FiggyDropdownButtons(_rawName, _values);
 		
 		return self;
@@ -343,7 +349,6 @@ function Figgy() {
 		var _values = (_tag == undefined) ? asset_get_ids(_type) : tag_get_asset_ids(_tag, _type);
 		var _names = array_map(_values, _MapNames);
 		dbg_drop_down(_ref, _values, _names, _name);
-		
 		__FiggyDropdownButtons(_rawName, _values);
 		
 		return self;
