@@ -2,8 +2,8 @@
 
 #region Info
 
-#macro __FIGGY_VERSION "v1.0.1" // major.minor.patch
-#macro __FIGGY_DATE "2025.12.06" // year.month.day
+#macro __FIGGY_VERSION "v1.1.0" // major.minor.patch
+#macro __FIGGY_DATE "2026.XX.XX" // year.month.day
 #macro __FIGGY_NAME "Figgy"
 #macro __FIGGY_LOG_PREFIX "[" + __FIGGY_NAME + "]"
 
@@ -23,15 +23,21 @@
 
 #macro __FIGGY_NO_INIT \
 if (__initInactive) { \
-	__FiggyError($"{__FIGGY_NAME}.{_methodName}(): Setup methods must be called inside the global FiggySetup() function"); \
+	__FiggyError(__FIGGY_NAME + "." + _methodName + "(): Setup methods must be called inside the FiggySetup() function"); \
 }
 
 #macro __FIGGY_NO_INTERFACE if (not FIGGY_BUILD_INTERFACE) return self
 
 #macro __FIGGY_RAWNAME \
 var _rawName = _name; \
-if (FIGGY_REMOVE_SPACES) { \
-	_rawName = string_replace_all(_rawName, " ", ""); \
+if (FIGGY_SPACE_REPLACER != undefined) { \
+	_rawName = string_replace_all(_rawName, " ", FIGGY_SPACE_REPLACER); \
+} \
+if (FIGGY_LOWERCASE == true) { \
+	_rawName = string_lower(_rawName); \
+} \
+else if (FIGGY_LOWERCASE == false) { \
+	_rawName = string_upper(_rawName); \
 }
 
 #macro __FIGGY_SCOPEDNAME string(FIGGY_UNSCOPED_NAME_FORMAT, _name)
@@ -53,30 +59,21 @@ if (not __windowSectioned) { \
 	} \
 }
 
-#macro __FIGGY_WIDGET \
+#macro __FIGGY_VALUE_WIDGET \
 __FIGGY_NO_INIT; \
 __FIGGY_CATCH_WINDOW; \
 __FIGGY_CATCH_FIRST_WINDOW_SECTION; \
 __FIGGY_RAWNAME; \
 __scope[$ _rawName] = _value; \
-if (FIGGY_BUILD_INTERFACE) { \
-	var _ref = ref_create(__scope, _rawName); \
-} \
 if (FIGGY_CHANGES_ENABLED and (_onChange != undefined)) { \
 	__changes.__Add(__scope, _rawName, _onChange); \
-}
+} \
+__FIGGY_NO_INTERFACE; \
+var _ref = ref_create(__scope, _rawName); 
 
-#macro __FIGGY_SLIDER_BUTTONS \
-if (FIGGY_SLIDER_BUTTONS) { \
-	with ({}) { \
-		__scope = other.__scope; \
-		__name = _rawName; \
-		__min = _min; \
-		__max = _max; \
-		__step = _step; \
-		__FiggySliderButtons(); \
-	} \
-}
+#macro __FIGGY_DECOR_WIDGET \
+__FIGGY_NO_INIT; \
+__FIGGY_NO_INTERFACE
 
 #macro __FIGGY_BENCH_START Figgy.__t = get_timer();
 #macro __FIGGY_BENCH_END ((get_timer() - Figgy.__t) / 1000)

@@ -1,0 +1,9 @@
+
+# Figgy Info
+
+- Version: v1.0.1 (2026.XX.XX)
+- Author: Gleb Tsereteli
+- GitHub: https://github.com/glebtsereteli/Figgy
+- itch.io: https://glebtsereteli.itch.io/figgy
+- Documentation: https://glebtsereteli.github.io/Figgy
+- Support: Visit the dedicated Figgy channel on the [GameMaker Kitchen](https://discord.gg/gamemakerkitchen) Discord server.
