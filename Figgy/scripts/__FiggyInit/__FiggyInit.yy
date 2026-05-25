@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"__FiggyInit",
   "parent":{
-    "name":"02 Private",
-    "path":"folders/Figgy/02 Private.yy",
+    "name":"(System)",
+    "path":"folders/Figgy/(System).yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

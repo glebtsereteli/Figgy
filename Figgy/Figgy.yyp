@@ -12,8 +12,7 @@
   "Folders":[
     {"$GMFolder":"","%Name":"Demo","folderPath":"folders/Demo.yy","name":"Demo","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Figgy","folderPath":"folders/Figgy.yy","name":"Figgy","resourceType":"GMFolder","resourceVersion":"2.0",},
-    {"$GMFolder":"","%Name":"01 Public","folderPath":"folders/Figgy/01 Public.yy","name":"01 Public","resourceType":"GMFolder","resourceVersion":"2.0",},
-    {"$GMFolder":"","%Name":"02 Private","folderPath":"folders/Figgy/02 Private.yy","name":"02 Private","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"(System)","folderPath":"folders/Figgy/(System).yy","name":"(System)","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
   "ForcedPrefabProjectReferences":[],
   "IncludedFiles":[
