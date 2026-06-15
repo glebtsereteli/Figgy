@@ -185,6 +185,8 @@ export default defineConfig({
         'String': '/pages/api/figgy/setup#string',
         'Color': '/pages/api/figgy/setup#color',
         'Any': '/pages/api/figgy/setup#any',
+        'Curve': '/pages/api/figgy/setup#curve',
+        'Asset': '/pages/api/figgy/setup#asset',
         
         'Button': '/pages/api/figgy/setup#button',
         'Comment': '/pages/api/figgy/setup#comment',
@@ -201,49 +203,49 @@ export default defineConfig({
 
       // Add all your existing static ones here
       Object.assign(shortcuts, {
-        // types
-        'Real': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm',
-        'Bool': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm',
-        'String': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm',
-        'Array': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm',
-        'Struct': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm',
-        'Undefined': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm',
-        'Noone': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Instance%20Keywords/noone.htm',
-        'Enum': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Variables/Constants.htm#:~:text=of%20this%20page.-,Enums,-An%20enum%20is',
+        // Types
+        'Real': 'https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Overview/Data_Types.htm',
+        'Bool': 'https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Overview/Data_Types.htm',
+        'String': 'https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Strings/Strings.htm',
+        'Array': 'https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Overview/Arrays.htm',
+        'Struct': 'https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Overview/Structs.htm',
+        'Undefined': 'https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Overview/Data_Types.htm',
+        'Noone': 'https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Overview/Instance%20Keywords/noone.htm',
+        'Enum': 'https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Overview/Variables/Constants.htm#:~:text=of%20this%20page.-,Enums,-An%20enum%20is',
         
-        // assets
-        'Asset.GMRoom': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Asset_Management/Rooms/Rooms.htm',
-        'Asset.GMObject': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Asset_Management/Objects/Objects.htm',
-        'Asset.GMSprite': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Asset_Management/Sprites/Sprites.htm',
-        'Asset.GMTileset': 'https://manual.gamemaker.io/monthly/en/Quick_Start_Guide/Creating_Tile_Sets.htm',
-        'Asset.GMSequence': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Asset_Management/Sequences/Sequences.htm',
-        'Asset.GMAnimCurve': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Asset_Management/Animation_Curves/Animation_Curves.htm',
+        // Assets
+        'Asset.GMRoom': 'https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Asset_Management/Rooms/Rooms.htm',
+        'Asset.GMObject': 'https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Asset_Management/Objects/Objects.htm',
+        'Asset.GMSprite': 'https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Asset_Management/Sprites/Sprites.htm',
+        'Asset.GMTileset': 'https://manual.gamemaker.io/lts/en/Quick_Start_Guide/Creating_Tile_Sets.htm',
+        'Asset.GMSequence': 'https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Asset_Management/Sequences/Sequences.htm',
+        'Asset.GMAnimCurve': 'https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Asset_Management/Animation_Curves/Animation_Curves.htm',
 
         // IDs
-        'Id.Layer': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Asset_Management/Rooms/General_Layer_Functions/General_Layer_Functions.htm',
-        'Id.Tilemap': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Asset_Management/Rooms/Tile_Map_Layers/Tile_Map_Layers.htm',
-        'Id.Instance': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Asset_Management/Instances/Instances.htm',
-        'Id.Function': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm',
-        'Id.Background': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Asset_Management/Rooms/Background_Layers/Background_Layers.htm',
+        'Id.Layer': 'https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Asset_Management/Rooms/General_Layer_Functions/General_Layer_Functions.htm',
+        'Id.Tilemap': 'https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Asset_Management/Rooms/Tile_Map_Layers/Tile_Map_Layers.htm',
+        'Id.Instance': 'https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Asset_Management/Instances/Instances.htm',
+        'Id.Function': 'https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Overview/Script_Functions.htm',
+        'Id.Background': 'https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Asset_Management/Rooms/Background_Layers/Background_Layers.htm',
 
-        // constants
-        'Constant.Color': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Drawing/Colour_And_Alpha/Colour_And_Alpha.htm',
+        // Constants
+        'Constant.Color': 'https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Drawing/Colour_And_Alpha/Colour_And_Alpha.htm',
         
-        // links
+        // Links
         'New Issue': 'https://github.com/glebtsereteli/Figgy/issues/new',
-        'Debug Overlay': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Debugging/The_Debug_Overlay.htm',
-        'DBG View': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Debugging/dbg_view.htm',
-        'DBG Section': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Debugging/dbg_section.htm',
-        'DBG Slider': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Debugging/dbg_slider.htm',
-        'DBG Slider Int': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Debugging/dbg_slider_int.htm',
-        'DBG Checkbox': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Debugging/dbg_checkbox.htm',
-        'DBG Button': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Debugging/dbg_button.htm',
-        'DBG Dropdown': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Debugging/dbg_drop_down.htm',
-        'DBG Color': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Debugging/dbg_colour.htm',
-        'DBG Text Input': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Debugging/dbg_text_input.htm',
-        'DBG Text Separator': 'https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Debugging/dbg_text_separator.htm',
+        'Debug Overlay': 'https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Debugging/The_Debug_Overlay.htm',
+        'DBG View': 'https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Debugging/dbg_view.htm',
+        'DBG Section': 'https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Debugging/dbg_section.htm',
+        'DBG Slider': 'https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Debugging/dbg_slider.htm',
+        'DBG Slider Int': 'https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Debugging/dbg_slider_int.htm',
+        'DBG Checkbox': 'https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Debugging/dbg_checkbox.htm',
+        'DBG Button': 'https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Debugging/dbg_button.htm',
+        'DBG Dropdown': 'https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Debugging/dbg_drop_down.htm',
+        'DBG Color': 'https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Debugging/dbg_colour.htm',
+        'DBG Text Input': 'https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Debugging/dbg_text_input.htm',
+        'DBG Text Separator': 'https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Debugging/dbg_text_separator.htm',
 
-        // shortcuts
+        // Shortcuts
         'Interface': '/pages/home/interface/interface',
         'Controls Section': '/pages/home/interface/interface#controls-section',
         'Persistence': '/pages/home/persistence',
@@ -274,10 +276,12 @@ export default defineConfig({
         '.Import()': '/pages/api/figgy/inputOutput#import',
         '.Export()': '/pages/api/figgy/inputOutput#export',
 
-        // config
+        // Config
         'FIGGY_DEBUG': '/pages/api/config#figgy-debug',
+        'FIGGY_SHOW_DEBUG_OVERLAY': '/pages/api/config#figgy-show-debug-overlay',
         'FIGGY_BUILD_INTERFACE': '/pages/api/config#figgy-build-interface',
-        'FIGGY_REMOVE_SPACES': '/pages/api/config#figgy-remove-spaces',
+        'FIGGY_SPACE_REPLACER': '/pages/api/config#figgy-space-replacer',
+        'FIGGY_LOWERCASE': '/pages/api/config#figgy-lowercase',
         
         'FIGGY_FILE_NAME': '/pages/api/config#figgy-file-name',
         'FIGGY_FILE_EXT': '/pages/api/config#figgy-file-ext',
@@ -285,25 +289,28 @@ export default defineConfig({
         'FIGGY_FILE_PRETTIFY': '/pages/api/config#figgy-file-prettify',
         'FIGGY_FILE_OBFUSCATE': '/pages/api/config#figgy-file-obfuscate',
         
+        'FIGGY_CONTROLS_NAME': '/pages/api/config#figgy-controls-name',
+        'FIGGY_CONTROLS_OPEN': '/pages/api/config#figgy-controls-open',
+        'FIGGY_CONTROLS_IN_EVERY_WINDOW': '/pages/api/config#figgy-controls-in-every-window',
+        
         'FIGGY_WINDOW_NAME': '/pages/api/config#figgy-window-name',
         'FIGGY_WINDOW_DEFAULT_START_VISIBLE': '/pages/api/config#figgy-window-default-start-visible',
         'FIGGY_WINDOW_DEFAULT_X': '/pages/api/config#figgy-window-default-x',
         'FIGGY_WINDOW_DEFAULT_Y': '/pages/api/config#figgy-window-default-y',
         'FIGGY_WINDOW_DEFAULT_WIDTH': '/pages/api/config#figgy-window-default-width',
         'FIGGY_WINDOW_DEFAULT_HEIGHT': '/pages/api/config#figgy-window-default-height',
-        'FIGGY_CONTROLS_NAME': '/pages/api/config#figgy-controls-name',
-        'FIGGY_CONTROLS_OPEN': '/pages/api/config#figgy-controls-open',
-        'FIGGY_CONTROLS_IN_EVERY_WINDOW': '/pages/api/config#figgy-controls-in-every-window',
-        
         'FIGGY_SECTION_DEFAULT_OPEN': '/pages/api/config#figgy-section-default-open',
         'FIGGY_GROUP_DEFAULT_ALIGN': '/pages/api/config#figgy-group-default-align',
         'FIGGY_UNSCOPED_NAME_FORMAT': '/pages/api/config#figgy-unscoped-name-format',
         
+        'FIGGY_SLIDER_BUTTONS': '/pages/api/config#figgy-slider-buttons',
         'FIGGY_INT_DEFAULT_STEP': '/pages/api/config#figgy-int-default-step',
-        'FIGGY_COMMENT_DEFAULT_SAME_LINE': '/pages/api/config#figgy-comment-default-same-line',
         'FIGGY_FLOAT_DEFAULT_STEP': '/pages/api/config#figgy-float-default-step',
+        'FIGGY_REAL_BUTTONS': '/pages/api/config#figgy-real-buttons',
+        'FIGGY_DROPDOWN_BUTTONS': '/pages/api/config#figgy-dropdown-buttons',
         
         'FIGGY_BUTTON_DEFAULT_SAME_LINE': '/pages/api/config#figgy-button-default-same-line',
+        'FIGGY_COMMENT_DEFAULT_SAME_LINE': '/pages/api/config#figgy-comment-default-same-line',
         'FIGGY_SEPARATOR_DEFAULT_ALIGN': '/pages/api/config#figgy-separator-default-align',
         
         'FIGGY_CHANGES_ENABLED': '/pages/api/config#figgy-changes-enabled',

@@ -1,3 +1,4 @@
+// feather ignore all
 
 function __FiggyChanges() constructor {
 	__pool = [];

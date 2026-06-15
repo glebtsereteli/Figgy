@@ -352,7 +352,7 @@ function Figgy() {
 		__FiggyDropdownButtons(_rawName, _values);
 		
 		return self;
-	}
+	};
 	
 	#endregion
 	#region Setup: Decor Widgets

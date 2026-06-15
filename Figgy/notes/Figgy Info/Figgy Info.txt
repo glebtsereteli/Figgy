@@ -1,7 +1,7 @@
 
 # Figgy Info
 
-- Version: v1.2.0 (2026.06.01)
+- Version: v1.1.0 (2026.06.22)
 - Author: Gleb Tsereteli
 - GitHub: https://github.com/glebtsereteli/Figgy
 - itch.io: https://glebtsereteli.itch.io/figgy

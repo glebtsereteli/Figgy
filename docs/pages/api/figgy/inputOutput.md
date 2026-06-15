@@ -14,7 +14,7 @@ You can also use these methods to integrate Figgy with any custom tooling you mi
 
 Imports a Figgy config struct from an external file at the specified path.
 
-If no path is provided, the method will automatically open a file selection dialog via [get_open_filename_ext()](https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/File_Handling/File_System/get_open_filename_ext.htm), letting you pick a file from anywhere on your system. The available files are filtered based on the :FIGGY_FILE_EXT: config macro.
+If no path is provided, the method will automatically open a file selection dialog via [get_open_filename_ext()](https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/File_Handling/File_System/get_open_filename_ext.htm), letting you pick a file from anywhere on your system. The available files are filtered based on the :FIGGY_FILE_EXT: config macro.
 
 | Parameter | Type | Description |
 | --- | --- | --- |
@@ -37,7 +37,7 @@ Figgy.Import();
 
 Exports the current Figgy config struct to an external file at the specified path.
 
-If no path is provided, the method will open a file selection dialog via [get_save_filename_ext()](https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/File_Handling/File_System/get_save_filename_ext.htm), letting you pick where to save the file on your system. The file extension is dictated by the :FIGGY_FILE_EXT: config macro.
+If no path is provided, the method will open a file selection dialog via [get_save_filename_ext()](https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/File_Handling/File_System/get_save_filename_ext.htm), letting you pick where to save the file on your system. The file extension is dictated by the :FIGGY_FILE_EXT: config macro.
 
 | Parameter | Type | Description |
 | --- | --- | --- |

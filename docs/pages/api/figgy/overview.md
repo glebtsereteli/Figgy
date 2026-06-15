@@ -5,7 +5,7 @@ This page provides an overview of the top-level Figgy API structure. The API is 
 
 ## `FiggySetup()`
 
-Everything starts with :Setup: through the `FiggySetup()` global function — the entry point of the library where you define your :Scope Widgets:, :Value Widgets:, and :Decor Widgets:.
+Everything starts with :Setup: through the `FiggySetup()` global function - the entry point of the library where you define your :Scope Widgets:, :Value Widgets:, and :Decor Widgets:.
 
 Figgy uses these definitions to construct the :Interface: and compile the config data for you to use throughout your game code. 
 

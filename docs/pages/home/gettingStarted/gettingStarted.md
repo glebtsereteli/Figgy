@@ -12,7 +12,7 @@ Throughout this page, and the documentation as a whole, you'll see many hyperlin
 
 ## Requirements
  
-* [GameMaker](https://gamemaker.io/en/download) version `IDE v2024.14.1.210` and `Runtime v2024.14.1.253`.
+* GameMaker version [LTS 2026](https://releases.gamemaker.io/release-notes/2026/0).
 * Basic familiarity with GameMaker and GML, including:
     * Asset types (rooms, objects, scripts, sprites, tilemaps, etc).
     * Working with objects and events.
@@ -22,14 +22,14 @@ Throughout this page, and the documentation as a whole, you'll see many hyperlin
 
 ### 1. Download
 
-Download the `Figgy v1.0.1.yymps` package from the latest [Release](https://github.com/glebtsereteli/Figgy/releases/latest/).
+Download the `.yymps` local package from the latest [Release](https://github.com/glebtsereteli/Figgy/releases/latest).
 
 ### 2. Import
 
 Import the package into your project.
 * Navigate to __Tools__ in the top toolbar and click __Import Local Package__, or just drag and drop the file into GameMaker.
 <!-- ![](import01.png) -->
-* Locate and select the `Figgy v1.0.1.yymps` local package in Explorer/Finder.
+* Locate and select the downloaded `.yymps` local package in Explorer/Finder.
 * Click **Add All**, then **Import**.
 ![import](import.gif)
 > The whole library lives inside the `Figgy` folder, and the only file under `Included Files` is the [MIT license](/pages/home/faq/#📍-how-is-figgy-licensed-can-i-use-it-in-commercial-projects).

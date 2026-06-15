@@ -14,7 +14,7 @@ Whether you're a solo developer or part of a team, working on a big project or a
 
 ## Features
 
-⚙️ **Automatic Live :Interface:**. Figgy creates [debug views](https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Debugging/The_Debug_Overlay.htm#:~:text=using%C2%A0dbg_view.-,Views,-This%20menu%20lists) for your configs automatically, freeing you from dreaded UI coding of any kind and allowing for live editing.
+⚙️ **Automatic Live :Interface:**. Figgy creates [debug views](https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Debugging/The_Debug_Overlay.htm#:~:text=using%C2%A0dbg_view.-,Views,-This%20menu%20lists) for your configs automatically, freeing you from dreaded UI coding of any kind and allowing for live editing.
 
 🗂️ **Flexible Data Structure**. Organize your configs using a robust struct-based tree-like JSON layout with :Scope Widgets:, including :Windows:, :Sections:, and :Groups:.
 

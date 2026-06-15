@@ -9,6 +9,17 @@ This page provides an overview of all Figgy configuration macros. These settings
 
 Whether to show debug messages in the Output window (`true`) or not (`false`).
 
+---
+### `FIGGY_SHOW_DEBUG_OVERLAY`
+> Default: `undefined`.
+
+Controls when the Debug Overlay is shown on game startup.
+
+* `undefined`: Show the Debug Overlay if at least one Figgy Window is visible.
+* `true`: Always show the Debug Overlay.
+* `false`: Never show the Debug Overlay.
+
+---
 ### `FIGGY_BUILD_INTERFACE`
 > Default: `__FIGGY_IN_IDE` (when running from IDE).
 
@@ -16,17 +27,28 @@ Whether to build the Figgy debug interface (`true`) or not (`false`).
 By default, this is enabled when running the game from IDE and disabled when running from EXE, using the `__FIGGY_IN_IDE` status macro.
 
 ---
-### `FIGGY_REMOVE_SPACES`
-> Default: `false`.
+### `FIGGY_SPACE_REPLACER`
+> Default: `""`.
 
-Whether to remove spaces from variable names (`true`) or not (`false`), e.g. `"Move Speed"` in :Setup: becomes `"MoveSpeed"` in code.
+Symbol used to replace spaces in variable names when generating config fields.
 
-* Set to `true` if you use variable names like `"Move Speed"` AND want to avoid using the struct accessor for accessing configs in code.
-* Leave as `false` if you use variable names like `"move_speed"` or `"moveSpeed"`.
+* Using `""` converts `"Move Speed"` in :Setup: to `MoveSpeed` in code.
+* Using `"_"` converts `"Move Speed"` in :Setup: to `Move_Speed` in code.
+* Set to `undefined` to disable replacement when not needed. Improves :Setup: performance at scale.
 
 ::: warning
-Changing this mid-development will erase existing saved configs, so make sure to decide on this early on.
+Changing this mid-project will invalidate existing saved configs. Decide on this early.
 :::
+
+---
+### `FIGGY_LOWERCASE`
+> Default: `undefined`.
+
+Determines casing for generated config fields.
+
+* `undefined` keeps original casing from :Setup: and improves :Setup: performance at scale.
+* `true` forces lowercase.
+* `false` forces UPPERCASE.
 
 ## File
 
@@ -163,7 +185,7 @@ Default :Group: text alignment. `0` is left, `1` is center, `2` is right.
 The custom [String Format](https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Strings/string.htm#:~:text=to%20a%20string.-,Format%20String,-When%20you%20pass) for **unscoped** Section and Group names (with :.NoScope(): called beforehand).
 
 ::: tip
-You may want to set this to something like `"[{0}]"` or `"-{0}-"` for extra interface clarity.
+You may want to set this to something like `"[{0}]"` or `"[-{0}-]"` for extra interface clarity.
 :::
 
 ## Value Widgets
@@ -181,13 +203,13 @@ If `true`, might slow down :Setup: at scale.
 ### `FIGGY_INT_DEFAULT_STEP`
 > Default: `1`.
 
-Default step increment for :Int: Value Widgets.
+Default step increment for :.Int(): Value Widgets.
 
 ---
 ### `FIGGY_FLOAT_DEFAULT_STEP`
 > Default: `0.1`.
 
-Default step increment for :Float: Value Widgets.
+Default step increment for :.Float(): Value Widgets.
 
 ---
 ### `FIGGY_REAL_BUTTONS`
@@ -200,10 +222,10 @@ If `true`, might slow down :Setup: at scale.
 :::
 
 ---
-### `FIGGY_ANY_BUTTONS`
+### `FIGGY_DROPDOWN_BUTTONS`
 > Default: `true`.
 
-Whether to include -/+ cycling buttons for :Any: Value Widgets (`true`) or not (`false`).
+Whether to include -/+ cycling buttons for :.Any():, :.Curve():, and :.Asset(): Value Widgets (`true`) or not (`false`).
 
 ::: warning
 If `true`, might slow down :Setup: at scale.
@@ -212,22 +234,13 @@ If `true`, might slow down :Setup: at scale.
 ## Decor Widgets
 
 ### `FIGGY_BUTTON_DEFAULT_SAME_LINE`
-
-> Default `false`.
-
-Whether :Buttons: should be placed on the same line with the last widget by default (`true`) or not (`false`).
-
----
-### `FIGGY_BUTTON_DEFAULT_SAME_LINE`
-
-> Default `false`.
+> Default: `false`.
 
 Whether :Buttons: should be placed on the same line with the last widget by default (`true`) or not (`false`).
 
 ---
 ### `FIGGY_COMMENT_DEFAULT_SAME_LINE`
-
-> Default `false`.
+> Default: `false`.
 
 Whether :Comments: should be placed on the same line with the last widget by default (`true`) or not (`false`).
 
@@ -246,10 +259,14 @@ Whether to enable the Changes tracking system (`true`) or not (`false`).
 
 By default, this is enabled when running the game from IDE and disabled when running from EXE, using the `__FIGGY_IN_IDE` status macro.
 
+::: warning
+Set this to `false` to improve performance at scale.
+:::
+
 ---
 ### `FIGGY_CHANGES_DEFAULT_CALLBACK`
 > Default: `undefined`.
 
-The default function to call when a Value Widgets' values are changed. `undefined` stands for "no function".
+The default function to call when a Value Widget value is changed. `undefined` stands for "no function".
 
 Arguments passed to the callback: `(newValue, oldValue, variableName)`.
