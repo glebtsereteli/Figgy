@@ -4,7 +4,7 @@
 
 Welcome to Figgy! Let's get you set up and ready to create your first configs!
 
-We'll start by importing the `.yymps` package and preparing your project in [Installation](#installation). Then, in [Usage](#usage), we'll walk through defining your first config layout and exploring how Figgy converts your widgets into a usable config struct. By the end, you'll have a simple working example that lets you define configs, access them easily in your objects, and edit them live using the Figgy :Interface:.
+We'll start by downloading and importing the `.yymps` package and preparing your project in [Installation](#installation). Then, in [Usage](#usage), we'll walk through defining your first config layout and exploring how Figgy converts your widgets into a usable config struct. By the end, you'll have a simple working example that lets you define configs, access them easily in your objects, and edit them live using the Figgy :Interface:.
 
 :::tip
 Throughout this page, and the documentation as a whole, you'll see many hyperlinks to key Figgy concepts. I encourage you to explore them briefly as you get started, as they'll help you quickly understand the library's overall structure.
