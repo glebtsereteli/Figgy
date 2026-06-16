@@ -27,7 +27,7 @@
   "origin":0,
   "parent":{
     "name":"GUI",
-    "path":"folders/01. Survivor Template/Sprites/GUI.yy",
+    "path":"folders/01 Survivor Template/Sprites/GUI.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

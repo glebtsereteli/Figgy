@@ -9,7 +9,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"UI",
-    "path":"folders/01. Platformer Template/Objects/UI.yy",
+    "path":"folders/01 Platformer Template/Objects/UI.yy",
   },
   "parentObjectId":null,
   "persistent":false,

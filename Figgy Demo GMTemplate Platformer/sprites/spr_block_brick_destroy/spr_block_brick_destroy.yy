@@ -46,7 +46,7 @@
   "origin":9,
   "parent":{
     "name":"Blocks",
-    "path":"folders/01. Platformer Template/Sprites/Environment/Blocks.yy",
+    "path":"folders/01 Platformer Template/Sprites/Environment/Blocks.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

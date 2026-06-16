@@ -13,7 +13,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Menu",
-    "path":"folders/01. Survivor Template/Objects/Menu.yy",
+    "path":"folders/01 Survivor Template/Objects/Menu.yy",
   },
   "parentObjectId":null,
   "persistent":false,

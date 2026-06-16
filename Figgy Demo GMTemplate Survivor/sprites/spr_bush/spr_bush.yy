@@ -26,7 +26,7 @@
   "origin":0,
   "parent":{
     "name":"Background",
-    "path":"folders/01. Survivor Template/Sprites/Background.yy",
+    "path":"folders/01 Survivor Template/Sprites/Background.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

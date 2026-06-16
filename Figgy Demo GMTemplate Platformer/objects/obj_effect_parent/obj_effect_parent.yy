@@ -9,7 +9,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"VFX",
-    "path":"folders/01. Platformer Template/Objects/VFX.yy",
+    "path":"folders/01 Platformer Template/Objects/VFX.yy",
   },
   "parentObjectId":null,
   "persistent":false,

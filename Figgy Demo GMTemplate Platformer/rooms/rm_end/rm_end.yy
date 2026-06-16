@@ -17,7 +17,7 @@
   "name":"rm_end",
   "parent":{
     "name":"Rooms",
-    "path":"folders/01. Platformer Template/Rooms.yy",
+    "path":"folders/01 Platformer Template/Rooms.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

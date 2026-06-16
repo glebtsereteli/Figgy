@@ -10,7 +10,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Managers",
-    "path":"folders/01. Platformer Template/Objects/Managers.yy",
+    "path":"folders/01 Platformer Template/Objects/Managers.yy",
   },
   "parentObjectId":null,
   "persistent":false,

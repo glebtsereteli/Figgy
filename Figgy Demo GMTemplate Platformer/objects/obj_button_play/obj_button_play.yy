@@ -10,7 +10,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Main Menu",
-    "path":"folders/01. Platformer Template/Objects/UI/Buttons/Main Menu.yy",
+    "path":"folders/01 Platformer Template/Objects/UI/Buttons/Main Menu.yy",
   },
   "parentObjectId":{
     "name":"obj_button_parent",

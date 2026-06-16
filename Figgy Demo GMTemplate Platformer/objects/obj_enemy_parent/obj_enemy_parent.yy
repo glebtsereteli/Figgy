@@ -10,7 +10,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Enemies",
-    "path":"folders/01. Platformer Template/Objects/Characters/Enemies.yy",
+    "path":"folders/01 Platformer Template/Objects/Characters/Enemies.yy",
   },
   "parentObjectId":{
     "name":"obj_character_parent",

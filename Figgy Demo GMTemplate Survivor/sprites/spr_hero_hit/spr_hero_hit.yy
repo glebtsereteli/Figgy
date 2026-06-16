@@ -32,7 +32,7 @@
   "origin":9,
   "parent":{
     "name":"Hero",
-    "path":"folders/01. Survivor Template/Sprites/Hero.yy",
+    "path":"folders/01 Survivor Template/Sprites/Hero.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

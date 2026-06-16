@@ -27,7 +27,7 @@
   "name":"seq_main_menu",
   "parent":{
     "name":"Sequences",
-    "path":"folders/01. Platformer Template/Sequences.yy",
+    "path":"folders/01 Platformer Template/Sequences.yy",
   },
   "playback":0,
   "playbackSpeed":60.0,

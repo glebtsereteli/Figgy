@@ -7,7 +7,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Editor",
-    "path":"folders/01. Platformer Template/Objects/Environment/Editor.yy",
+    "path":"folders/01 Platformer Template/Objects/Environment/Editor.yy",
   },
   "parentObjectId":null,
   "persistent":false,

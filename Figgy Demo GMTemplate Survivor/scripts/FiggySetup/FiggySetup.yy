@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"FiggySetup",
   "parent":{
-    "name":"02. Public",
-    "path":"folders/Figgy/02. Public.yy",
+    "name":"03 Figgy Library",
+    "path":"folders/03 Figgy Library.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

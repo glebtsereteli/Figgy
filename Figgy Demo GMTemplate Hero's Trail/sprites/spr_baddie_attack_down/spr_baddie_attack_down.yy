@@ -39,7 +39,7 @@
   "origin":4,
   "parent":{
     "name":"Attack",
-    "path":"folders/01. Hero's Trail Template/Sprites/Baddie/Attack.yy",
+    "path":"folders/01 Hero's Trail Template/Sprites/Baddie/Attack.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

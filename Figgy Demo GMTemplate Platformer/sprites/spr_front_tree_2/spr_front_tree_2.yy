@@ -26,7 +26,7 @@
   "origin":7,
   "parent":{
     "name":"Foreground",
-    "path":"folders/01. Platformer Template/Sprites/Environment/Foreground.yy",
+    "path":"folders/01 Platformer Template/Sprites/Environment/Foreground.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

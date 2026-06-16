@@ -11,7 +11,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Upgrade",
-    "path":"folders/01. Survivor Template/Objects/Game/Upgrade.yy",
+    "path":"folders/01 Survivor Template/Objects/Game/Upgrade.yy",
   },
   "parentObjectId":null,
   "persistent":false,

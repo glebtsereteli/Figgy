@@ -10,8 +10,8 @@
   "layers":[],
   "name":"rm_init",
   "parent":{
-    "name":"02. Figgy Implementation",
-    "path":"folders/02. Figgy Implementation.yy",
+    "name":"02 Figgy Implementation",
+    "path":"folders/02 Figgy Implementation.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

@@ -226,7 +226,7 @@
   "origin":9,
   "parent":{
     "name":"Interactive",
-    "path":"folders/01. Platformer Template/Sprites/Environment/Interactive.yy",
+    "path":"folders/01 Platformer Template/Sprites/Environment/Interactive.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

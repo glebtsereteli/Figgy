@@ -27,7 +27,7 @@
   "name":"seq_menu",
   "parent":{
     "name":"Sequences",
-    "path":"folders/01. Hero's Trail Template/Sequences.yy",
+    "path":"folders/01 Hero's Trail Template/Sequences.yy",
   },
   "playback":0,
   "playbackSpeed":60.0,

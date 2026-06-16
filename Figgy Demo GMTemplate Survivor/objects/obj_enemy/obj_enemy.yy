@@ -17,7 +17,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Enemies",
-    "path":"folders/01. Survivor Template/Objects/Game/Enemies.yy",
+    "path":"folders/01 Survivor Template/Objects/Game/Enemies.yy",
   },
   "parentObjectId":null,
   "persistent":false,

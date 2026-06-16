@@ -26,7 +26,7 @@
   "origin":0,
   "parent":{
     "name":"Level",
-    "path":"folders/01. Hero's Trail Template/Sprites/Level.yy",
+    "path":"folders/01 Hero's Trail Template/Sprites/Level.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

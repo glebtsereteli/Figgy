@@ -24,6 +24,12 @@ The only additions are Figgy configs and the minimal glue needed to connect them
 * Check out the frequently asked questions in the [FAQ](https://glebtsereteli.github.io/Figgy/pages/home/faq) section.
 * Learn everything else there is to know about the library in the [Documentation](https://glebtsereteli.github.io/Figgy/).
 
+## Need Help?
+
+If you have questions or need help implementing Figgy into your game, visit the dedicated [#gleb___figgy](https://discord.com/channels/724320164371497020/1457226777024925786) support channel on the [GameMaker Kitchen](https://discord.gg/gamemakerkitchen) Discord server.
+
+See the [Contact & Support](https://glebtsereteli.github.io/Figgy/pages/others/contactSupport#contact-support) section of the documentation for more information.
+
 ----
 
 If you find Figgy useful, please consider giving it a good rating on [Itch](https://glebtsereteli.itch.io/figgy) and a star on [GitHub](https://github.com/glebtsereteli/Figgy)!

@@ -26,7 +26,7 @@
   "origin":4,
   "parent":{
     "name":"Bat",
-    "path":"folders/01. Hero's Trail Template/Sprites/Bat.yy",
+    "path":"folders/01 Hero's Trail Template/Sprites/Bat.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

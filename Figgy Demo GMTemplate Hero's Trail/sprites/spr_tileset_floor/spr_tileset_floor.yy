@@ -26,7 +26,7 @@
   "origin":0,
   "parent":{
     "name":"Tileset Sprites",
-    "path":"folders/01. Hero's Trail Template/Sprites/Tileset Sprites.yy",
+    "path":"folders/01 Hero's Trail Template/Sprites/Tileset Sprites.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

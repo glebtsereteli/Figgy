@@ -71,7 +71,7 @@
   "name":"rm_level_2",
   "parent":{
     "name":"Rooms",
-    "path":"folders/01. Hero's Trail Template/Rooms.yy",
+    "path":"folders/01 Hero's Trail Template/Rooms.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

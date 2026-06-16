@@ -11,7 +11,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Hero and Weapons",
-    "path":"folders/01. Survivor Template/Objects/Game/Hero and Weapons.yy",
+    "path":"folders/01 Survivor Template/Objects/Game/Hero and Weapons.yy",
   },
   "parentObjectId":null,
   "persistent":false,

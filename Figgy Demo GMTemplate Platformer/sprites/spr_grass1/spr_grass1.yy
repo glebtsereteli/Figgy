@@ -26,7 +26,7 @@
   "origin":7,
   "parent":{
     "name":"Grass",
-    "path":"folders/01. Platformer Template/Sprites/Environment/Ground Visuals/Grass.yy",
+    "path":"folders/01 Platformer Template/Sprites/Environment/Ground Visuals/Grass.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

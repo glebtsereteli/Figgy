@@ -10,7 +10,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Lighting_Effects",
-    "path":"folders/01. Hero's Trail Template/Objects/Lighting_Effects.yy",
+    "path":"folders/01 Hero's Trail Template/Objects/Lighting_Effects.yy",
   },
   "parentObjectId":null,
   "persistent":false,

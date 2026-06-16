@@ -15,7 +15,7 @@
   "name":"snd_button_press_01",
   "parent":{
     "name":"UI",
-    "path":"folders/01. Platformer Template/Sounds/SFX/UI.yy",
+    "path":"folders/01 Platformer Template/Sounds/SFX/UI.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

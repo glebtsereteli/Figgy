@@ -8,8 +8,8 @@
   "name":"obj_debug_manager",
   "overriddenProperties":[],
   "parent":{
-    "name":"02. Figgy Implementation",
-    "path":"folders/02. Figgy Implementation.yy",
+    "name":"02 Figgy Implementation",
+    "path":"folders/02 Figgy Implementation.yy",
   },
   "parentObjectId":null,
   "persistent":true,

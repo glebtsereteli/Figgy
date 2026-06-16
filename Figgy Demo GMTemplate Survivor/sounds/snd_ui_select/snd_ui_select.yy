@@ -15,7 +15,7 @@
   "name":"snd_ui_select",
   "parent":{
     "name":"UI",
-    "path":"folders/01. Survivor Template/Sounds/UI.yy",
+    "path":"folders/01 Survivor Template/Sounds/UI.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

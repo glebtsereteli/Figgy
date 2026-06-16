@@ -10,7 +10,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Touch Controls",
-    "path":"folders/01. Platformer Template/Objects/UI/Buttons/Touch Controls.yy",
+    "path":"folders/01 Platformer Template/Objects/UI/Buttons/Touch Controls.yy",
   },
   "parentObjectId":{
     "name":"obj_button_parent",

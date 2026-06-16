@@ -29,7 +29,7 @@
   "origin":9,
   "parent":{
     "name":"Player",
-    "path":"folders/01. Hero's Trail Template/Sprites/Player.yy",
+    "path":"folders/01 Hero's Trail Template/Sprites/Player.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

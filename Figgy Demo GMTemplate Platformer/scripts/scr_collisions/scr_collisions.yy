@@ -6,7 +6,7 @@
   "name":"scr_collisions",
   "parent":{
     "name":"Scripts",
-    "path":"folders/01. Platformer Template/Scripts.yy",
+    "path":"folders/01 Platformer Template/Scripts.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

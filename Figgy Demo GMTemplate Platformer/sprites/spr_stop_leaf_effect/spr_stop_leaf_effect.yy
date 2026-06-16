@@ -46,7 +46,7 @@
   "origin":4,
   "parent":{
     "name":"Editor",
-    "path":"folders/01. Platformer Template/Sprites/Environment/Editor.yy",
+    "path":"folders/01 Platformer Template/Sprites/Environment/Editor.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

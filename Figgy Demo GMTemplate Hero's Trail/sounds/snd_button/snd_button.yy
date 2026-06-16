@@ -15,7 +15,7 @@
   "name":"snd_button",
   "parent":{
     "name":"UI",
-    "path":"folders/01. Hero's Trail Template/Sounds/UI.yy",
+    "path":"folders/01 Hero's Trail Template/Sounds/UI.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

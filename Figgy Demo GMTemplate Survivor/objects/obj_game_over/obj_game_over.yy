@@ -10,7 +10,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Game Over",
-    "path":"folders/01. Survivor Template/Objects/Game/Game Over.yy",
+    "path":"folders/01 Survivor Template/Objects/Game/Game Over.yy",
   },
   "parentObjectId":null,
   "persistent":false,

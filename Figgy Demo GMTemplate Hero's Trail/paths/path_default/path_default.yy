@@ -6,7 +6,7 @@
   "name":"path_default",
   "parent":{
     "name":"Paths",
-    "path":"folders/01. Hero's Trail Template/Paths.yy",
+    "path":"folders/01 Hero's Trail Template/Paths.yy",
   },
   "points":[
     {"speed":100.0,"x":63.0,"y":32.0,},

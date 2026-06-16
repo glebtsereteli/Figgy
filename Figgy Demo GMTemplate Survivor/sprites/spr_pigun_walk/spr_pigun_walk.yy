@@ -68,7 +68,7 @@
   "origin":9,
   "parent":{
     "name":"Pigun",
-    "path":"folders/01. Survivor Template/Sprites/Enemies/Pigun.yy",
+    "path":"folders/01 Survivor Template/Sprites/Enemies/Pigun.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

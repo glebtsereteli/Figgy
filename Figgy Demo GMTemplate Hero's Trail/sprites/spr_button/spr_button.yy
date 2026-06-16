@@ -28,7 +28,7 @@
   "origin":4,
   "parent":{
     "name":"Menu",
-    "path":"folders/01. Hero's Trail Template/Sprites/Menu.yy",
+    "path":"folders/01 Hero's Trail Template/Sprites/Menu.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

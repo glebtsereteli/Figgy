@@ -41,7 +41,7 @@
   "origin":9,
   "parent":{
     "name":"Pumpkill",
-    "path":"folders/01. Survivor Template/Sprites/Enemies/Pumpkill.yy",
+    "path":"folders/01 Survivor Template/Sprites/Enemies/Pumpkill.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

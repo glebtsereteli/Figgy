@@ -41,7 +41,7 @@
   "origin":7,
   "parent":{
     "name":"VFX",
-    "path":"folders/01. Platformer Template/Sprites/VFX.yy",
+    "path":"folders/01 Platformer Template/Sprites/VFX.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

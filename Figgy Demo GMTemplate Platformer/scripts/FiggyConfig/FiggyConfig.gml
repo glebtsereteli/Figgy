@@ -17,8 +17,8 @@
 #macro FIGGY_BUILD_INTERFACE __FIGGY_IN_IDE
 
 // Symbol used to replace spaces in variable names when generating config fields.
-// • Using "" converts "Move Speed" in Setup to "MoveSpeed" in code.
-// • Using "_" converts "Move Speed" in Setup to "Move_Speed" in code.
+// • Using "" converts "Move Speed" in Setup to MoveSpeed in code.
+// • Using "_" converts "Move Speed" in Setup to Move_Speed in code.
 // • Set to undefined to disable replacement when not needed. Improves Setup performance at scale.
 //
 // WARNING: Changing this mid-project will invalidate existing saved configs. Decide on this early.

@@ -51,7 +51,7 @@
   "origin":4,
   "parent":{
     "name":"Enemy1",
-    "path":"folders/01. Platformer Template/Sprites/Enemy1.yy",
+    "path":"folders/01 Platformer Template/Sprites/Enemy1.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

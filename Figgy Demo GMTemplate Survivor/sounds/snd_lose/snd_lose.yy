@@ -15,7 +15,7 @@
   "name":"snd_lose",
   "parent":{
     "name":"Jingles",
-    "path":"folders/01. Survivor Template/Sounds/Jingles.yy",
+    "path":"folders/01 Survivor Template/Sounds/Jingles.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

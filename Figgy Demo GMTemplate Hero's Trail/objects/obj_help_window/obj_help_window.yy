@@ -10,7 +10,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Menu",
-    "path":"folders/01. Hero's Trail Template/Objects/Menu.yy",
+    "path":"folders/01 Hero's Trail Template/Objects/Menu.yy",
   },
   "parentObjectId":null,
   "persistent":false,

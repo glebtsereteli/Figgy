@@ -15,7 +15,7 @@
   "name":"snd_amb_trees",
   "parent":{
     "name":"Ambient",
-    "path":"folders/01. Platformer Template/Sounds/SFX/Ambient.yy",
+    "path":"folders/01 Platformer Template/Sounds/SFX/Ambient.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

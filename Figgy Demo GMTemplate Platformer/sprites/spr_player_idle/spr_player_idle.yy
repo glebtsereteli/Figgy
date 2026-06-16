@@ -43,7 +43,7 @@
   "origin":4,
   "parent":{
     "name":"Player",
-    "path":"folders/01. Platformer Template/Sprites/Player.yy",
+    "path":"folders/01 Platformer Template/Sprites/Player.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
