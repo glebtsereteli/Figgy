@@ -26,7 +26,7 @@ function Figgy() {
 		__FIGGY_NO_INIT;
 		__FIGGY_RAWNAME;
 		if (FIGGY_BUILD_INTERFACE) {
-			dbg_view($"{FIGGY_WINDOW_NAME}: {_name}", _visible, _x, _y, _w, _h);
+			dbg_view($"{FIGGY_WINDOW_NAME}: {__FIGGY_DISPLAYNAME}", _visible, _x, _y, _w, _h);
 			if (_visible) {
 				__openedWindow = true;
 			}
@@ -67,7 +67,7 @@ function Figgy() {
 		__FIGGY_CATCH_WINDOW;
 		__FIGGY_RAWNAME;
 		if (FIGGY_BUILD_INTERFACE) {
-			dbg_section(__FIGGY_SCOPEDNAME, _open);
+			dbg_section(__FIGGY_DISPLAYNAME, _open);
 		}
 		if (__scoped) {
 			__section = {};
@@ -97,7 +97,7 @@ function Figgy() {
 		__FIGGY_CATCH_FIRST_WINDOW_SECTION;
 		__FIGGY_RAWNAME;
 		if (FIGGY_BUILD_INTERFACE) {
-			dbg_text_separator(__FIGGY_SCOPEDNAME, _align);
+			dbg_text_separator(__FIGGY_DISPLAYNAME, _align);
 		}
 		if (__scoped) {
 			var _group = {};
@@ -128,7 +128,7 @@ function Figgy() {
 	#endregion
 	#region Setup: Value Widgets
 	
-	/// Value Widget. Creates a Real value in the current scope (Root, Window, Section or Group), represented as a DBG Slider.
+	/// Value Widget. Creates a Real value in the current scope (Root, Window, Section or Group), represented as a DBG Slider Int.
 	/// The onChange callback function receives 3 arguments: (newValue, oldValue, variableName).
 	/// 
 	/// @param {String} name The variable name.

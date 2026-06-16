@@ -36,7 +36,7 @@ Mentioning my name (Gleb Tsereteli) in your game's credits would be greatly appr
 
 ::: tip SEMANTIC VERSIONING
 Figgy follows the [Semantic Versioning](https://semver.org/) pattern.
-- Change to the first number indicate a major release and may include breaking changes or require code refactoring.
+- Changes to the first number indicate a major release and may include breaking changes or require code refactoring.
 - Changes to the second or third number are minor or patch releases and typically don't require any changes on your end. 
 For example, upgrading from `v1.4.2` to `v2.0.0` is a major upgrade, while `v1.3.0` to `v1.4.0` or `v1.3.1` is a safe, non-breaking update.
 :::

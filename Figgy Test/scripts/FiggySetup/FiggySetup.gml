@@ -5,7 +5,7 @@
 /// • Do NOT rename, delete or call it yourself. Doing so will break initialization.
 /// • Documentation: https://glebtsereteli.github.io/Figgy/pages/api/figgy/setup
 function FiggySetup() {
-	Figgy.Window("Player", true, 458); {
+	Figgy.NoScope().Window("Player", true, 458); {
 		Figgy.Section("Stats");
 			Figgy.String("Name", "Hero");
 			Figgy.Int("Lives", 3, 1, 10);

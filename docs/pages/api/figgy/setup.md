@@ -41,21 +41,21 @@ function FiggySetup() {
                 Figgy.Float("Run Speed", 4, 0.1, 20);
     Figgy.Window("Enemies");
         Figgy.Section("Slime");
-            Figgy.Int("Health", 5, 1, 15);
+            Figgy.Int("Health", 3, 1, 15);
             Figgy.Int("Damage", 1, 1, 10);
 }
 ```
 ```js [Data]
 {
     Player: {
-        WalkSpeed: 4,
-        RunSpeed: 2,
+        WalkSpeed: 2,
+        RunSpeed: 4,
     },
     Enemies: {
         Slime: {
             Health: 3,
             Damage: 1,
-        }
+        },
     },
 }
 ```
@@ -318,7 +318,7 @@ Marks the next :.Window():, :.Section(): or :.Group(): call as **unscoped**, tre
 function FiggySetup() {
     // Creates a General unscoped window in the Root scope
     Figgy.NoScope().Window("General");
-        Figgy.Int("Difficulty", 0.75, 0, 1, 0.05); // [!code highlight]
+        Figgy.Float("Difficulty", 0.75, 0, 1, 0.05); // [!code highlight]
     // Creates an unscoped Abilities section in the Player window
     Figgy.Window("Player");
         Figgy.NoScope().Section("Abilities"); // [!code highlight]
@@ -539,7 +539,7 @@ Creates a :Bool: value in the current scope (Root, :Window:, :Section: or :Group
 ```js [Setup]
 function FiggySetup() {
     Figgy.Window("Lighting");
-        // Creates an Enabled Bool values inside the Lighting window
+        // Creates an Enabled Bool value inside the Lighting window
 		Figgy.Bool("Enabled", true); // [!code highlight]
 }
 ```
@@ -678,8 +678,8 @@ function FiggySetup() {
 // In objPlayer's Create event, store the config struct for future use
 cfg = CFG.Player; // [!code highlight]
 
-// In objPlayer's UpdateSprite method, changes sprite by updating sprite_index to a
-// sprite based the current skin and state and resets image_index
+// In objPlayer's UpdateSprite method, changes the sprite by updating sprite_index to a
+// sprite based on the current skin and state and resets image_index
 UpdateSprite = function() {
     sprite_index = sprites[$ cfg.Skin][$ fsm.get_current_state()]; // [!code highlight]
 	image_index = 0;
@@ -913,7 +913,7 @@ function FiggySetup() {
 
 > `Figgy.OnChangeReset()` ➜ :Struct:.:Figgy:
 
-Resets the OnChange callback previosly set with :.OnChangeSet():.
+Resets the OnChange callback previously set with :.OnChangeSet():.
 
 ::: code-group
 ```js [Setup]

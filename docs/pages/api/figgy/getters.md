@@ -13,7 +13,7 @@ Once your configs are set up in :Setup:, you need a way to fetch values in your 
 
 > `Figgy.GetCurrent()` ➜ :Struct:
 
-Returns the current config struct that you edit through the :Interface: and access your game code.
+Returns the current config struct that you edit through the :Interface: and access throughout your game code.
 
 ::: tip
 I highly recommend storing the current config struct in a convenient global + macro pair for cleaner access instead of having to call `Figgy.GetCurrent()` for grabbing each config value.
@@ -50,7 +50,7 @@ function FiggySetup() {
     Player: { // [!code highlight]
        // Section/Group structs and Value Widget values here...
     },
-    Enemy: { // [!code highlight]
+    Enemies: { // [!code highlight]
         Skeleton: {
             // Group structs and Value Widget values here...
         },
@@ -64,7 +64,7 @@ cfg = CFG.Player; // With global + macro. [!code highlight]
 
 // In objEnemySkeleton's Create event, store the config struct for future use:
 cfg = Figgy.GetCurrent().Enemies.Skeleton; // Without global + macro. [!code highlight]
-cfg = CFG.Player; // With global + macro. [!code highlight]
+cfg = CFG.Enemies.Skeleton; // With global + macro. [!code highlight]
 ```
 :::
 

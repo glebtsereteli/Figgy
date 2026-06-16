@@ -96,7 +96,7 @@
 
 // The custom String Format used for UNSCOPED Sections and Groups names (with .NoScope() called beforehand).
 // TIP: You may want to set this to something like "[{0}]" or "[-{0}-]" for extra interface clarity.
-#macro FIGGY_UNSCOPED_NAME_FORMAT "[-{0}-]"
+#macro FIGGY_UNSCOPED_NAME_FORMAT "{0}"
 
 #endregion
 #region Value Widgets

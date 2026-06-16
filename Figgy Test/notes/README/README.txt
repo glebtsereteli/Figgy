@@ -1,15 +1,14 @@
-
 # Figgy v1.1.0 Test
 
 ## Welcome!
 
 Welcome to the [Figgy](https://github.com/glebtsereteli/Figgy) test project!
 
-This project is a minimal unit-test setup for the library, with no game attached. It exists purely to exercise every Setup widget in one place and serve as a feature reference. For a guided introduction, check out the [Getting Started](https://glebtsereteli.github.io/Figgy/pages/home/gettingStarted/gettingStarted) guide.
+This project is a minimal unit-test setup for the library, with no game attached. It exists purely as a reference, with every Setup widget gathered in one place. For a guided introduction, check out the [Getting Started](https://glebtsereteli.github.io/Figgy/pages/home/gettingStarted/gettingStarted) guide.
 
 ## What's Included
 
-The test project includes a complete `FiggySetup()` definition that exercises every Setup widget, organized into Player, Enemies, World and Transition windows. It covers all three widget categories ([Scope](https://glebtsereteli.github.io/Figgy/pages/api/figgy/setup#scope-widgets), [Value](https://glebtsereteli.github.io/Figgy/pages/api/figgy/setup#value-widgets) and [Decor](https://glebtsereteli.github.io/Figgy/pages/api/figgy/setup#decor-widgets)) along with the [OnChange](https://glebtsereteli.github.io/Figgy/pages/api/figgy/setup#onchange) callback system, and renders the live config tree on screen so you can watch values update as you edit them through the interface.
+The test project includes a complete `FiggySetup()` definition that covers every Setup widget, organized into Player, Enemies, World and Transition windows. It spans all three widget categories: [Scope](https://glebtsereteli.github.io/Figgy/pages/api/figgy/setup#scope-widgets), [Value](https://glebtsereteli.github.io/Figgy/pages/api/figgy/setup#value-widgets) and [Decor](https://glebtsereteli.github.io/Figgy/pages/api/figgy/setup#decor-widgets), plus the [OnChange](https://glebtsereteli.github.io/Figgy/pages/api/figgy/setup#onchange) callbacks. The live config tree is rendered on screen, so you can watch values update as you edit them through the interface.
 
 Learn more about the setup process in the [Setup Documentation](https://glebtsereteli.github.io/Figgy/pages/api/figgy/setup).
 
