@@ -1,0 +1,10 @@
+{
+  "Player":{
+    "Movement":{
+      "Gravity":5.0,
+      "JumpForce":20.0,
+      "WalkSpeed":15.0,
+      "RunSpeed":15.0
+    }
+  }
+}
