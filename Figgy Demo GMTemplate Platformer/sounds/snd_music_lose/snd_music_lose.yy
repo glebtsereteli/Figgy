@@ -15,7 +15,7 @@
   "name":"snd_music_lose",
   "parent":{
     "name":"Music",
-    "path":"folders/01. Platformer Template/Sounds/Music.yy",
+    "path":"folders/01 Platformer Template/Sounds/Music.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

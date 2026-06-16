@@ -10,19 +10,25 @@ The only additions are Figgy configs and the minimal glue needed to connect them
 
 ## Implementation Details
 
-* All Figgy inserts are marked with `// @Figgy` comments. Search for that globally (press **Ctrl+Shift+F** to bring up global search) to find all Figgy-touched pieces of code.
-* See out the `FiggySetup()` function to see the config layout for this project.
-* The game is initialized inside the `initialize_game()` function that is called in the first room's Creation Code. The room is named `rm_init`.
-* There is a helper object called `obj_debug_manager`. It is persistent and only used for toggling the [Debug Overlay](https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Debugging/The_Debug_Overlay.htm) with **F1**.
-* You can find these assets in the `02. Figgy Implementation` folder in the Asset Browser.
-* Mouse movement is blocked when you hover over the Debug Overlay via [is_mouse_over_debug_overlay()](https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Debugging/is_mouse_over_debug_overlay.htm).
+- All Figgy inserts are marked with `// @Figgy` comments. Search for that globally (press **Ctrl+Shift+F** to bring up global search) to find all Figgy-touched pieces of code.
+- See out the `FiggySetup()` function to see the config layout for this project.
+- The game is initialized inside the `initialize_game()` function that is called in the first room's Creation Code. The room is named `rm_init`.
+- There is a helper object called `obj_debug_manager`. It is persistent and only used for toggling the [Debug Overlay](https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Debugging/The_Debug_Overlay.htm) with **F1**.
+- You can find these assets in the `02. Figgy Implementation` folder in the Asset Browser.
+- Mouse movement is blocked when you hover over the Debug Overlay via [is_mouse_over_debug_overlay()](https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Debugging/is_mouse_over_debug_overlay.htm).
 
 ## What's Next?
 
-* Download the latest release from the [GitHub](https://github.com/glebtsereteli/Figgy) repository or the [Itch](https://glebtsereteli.itch.io/figgy) page.
-* See the [Getting Started](https://glebtsereteli.github.io/Figgy/pages/home/gettingStarted/gettingStarted) section of the documentation to learn how to start using Figgy in your own projects.
-* Check out the frequently asked questions in the [FAQ](https://glebtsereteli.github.io/Figgy/pages/home/faq) section.
-* Learn everything else there is to know about the library in the [Documentation](https://glebtsereteli.github.io/Figgy/).
+- Download the latest release from the [GitHub](https://github.com/glebtsereteli/Figgy) repository or the [Itch](https://glebtsereteli.itch.io/figgy) page.
+- See the [Getting Started](https://glebtsereteli.github.io/Figgy/pages/home/gettingStarted/gettingStarted) section of the documentation to learn how to start using Figgy in your own projects.
+- Check out the frequently asked questions in the [FAQ](https://glebtsereteli.github.io/Figgy/pages/home/faq) section.
+- Learn everything else there is to know about the library in the [Documentation](https://glebtsereteli.github.io/Figgy/).
+
+## Need Help?
+
+If you have questions or need help implementing Figgy into your game, visit the dedicated [#gleb___figgy](https://discord.com/channels/724320164371497020/1457226777024925786) support channel on the [GameMaker Kitchen](https://discord.gg/gamemakerkitchen) Discord server.
+
+See the [Contact & Support](https://glebtsereteli.github.io/Figgy/pages/others/contactSupport#contact-support) section of the documentation for more information.
 
 ----
 

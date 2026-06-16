@@ -33,7 +33,7 @@
   "origin":4,
   "parent":{
     "name":"Items",
-    "path":"folders/01. Hero's Trail Template/Sprites/Items.yy",
+    "path":"folders/01 Hero's Trail Template/Sprites/Items.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

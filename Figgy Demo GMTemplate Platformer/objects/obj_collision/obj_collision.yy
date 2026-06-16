@@ -7,7 +7,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Environment",
-    "path":"folders/01. Platformer Template/Objects/Environment.yy",
+    "path":"folders/01 Platformer Template/Objects/Environment.yy",
   },
   "parentObjectId":null,
   "persistent":false,

@@ -26,7 +26,7 @@
   "origin":9,
   "parent":{
     "name":"Collectables",
-    "path":"folders/01. Survivor Template/Sprites/Collectables.yy",
+    "path":"folders/01 Survivor Template/Sprites/Collectables.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

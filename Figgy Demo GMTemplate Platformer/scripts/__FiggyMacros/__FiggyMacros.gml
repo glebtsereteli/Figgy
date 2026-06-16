@@ -3,9 +3,9 @@
 #region Info
 
 #macro __FIGGY_VERSION "v1.1.0" // major.minor.patch
-#macro __FIGGY_DATE "2026.XX.XX" // year.month.day
+#macro __FIGGY_DATE "2026.06.17" // year.month.day
 #macro __FIGGY_NAME "Figgy"
-#macro __FIGGY_LOG_PREFIX "[" + __FIGGY_NAME + "]"
+#macro __FIGGY_LOG_PREFIX ("[" + __FIGGY_NAME + "]")
 
 #endregion
 #region Status
@@ -40,7 +40,7 @@ else if (FIGGY_LOWERCASE == false) { \
 	_rawName = string_upper(_rawName); \
 }
 
-#macro __FIGGY_SCOPEDNAME string(FIGGY_UNSCOPED_NAME_FORMAT, _name)
+#macro __FIGGY_DISPLAYNAME (__scoped ? _name : string(FIGGY_UNSCOPED_NAME_FORMAT, _name))
 
 #macro __FIGGY_CATCH_WINDOW \
 if (not __windowed) { \

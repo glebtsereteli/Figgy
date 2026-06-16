@@ -15,7 +15,7 @@
   "name":"snd_dirt_block_hit_03",
   "parent":{
     "name":"Gameplay",
-    "path":"folders/01. Platformer Template/Sounds/SFX/Gameplay.yy",
+    "path":"folders/01 Platformer Template/Sounds/SFX/Gameplay.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

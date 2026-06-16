@@ -26,7 +26,7 @@
   "origin":4,
   "parent":{
     "name":"UI",
-    "path":"folders/01. Platformer Template/Sprites/UI.yy",
+    "path":"folders/01 Platformer Template/Sprites/UI.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

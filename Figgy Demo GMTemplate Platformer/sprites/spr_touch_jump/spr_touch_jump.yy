@@ -27,7 +27,7 @@
   "origin":4,
   "parent":{
     "name":"Touch Controls",
-    "path":"folders/01. Platformer Template/Sprites/UI/Touch Controls.yy",
+    "path":"folders/01 Platformer Template/Sprites/UI/Touch Controls.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

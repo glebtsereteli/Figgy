@@ -10,7 +10,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"HUD",
-    "path":"folders/01. Platformer Template/Objects/HUD.yy",
+    "path":"folders/01 Platformer Template/Objects/HUD.yy",
   },
   "parentObjectId":null,
   "persistent":false,

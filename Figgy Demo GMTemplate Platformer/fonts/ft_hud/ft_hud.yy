@@ -120,7 +120,7 @@
   "name":"ft_hud",
   "parent":{
     "name":"Fonts",
-    "path":"folders/01. Platformer Template/Fonts.yy",
+    "path":"folders/01 Platformer Template/Fonts.yy",
   },
   "pointRounding":0,
   "ranges":[

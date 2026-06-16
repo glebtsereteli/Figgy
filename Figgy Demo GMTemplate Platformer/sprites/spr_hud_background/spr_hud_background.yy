@@ -26,7 +26,7 @@
   "origin":2,
   "parent":{
     "name":"HUD",
-    "path":"folders/01. Platformer Template/Sprites/HUD.yy",
+    "path":"folders/01 Platformer Template/Sprites/HUD.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

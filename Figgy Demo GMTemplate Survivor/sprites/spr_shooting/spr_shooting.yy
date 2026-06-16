@@ -29,7 +29,7 @@
   "origin":9,
   "parent":{
     "name":"Weapons",
-    "path":"folders/01. Survivor Template/Sprites/Weapons.yy",
+    "path":"folders/01 Survivor Template/Sprites/Weapons.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

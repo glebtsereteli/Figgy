@@ -26,7 +26,7 @@
   "origin":4,
   "parent":{
     "name":"Sprites",
-    "path":"folders/01. Survivor Template/Sprites.yy",
+    "path":"folders/01 Survivor Template/Sprites.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

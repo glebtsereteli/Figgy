@@ -15,7 +15,7 @@
   "name":"snd_torch",
   "parent":{
     "name":"Environment",
-    "path":"folders/01. Hero's Trail Template/Sounds/Environment.yy",
+    "path":"folders/01 Hero's Trail Template/Sounds/Environment.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

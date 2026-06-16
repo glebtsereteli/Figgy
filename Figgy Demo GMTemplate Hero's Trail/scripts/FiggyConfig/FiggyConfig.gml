@@ -6,17 +6,29 @@
 // Whether to show debug messages in the Output window (true) or not (false).
 #macro FIGGY_DEBUG true
 
+// Controls when the Debug Overlay is shown on game startup.
+// • undefined: Show the Debug Overlay if at least one Figgy Window is visible.
+// • true: Always show the Debug Overlay.
+// • false: Never show the Debug Overlay.
+#macro FIGGY_SHOW_DEBUG_OVERLAY undefined
+
 // Whether to build the Figgy debug interface (true) or not (false).
 // By default, this is enabled when running the game from IDE and disabled when running from EXE, using the __FIGGY_IN_IDE status macro.
 #macro FIGGY_BUILD_INTERFACE __FIGGY_IN_IDE
 
-// Whether to remove spaces from variable names (true) or not (false), e.g. "Move Speed" in Setup becomes "MoveSpeed" in code.
-// • Set to true if you use variable names with spaces, like "Move Speed", AND want to avoid using the struct accessor
-// for accessing configs in code.
-// • Leave as false if you use variable names like "move_speed" or "moveSpeed".
+// Symbol used to replace spaces in variable names when generating config fields.
+// • Using "" converts "Move Speed" in Setup to MoveSpeed in code.
+// • Using "_" converts "Move Speed" in Setup to Move_Speed in code.
+// • Set to undefined to disable replacement when not needed. Improves Setup performance at scale.
 //
-// WARNING: Changing this mid-game will erase existing saved configs, so make sure to decide on this early on.
-#macro FIGGY_REMOVE_SPACES true
+// WARNING: Changing this mid-project will invalidate existing saved configs. Decide on this early.
+#macro FIGGY_SPACE_REPLACER ""
+
+// Determines casing for generated config fields.
+// • undefined keeps original casing from Setup and improves Setup performance at scale.
+// • true forces lowercase.
+// • false forces UPPERCASE.
+#macro FIGGY_LOWERCASE undefined
 
 #endregion
 #region File
@@ -79,7 +91,7 @@
 // Whether .Section()s are open by default (true) or not (false).
 #macro FIGGY_SECTION_DEFAULT_OPEN true
 
-// Default .Group() and .Separator() text alignment. 0 is left, 1 is center, 2 is right.
+// Default .Group() text alignment. 0 is left, 1 is center, 2 is right.
 #macro FIGGY_GROUP_DEFAULT_ALIGN 0
 
 // The custom String Format used for UNSCOPED Sections and Groups names (with .NoScope() called beforehand).
@@ -103,9 +115,9 @@
 // NOTE: If true, might slow down FiggySetup() at scale.
 #macro FIGGY_REAL_BUTTONS false
 
-// Whether to include -/+ cycling buttons for .Any() Value Widgets (true) or not (false).
+// Whether to include -/+ cycling buttons for .Any(), .Curve(), and .Asset() Value Widgets (true) or not (false).
 // NOTE: If true, might slow down FiggySetup() at scale.
-#macro FIGGY_ANY_BUTTONS true
+#macro FIGGY_DROPDOWN_BUTTONS true
 
 #endregion
 #region Decor Widgets

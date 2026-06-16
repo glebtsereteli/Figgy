@@ -6,7 +6,7 @@
   "name":"shooting_attack",
   "parent":{
     "name":"Weapons",
-    "path":"folders/01. Survivor Template/Scripts/Weapons.yy",
+    "path":"folders/01 Survivor Template/Scripts/Weapons.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

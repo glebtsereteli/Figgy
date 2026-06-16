@@ -15,7 +15,7 @@
   "name":"snd_music_rampage",
   "parent":{
     "name":"Music",
-    "path":"folders/01. Hero's Trail Template/Sounds/Music.yy",
+    "path":"folders/01 Hero's Trail Template/Sounds/Music.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

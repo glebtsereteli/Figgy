@@ -120,7 +120,7 @@
   "name":"fnt_button",
   "parent":{
     "name":"Fonts",
-    "path":"folders/01. Hero's Trail Template/Fonts.yy",
+    "path":"folders/01 Hero's Trail Template/Fonts.yy",
   },
   "pointRounding":0,
   "ranges":[

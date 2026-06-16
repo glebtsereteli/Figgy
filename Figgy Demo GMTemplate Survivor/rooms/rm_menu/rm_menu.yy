@@ -24,7 +24,7 @@
   "name":"rm_menu",
   "parent":{
     "name":"Rooms",
-    "path":"folders/01. Survivor Template/Rooms.yy",
+    "path":"folders/01 Survivor Template/Rooms.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

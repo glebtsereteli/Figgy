@@ -12,7 +12,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Characters",
-    "path":"folders/01. Platformer Template/Objects/Characters.yy",
+    "path":"folders/01 Platformer Template/Objects/Characters.yy",
   },
   "parentObjectId":null,
   "persistent":false,

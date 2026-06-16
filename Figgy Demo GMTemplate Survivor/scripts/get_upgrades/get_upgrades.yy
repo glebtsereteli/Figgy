@@ -6,7 +6,7 @@
   "name":"get_upgrades",
   "parent":{
     "name":"Scripts",
-    "path":"folders/01. Survivor Template/Scripts.yy",
+    "path":"folders/01 Survivor Template/Scripts.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

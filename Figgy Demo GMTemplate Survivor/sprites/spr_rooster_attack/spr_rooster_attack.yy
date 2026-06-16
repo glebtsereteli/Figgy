@@ -35,7 +35,7 @@
   "origin":9,
   "parent":{
     "name":"Rooster",
-    "path":"folders/01. Survivor Template/Sprites/Enemies/Rooster.yy",
+    "path":"folders/01 Survivor Template/Sprites/Enemies/Rooster.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

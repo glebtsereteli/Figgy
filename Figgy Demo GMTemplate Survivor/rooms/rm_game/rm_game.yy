@@ -38,7 +38,7 @@
   "name":"rm_game",
   "parent":{
     "name":"Rooms",
-    "path":"folders/01. Survivor Template/Rooms.yy",
+    "path":"folders/01 Survivor Template/Rooms.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

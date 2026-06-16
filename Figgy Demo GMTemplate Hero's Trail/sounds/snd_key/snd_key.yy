@@ -15,7 +15,7 @@
   "name":"snd_key",
   "parent":{
     "name":"Items",
-    "path":"folders/01. Hero's Trail Template/Sounds/Items.yy",
+    "path":"folders/01 Hero's Trail Template/Sounds/Items.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

@@ -26,7 +26,7 @@
   "origin":4,
   "parent":{
     "name":"Lighting",
-    "path":"folders/01. Hero's Trail Template/Sprites/Lighting.yy",
+    "path":"folders/01 Hero's Trail Template/Sprites/Lighting.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

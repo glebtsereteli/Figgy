@@ -11,7 +11,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Pickups",
-    "path":"folders/01. Survivor Template/Objects/Game/Pickups.yy",
+    "path":"folders/01 Survivor Template/Objects/Game/Pickups.yy",
   },
   "parentObjectId":null,
   "persistent":false,

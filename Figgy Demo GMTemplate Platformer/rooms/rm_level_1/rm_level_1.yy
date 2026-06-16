@@ -981,7 +981,7 @@
   "name":"rm_level_1",
   "parent":{
     "name":"Levels",
-    "path":"folders/01. Platformer Template/Rooms/Levels.yy",
+    "path":"folders/01 Platformer Template/Rooms/Levels.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

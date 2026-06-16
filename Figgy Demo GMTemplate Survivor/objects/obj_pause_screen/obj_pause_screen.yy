@@ -11,7 +11,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Pause",
-    "path":"folders/01. Survivor Template/Objects/Game/Pause.yy",
+    "path":"folders/01 Survivor Template/Objects/Game/Pause.yy",
   },
   "parentObjectId":null,
   "persistent":false,

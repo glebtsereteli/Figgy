@@ -10,7 +10,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Pause Menu",
-    "path":"folders/01. Platformer Template/Objects/UI/Buttons/Pause Menu.yy",
+    "path":"folders/01 Platformer Template/Objects/UI/Buttons/Pause Menu.yy",
   },
   "parentObjectId":null,
   "persistent":false,

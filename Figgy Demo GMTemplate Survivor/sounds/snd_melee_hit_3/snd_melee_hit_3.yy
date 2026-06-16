@@ -15,7 +15,7 @@
   "name":"snd_melee_hit_3",
   "parent":{
     "name":"Sounds",
-    "path":"folders/01. Survivor Template/Sounds.yy",
+    "path":"folders/01 Survivor Template/Sounds.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

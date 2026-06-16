@@ -15,7 +15,7 @@
   "name":"snd_player_defeated",
   "parent":{
     "name":"Characters",
-    "path":"folders/01. Hero's Trail Template/Sounds/Characters.yy",
+    "path":"folders/01 Hero's Trail Template/Sounds/Characters.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

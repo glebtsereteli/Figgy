@@ -7,7 +7,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Level",
-    "path":"folders/01. Hero's Trail Template/Objects/Level.yy",
+    "path":"folders/01 Hero's Trail Template/Objects/Level.yy",
   },
   "parentObjectId":{
     "name":"obj_collision_parent",

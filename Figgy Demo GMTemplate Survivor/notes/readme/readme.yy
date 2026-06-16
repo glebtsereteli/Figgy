@@ -1,7 +1,7 @@
 {
   "$GMNotes":"v1",
-  "%Name":"readme",
-  "name":"readme",
+  "%Name":"README",
+  "name":"README",
   "parent":{
     "name":"Figgy Demo GMTemplate Survivor",
     "path":"Figgy Demo GMTemplate Survivor.yyp",

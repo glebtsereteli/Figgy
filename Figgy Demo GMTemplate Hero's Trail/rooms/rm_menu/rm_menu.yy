@@ -22,7 +22,7 @@
   "name":"rm_menu",
   "parent":{
     "name":"Rooms",
-    "path":"folders/01. Hero's Trail Template/Rooms.yy",
+    "path":"folders/01 Hero's Trail Template/Rooms.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

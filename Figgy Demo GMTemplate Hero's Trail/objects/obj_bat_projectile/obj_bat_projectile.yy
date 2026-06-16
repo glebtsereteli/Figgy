@@ -13,7 +13,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Enemies",
-    "path":"folders/01. Hero's Trail Template/Objects/Game/Enemies.yy",
+    "path":"folders/01 Hero's Trail Template/Objects/Game/Enemies.yy",
   },
   "parentObjectId":{
     "name":"obj_enemy_parent",

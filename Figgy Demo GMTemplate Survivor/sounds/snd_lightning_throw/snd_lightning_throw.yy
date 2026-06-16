@@ -15,7 +15,7 @@
   "name":"snd_lightning_throw",
   "parent":{
     "name":"Shooting",
-    "path":"folders/01. Survivor Template/Sounds/Shooting.yy",
+    "path":"folders/01 Survivor Template/Sounds/Shooting.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

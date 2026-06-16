@@ -26,7 +26,7 @@
   "origin":9,
   "parent":{
     "name":"Foliage",
-    "path":"folders/01. Platformer Template/Sprites/Environment/Ground Visuals/Foliage.yy",
+    "path":"folders/01 Platformer Template/Sprites/Environment/Ground Visuals/Foliage.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

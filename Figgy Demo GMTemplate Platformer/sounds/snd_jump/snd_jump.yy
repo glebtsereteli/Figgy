@@ -15,7 +15,7 @@
   "name":"snd_jump",
   "parent":{
     "name":"Player",
-    "path":"folders/01. Platformer Template/Sounds/SFX/Player.yy",
+    "path":"folders/01 Platformer Template/Sounds/SFX/Player.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

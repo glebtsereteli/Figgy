@@ -13,7 +13,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Buttons",
-    "path":"folders/01. Platformer Template/Objects/UI/Buttons.yy",
+    "path":"folders/01 Platformer Template/Objects/UI/Buttons.yy",
   },
   "parentObjectId":null,
   "persistent":false,

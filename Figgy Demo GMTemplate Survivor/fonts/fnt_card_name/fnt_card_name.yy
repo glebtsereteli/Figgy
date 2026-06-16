@@ -120,7 +120,7 @@
   "name":"fnt_card_name",
   "parent":{
     "name":"Fonts",
-    "path":"folders/01. Survivor Template/Fonts.yy",
+    "path":"folders/01 Survivor Template/Fonts.yy",
   },
   "pointRounding":0,
   "ranges":[

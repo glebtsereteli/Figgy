@@ -26,7 +26,7 @@
   "origin":9,
   "parent":{
     "name":"Visual Assets",
-    "path":"folders/01. Hero's Trail Template/Sprites/Visual Assets.yy",
+    "path":"folders/01 Hero's Trail Template/Sprites/Visual Assets.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

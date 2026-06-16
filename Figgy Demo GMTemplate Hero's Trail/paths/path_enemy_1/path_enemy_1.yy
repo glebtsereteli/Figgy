@@ -6,7 +6,7 @@
   "name":"path_enemy_1",
   "parent":{
     "name":"Level1",
-    "path":"folders/01. Hero's Trail Template/Paths/Level1.yy",
+    "path":"folders/01 Hero's Trail Template/Paths/Level1.yy",
   },
   "points":[
     {"speed":100.0,"x":973.55194,"y":528.631,},

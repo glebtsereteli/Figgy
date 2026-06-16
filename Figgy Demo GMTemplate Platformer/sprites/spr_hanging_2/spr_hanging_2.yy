@@ -26,7 +26,7 @@
   "origin":9,
   "parent":{
     "name":"Cave",
-    "path":"folders/01. Platformer Template/Sprites/Environment/Ground Visuals/Cave.yy",
+    "path":"folders/01 Platformer Template/Sprites/Environment/Ground Visuals/Cave.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

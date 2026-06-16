@@ -26,7 +26,7 @@
   "origin":0,
   "parent":{
     "name":"Tile Set Sprites",
-    "path":"folders/01. Platformer Template/Sprites/Tile Set Sprites.yy",
+    "path":"folders/01 Platformer Template/Sprites/Tile Set Sprites.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
