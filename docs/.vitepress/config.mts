@@ -4,10 +4,13 @@ import MarkdownIt from 'markdown-it'
 export default defineConfig({
   base: '/Figgy/',
   cleanUrls: true,
-  
   ignoreDeadLinks: true,
   lastUpdated: true,
   
+  sitemap: {
+    hostname: 'https://glebtsereteli.github.io/Figgy/'
+  },
+
   title: "Figgy",
   description: "Figgy Documentation",
   head: [
@@ -28,7 +31,7 @@ export default defineConfig({
     // analytics
     [
       'script',
-      { async: '', src: 'https://www.googletagmanager.com/gtag/js?id=G-5T6N7GGRNE' }
+      { async: '', src: 'https://www.googletagmanager.com/gtag/js?id=G-Y7N1YYYGY7' }
     ],
     [
       'script',

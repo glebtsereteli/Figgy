@@ -1,6 +1,9 @@
 ---
 
 layout: home
+title: Figgy Documentation
+titleTemplate: false
+description: Documentation for Figgy, a GameMaker library providing centralized and persistent live configs for seamless game tuning and balancing.
 
 hero:
   name: Figgy
